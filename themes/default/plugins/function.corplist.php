@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 /***********************************************************/
 /*           EVE Character Showroom - Version 4            */
 /*       'Improved' and maintained by Shionoya Risa        */
@@ -15,6 +16,14 @@
 /***********************************************************/
 /*   ISK donations to Shionoya Risa are also accepted ;)   */
 /***********************************************************/
+=======
+/**
+ * $Id$
+ * Smarty plugin
+ * @package Skillsheet
+ * @subpackage plugins
+ */
+>>>>>>> 0bf1007212ce2569de2b9c9811fa4d091ecbf85c
 
 function smarty_function_corplist($params, &$smarty)
 {
