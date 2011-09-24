@@ -1,0 +1,11 @@
+Please don't try and install without checking the installation instructions first!
+
+You really won't benefit by going solo, at the moment the installation procedure is a little delicate!
+
+Server Requirements;
+
+MySQL 5.0.91
+PHP 5.2.17
+Apache 2.2
+Support for 5 cron jobs
+Support for MySQL 'LOAD_FILE'
