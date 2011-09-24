@@ -5,9 +5,6 @@ Options -Indexes
 RewriteEngine On
 RewriteBase /
 
-# API CALLS
-RewriteRule ^(.*)\.xml.aspx*$ api/$1
-
 # Exclude certain directories
 RewriteRule ^eveconfig/.*$ - [PT]
 RewriteRule ^includes/.*$ - [PT]
@@ -16,6 +13,7 @@ RewriteRule ^themes/.*$ - [PT]
 RewriteRule ^cache/.*$ - [PT]
 RewriteRule ^cron/.*$ - [PT]
 RewriteRule ^sigs/.*$ - [PT]
+RewriteRule ^imgs/.*$ - [PT]
 
 # Yo! Wassup dawg? Nifty stuff below, watch your step!
 RewriteRule ^home skillsheet.php [L,NC,NS]

@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   <meta name="description" content="Eve Online Skill sheet" />
   <meta name="robots" content="index,follow" />
@@ -13,7 +13,7 @@
   <meta name="generator" content="Eve Online" />
   <meta name="rating" content="General" />
   <meta name="KEYWORDS" content="eveonline, skills" />
-  <title>Skills Showroom</title>
+ <title>Skills Showroom</title>
 <!--  <link rel="stylesheet" type="text/css" href="../themes/default/style/default.css" /> -->
   <style type="text/css">
   /*<![CDATA[*/
@@ -45,92 +45,96 @@ a,a:visited{color:gold;}
         <div id="content" style="margin-left:10px;width:70%;margin-top:50px;" >
           <div class="block-header2">Add Characters</div>
           <br />
-        <!--[if $submit]-->
-          <form id="addcharacters" method="post" action="skillsheet.php?show=addnew">
-          <div>
-            <input type="hidden" name="keyID" value="<!--[$keyID]-->" />
-            <input type="hidden" name="vCode" value="<!--[$vCode]-->" />
-            <input type="hidden" name="do" value="get" />
-            <table summary="Characters List" style="border: #666666 1px solid; margin-left: 10px; width:640px;">
-            <thead>
-              <tr style="background: rgb(44, 44, 56);">
-                <th colspan="<!--[$charcount]-->" class="dataTableHeader">Character</th>
-                <!--[*<th class="dataTableHeader">&nbsp;</th>*]-->
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-            <!--[if $error]-->
-              <td class="txtcenter" style="color:red;"><!--[$error]--></td>
-            <!--[else]-->
-              <!--[foreach item='char' from=$charlist]-->
-                <td class="txtcenter">
-                  <input type="hidden" name="names[<!--[$char.characterID]-->]" value="<!--[$char.name]-->" />
-                  <input type="hidden" name="corps[<!--[$char.characterID]-->]" value="<!--[$char.corporationName]-->" />
-                  <img src="https://image.eveonline.com/Character/<!--[$char.characterID]-->_128.jpg" class="mbAvatar" style="border:1px solid gray" alt="<!--[$char.name]-->" />
-                  <br /><!--[$char.name]-->
-                  <br /><!--[$char.corporationName]-->
-                  <hr />
-                  <br />
-                  Save <input type="checkbox" name="save[<!--[$char.characterID]-->]" />
-                  <br />
-                  <hr />
-                  <br />
-                  Public <input type="checkbox" name="public[<!--[$char.characterID]-->]" />
-                  <br />
-                  Show Implants? <input type="checkbox" name="implants[<!--[$char.characterID]-->]" />
-                  <br />
-                  <hr />
-                  <br />
-<!-- Doesn't actually work, lol
-                  Password (if not public): <input type="password" name="passwords[<!--[$char.characterID]-->]" />
-                  <br />
-                  <hr />
-                  <br /> 
--->                  
-                  Note this link (for non-public):<br /><a href="/<!--[$char.name|replace:' ':'_']-->/" title="<!--[$char.name]-->"><!--[$char.name]--></a>
-                </td>
-              <!--[/foreach]-->
-            <!--[/if]-->
-              </tr>
-              <tr>
-                <td colspan="<!--[$charcount]-->"><hr /></td>
-              </tr>
-              <tr>
-            <!--[if $error]-->
-                <td class="txtcenter"><a href="/add" title="Go Back">Back to API Form</a></td>
-            <!--[else]-->
-                <td colspan="<!--[$charcount]-->" style="text-align:center;"><input type="submit" name="submit" value="Save Character(s)" /></td>
-            <!--[/if]-->
-              </tr>
-            </tbody>
-            </table>
-          </div>
-          </form>
-          <!--[*<p><!--[if $stoppage]--><a href="skillsheet.php?show=addnew" title="Retry">Retry<!--[else]--><a href="install.php?step=<!--[$nextstep]-->">Next Step<!--[/if]--></a></p>*]-->
-        <!--[else]-->
-        <form id="options" name="options" method='post' action='skillsheet.php?show=addnew'>
-        <table border='0' cellspacing='0' cellpadding='0' align='left'>
-        <tr id='cat'>
-        <tr>
-          <td bgcolor='#1B1B1B'><strong>Key ID:</strong></td>
-          <td bgcolor='#1B1B1B' align='center'><input id="keyID" name="keyID" type="text" tabindex="1"></td>
-        </tr>
-        <tr>
-          <td bgcolor='#1B1B1B'><strong>Verification Code:</strong></td>
-          <td bgcolor='#1B1B1B' align='center'><input id="key" name="vCode" type="text" tabindex="2"></td>
-        </tr>
-        <tr>
-        <td></td>
-        <td bgcolor='#1B1B1B' align='center'><input type='submit' name="submit" value='Get Characters'></td>
-        </tr>
-        <tr>
-           <td colspan='2'></br></br><span class="newsmalltext">Your <strong><i>limited</i></strong> API key can be found <a target="_blank" href="https://support.eveonline.com/api">here</a></span></td>
-         </tr>
-          </form>
-        <!--[/if]-->
-        </div>
-
-  <div class="counter"></div>
+				<!--[if $submit]-->
+					<form id="addcharacters" method="post" action="skillsheet.php?show=addnew">
+						<div>
+							<input type="hidden" name="keyID" value="<!--[$keyID]-->" />
+							<input type="hidden" name="vCode" value="<!--[$vCode]-->" />
+							<input type="hidden" name="do" value="get" />
+						<table summary="Characters List" style="border: #666666 1px solid; margin-left: 10px;">
+								
+									<tbody>
+										<tr>
+										<!--[if $error]-->
+											<td class="txtcenter" style="color:red;"><!--[$error]--></td>
+										<!--[else]-->
+										<!--[foreach item='char' from=$charlist]-->
+											<td class="txtcenter">
+												<input type="hidden" name="names[<!--[$char.characterID]-->]" value="<!--[$char.name]-->" />
+												<input type="hidden" name="corps[<!--[$char.characterID]-->]" value="<!--[$char.corporationName]-->" />
+												<img src="https://image.eveonline.com/Character/<!--[$char.characterID]-->_128.jpg" class="mbAvatar" style="border:1px solid gray" alt="<!--[$char.name]-->" />
+												<br /><!--[$char.name]-->
+												<br /><!--[$char.corporationName]-->
+												<hr />
+												Save <input type="checkbox" name="save[<!--[$char.characterID]-->]" />
+												<br />
+												Show Implants? <input type="checkbox" name="implants[<!--[$char.characterID]-->]" />
+												<br />
+												<hr />
+												<strong>Remember this link</strong>:<br /><a href="/<!--[$char.name|replace:' ':'_']-->/" title="<!--[$char.name]-->"><!--[$char.name]--></a>
+											</td>
+										<!--[/foreach]-->
+										<!--[/if]-->
+										</tr>
+										<tr>
+											<td colspan="<!--[$charcount]-->"><hr /></td>
+										</tr>
+										<tr>
+										<!--[if $error]-->
+											<td class="txtcenter"><a href="/add" title="Go Back">Back to API Form</a></td>
+										<!--[else]-->
+											<td colspan="<!--[$charcount]-->" style="text-align:center;"><input type="submit" name="submit" value="Save Character(s)" /></td>
+										<!--[/if]-->
+										</tr>
+									</tbody>
+						</table>
+						</div>
+					</form>
+										<!--[*<p><!--[if $stoppage]--><a href="skillsheet.php?show=addnew" title="Retry">Retry<!--[else]--><a href="install.php?step=<!--[$nextstep]-->">Next Step<!--[/if]--></a></p>*]-->
+										<!--[else]-->
+					<form id="options" name="options" method='post' action='skillsheet.php?show=addnew'>
+						<table border='0' cellspacing='0' cellpadding='0' align='left'>
+										<tr id='cat'>
+										<tr>
+											<td bgcolor='#2c2c38'><strong>Key ID:</strong></td>
+											<td bgcolor='#2c2c38' align='center'><input id="keyID" name="keyID" type="text" tabindex="1"></td>
+										</tr>
+										<tr>
+											<td bgcolor='#2c2c38'><strong>Verification Code:</strong></td>
+											<td bgcolor='#2c2c38' align='center'><input id="key" name="vCode" type="text" tabindex="2"></td>
+										</tr>
+										<tr>
+											<td></td>
+											<td bgcolor='#2c2c38' align='center'><input type='submit' name="submit" value='Get Characters'></td>
+										</tr>
+										<tr>
+											<td colspan='2'></br></br><span class="newsmalltext"><strong><a target="_blank" href="https://support.eveonline.com/api/Key/CreatePredefined/9306120">Create a new API Key for use on this site</a></strong><br />Your API keys can be found <a target="_blank" href="https://support.eveonline.com/api">here</a></span>.<br /></td>
+										</tr>
+						</table>
+					</form>
+										<!--[/if]-->
+						<div class="counter"></div>
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+						<br />
+				  <p style="color:red;"><i><strong>Please be aware that in order to use this site you need to give your new API Key the correct permissions!<br />The information that need is as follows;</p>
+				  <ul style="color:darkorange;">
+					<li><i>'/char/CharacterSheet.xml.aspx'<span style="font-size:x-small;"><sup>2</sup></span></i></li>
+					<li><i>'/char/SkillInTraining.xml.aspx'<span style="font-size:x-small;"><sup>1</sup></span></i></li>
+					<li><i>'/char/SkillQueue.xml.aspx'<span style="font-size:x-small;"><sup>1</sup></span></i></li>
+					<li><i>'/char/Standings.xml.aspx'<span style="font-size:x-small;"><sup>3</sup></span></i></li>
+					<li><i>'/eve/CharacterInfo.xml.aspx'<span style="font-size:x-small;"><sup>2</sup></span></i></li>
+				  </ul>
+				  <p style="color:red;">An easy way to make sure you have the correct permissions is to <a target="_blank" href="https://support.eveonline.com/api/Key/CreatePredefined/9306120">create a pre-defined key!</a></p>  
+                  <p style="font-size:x-small;"><i><sup>1</sup> = Every 15 minutes, <sup>2</sup> = Once per hour, <sup>3</sup> = Every three hours</i> </p></strong></i></p>
+                  <p style="clear:both" /> 
+                </div> 
+              </div>  
 </body>
 </html>

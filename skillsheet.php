@@ -638,7 +638,7 @@ function charlist($config)
     $eveRender->Assign('charcount', count($characters));    
 
 
-    $eveRender->Display('index.tpl');//return $template = 'shipskills.tpl';
+    $eveRender->Display('charlist.tpl');//return $template = 'shipskills.tpl';
     exit;
 }
 

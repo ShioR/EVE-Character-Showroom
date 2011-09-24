@@ -5,7 +5,8 @@ You really won't benefit by going solo, at the moment the installation procedure
 Server Requirements;
 
 MySQL 5.0.91
-PHP 5.2.17
+PHP 5.2.17 with cURL and SimpleXML
 Apache 2.2
 Support for 5 cron jobs
 Support for MySQL 'LOAD_FILE'
+A new subdomain/root folder - Please don't try and install in /exam/ple/EVECS

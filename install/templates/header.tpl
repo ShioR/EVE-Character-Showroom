@@ -6,11 +6,11 @@
   <meta name="robots" content="index,follow" />
   <meta name="resource-type" content="document" />
   <meta http-equiv="expires" content="0" />
-  <meta name="author" content="Eve Online Onewayweb Solutions" />
-  <meta name="copyright" content="Copyright (c) 2004 by Onewayweb Solutions" />
+  <meta name="author" content="Eve Online" />
+  <meta name="copyright" content="Copyright (c) 2011 The Xenodus Initiative." />
   <meta name="revisit-after" content="1 days" />
   <meta name="distribution" content="Global" />
-  <meta name="generator" content="Eve Online Onewayweb Solutions" />
+  <meta name="generator" content="Eve Online" />
   <meta name="rating" content="General" />
   <meta name="KEYWORDS" content="eveonline, skills" />
   <title>Skill Sheet</title>
@@ -156,7 +156,9 @@
 </head>
 <body bgcolor="#222222" style="height: 100%">
 <div class="headerribbon">
-  <span class="headerleft">Skillsheet 3.0: Installation Step <!--[$step]--></span>
-  <span class="headerright" style="color:gold;"><a href="http://eve.onewayweb.com/" title="OneWayWeb Skillsheet">OneWayWeb</a></span>
+  <span class="headerleft">EVE Character Showroom 4.0: Installation Step <!--[$step]--></span>
 </div>
+<br />
+<br />
+<br />
 <!--[getstatusmsg]-->

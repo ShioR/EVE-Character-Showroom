@@ -1,2 +1,2 @@
 <?php
-define('_SKILLSHEET_VERSION', 'v4.Incarna.169');
+define('_SKILLSHEET_VERSION', 'v4.Incarna.170');
