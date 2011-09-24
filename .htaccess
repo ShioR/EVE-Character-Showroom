@@ -1,0 +1,29 @@
+Options +FollowSymLinks
+Options +MultiViews
+Options -Indexes
+
+RewriteEngine On
+RewriteBase /
+
+# API CALLS
+RewriteRule ^(.*)\.xml.aspx*$ api/$1
+
+# Exclude certain directories
+RewriteRule ^eveconfig/.*$ - [PT]
+RewriteRule ^includes/.*$ - [PT]
+RewriteRule ^install/.*$ - [PT]
+RewriteRule ^themes/.*$ - [PT]
+RewriteRule ^cache/.*$ - [PT]
+RewriteRule ^cron/.*$ - [PT]
+RewriteRule ^sigs/.*$ - [PT]
+
+# Yo! Wassup dawg? Nifty stuff below, watch your step!
+RewriteRule ^home skillsheet.php [L,NC,NS]
+RewriteRule ^add skillsheet.php?show=addnew [L,NC,NS]
+RewriteRule ^stats skillsheet.php?show=stats [L,NC,NS]
+RewriteRule ^([^-]+)/$ skillsheet.php?name=$1 [L,NC,NS]
+RewriteRule ^pilot/([^-]+)$ skillsheet.php?name=$1 [L,NC,NS]
+RewriteRule ^([^-]+)/([^-]+)?$ skillsheet.php?name=$1&show=$2 [L,NC,NS]
+
+# hax!
+DirectoryIndex skillsheet.php
