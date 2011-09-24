@@ -1,5 +1,4 @@
 <?php
-// $Id$
 // ----------------------------------------------------------------------
 // PostNuke Content Management System
 // Copyright (C) 2002 by the PostNuke Development Team.
