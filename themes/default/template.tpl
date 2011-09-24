@@ -21,7 +21,7 @@
       <!--[assign var='lvl3sptotal' value=0]-->       
       <!--[assign var='lvl4sptotal' value=0]-->       
       <!--[assign var='lvl5sptotal' value=0]-->       
-      <!--[foreach item='skillgroup' key='groupid' from=$skilltree]-->	
+      <!--[foreach item='skillgroup' key='groupid' from=$skilltree]-->
         <!--[assign var='totalsp' value=0]-->
         <!--[assign var='countsk' value=0]-->
         <!--[assign var='lvl1' value=0]-->
@@ -137,13 +137,13 @@
       <!--[math equation="(x / y) * z" x=$lvl5sptotal y=$totalskillpoints z=100 format="%.1f" assign='TotalPercentageSkillPoints5']-->      
         <br /><br />
             <div style="line-height: 1.45em; margin-left: 82px; font-size: 11px;">
-            	<br /><strong>Totals:</strong>
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl1total]--></strong> skills trained to level 1 for a total of <strong><!--[$lvl1sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints1]-->%</strong> of your total skillpoints.</span>
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl2total]--></strong> skills trained to level 2 for a total of <strong><!--[$lvl2sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints2]-->%</strong> of your total skillpoints.</span>
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl3total]--></strong> skills trained to level 3 for a total of <strong><!--[$lvl3sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints3]-->%</strong> of your total skillpoints.</span>
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl4total]--></strong> skills trained to level 4 for a total of <strong><!--[$lvl4sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints4]-->%</strong> of your total skillpoints.</span>
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl5total]--></strong> skills trained to level 5 for a total of <strong><!--[$lvl5sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints5]-->%</strong> of your total skillpoints.</span>
-							<br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$totalSkills]--></strong> skills trained, of which <strong><!--[$TotalPercentageSkills1]-->%</strong> are level 1 skills, <strong><!--[$TotalPercentageSkills2]-->%</strong> are level 2 skills, <strong><!--[$TotalPercentageSkills3]-->%</strong> are level 3 skills,<br /><strong><!--[$TotalPercentageSkills4]-->%</strong> are level 4 skills and <strong><!--[$TotalPercentageSkills5]-->%</strong> are level 5 skills.</span> <!--[$cost]-->
+             <br /><strong>Totals:</strong>
+              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$totalSkills]--></strong> skills trained for a total of <strong><!--[$skillpointstotal]--></strong> skillpoints.</span>
+              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl1total]--></strong> (<!--[$TotalPercentageSkills1]-->%) skills trained to level 1 for a total of <strong><!--[$lvl1sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints1]-->%</strong> of your total skillpoints.</span>
+              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl2total]--></strong> (<!--[$TotalPercentageSkills2]-->%) skills trained to level 2 for a total of <strong><!--[$lvl2sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints2]-->%</strong> of your total skillpoints.</span>
+              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl3total]--></strong> (<!--[$TotalPercentageSkills3]-->%) skills trained to level 3 for a total of <strong><!--[$lvl3sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints3]-->%</strong> of your total skillpoints.</span>
+              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl4total]--></strong> (<!--[$TotalPercentageSkills4]-->%) skills trained to level 4 for a total of <strong><!--[$lvl4sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints4]-->%</strong> of your total skillpoints.</span>
+              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl5total]--></strong> (<!--[$TotalPercentageSkills5]-->%) skills trained to level 5 for a total of <strong><!--[$lvl5sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints5]-->%</strong> of your total skillpoints.</span>
             </div>
         <br /><br />
       </td>
