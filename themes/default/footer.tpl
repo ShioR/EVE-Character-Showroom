@@ -4,7 +4,7 @@
       <td style="text-align: center;color:grey;">All images and logos are Copyright &copy; <a style="text-decoration: none;color:grey;" title="Copyright CCP" href="http://www.ccpgames.com/">CCP</a></td>
     </tr>
     <tr>
-      <td style="text-align: center; font-size: x-small;"><a style="text-decoration: none;color:grey;" href="/stats" title="Character Stats">Top SP</a> / <a style="text-decoration: none;color:grey;" target="_blank" href="http://txsi.co.uk/trac/changeset/latest/" title="Changelog"><!--[$version]--></a> / <a style="text-decoration: none;color:grey;" target="_blank" href="http://txsi.co.uk/trac/newticket/" title="Feedback">Feedback</a>
+      <td style="text-align: center; font-size: x-small;"><a style="text-decoration: none;color:grey;" href="/stats" title="Character Stats">Top SP</a> / <a style="text-decoration: none;color:grey;" target="_blank" href="https://github.com/ShioR/EVE-Character-Showroom/commits/master/" title="Github"><!--[$version]--></a> / <a style="text-decoration: none;color:grey;" target="_blank" href="https://github.com/ShioR/EVE-Character-Showroom/issues/new" title="New Ticket">Issues?</a>
 </td>
 </tr>
 <tr>
