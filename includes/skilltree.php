@@ -2678,7 +2678,7 @@ $skillsource[274][25233]['groupName'] = 'Trade';
 $skillsource[274][16595]['typeName'] = 'Daytrading';
 $skillsource[274][16595]['rank'] = '1';
 $skillsource[274][16595]['typeID'] = '16595';
-$skillsource[266][11584]['skillCost'] = '12500000';
+$skillsource[266][16595]['skillCost'] = '12500000';
 $skillsource[274][16595]['groupID'] = '274';
 $skillsource[274][16595]['groupName'] = 'Trade';
 
