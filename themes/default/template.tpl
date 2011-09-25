@@ -83,8 +83,8 @@
                 </div>
                 <!--[/if]-->
               <div id="<!--[$skill.typeID]-->" <!--[if $skill.flag eq 61]-->style="text-align: left; font-size: x-small; color: #fff;";><!--[else]-->style="text-align: left; font-size: x-small; color: #777; display:none;";><!--[/if]-->
-<!--[getskillinfo typeID=$skill.typeID]-->  
-<!--[getskillcost typeID=$skill.typeID]-->  
+<!--[getskillinfo typeID=$skill.typeID]-->
+Cost: <!--[$skill.skillCost|number_format]--> ISK
               </div>                
               </div>
               <!--[math equation="x + y" x=$totalsp y=$skill.skillpoints assign='totalsp']-->

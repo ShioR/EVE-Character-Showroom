@@ -1355,6 +1355,7 @@ function BuildSkillSet($skills, $training)
     // for ($x = 0; $x < $count; $x++) {
 
         $typeID      = $skills[$skill['typeID']]['typeID'];
+        $skillCost   = $skilltreeX[$typeID]['skillCost'];
         $groupID     = $skilltreeX[$typeID]['groupID'];
         $groupName   = $skilltreeX[$typeID]['groupName'];
         $skillpoints = $skills[$skill['typeID']]['skillpoints'];
@@ -1372,12 +1373,13 @@ function BuildSkillSet($skills, $training)
         $skilllevel5 = 256000 * $rank;
 
         $flag = (($typeID == $training['trainingTypeID']) ? 61 : 0);
-        $skilltree[$groupID][$typeID] = array('groupID'     => $groupID,
-                                              'groupName'   => $groupName,
-                                              'typeName'    => $typeName,
-                                              'typeID'      => $typeID,
-                                              'flag'        => $flag,
+        $skilltree[$groupID][$typeID] = array('typeName'    => $typeName,
                                               'rank'        => $rank,
+                                              'typeID'      => $typeID,
+                                              'skillCost'   => $skillCost,
+                                              'groupID'     => $groupID,
+                                              'groupName'   => $groupName,
+                                              'flag'        => $flag,
                                               'skillpoints' => $skillpoints,
                                               'level'       => $level,
                                               'skilllevel1' => $skilllevel1,
