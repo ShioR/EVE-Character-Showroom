@@ -1,19 +1,3 @@
-<?php 
-// -- Piwik Tracking API init -- 
-require_once "../includes/stats.php";
-require_once "../eveconfig/eveconfig.php";
-$domain = _DOMAIN;
-PiwikTracker::$URL = 'http://irsekrit.com/stats/';
-?>
-<?php 
-$piwikTracker = new PiwikTracker( $idSite = 2 );
-// You can manually set the visitor details (resolution, time, plugins, etc.) 
-// See all other ->set* functions available in the PiwikTracker.php file
-//$piwikTracker->setResolution(1600, 1400);
-
-// Sends Tracker request via http
-$piwikTracker->doTrackPageView('Signatures / Blue');
-?>
 <?
 // Set the content-type
 header('Content-type: image/png');

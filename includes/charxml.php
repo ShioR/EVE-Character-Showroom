@@ -25,7 +25,7 @@ include_once('eveRender.class.php');
 // Creating a Render instance
    $eveRender = New eveRender($sys);
    $eveRender->Assign('version',        _SKILLSHEET_VERSION);
-   $eveRender->Assign('version_dev',    _SKILLSHEET_VERSION_DEV);
+   $eveRender->Assign('data_version',   _DATA_VERSION);
    
 // The REAL big beef !!!
 // Might do the PHPDoc thing one day but for now, this
@@ -428,7 +428,7 @@ function GetXML($config = array())
     //$cachetime = $time
     
 // hax the timer to make it a _few_ years ;)
-   if ((time()-strtotime($config['cachedUntil'])) < 360) {
+   if ((time()-strtotime($config['cachedUntil'])) > 360) {
         $dbconn =& DBGetConn(true);
         $extensions = get_loaded_extensions();
 

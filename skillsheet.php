@@ -120,7 +120,7 @@ MYSQL_CLOSE();
 
     $eveRender->Assign('theme',   $config['theme']);
     $eveRender->Assign('version',        _SKILLSHEET_VERSION);
-    $eveRender->Assign('version_dev',    _SKILLSHEET_VERSION_DEV);
+    $eveRender->Assign('dVersion',       _DATA_VERSION);
     $eveRender->Assign('implants',       _IMPLANTS);
     
     switch ($show) {
@@ -487,7 +487,7 @@ function certificates($config)
     $eveRender->Assign('skillpointstotal',  number_format($assign['skillpointstotal'], 0, '', ','));
     // Version
     $eveRender->Assign('version',           _SKILLSHEET_VERSION);
-    $eveRender->Assign('version_dev',       _SKILLSHEET_VERSION_DEV);
+    $eveRender->Assign('dVersion',          _DATA_VERSION);
     $eveRender->Assign('categories',        $categories);
 
     $eveRender->Display('certificates.tpl');
@@ -617,7 +617,7 @@ function standings($config)
     $eveRender->Assign('skillpointstotal',  number_format($assign['skillpointstotal'], 0, '', ','));
     // Version
     $eveRender->Assign('version',           _SKILLSHEET_VERSION);
-    $eveRender->Assign('version_dev',       _SKILLSHEET_VERSION_DEV);
+    $eveRender->Assign('dVersion',          _DATA_VERSION);
     $eveRender->Assign('categories',        $categories);
 
     $eveRender->Display('standings.tpl');
@@ -806,7 +806,7 @@ function mobile($config)
     $eveRender->Assign('skillpointstotal',  number_format($assign['skillpointstotal'], 0, '', ','));
     // Version
     $eveRender->Assign('version',           _SKILLSHEET_VERSION);
-    $eveRender->Assign('version_dev',       _SKILLSHEET_VERSION_DEV);
+    $eveRender->Assign('dVersion',          _DATA_VERSION);
     $eveRender->Assign('categories',        $categories);
 
     $eveRender->Display('mobile.tpl');
@@ -962,7 +962,7 @@ function siglist($config)
     $eveRender->Assign('skillpointstotal',  number_format($assign['skillpointstotal'], 0, '', ','));
     // Version
     $eveRender->Assign('version',           _SKILLSHEET_VERSION);
-    $eveRender->Assign('version_dev',       _SKILLSHEET_VERSION_DEV);
+    $eveRender->Assign('dVersion',          _DATA_VERSION);
     $eveRender->Assign('categories',        $categories);
 
     $eveRender->Display('siglist.tpl');
@@ -1118,7 +1118,7 @@ function sig($config)
     $eveRender->Assign('skillpointstotal',  number_format($assign['skillpointstotal'], 0, '', ','));
     // Version
     $eveRender->Assign('version',           _SKILLSHEET_VERSION);
-    $eveRender->Assign('version_dev',       _SKILLSHEET_VERSION_DEV);
+    $eveRender->Assign('dVersion',          _DATA_VERSION);
     $eveRender->Assign('categories',        $categories);
 
     $eveRender->Display('sig.tpl');
@@ -1275,7 +1275,7 @@ function newsig($config)
     $eveRender->Assign('skillpointstotal',  number_format($assign['skillpointstotal'], 0, '', ','));
     // Version
     $eveRender->Assign('version',           _SKILLSHEET_VERSION);
-    $eveRender->Assign('version_dev',       _SKILLSHEET_VERSION_DEV);
+    $eveRender->Assign('dVersion',          _DATA_VERSION);
     $eveRender->Assign('categories',        $categories);
 
     $eveRender->Display('newsig.tpl');
@@ -1627,7 +1627,7 @@ echo '</body>
 
     // Version
     $eveRender->Assign('version',           _SKILLSHEET_VERSION);
-    $eveRender->Assign('version_dev',       _SKILLSHEET_VERSION_DEV);
+    $eveRender->Assign('dVersion',          _DATA_VERSION);
 
     // Display the template.
     $eveRender->Display('template'.(($config['igb']) ? 'igb' : '').'.tpl');
@@ -1818,7 +1818,7 @@ function ships($config = array())
     $eveRender->Assign('shipscanfly',       $shipscanfly);
     // Version
     $eveRender->Assign('version',           _SKILLSHEET_VERSION);
-    $eveRender->Assign('version_dev',       _SKILLSHEET_VERSION_DEV);
+    $eveRender->Assign('dVersion',          _DATA_VERSION);
 
     $eveRender->Display('shipskills.tpl');
     exit;
