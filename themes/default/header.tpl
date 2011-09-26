@@ -3,7 +3,7 @@
 <head>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   <meta name="description" content="Eve Online Skill sheet" />
-  <meta name="robots" content="index,follow" />
+  <meta name="robots" content="noindex,nofollow" />
   <meta name="resource-type" content="document" />
   <meta http-equiv="expires" content="0" />
   <meta name="author" content="Eve Online" />
