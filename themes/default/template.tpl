@@ -9,7 +9,7 @@
           <!--[if $implants == 1]--><!--[include file='maininfo.tpl']--><!--[else]--><!--[include file='maininfo2.tpl']--><!--[/if]-->
           <!--[include file='queue.tpl']-->
           
-         
+      <!--[assign var='totalCost' value=0]-->   
       <!--[assign var='totalSkills' value=0]-->
       <!--[assign var='lvl1total' value=0]-->
       <!--[assign var='lvl2total' value=0]-->
@@ -83,11 +83,12 @@
                 </div>
                 <!--[/if]-->
               <div id="<!--[$skill.typeID]-->" <!--[if $skill.flag eq 61]-->style="text-align: left; font-size: x-small; color: #fff;";><!--[else]-->style="text-align: left; font-size: x-small; color: #777; display:none;";><!--[/if]-->
-<!--[getskillinfo typeID=$skill.typeID]-->
-Cost: <!--[$skill.skillCost|number_format]--> ISK
+							<!--[getskillinfo typeID=$skill.typeID]-->
+							Cost: <!--[$skill.skillCost|number_format]--> ISK
               </div>                
               </div>
               <!--[math equation="x + y" x=$totalsp y=$skill.skillpoints assign='totalsp']-->
+              <!--[math equation="x + y" x=$totalCost y=$skill.skillCost assign='totalCost']-->
               <!--[math equation="x + y" x=$countsk y=1 assign='countsk']-->
               <!--[if $skill.level == '1']-->
               	<!--[math equation="x + y" x=$skill.skillpoints y=$lvl1sp assign='lvl1sp']-->              
@@ -138,6 +139,7 @@ Cost: <!--[$skill.skillCost|number_format]--> ISK
         <br /><br />
             <div style="line-height: 1.45em; margin-left: 82px; font-size: 11px;">
              <br /><strong>Totals:</strong>
+              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong>~ <!--[$totalCost|number_format]--></strong> ISK spent on skills.</span>
               <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$totalSkills]--></strong> skills trained for a total of <strong><!--[$skillpointstotal]--></strong> skillpoints.</span>
               <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl1total]--></strong> (<!--[$TotalPercentageSkills1]-->%) skills trained to level 1 for a total of <strong><!--[$lvl1sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints1]-->%</strong> of your total skillpoints.</span>
               <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl2total]--></strong> (<!--[$TotalPercentageSkills2]-->%) skills trained to level 2 for a total of <strong><!--[$lvl2sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints2]-->%</strong> of your total skillpoints.</span>
