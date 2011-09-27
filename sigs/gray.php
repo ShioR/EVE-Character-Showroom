@@ -1,8 +1,12 @@
 <?
+// Fetch the domain from the config
+require_once "../eveconfig/eveconfig.php";
+$domain = _DOMAIN;
+
 // Set the content-type
 header('Content-type: image/png');
 
-// Create the image
+// Create the image out of thin air!
 $im = imagecreatetruecolor(630, 25);
 
 // Create some colors
@@ -12,15 +16,12 @@ $grey = imagecolorallocatealpha($im, 128, 128, 128, 0);
 $black = imagecolorallocatealpha($im, 0, 0, 0, 0);
 imagefilledrectangle($im, 0, 0, 630, 25, $greybg);
 
-// The text to draw
+// Get the signature text from the URL
 $text = file_get_contents ($domain.$_GET["n"].'/sig');
-//$date = date("d/m/y G:i");      //("$date: $url");
-//$text = ("$url");
-
-// Replace path by your own font path
+// Location of the font to use
 $font = 'arial.ttf';
 
-// Add some shadow to the text if desired.
+// Add a shadow to the text if the user wants it
 if (isset($_GET["s"]) == "y") {
 imagettftext($im, 9, 0, 6, 17, $grey, $font, $text);
 imagefilter($im, IMG_FILTER_GAUSSIAN_BLUR);
@@ -28,9 +29,6 @@ imagettftext($im, 9, 0, 5, 16, $black, $font, $text);
 } else {
 imagettftext($im, 9, 0, 5, 16, $black, $font, $text);
 }
-
-// Add the text (Depreciated due to the text being applied in the above if statement)
-//imagettftext($im, 9, 0, 5, 17, $black, $font, $text);
 
 // Using imagepng() results in clearer text compared with imagejpeg()
 imagepng($im);

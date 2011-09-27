@@ -1,11 +1,15 @@
 <?
+// Fetch the domain from the config
+require_once "../eveconfig/eveconfig.php";
+$domain = _DOMAIN;
+
 // Set the content-type
 header('Content-type: image/jpeg');
 
 // Create the image
 $im = imagecreatefromjpeg('bases/gallente.jpg');
 
-// Create some colors
+// Create the image from the base
 $black = imagecolorallocate($im, 0, 0, 0);
 $black1 = imagecolorallocatealpha($im, 7, 7, 7, 10);
 $white = imagecolorallocate($im, 255, 255, 255);
@@ -13,12 +17,12 @@ $darkgrey = imagecolorallocatealpha($im, 40, 40, 40, 50);
 $grey = imagecolorallocate($im, 150, 150, 150);
 $gold = imagecolorallocate($im, 255, 215, 0);
 
-// The text to draw
+// Get the signature text from the URL
 $text = file_get_contents ($domain.$_GET["n"].'/newsig');
-// Replace path by your own font path
+// Location of the font to use
 $font = 'din1451e.ttf';
 
-// Add some shadow to the text if desired.
+// Add a shadow to the text if the user wants it
 if (isset($_GET["s"]) == "y") {
 imagettftext($im, 10.5, 0, 77, 20, $darkgrey, $font, $text);
 //imagefilter($im, IMG_FILTER_GAUSSIAN_BLUR);
@@ -27,12 +31,12 @@ imagettftext($im, 10.5, 0, 75, 18, $white, $font, $text);
 imagettftext($im, 10.5, 0, 75, 18, $white, $font, $text);
 }
 
-// Character portrait
+// Character portrait from the EVE image server
 $id = $_GET["id"];
 $portrait = imagecreatefromjpeg('http://image.eveonline.com/Character/'.$id.'_64.jpg');
 imagecopyresampled($im, $portrait, 6, 8, 0, 0, 64, 64, 64, 64);
 
-// Using imagepng() results in clearer text compared with imagejpeg()
+// Use imagejpeg() to create the image with 95% quality
 imagejpeg($im, NULL, 95);
 imagedestroy($im);
 ?>
