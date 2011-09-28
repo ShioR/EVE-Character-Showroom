@@ -24,12 +24,9 @@
                 <td><input type="text" name="db" id="db" size="20" maxlength="80" value="<!--[$db]-->" /></td>
               </tr>
               <tr>
-                <td width="120"><strong>Sheet Admin Password:</strong></td>
-                <td><input type="password" name="sadmin" id="sadmin" size="20" maxlength="80" value="<!--[$sadmin]-->" /></td>
-              </tr>
-              <tr>
-                <td width="120"><strong>Use Short Urls:</strong></td>
-                <td><input type="checkbox" name="shorturls" id="shorturls"<!--[if $shorturls]-->checked="checked"<!--[/if]--> /></td>
+                <td width="120"><strong>Domain:</strong></td>
+                <td><input type="text" name="domain" id="domain" size="20" maxlength="80" value="<!--[$domain]-->" /></td>
+                <td><span style="color:darkorange;">Please include the trailing slash. http://example.com/</span></td>
               </tr>
               <tr>
                 <td width="120"></td>
@@ -51,15 +48,13 @@
                 Could not connect to the server or database, please check your settings.<br />
               <!--[/if]-->
               <!--[if not $stoppage]-->
-                <div class="block-header2">Writing Settings</div>
                 Please confirm that this is the information you want to write down in the database configuration file.<br /><br />
                 <form id="write" name="writedbconfig" method="post" action="install.php?step=3">
                   <input type="hidden"  name="write_host"      value="<!--[$host]-->" />
                   <input type="hidden"  name="write_user"      value="<!--[$user]-->" />
                   <input type="hidden"  name="write_pass"      value="<!--[$dbpass]-->" />
                   <input type="hidden"  name="write_db"        value="<!--[$db]-->" />
-                  <input type="hidden"  name="write_sadmin"    value="<!--[$sadmin]-->" />
-                  <input type="hidden"  name="write_shorturls" value="<!--[$shorturls]-->" />
+                  <input type="hidden"  name="write_domain"    value="<!--[$domain]-->" />
                   <input type="submit" name="write" value="Write Database Config" />
                 </form>
               <!--[/if]-->

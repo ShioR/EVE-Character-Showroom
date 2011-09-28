@@ -145,8 +145,7 @@ function step2($step)
 
     $folders = array('templates' => 'cache/templates');
 
-    $files = array('evedbconfig' => 'eveconfig/eveconfig.php');//,
-                   //'config'   => 'eveconfig/config.php');
+    $files = array('evedbconfig' => 'eveconfig/eveconfig.php');
 
     $cache = is_writable('cache');
 
@@ -202,8 +201,7 @@ function step3($step)
     $user      = $eve->VarCleanFromInput('user');
     $dbpass    = $eve->VarCleanFromInput('dbpass');
     $db        = $eve->VarCleanFromInput('db');
-    $sadmin    = $eve->VarCleanFromInput('sadmin');
-    $shorturls = $eve->VarCleanFromInput('shorturls');
+    $domain    = $eve->VarCleanFromInput('domain');
 
     if (empty($host)) {
         $host = 'localhost';
@@ -264,15 +262,13 @@ function step3($step)
             $user      = $eve->VarCleanFromInput('write_user');
             $dbpass    = $eve->VarCleanFromInput('write_pass');
             $db        = $eve->VarCleanFromInput('write_db');
-            $sadmin    = $eve->VarCleanFromInput('write_sadmin');
-            $shorturls = $eve->VarCleanFromInput('write_shorturls');
+            $domain    = $eve->VarCleanFromInput('write_domain');
             $args = array('dbhost'      => $host,
                           'dbuname'     => $user,
                           'dbpass'      => $dbpass,
                           'dbname'      => $db,
                           'dbtype'      => 'mysql',
-                          'sadmin'      => $sadmin,
-                          'shorturls'   => $shorturls,
+                          'domain'      => $domain,
                           'dbtabletype' => 'MyISAM');
 
             $done = update_dbconfig_php($args);
@@ -285,12 +281,11 @@ function step3($step)
     $eveRender->Assign('host',      $host);
     $eveRender->Assign('user',      $user);
     $eveRender->Assign('dbpass',    $dbpass);
-    $eveRender->Assign('sadmin',    $sadmin);
+    $eveRender->Assign('domain',    $domain);
     $eveRender->Assign('server',    $server);
     $eveRender->Assign('submit',    $submit);
     $eveRender->Assign('version',   $version);
     $eveRender->Assign('selectdb',  $selectdb);
-    $eveRender->Assign('shorturls', $shorturls);
     $eveRender->Assign('done',      $done);
 
     return true;
@@ -656,10 +651,9 @@ function update_dbconfig_php($args = array())
     $dbhost      = $args['dbhost'];
     $dbuname     = $args['dbuname'];
     $dbpass      = $args['dbpass'];
-    $sadmin      = $args['sadmin'];
+    $domain      = $args['domain'];
     $dbname      = $args['dbname'];
     $dbtype      = $args['dbtype'];
-    $shorturls   = $args['shorturls'];
     $dbtabletype = $args['dbtabletype'];
     $encoded     = 0;
 
@@ -671,13 +665,12 @@ function update_dbconfig_php($args = array())
     add_src_rep("dbhost",      $dbhost);
     add_src_rep("dbuname",     $dbuname);
     add_src_rep("dbpass",      $dbpass);
-    add_src_rep("_SHEETADMIN", $sadmin);
+    add_src_rep("_DOMAIN",     $domain);
     add_src_rep("dbname",      $dbname);
     add_src_rep("dbtype",      $dbtype);
     add_src_rep("dbtabletype", $dbtabletype);
     add_src_rep("encoded",     '0');
     add_src_rep("pconnect",    '0');
-    add_src_rep("_SHORTURLS",  ((!empty($shorturls)) ? 'true' : 'false'));
     //add_src_rep("_INSTALLED",  'true');
 //echo '<pre>';print_r($reg_src);echo '</pre>';echo '<pre>';print_r($reg_rep);echo '</pre>';exit;
     //$ret = modify_file('eveconfig/dbconfig.php', 'eveconfig/dbconfig-old.php', $reg_src, $reg_rep);
