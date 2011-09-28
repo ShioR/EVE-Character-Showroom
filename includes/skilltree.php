@@ -1958,13 +1958,6 @@ $skillsource[270][23124]['groupID'] = '270';
 $skillsource[270][23124]['groupName'] = 'Science';
 
 ////////////////////////////////////////////////////////////////////////// SOCIAL
-$skillsource[278][16546]['typeName'] = 'Bureaucratic Connections';
-$skillsource[278][16546]['rank'] = '1';
-$skillsource[278][16546]['typeID'] = '16546';
-$skillsource[278][16546]['skillCost'] = '20000000';
-$skillsource[278][16546]['groupID'] = '278';
-$skillsource[278][16546]['groupName'] = 'Social';
-
 $skillsource[278][3359]['typeName'] = 'Connections';
 $skillsource[278][3359]['rank'] = '3';
 $skillsource[278][3359]['typeID'] = '3359';
@@ -2007,34 +2000,6 @@ $skillsource[278][3358]['skillCost'] = '100000';
 $skillsource[278][3358]['groupID'] = '278';
 $skillsource[278][3358]['groupName'] = 'Social';
 
-$skillsource[278][16547]['typeName'] = 'Financial Connections';
-$skillsource[278][16547]['rank'] = '1';
-$skillsource[278][16547]['typeID'] = '16547';
-$skillsource[278][16547]['skillCost'] = '20000000';
-$skillsource[278][16547]['groupID'] = '278';
-$skillsource[278][16547]['groupName'] = 'Social';
-
-$skillsource[278][16552]['typeName'] = 'High Tech Connections';
-$skillsource[278][16552]['rank'] = '1';
-$skillsource[278][16552]['typeID'] = '16552';
-$skillsource[278][16552]['skillCost'] = '20000000';
-$skillsource[278][16552]['groupID'] = '278';
-$skillsource[278][16552]['groupName'] = 'Social';
-
-$skillsource[278][16550]['typeName'] = 'Labor Connections';
-$skillsource[278][16550]['rank'] = '1';
-$skillsource[278][16550]['typeID'] = '16550';
-$skillsource[278][16550]['skillCost'] = '20000000';
-$skillsource[278][16550]['groupID'] = '278';
-$skillsource[278][16550]['groupName'] = 'Social';
-
-$skillsource[278][16549]['typeName'] = 'Military Connections';
-$skillsource[278][16549]['rank'] = '1';
-$skillsource[278][16549]['typeID'] = '16549';
-$skillsource[278][16549]['skillCost'] = '20000000';
-$skillsource[278][16549]['groupID'] = '278';
-$skillsource[278][16549]['groupName'] = 'Social';
-
 $skillsource[278][3893]['typeName'] = 'Mining Connections';
 $skillsource[278][3893]['rank'] = '2';
 $skillsource[278][3893]['typeID'] = '3893';
@@ -2049,13 +2014,6 @@ $skillsource[278][3356]['skillCost'] = '60000';
 $skillsource[278][3356]['groupID'] = '278';
 $skillsource[278][3356]['groupName'] = 'Social';
 
-$skillsource[278][16548]['typeName'] = 'Political Connections';
-$skillsource[278][16548]['rank'] = '1';
-$skillsource[278][16548]['typeID'] = '16548';
-$skillsource[278][16548]['skillCost'] = '20000000';
-$skillsource[278][16548]['groupID'] = '278';
-$skillsource[278][16548]['groupName'] = 'Social';
-
 $skillsource[278][3895]['typeName'] = 'Security Connections';
 $skillsource[278][3895]['rank'] = '2';
 $skillsource[278][3895]['typeID'] = '3895';
@@ -2069,13 +2027,6 @@ $skillsource[278][3355]['typeID'] = '3355';
 $skillsource[278][3355]['skillCost'] = '20000';
 $skillsource[278][3355]['groupID'] = '278';
 $skillsource[278][3355]['groupName'] = 'Social';
-
-$skillsource[278][16551]['typeName'] = 'Trade Connections';
-$skillsource[278][16551]['rank'] = '1';
-$skillsource[278][16551]['typeID'] = '16551';
-$skillsource[278][16551]['skillCost'] = '20000000';
-$skillsource[278][16551]['groupID'] = '278';
-$skillsource[278][16551]['groupName'] = 'Social';
 
 ////////////////////////////////////////////////////////////////////////// SPACESHIP COMMAND
 $skillsource[257][20342]['typeName'] = 'Advanced Spaceship Command';
