@@ -8,11 +8,6 @@
 </td>
 </tr>
 <tr>
-<td>
-<center><a style="font-size:xx-small; text-decoration:none; color:grey;" href="https://www.deepspacesupply.com/product_info.php?ref=189&products_id=47&affiliate_banner_id=8" target="_blank">Support the site, buy a GTC!</a></center>
-</td>
-</tr>
-<tr>
 <td style="font-size:xx-small; text-decoration:none; color:grey;" align="center">
 </td>
 </tr>
