@@ -35,7 +35,7 @@ $evedebug['debug']          = 0;
 $evedebug['debug_sql']      = 0;
 $evedebug['pagerendertime'] = 0;
 
-define('_INSTALLED', true);
+define('_INSTALLED', false);
 define('_SHORTURLS', true);
 // With trailing slash!
 define('_DOMAIN', '');
