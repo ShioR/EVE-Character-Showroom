@@ -664,12 +664,12 @@ function WriteCharXMLFile($config=array())
 
             // Wallet here only for the example.
             $target  = "POST /char/CharacterSheet.xml.aspx HTTP/1.1\r\n";
-            $header .= "Host: api.evesp.com\r\n";
+            $header .= "Host: api.eveonline.com\r\n";
             $header .= "Content-Type: application/x-www-form-urlencoded\r\n";
             $header .= "Content-Length: " . strlen($req) . "\r\n";
             $header .= "Connection: close\r\n\r\n";
 
-            $fp = fsockopen ('api.evesp.com', 80, $errno, $errstr, 30);
+            $fp = fsockopen ('api.eveonline.com', 80, $errno, $errstr, 30);
 
             if (!$fp) {
                 echo 'meh! Eve server is such a n00b! '.$errstr; exit;
