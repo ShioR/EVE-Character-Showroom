@@ -1,0 +1,7 @@
+# ----------------------------------------------------------------------
+# Purpose of file: block any web access to files stored under
+#                  the cron/ directory
+# ----------------------------------------------------------------------
+Order deny,allow
+Deny from all
+Allow from 127.0.0.1

@@ -5,9 +5,5 @@ Options -Indexes
 RewriteEngine On
 RewriteBase /
 
-# FAVICON
-RewriteCond %{REQUEST_URI} /favicon.ico
-RewriteRule /* http://www.txsi.co.uk/favicon/favicon.php [R,L]
-
 # hax!
 DirectoryIndex settings.php
