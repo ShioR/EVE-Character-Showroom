@@ -109,8 +109,9 @@
             <!--[/foreach]-->
             </div>
             <div style="line-height: 1.45em; margin-left: 82px; font-size: 11px;">
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$countsk]--></strong> <!--[$skill.groupName]--> skills trained, for a total of <strong><!--[$totalsp|number_format]--></strong> skillpoints.</span>
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl5]--></strong> skills trained to level 5 for a total of <strong><!--[$lvl5sp|number_format]--></strong> skillpoints.</span>
+              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$countsk]--></strong> <!--[$skill.groupName]--> 
+<!--[if $countsk == 1]-->skill<!--[elseif $countsk neq 1]-->skills<!--[/if]--> trained for a total of <strong><!--[$totalsp|number_format]--></strong> skillpoints.</span>
+              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl5]--></strong> <!--[if $lvl5 eq 1]-->skill<!--[elseif $lvl5 neq 1]-->skills<!--[/if]--> trained to level 5 for a total of <strong><!--[$lvl5sp|number_format]--></strong> skillpoints.</span>
             </div>
           </div>
         </div>
@@ -140,12 +141,12 @@
             <div style="line-height: 1.45em; margin-left: 82px; font-size: 11px;">
              <br /><strong>Totals:</strong>
               <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong>~ <!--[$totalCost|number_format]--></strong> ISK spent on skills.</span>
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$totalSkills]--></strong> skills trained for a total of <strong><!--[$skillpointstotal]--></strong> skillpoints.</span>
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl1total]--></strong> (<!--[$TotalPercentageSkills1]-->%) skills trained to level 1 for a total of <strong><!--[$lvl1sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints1]-->%</strong> of your total skillpoints.</span>
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl2total]--></strong> (<!--[$TotalPercentageSkills2]-->%) skills trained to level 2 for a total of <strong><!--[$lvl2sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints2]-->%</strong> of your total skillpoints.</span>
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl3total]--></strong> (<!--[$TotalPercentageSkills3]-->%) skills trained to level 3 for a total of <strong><!--[$lvl3sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints3]-->%</strong> of your total skillpoints.</span>
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl4total]--></strong> (<!--[$TotalPercentageSkills4]-->%) skills trained to level 4 for a total of <strong><!--[$lvl4sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints4]-->%</strong> of your total skillpoints.</span>
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl5total]--></strong> (<!--[$TotalPercentageSkills5]-->%) skills trained to level 5 for a total of <strong><!--[$lvl5sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints5]-->%</strong> of your total skillpoints.</span>
+              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$totalSkills]--></strong> <!--[if $totalSkills == 1]-->skill<!--[elseif $totalSkills != 1]-->skills<!--[/if]--> trained for a total of <strong><!--[$skillpointstotal]--></strong> skillpoints.</span>
+              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl1total]--></strong> (<!--[$TotalPercentageSkills1]-->%) <!--[if $lvl1total == 1]-->skill<!--[elseif $lvl1total != 1]-->skills<!--[/if]--> trained to level 1 for a total of <strong><!--[$lvl1sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints1]-->%</strong> of your total skillpoints.</span>
+              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl2total]--></strong> (<!--[$TotalPercentageSkills2]-->%) <!--[if $lvl2total == 1]-->skill<!--[elseif $lvl2total != 1]-->skills<!--[/if]--> trained to level 2 for a total of <strong><!--[$lvl2sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints2]-->%</strong> of your total skillpoints.</span>
+              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl3total]--></strong> (<!--[$TotalPercentageSkills3]-->%) <!--[if $lvl3total == 1]-->skill<!--[elseif $lvl3total != 1]-->skills<!--[/if]--> trained to level 3 for a total of <strong><!--[$lvl3sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints3]-->%</strong> of your total skillpoints.</span>
+              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl4total]--></strong> (<!--[$TotalPercentageSkills4]-->%) <!--[if $lvl4total == 1]-->skill<!--[elseif $lvl4total != 1]-->skills<!--[/if]--> trained to level 4 for a total of <strong><!--[$lvl4sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints4]-->%</strong> of your total skillpoints.</span>
+              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl5total]--></strong> (<!--[$TotalPercentageSkills5]-->%) <!--[if $lvl5total == 1]-->skill<!--[elseif $lvl5total != 1]-->skills<!--[/if]--> trained to level 5 for a total of <strong><!--[$lvl5sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints5]-->%</strong> of your total skillpoints.</span>
             </div>
         <br /><br />
       </td>
