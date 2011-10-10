@@ -72,8 +72,8 @@
                   </tr>                  
                   <tr>                
                     <td class="dataTableCell">Date of Birth</td>
-                    <td colspan="1" class="dataTableCell" align="left"><!--[$DoB|date_format:"%a, %B %d, %Y"]--></td>
-                    <td colspan="2" class="dataTableCellLeftRight" onclick="JavaScript:newPopup('/settings/');" style="cursor: pointer; color:gold;">Settings..</td>
+                    <td colspan="2" class="dataTableCell" align="left"><!--[$DoB|date_format:"%A, %B %d, %Y"]--></td>
+                    <td colspan="1" class="dataTableCellLeftRight" align="center" onclick="JavaScript:newPopup('/settings/');" style="cursor: pointer; color:gold;">Settings</td>
                   </tr>
                   <tr>
                     <td colspan="4" class="dataTableHeaderRight">Training</td>
