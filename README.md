@@ -11,11 +11,7 @@ Support for 5 cron jobs
 Installation
 ------------
 **Please don't try and install without checking the installation instructions first!**     
-https://github.com/ShioR/EVE-Character-Showroom/wiki/Installation
-
-Support?
--------
-Sure, why not? Contact 'Shionoya Risa' in-game and I'll _try_ and help.
+https://github.com/ShioR/EVE-Character-Showroom/wiki/Installation     
 
 Version numbers
 ---------------
@@ -23,3 +19,7 @@ Incarna v4.176 should be read as (Incarna data dump) v[Version 4].{Build 176}
 Data dumps change nearly every expansion     
 Versions change infrequently    
 Builds change frequently    
+        
+Support?
+-------
+Sure, why not? Contact 'Shionoya Risa' in-game and I'll _try_ and help.
