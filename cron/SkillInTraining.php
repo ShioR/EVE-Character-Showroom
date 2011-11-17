@@ -62,7 +62,7 @@ fclose($f);
 $path = "'$xmlpath/$file/$characterID.$file.xml'";
 
 // Write the new information to the database from the file, this needs to come from a xml file rather than straight from php, for some reason o.O
-MYSQL_QUERY("UPDATE skillsheet_apis SET training=LOAD_FILE($path) WHERE name = '$name'");
+MYSQL_QUERY("UPDATE skillsheet_apis SET training=LOAD_FILE($path) WHERE characterID = '$characterID'");
 
 // Keep running!
 ++$i; 
