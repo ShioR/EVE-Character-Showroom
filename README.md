@@ -15,7 +15,7 @@ https://github.com/ShioR/EVE-Character-Showroom/wiki/Installation
 
 Version numbers
 ---------------
-Incarna v4.176 should be read as (Incarna data dump) v[Version 4].{Build 176}     
+Crucible v4.187 should be read as (Crucible data dump) v[Version 4].{Build 187}     
 Data dumps change nearly every expansion     
 Versions change infrequently    
 Builds change frequently    
@@ -28,5 +28,5 @@ To-do
 -----
 **Prepare for Crucible release**     
 + Update the images for V3'd textures    
-+ Add images for the new ships 
++ Add images for the new ships     
 + Check skills to make sure they're still accurate     
