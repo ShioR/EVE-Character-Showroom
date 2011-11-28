@@ -1824,13 +1824,6 @@ $skillsource[270][11529]['skillCost'] = '10000000';
 $skillsource[270][11529]['groupID'] = '270';
 $skillsource[270][11529]['groupName'] = 'Science';
 
-$skillsource[270][25538]['typeName'] = 'Nanite Control';
-$skillsource[270][25538]['rank'] = '2';
-$skillsource[270][25538]['typeID'] = '25538';
-$skillsource[270][25538]['skillCost'] = '1000000';
-$skillsource[270][25538]['groupID'] = '270';
-$skillsource[270][25538]['groupName'] = 'Science';
-
 $skillsource[270][11442]['typeName'] = 'Nanite Engineering';
 $skillsource[270][11442]['rank'] = '5';
 $skillsource[270][11442]['typeID'] = '11442';
@@ -1838,10 +1831,17 @@ $skillsource[270][11442]['skillCost'] = '10000000';
 $skillsource[270][11442]['groupID'] = '270';
 $skillsource[270][11442]['groupName'] = 'Science';
 
-$skillsource[270][25530]['typeName'] = 'Neurotoxin Recovery';
+$skillsource[270][25538]['typeName'] = 'Nanobiology';
+$skillsource[270][25538]['rank'] = '2';
+$skillsource[270][25538]['typeID'] = '25538';
+$skillsource[270][25538]['skillCost'] = '900000';
+$skillsource[270][25538]['groupID'] = '270';
+$skillsource[270][25538]['groupName'] = 'Science';
+
+$skillsource[270][25530]['typeName'] = 'Neurobiology';
 $skillsource[270][25530]['rank'] = '5';
 $skillsource[270][25530]['typeID'] = '25530';
-$skillsource[270][25530]['skillCost'] = '25000';
+$skillsource[270][25530]['skillCost'] = '22500';
 $skillsource[270][25530]['groupID'] = '270';
 $skillsource[270][25530]['groupName'] = 'Science';
 

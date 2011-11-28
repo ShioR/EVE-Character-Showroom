@@ -1,26 +1,25 @@
-SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for `data_invTypes`
 -- ----------------------------
 DROP TABLE IF EXISTS `data_invTypes`;
 CREATE TABLE `data_invTypes` (
   `typeID` int(11) NOT NULL,
-  `groupID` smallint(6) default NULL,
-  `typeName` varchar(100) default NULL,
-  `description` varchar(3000) default NULL,
-  `graphicID` smallint(6) default NULL,
-  `radius` double default NULL,
-  `mass` double default NULL,
-  `volume` double default NULL,
-  `capacity` double default NULL,
-  `portionSize` int(11) default NULL,
-  `raceID` tinyint(3) unsigned default NULL,
-  `basePrice` double default NULL,
-  `published` tinyint(1) default NULL,
-  `marketGroupID` smallint(6) default NULL,
-  `chanceOfDuplicating` double default NULL,
-  `iconID` smallint(6) default NULL,
-  PRIMARY KEY  (`typeID`),
+  `groupID` smallint(6) DEFAULT NULL,
+  `typeName` varchar(100) DEFAULT NULL,
+  `description` varchar(3000) DEFAULT NULL,
+  `graphicID` smallint(6) DEFAULT NULL,
+  `radius` double DEFAULT NULL,
+  `mass` double DEFAULT NULL,
+  `volume` double DEFAULT NULL,
+  `capacity` double DEFAULT NULL,
+  `portionSize` int(11) DEFAULT NULL,
+  `raceID` tinyint(3) unsigned DEFAULT NULL,
+  `basePrice` double DEFAULT NULL,
+  `published` tinyint(1) DEFAULT NULL,
+  `marketGroupID` smallint(6) DEFAULT NULL,
+  `chanceOfDuplicating` double DEFAULT NULL,
+  `iconID` smallint(6) DEFAULT NULL,
+  PRIMARY KEY (`typeID`),
   KEY `data_invTypes_IX_Group` (`groupID`),
   KEY `graphicID` (`graphicID`),
   KEY `raceID` (`raceID`),
@@ -349,8 +348,8 @@ INSERT INTO `data_invTypes` VALUES ('24625', '268', 'Advanced Mass Production', 
 INSERT INTO `data_invTypes` VALUES ('24764', '258', 'Fleet Command', 'Allows command of a Fleet. Grants the Fleet Commander the ability to command a new Wing per skill level, up to a maximum of 5 Wings.', null, '0', '0', '0.01', '0', '1', null, '20000000', '1', '370', '0', '33');
 INSERT INTO `data_invTypes` VALUES ('25233', '274', 'Corporation Contracting', 'You are familiar with the intricacies of formalizing contracts between your corporation and other entities.\n\nFor each level of this skill the number of concurrent corporation/alliance contracts you make on behalf of your corporation is increased by 10 up to a maximum of 60. \n\nThis skill has no effect on contracts you make personally.\n\nThere is no limit on the number of contracts a corporation can assign to itself.\n\nCorporations have a hard limit of 500 outstanding public contracts.', null, '0', '0', '0.01', '0', '1', null, '150000', '1', '378', '0', '33');
 INSERT INTO `data_invTypes` VALUES ('25235', '274', 'Contracting', 'This skill allows you to create formal agreements with other characters.\n\nFor each level of this skill the number of outstanding contracts is increased by four (up to a maximum of 21 at level 5)\n\nNote: Cannot be trained on trial accounts', null, '0', '0', '0.01', '0', '1', null, '150000', '1', '378', '0', '33');
-INSERT INTO `data_invTypes` VALUES ('25530', '270', 'Neurotoxin Recovery', 'Proficiency at biofeedback techniques intended to negate the side effects typically experienced upon injection of combat boosters.', null, '0', '0', '0.01', '0', '1', null, '25000', '1', '375', '0', '33');
-INSERT INTO `data_invTypes` VALUES ('25538', '270', 'Nanite Control', 'Proficiency at reducing the severity of the side effects experienced upon injection of combat boosters.', null, '0', '0', '0.01', '0', '1', null, '1000000', '1', '375', '0', '33');
+INSERT INTO `data_invTypes` VALUES ('25530', '270', 'Neurobiology', 'Understanding the limitations of neural chemistry, and how to break them. Bonus Per Level: 5% gain to booster effects', null, '0', '0', '0.01', '0', '1', null, '25000', '1', '375', '0', '33');
+INSERT INTO `data_invTypes` VALUES ('25538', '270', 'Nanobiology', 'Understanding the points of interaction between combat boosters and the human metabolism. Bonus Per Level: 20% additional duration of attribute booster effects', null, '0', '0', '0.01', '0', '1', null, '1000000', '1', '375', '0', '33');
 INSERT INTO `data_invTypes` VALUES ('25544', '268', 'Gas Cloud Harvesting', 'Skill at harvesting gas clouds. Allows use of one gas cloud harvester per level. Can not be trained on Trial Accounts.', null, '0', '0', '0.01', '0', '1', null, '24000000', '1', '369', '0', '33');
 INSERT INTO `data_invTypes` VALUES ('25718', '256', 'Heavy Assault Missile Specialization', 'Specialist training in the operation of advanced heavy assault missile launchers. 2% bonus per level to the rate of fire of modules requiring Heavy Assault Missile Specialization.', null, '0', '0', '0.01', '0', '1', null, '3000000', '1', '373', '0', '33');
 INSERT INTO `data_invTypes` VALUES ('25719', '256', 'Heavy Assault Missiles', 'Skill with heavy assault missiles. Special: 5% bonus to heavy assault missile damage per skill level.', null, '0', '0', '0.01', '0', '1', null, '100000', '1', '373', '0', '33');
