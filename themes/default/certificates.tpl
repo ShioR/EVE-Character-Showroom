@@ -8,7 +8,7 @@
 
           <!--[include file='mainheader.tpl']-->
 
-          <!--[include file='maininfo.tpl']-->
+          <!--[if $implants == 1]--><!--[include file='maininfo.tpl']--><!--[else]--><!--[include file='maininfo2.tpl']--><!--[/if]-->
 
 
         <!--[foreach item='category' key='categoryID' from=$categories]-->

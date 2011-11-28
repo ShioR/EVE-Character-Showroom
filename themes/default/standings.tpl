@@ -8,7 +8,7 @@
 
           <!--[include file='mainheader.tpl']-->
 
-          <!--[include file='maininfo.tpl']-->
+          <!--[if $implants == 1]--><!--[include file='maininfo.tpl']--><!--[else]--><!--[include file='maininfo2.tpl']--><!--[/if]-->
           <br /> <br /> <br />
            <table style="border-collapse:collapse;border: #666666 1px solid;" width="100%">
 
