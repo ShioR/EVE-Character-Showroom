@@ -1,19 +1,18 @@
-SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for `skillsheet_reqs`
 -- ----------------------------
 DROP TABLE IF EXISTS `skillsheet_reqs`;
 CREATE TABLE `skillsheet_reqs` (
-  `typeID` int(10) NOT NULL default '0',
-  `attributeName` varchar(20) NOT NULL default '',
-  `valueInt` int(10) NOT NULL default '0',
-  `valueFloat` bigint(20) NOT NULL default '0',
-  `groupID` int(10) NOT NULL default '0',
-  `typeName` varchar(125) NOT NULL default '',
-  `raceID` int(2) NOT NULL default '0',
-  `raceName` varchar(35) NOT NULL default '',
-  `SkillName` varchar(125) default NULL,
-  `SkillName2` varchar(125) default NULL
+  `typeID` int(10) NOT NULL DEFAULT '0',
+  `attributeName` varchar(20) NOT NULL DEFAULT '',
+  `valueInt` int(10) NOT NULL DEFAULT '0',
+  `valueFloat` bigint(20) NOT NULL DEFAULT '0',
+  `groupID` int(10) NOT NULL DEFAULT '0',
+  `typeName` varchar(125) NOT NULL DEFAULT '',
+  `raceID` int(2) NOT NULL DEFAULT '0',
+  `raceName` varchar(35) NOT NULL DEFAULT '',
+  `SkillName` varchar(125) DEFAULT NULL,
+  `SkillName2` varchar(125) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- ----------------------------
@@ -869,3 +868,19 @@ INSERT INTO `skillsheet_reqs` VALUES ('3518', 'requiredSkill1', '3335', '0', '35
 INSERT INTO `skillsheet_reqs` VALUES ('3518', 'requiredSkill1Level', '5', '0', '358', 'Vangel', '4', 'Amarr', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('3518', 'requiredSkill2', '16591', '0', '358', 'Vangel', '4', 'Amarr', 'Heavy Assault Ships', null);
 INSERT INTO `skillsheet_reqs` VALUES ('3518', 'requiredSkill2Level', '1', '0', '358', 'Vangel', '4', 'Amarr', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('4302', 'requiredSkill1', '3335', '0', '419', 'Oracle', '4', 'Amarr', 'Amarr Cruiser', null);
+INSERT INTO `skillsheet_reqs` VALUES ('4302', 'requiredSkill1Level', '3', '0', '419', 'Oracle', '4', 'Amarr', '', null);
+INSERT INTO `skillsheet_reqs` VALUES ('4302', 'requiredSkill2', '12099', '0', '419', 'Oracle', '4', 'Amarr', 'Battlecruisers', null);
+INSERT INTO `skillsheet_reqs` VALUES ('4302', 'requiredSkill2Level', '3', '0', '419', 'Oracle', '4', 'Amarr', '', null);
+INSERT INTO `skillsheet_reqs` VALUES ('4306', 'requiredSkill1', '3334', '0', '419', 'Naga', '1', 'Caldari', 'Caldari Cruiser', null);
+INSERT INTO `skillsheet_reqs` VALUES ('4306', 'requiredSkill1Level', '3', '0', '419', 'Naga', '1', 'Caldari', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('4306', 'requiredSkill2', '12099', '0', '419', 'Naga', '1', 'Caldari', 'Battlecruisers', null);
+INSERT INTO `skillsheet_reqs` VALUES ('4306', 'requiredSkill2Level', '3', '0', '419', 'Naga', '1', 'Caldari', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('4308', 'requiredSkill1', '3332', '0', '419', 'Talos', '8', 'Gallente', 'Gallente Cruiser', null);
+INSERT INTO `skillsheet_reqs` VALUES ('4308', 'requiredSkill1Level', '3', '0', '419', 'Talos', '8', 'Gallente', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('4308', 'requiredSkill2', '12099', '0', '419', 'Talos', '8', 'Gallente', 'Battlecruisers', null);
+INSERT INTO `skillsheet_reqs` VALUES ('4308', 'requiredSkill2Level', '3', '0', '419', 'Talos', '8', 'Gallente', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('4310', 'requiredSkill1', '3333', '0', '419', 'Tornado', '2', 'Minmatar', 'Minmatar Cruiser', null);
+INSERT INTO `skillsheet_reqs` VALUES ('4310', 'requiredSkill1Level', '3', '0', '419', 'Tornado', '2', 'Minmatar', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('4310', 'requiredSkill2', '12099', '0', '419', 'Tornado', '2', 'Minmatar', 'Battlecruisers', null);
+INSERT INTO `skillsheet_reqs` VALUES ('4310', 'requiredSkill2Level', '3', '0', '419', 'Tornado', '2', 'Minmatar', null, null);
