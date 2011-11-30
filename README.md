@@ -23,9 +23,3 @@ Builds change frequently
 Support?
 -------
 Sure, why not? Contact 'Shionoya Risa' in-game and I'll _try_ and help.
-
-To-do
------
-**Prepare for Crucible release**     
-+ Update the images for V3'd textures    
-+ Add images for the new ships
