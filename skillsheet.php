@@ -1716,7 +1716,7 @@ function ships($config = array())
                     FROM     `skillsheet_ships`
                     WHERE    `skillsheet_ships`.groupID   = '".$grouID."'
                     AND      `skillsheet_ships`.raceID    = '".$raceNo."'
-                    ORDER BY `skillsheet_ships`.graphicID";
+                    ORDER BY `skillsheet_ships`.typeName";
 
             $result = $dbconn->Execute($sql);
 
@@ -1832,23 +1832,21 @@ function Shipgroups()
                  '834' => 'Stealth Bombers',
                  '893' => 'Electronic Attack Ships',
                  '324' => 'Assault Ships',
-                 '26'  => 'Cruisers',
                  '420' => 'Destroyers',
                  '541' => 'Interdictors',
-                 '419' => 'Battlecruisers',
-                 '894' => 'Heavy Interdictors',
+                 '26'  => 'Cruisers',
                  '358' => 'Heavy Assault Ships',
+                 '894' => 'Heavy Interdictors',
                  '833' => 'Recon Ships',
+                 '832' => 'Logistics',
                  '906' => 'Combat Recon Ships',
                  '963' => 'Strategic Cruiser',
+                 '419' => 'Battlecruisers',
                  '540' => 'Command Ships',
                  '27'  => 'Battleships',
                  '900' => 'Marauders',
                  '381' => 'Elite Battleships',
                  '898' => 'Black Ops',
-                 //'29'  => 'Capsule',
-                 //'31'  => 'Shuttle',
-                 //'237' => 'Rookie ship',
                  '28'  => 'Industrials',
                  '380' => 'Transport Ships',
                  '513' => 'Freighters',
@@ -1857,9 +1855,8 @@ function Shipgroups()
                  '941' => 'Industrial Command Ships',
                  '463' => 'Mining Barges',
                  '543' => 'Exhumers',
-                 '832' => 'Logistics',
-                 '547' => 'Carriers',
                  '485' => 'Dreadnoughts',
+                 '547' => 'Carriers',
                  '659' => 'Motherships',
                  '30'  => 'Titans');
 }
