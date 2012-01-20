@@ -38,7 +38,7 @@ td.dataTableCell2{padding-right:4px;padding-left:4px;font-size:10px;padding-bott
 #corpLogoContainer{position:relative;width:255px;height:255px;}
 #corpLogo{position:absolute;bottom:94px;right:262px;z-index:20;}
 #allianceLogo{position:absolute;bottom:94px;right:332px;z-index:20;}
-#raceimg{position:absolute;bottom:164px;right:256px;z-index:20;}
+#raceimg{position:absolute;bottom:164px;right:262px;z-index:20;}
 #bloodimg{position:absolute;bottom:24px;right:262px;z-index:20;}
 table.dataTable2{border-top:#666666 1px solid;}
 td.dataTableHeader2{padding-right:5px;padding-left:5px;font-weight:bolder;font-size:10px;padding-bottom:5px;border-left:#666 1px solid;border-right:#666 1px solid;color:white;padding-top:5px;border-bottom:#666 1px solid;background-color:#434343;}
