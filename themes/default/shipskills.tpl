@@ -29,7 +29,7 @@
                 <tr>
 <td width="72" align="center"><img alt="<!--[$race]-->" title="<!--[$race]-->" src="/imgs/races/<!--[$race|lower]-->.png" width:44px; height:40px; hspace="10" /><!--<br /><!--[$race]-->--></td>
                 <!--[foreach item='ship' from=$ships]-->
-                  <td style="cursor: pointer; padding: 3px;" valign="top" align="center" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"><a href="/imgs/ships/64_64/<!--[$ship.typeID]-->.png" rel="single" class="pirobox" title="<!--[$ship.typeName]-->"> <img src="/imgs/ships/64_64/<!--[$ship.typeID]-->.png" /><br /></td>
+                  <td style="cursor: pointer; padding: 3px;" valign="top" align="center" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"><a href="/imgs/ships/384_384/<!--[$ship.typeID]-->.png" rel="single" class="pirobox" title="<!--[$ship.typeName]-->"> <img src="/imgs/ships/64_64/<!--[$ship.typeID]-->.png" /><br /></td>
                 <!--[/foreach]-->
                 </tr>
               </table>
