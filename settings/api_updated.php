@@ -18,7 +18,7 @@ echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www
   <meta name="resource-type" content="document" />
   <meta http-equiv="expires" content="0" />
   <meta name="author" content="Eve Online" />
-  <meta name="copyright" content="Copyright (c) 2011 The Xenodus Initiative." />
+  <meta name="copyright" content="Copyright (c) 2012 The Xenodus Initiative." />
   <meta name="revisit-after" content="1 days" />
   <meta name="distribution" content="Global" />
   <meta name="generator" content="Eve Online" />
@@ -47,15 +47,10 @@ a,a:visited{color:gold;}
   </style>  
 </head>
 <body bgcolor="#1B1B1B" style="height: 100%">
-  <div class="headerribbon">
-    <span class="headerleft"><a href="/" title="Skills Shrowroom">Showroom: Characters List</a></span>
-    <span class="headerright" style="color:gold;"><a href="/pilot/add" title="Add Character">Add your character!</a></span>
-  </div>
-
 
   <br /><br />
-  <div id="content" class="mcenter" style="float:center;width:908px;margin-top:50px;" >
-    <table summary="Characters List" style="border: #666666 1px solid; margin-left: 10px; width:910px;">
+  <div id="content" class="mcenter" style="float:center;width:400px;margin-top:30px;" >
+    <table summary="Characters List" style="border: #666666 1px solid; margin-left: 50px; width:300px;">
     <thead>
       <tr style="background: rgb(44, 44, 56);">
         <th colspan="<!--[$charcount]-->" class="dataTableHeader">Success!</th>
@@ -63,7 +58,7 @@ a,a:visited{color:gold;}
     </thead>
     <tbody>
       <tr>
-        <td>Your API Key as been successfully updated and should be working within a few moments.<br />This will change the API Key for all characters associated with that key.<br /><a href="javascript:window.close()" title="Close Window">Close Window</a></td>
+        <td>Your API Key as been successfully updated and should be working within a few moments.<br /><br />This will change the API Key for all characters associated with that key.<br /></td>
       </tr>   
      </tbody>
     </table>  
@@ -83,7 +78,7 @@ a,a:visited{color:gold;}
 </tr>
 <tr>
 <td>
-<center><a style="font-size:xx-small; text-decoration:none; color:grey;" href="https://www.deepspacesupply.com/product_info.php?ref=189&products_id=47&affiliate_banner_id=8" target="_blank">Support the site, buy a GTC!</a></center>
+<center><a style="font-size:xx-small; text-decoration:none; color:grey;" href="http://www.deepspacesupply.com/index.php/affiliate/index/listCategories/program_id/1/?429b1823f5a2afe=1&df08b0441bac900=3c59dc048e8850243be8079a5c74d079" target="_blank">Support the site, buy a GTC!</a></center>
 </td>
 </tr>
     </tr>

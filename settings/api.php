@@ -7,7 +7,7 @@
   <meta name="resource-type" content="document" />
   <meta http-equiv="expires" content="0" />
   <meta name="author" content="Eve Online" />
-  <meta name="copyright" content="Copyright (c) 2011 The Xenodus Initiative." />
+  <meta name="copyright" content="Copyright (c) 2012 The Xenodus Initiative." />
   <meta name="revisit-after" content="1 days" />
   <meta name="distribution" content="Global" />
   <meta name="generator" content="Eve Online" />
@@ -37,12 +37,8 @@ a,a:visited{color:gold;}
   </style>  
 </head>
 <body bgcolor="#1B1B1B" style="height: 100%">
-<div class="headerribbon">
-  <span class="headerleft">Skillsheet: Settings</span>
-  <span class="headerright"  style="color:gold;"><a href="/" title="Skills Shrowroom">Showroom: Characters List</a></span>
-</div>
 
-        <div id="content" style="margin-left:10px;width:70%;margin-top:50px;" >
+        <div id="content" style="margin-left:10px;width:70%;margin-top:30px;" >
           <div class="block-header2">Update API Key</div>
           <br />
         <form id="Update_API" name="Update_API" method='post' action='api_updated.php'>

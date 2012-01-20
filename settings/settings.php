@@ -9,7 +9,7 @@ echo'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.
   <meta name="resource-type" content="document" />
   <meta http-equiv="expires" content="0" />
   <meta name="author" content="Eve Online" />
-  <meta name="copyright" content="Copyright (c) 2011 The Xenodus Initiative." />
+  <meta name="copyright" content="Copyright (c) 2012 The Xenodus Initiative." />
   <meta name="revisit-after" content="1 days" />
   <meta name="distribution" content="Global" />
   <meta name="generator" content="Eve Online" />
@@ -38,15 +38,10 @@ a,a:visited{color:gold;}
   </style>  
 </head>
 <body bgcolor="#1B1B1B" style="height: 100%">
-  <div class="headerribbon">
-    <span class="headerleft"><a href="/" title="Skills Shrowroom">Showroom: Characters List</a></span>
-    <span class="headerright" style="color:gold;"><a href="/add" title="Add Character">Add your character!</a></span>
-  </div>
-
 
   <br /><br />
-  <div id="content" class="mcenter" style="float:center;width:908px;margin-top:50px;" >
-    <table summary="Characters List" style="border: #666666 1px solid; margin-left:300px; width:290px;">
+  <div id="content" class="mcenter" style="float:center;width:500px;margin-top:50px;" >
+    <table summary="Characters List" style="border: #666666 1px solid; margin-left:105px; width:290px;">
     <thead>
       <tr style="background: rgb(44, 44, 56);">
         <th colspan="2" class="dataTableHeader" align="center">Character/Account Settings</th>
@@ -76,12 +71,12 @@ a,a:visited{color:gold;}
       <td style="text-align: center;color:grey;">All images and logos are Copyright &copy; <a style="text-decoration: none;color:grey;" title="Copyright CCP" href="http://www.ccpgames.com/">CCP</a></td>
     </tr>
     <tr>
-      <td style="text-align: center; font-size: x-small;"><a style="text-decoration: none;color:grey;" href="/stats" title="Character Stats">Top SP</a> / <a style="text-decoration: none;color:grey;" target="_blank" href="http://txsi.co.uk/trac/changeset/latest/" title="Changelog">';echo _SKILLSHEET_VERSION; echo'</a> / <a style="text-decoration: none;color:grey;" target="_blank" href="http://txsi.co.uk/trac/newticket/" title="Feedback">Feedback</a>
+      <td style="text-align: center; font-size: x-small;"><a style="text-decoration: none;color:grey;" href="/stats" title="Character Stats">Top SP</a> / <a style="text-decoration: none;color:grey;" target="_blank" href="http://txsi.co.uk/trac/changeset/latest/" title="Changelog">';echo _SKILLSHEET_VERSION; echo'</a> / <a style="text-decoration: none;color:grey;" target="_blank" href="https://github.com/ShioR/EVE-Character-Showroom/issues/new" title="Feedback">Feedback</a>
 </td>
 </tr>
 <tr>
 <td>
-<center><a style="font-size:xx-small; text-decoration:none; color:grey;" href="https://www.deepspacesupply.com/product_info.php?ref=189&products_id=47&affiliate_banner_id=8" target="_blank">Support the site, buy a GTC!</a></center>
+<center><a style="font-size:xx-small; text-decoration:none; color:grey;" href="http://www.deepspacesupply.com/index.php/affiliate/index/listCategories/program_id/1/?429b1823f5a2afe=1&df08b0441bac900=3c59dc048e8850243be8079a5c74d079" target="_blank">Support the site, buy a GTC!</a></center>
 </td>
 </tr>
     </tr>
