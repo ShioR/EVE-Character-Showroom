@@ -15,8 +15,7 @@
   </tbody>
   </table>
   <div id="overlay" style="display:none;" onmouseover="this.style.cursor='pointer'" onclick="hideBox()"></div>
-	<div id="box" style="display:none;">
-	    <img id="close" src="/imgs/close.gif" onmouseover="this.style.cursor='pointer'" onclick="hideBox()" alt="Close" title="Close this window" />
+	<div id="chart" style="display:none;">
 	  <OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="700" height="430" id="Column3D" >
          <param name="movie" value="/includes/charts/Column3D.swf" />
          <param name="FlashVars" value="&chartWidth=700&chartHeight=430&dataXML=<chart caption='Skillpoint Distribution for <!--[$name]-->' yAxisName='Skillpoints' showNames='1' decimalPrecision='0' baseFontColor='ffd700' hoverCapBgColor='333333' formatNumberScale='0' rotateNames='1' slantLabels='1' showValues='0' canvasBaseDepth='2' bgColor='333333'>

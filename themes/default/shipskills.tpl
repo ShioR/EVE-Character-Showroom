@@ -13,7 +13,7 @@
 
       <!--[foreach item='races' key='shipclass' from=$shipscanfly]-->
       <a name="<!--[$shipclass]-->"</a>
-      <div onclick="JavaScript:newPopup('http://wiki.eveonline.com/wiki/Item_Database:Ships:<!--[$shipclass]-->');" style="cursor: pointer; margin-top: 40px; margin-bottom: -24px;">
+      <div style="margin-top: 40px; margin-bottom: -24px;">
         <div style="margin-top: 10px;">
           <div style="border-top: 1px solid rgb(67, 67, 67); border-bottom: 1px solid rgb(67, 67, 67); background: rgb(44, 44, 56) url(/imgs/<!--[$shipclass|lower|replace:" ":"_"]-->.png) no-repeat scroll 24px 5px; margin-bottom: 10px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 21px;">
             <!--<font style="border: 0px none ; text-align: right; position:relative; left: 5px; top: -11px;">[top]</font>-->
@@ -29,7 +29,7 @@
                 <tr>
 <td width="72" align="center"><img alt="<!--[$race]-->" title="<!--[$race]-->" src="/imgs/races/<!--[$race|lower]-->.png" width:44px; height:40px; hspace="10" /><!--<br /><!--[$race]-->--></td>
                 <!--[foreach item='ship' from=$ships]-->
-                  <td style="cursor: pointer; padding: 3px;" valign="top" align="center"  onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'" onclick="JavaScript:newPopup('http://wiki.eveonline.com/wiki/<!--[$ship.typeName|replace:' ':'_']-->');"><img alt="<!--[$ship.typeName]-->" title="<!--[$ship.typeName]-->" src="/imgs/ships/64_64/<!--[$ship.typeID]-->.png" width:64px; height:64px;<br /></td>
+                  <td style="cursor: pointer; padding: 3px;" valign="top" align="center" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"><a href="/imgs/ships/64_64/<!--[$ship.typeID]-->.png" rel="single" class="pirobox" title="<!--[$ship.typeName]-->"> <img src="/imgs/ships/64_64/<!--[$ship.typeID]-->.png" /><br /></td>
                 <!--[/foreach]-->
                 </tr>
               </table>

@@ -5,29 +5,29 @@
             	<table style="width:256px; height:256px; background: url(http://image.eveonline.com/Character/<!--[$characterID]-->_256.jpg);" cellpadding="0" cellspacing="0" border="1px solid gray;">
             		<tr>
             			<td><div id="corpLogoContainer">
-            			     <div id="corpLogo" onclick="JavaScript:newPopup('http://evemaps.dotlan.net/corp/<!--[$corporationName|replace:" ":"_"]-->');" style="cursor: pointer;">
+            			     <div id="corpLogo"> <a href="http://evemaps.dotlan.net/corp/<!--[$corporationName|replace:" ":"_"]-->" rel="iframe-875-610" class="pirobox">
 	            					<img style="border: 1px solid gray; background-color: #1B1B1B;"	src="<!--[getcorplogo corporationID=$corporationID size=256]-->"
 	            						width="64" 
 	            						height="64" 
 	            						title="<!--[$corporationName]-->" 
 	            						alt="<!--[$corporationName]-->" />
-            					</div>
+            					</a></div>
             					 <!--[if $allianceName neq '']-->
-            					 <div id="allianceLogo" onclick="JavaScript:newPopup('http://evemaps.dotlan.net/alliance/<!--[$allianceName|replace:" ":"_"]-->');" style="cursor: pointer;">
+            					 <div id="allianceLogo"> <a href="http://evemaps.dotlan.net/alliance/<!--[$allianceName|replace:" ":"_"]-->" rel="iframe-875-610" class="pirobox">
 	            					<img style="border: 1px solid gray; background-color: #1B1B1B;"	src="<!--[getalliancelogo allianceID=$allianceID size=128]-->"
 	            						width="64" 
 	            						height="64" 
 	            						title="<!--[$allianceName]-->" 
 	            						alt="<!--[$allianceName]-->" />
-            					 </div>
+            					 </a></div>
             					 <!--[else]-->
             					<!--[/if]-->
-	            				 <div id="raceimg" onclick="JavaScript:newPopup('http://wiki.eveonline.com/en/wiki/<!--[$race]-->');" style="cursor: pointer;">
+	            				 <div id="raceimg"> <a href="http://wiki.eveonline.com/en/wiki/<!--[$race]-->" rel="iframe-875-610" class="pirobox">
 	            				  <img style="border: 1px solid gray; background-color: #1B1B1B" src="/imgs/charraces/<!--[$race|lower]-->.png" width="64" height="64" title="<!--[$race]-->" alt="<!--[$race]-->" hspace="6" />
-	            				 </div>
-	            				 <div id="bloodimg" <!--[if $bloodLine eq 'Gallente']-->onclick="JavaScript:newPopup('http://wiki.eveonline.com/en/wiki/<!--[$bloodLine]-->_Bloodline');" style="cursor: pointer;"><!--[elseif $bloodLine eq 'Amarr']-->onclick="JavaScript:newPopup('http://wiki.eveonline.com/en/wiki/True_<!--[$bloodLine]-->');" style="cursor: pointer;"><!--[else]-->onclick="JavaScript:newPopup('http://wiki.eveonline.com/en/wiki/<!--[$bloodLine]-->');" style="cursor: pointer;"><!--[/if]-->
+	            				 </a></div>
+	            				 <div id="bloodimg"> <!--[if $bloodLine eq 'Gallente']--><a href="http://wiki.eveonline.com/en/wiki/<!--[$bloodLine]-->_Bloodline" rel="iframe-875-610" class="pirobox"><!--[elseif $bloodLine eq 'Amarr']--><a href="http://wiki.eveonline.com/en/wiki/True_<!--[$bloodLine]-->" rel="iframe-875-610" class="pirobox"><!--[else]--><a href="http://wiki.eveonline.com/en/wiki/<!--[$bloodLine]-->" rel="iframe-875-610" class="pirobox"><!--[/if]-->
 	            				  <img style="border: 1px solid gray; background-color: #1B1B1B" src="/imgs/charraces/blood_<!--[$bloodLine|lower]-->.png" width="64" height="64" title="<!--[$bloodLine]-->" alt="<!--[$bloodLine]-->" />
-	            				 </div> 
+	            				 <a/></div> 
 	            				 </div>
             					</div>
             				</div>
@@ -73,7 +73,7 @@
                   <tr>                
                     <td class="dataTableCell">Date of Birth</td>
                     <td colspan="2" class="dataTableCell" align="left"><!--[$DoB|date_format:"%A, %B %d, %Y"]--></td>
-                    <td colspan="1" class="dataTableCellLeftRight" align="center" onclick="JavaScript:newPopup('/settings/');" style="cursor: pointer; color:gold;">Settings</td>
+                     <td colspan="1" class="dataTableCellLeftRight" align="center"> <a style="text-decoration:none;" href="/settings/" rel="iframe-500-300" class="pirobox">Settings</a></td>
                   </tr>
                   <tr>
                     <td colspan="4" class="dataTableHeaderRight">Training</td>
