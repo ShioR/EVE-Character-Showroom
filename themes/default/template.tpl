@@ -90,6 +90,8 @@
               <!--[math equation="x + y" x=$totalsp y=$skill.skillpoints assign='totalsp']-->
               <!--[math equation="x + y" x=$totalCost y=$skill.skillCost assign='totalCost']-->
               <!--[math equation="x + y" x=$countsk y=1 assign='countsk']-->
+              <!--[math equation="(x / y) * z" x=$totalsp y=$totalskillpoints z=100 format="%.1f" assign='GroupPercentSP']--> 
+              <!--[math equation="(x / y) * z" x=$countsk y=$totalsks z=100 format="%.1f" assign='GroupPercentSkills']--> 
               <!--[if $skill.level == '1']-->
               	<!--[math equation="x + y" x=$skill.skillpoints y=$lvl1sp assign='lvl1sp']-->              
               	<!--[math equation="x + y" x=$lvl1 y=1 assign='lvl1']-->       
@@ -110,7 +112,7 @@
             </div>
             <div style="line-height: 1.45em; margin-left: 82px; font-size: 11px;">
               <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$countsk]--></strong> <!--[$skill.groupName]--> 
-<!--[if $countsk == 1]-->skill<!--[elseif $countsk neq 1]-->skills<!--[/if]--> trained for a total of <strong><!--[$totalsp|number_format]--></strong> skillpoints.</span>
+<!--[if $countsk == 1]-->skill<!--[elseif $countsk neq 1]-->skills<!--[/if]--> trained for a total of <strong><!--[$totalsp|number_format]--></strong> skillpoints. <span style="font-size:x-small;">(<strong><!--[$GroupPercentSP]-->%</strong> of your total SP / <strong><!--[$GroupPercentSkills]-->%</strong> of your total skills)</span></span>
               <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl5]--></strong> <!--[if $lvl5 eq 1]-->skill<!--[elseif $lvl5 neq 1]-->skills<!--[/if]--> trained to level 5 for a total of <strong><!--[$lvl5sp|number_format]--></strong> skillpoints.</span>
             </div>
           </div>
