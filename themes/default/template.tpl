@@ -79,13 +79,23 @@
                       <span class="navdot">&#xB7;</span><span style="color:gold;">Time left: </span>
                       <!--[$TrainingTimeLeft]-->
                     </div>
+					<div id="<!--[$skill.typeID]-->">
+					  <span class="navdot">&#xB7;</span><span style="color:gold;">Description: </span>
+					  <!--[getskillinfo2 typeID=$skill.typeID]-->
+					</div>
+					<div id="<!--[$skill.typeID]-->">
+					  <span class="navdot">&#xB7;</span><span style="color:gold;">Cost: </span>
+					  <!--[$skill.skillCost|number_format]--> ISK
+					</div>					
                   </div>
                 </div>
                 <!--[/if]-->
-              <div id="<!--[$skill.typeID]-->" <!--[if $skill.flag eq 61]-->style="text-align: left; font-size: x-small; color: #fff;";><!--[else]-->style="text-align: left; font-size: x-small; color: #777; display:none;";><!--[/if]-->
+			  <!--[if $skill.flag neq 61]-->	
+              <div id="<!--[$skill.typeID]-->" style="text-align: left; font-size: x-small; color: #777; display:none;";>	
 							<!--[getskillinfo typeID=$skill.typeID]-->
-							Cost: <!--[$skill.skillCost|number_format]--> ISK
-              </div>                
+							Cost: <!--[$skill.skillCost|number_format]--> ISK	
+			  </div>
+              <!--[/if]-->  
               </div>
               <!--[math equation="x + y" x=$totalsp y=$skill.skillpoints assign='totalsp']-->
               <!--[math equation="x + y" x=$totalCost y=$skill.skillCost assign='totalCost']-->
