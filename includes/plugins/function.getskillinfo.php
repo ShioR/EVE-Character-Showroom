@@ -11,7 +11,7 @@ function smarty_function_getskillinfo($params, &$smarty)
 				$result = mysql_query("SELECT description FROM data_invTypes WHERE typeID = '$typeID'");
 		// Wordwrap to stop the page getting borked
 				$text = mysql_result($result, 0);
-				$description = wordwrap($text, 130, "<br />\n");
+				$description = wordwrap($text, 120, "<br />\n");
 				echo $description, "<br />\n";
    	mysql_close();
 		// Fini!
