@@ -92,8 +92,8 @@
                 <!--[/if]-->
 			  <!--[if $skill.flag neq 61]-->	
               <div id="<!--[$skill.typeID]-->" style="text-align: left; font-size: x-small; color: #777; display:none;";>	
-							<!--[getskillinfo typeID=$skill.typeID]-->
-							Cost: <!--[$skill.skillCost|number_format]--> ISK	
+							<span style="color:#c8c8c8;">Description: </span><!--[getskillinfo typeID=$skill.typeID]-->
+							<span style="color:#c8c8c8;">Cost: </span><!--[$skill.skillCost|number_format]--> ISK	
 			  </div>
               <!--[/if]-->  
               </div>
