@@ -65,7 +65,7 @@
                     </div>
                     <div>
                      <span class="navdot">&#xB7;</span><span style="color:gold;">SP done: </span>
-                      <strong><!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> <span style="color:gold;font-size: 10px;">(<!--[$TotalPercentage]--> %)</span></strong>
+                      <strong><!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> <span style="color:gold;font-size: 10px;">(<!--[$TotalPercentage]-->%)</span></strong>
                     </div>
                     <div>
                       <span class="navdot">&#xB7;</span><span style="color:gold;">Started: </span>
