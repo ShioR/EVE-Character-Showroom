@@ -79,11 +79,11 @@
                       <span class="navdot">&#xB7;</span><span style="color:gold;">Time left: </span>
                       <!--[$TrainingTimeLeft]-->
                     </div>
-					<div id="<!--[$skill.typeID]-->">
+					<div>
 					  <span class="navdot">&#xB7;</span><span style="color:gold;">Description: </span>
 					  <!--[getskillinfo2 typeID=$skill.typeID]-->
 					</div>
-					<div id="<!--[$skill.typeID]-->">
+					<div>
 					  <span class="navdot">&#xB7;</span><span style="color:gold;">Cost: </span>
 					  <!--[$skill.skillCost|number_format]--> ISK
 					</div>					
