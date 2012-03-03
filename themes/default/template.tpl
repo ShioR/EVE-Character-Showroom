@@ -9,6 +9,22 @@
           <!--[if $implants == 1]--><!--[include file='maininfo.tpl']--><!--[else]--><!--[include file='maininfo2.tpl']--><!--[/if]-->
           <!--[include file='queue.tpl']-->
           
+      <!--[assign var='CorporationManagement' value=7]-->   
+      <!--[assign var='Drones' value=19]-->   
+      <!--[assign var='Electronics' value=21]-->   
+      <!--[assign var='Engineering' value=19]-->   
+      <!--[assign var='Gunnery' value=40]-->   
+      <!--[assign var='Industry' value=32]-->   
+      <!--[assign var='Leadership' value=14]-->   
+      <!--[assign var='Mechanic' value=32]-->   
+      <!--[assign var='Missiles' value=24]-->   
+      <!--[assign var='Navigation' value=10]-->   
+      <!--[assign var='PlanetManagement' value=5]-->   
+      <!--[assign var='Science' value=55]-->   
+      <!--[assign var='Social' value=9]-->   
+      <!--[assign var='SpaceshipCommand' value=60]-->   
+      <!--[assign var='Subsystems' value=20]-->   
+      <!--[assign var='Trade' value=13]-->   
       <!--[assign var='GroupTotal' value=383]-->  
       <!--[assign var='totalCost' value=0]-->   
       <!--[assign var='totalSkills' value=0]-->
@@ -122,9 +138,9 @@
             <!--[/foreach]-->
             </div>
             <div style="line-height: 1.45em; margin-left: 82px; font-size: 11px;">
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$countsk]--></strong> <!--[$skill.groupName]--> 
-<!--[if $countsk == 1]-->skill<!--[elseif $countsk neq 1]-->skills<!--[/if]--> trained for a total of <strong><!--[$totalsp|number_format]--></strong> skillpoints. <span style="font-size:x-small;">(<strong><!--[$GroupPercentSkills]-->%</strong> of total skills / <strong><!--[$GroupPercentSP]-->%</strong> of total SP)</span></span>
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl5]--></strong> <!--[if $lvl5 eq 1]-->skill<!--[elseif $lvl5 neq 1]-->skills<!--[/if]--> trained to level 5 for a total of <strong><!--[$lvl5sp|number_format]--></strong> skillpoints.</span>
+              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$countsk]--></strong>/<!--[if $groupname == "Corporation Management"]--><!--[$CorporationManagement]--><!--[elseif $groupname == "Drones"]--><!--[$Drones]--><!--[elseif $groupname == "Electronics"]--><!--[$Electronics]--><!--[elseif $groupname == "Engineering"]--><!--[$Engineering]--><!--[elseif $groupname == "Gunnery"]--><!--[$Gunnery]--><!--[elseif $groupname == "Industry"]--><!--[$Industry]--><!--[elseif $groupname == "Leadership"]--><!--[$Leadership]--><!--[elseif $groupname == "Mechanic"]--><!--[$Mechanic]--><!--[elseif $groupname == "Missiles"]--><!--[$Missiles]--><!--[elseif $groupname == "Navigation"]--><!--[$Navigation]--><!--[elseif $groupname == "Planet Management"]--><!--[$PlanetManagement]--><!--[elseif $groupname == "Science"]--><!--[$Science]--><!--[elseif $groupname == "Social"]--><!--[$Social]--><!--[elseif $groupname == "Spaceship Command"]--><!--[$SpaceshipCommand]--><!--[elseif $groupname == "Subsystems"]--><!--[$Subsystems]--><!--[elseif $groupname == "Trade"]--><!--[$Trade]--><!--[/if]--> <!--[$skill.groupName]--> 
+<!--[if $countsk == 1]-->skill<!--[elseif $countsk neq 1]-->skills<!--[/if]--> trained for a total of <strong><!--[$totalsp|number_format]--></strong> SP. <span style="font-size:x-small;">(<strong><!--[$GroupPercentSkills]-->%</strong> of total skills / <strong><!--[$GroupPercentSP]-->%</strong> of total SP)</span></span>
+              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl5]--></strong>/<!--[$countsk]--> <!--[if $lvl5 eq 1]-->skill<!--[elseif $lvl5 neq 1]-->skills<!--[/if]--> trained to level 5 for a total of <strong><!--[$lvl5sp|number_format]--></strong> SP.</span>
             </div>
           </div>
         </div>
