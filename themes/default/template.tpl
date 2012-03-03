@@ -122,7 +122,7 @@
             </div>
             <div style="line-height: 1.45em; margin-left: 82px; font-size: 11px;">
               <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$countsk]--></strong> <!--[$skill.groupName]--> 
-<!--[if $countsk == 1]-->skill<!--[elseif $countsk neq 1]-->skills<!--[/if]--> trained for a total of <strong><!--[$totalsp|number_format]--></strong> skillpoints. <span style="font-size:x-small;">(<strong><!--[$GroupPercentSP]-->%</strong> of total SP / <strong><!--[$GroupPercentSkills]-->%</strong> of total skills)</span></span>
+<!--[if $countsk == 1]-->skill<!--[elseif $countsk neq 1]-->skills<!--[/if]--> trained for a total of <strong><!--[$totalsp|number_format]--></strong> skillpoints. <span style="font-size:x-small;">(<strong><!--[$GroupPercentSkills]-->%</strong> of total skills / <strong><!--[$GroupPercentSP]-->%</strong> of total SP)</span></span>
               <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl5]--></strong> <!--[if $lvl5 eq 1]-->skill<!--[elseif $lvl5 neq 1]-->skills<!--[/if]--> trained to level 5 for a total of <strong><!--[$lvl5sp|number_format]--></strong> skillpoints.</span>
             </div>
           </div>
