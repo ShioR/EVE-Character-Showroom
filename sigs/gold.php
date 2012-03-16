@@ -17,7 +17,8 @@ $gold = imagecolorallocatealpha($im, 255, 215, 0, 0);
 imagefilledrectangle($im, 0, 0, 630, 25, $darkgrey);
 
 // Get the signature text from the URL
-$text = file_get_contents ($domain.$_GET["n"].'/sig');
+$name = stripslashes($_GET['n']);
+$text = file_get_contents ($domain.$name.'/sig');
 // Location of the font to use
 $font = 'arial.ttf';
 
