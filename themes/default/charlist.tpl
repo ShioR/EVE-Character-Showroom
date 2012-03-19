@@ -66,7 +66,7 @@ a img{border:none;}
           <!--[math equation="x+1" x=$counter assign='counter']-->
         <!--[/if]-->
         <td class="txtcenter">
-          <a href=/<!--[$char.name|replace:' ':'_']-->/ title="<!--[$char.name]-->"><img src="http://image.eveonline.com/Character/<!--[$char.characterID]-->_128.jpg" width="128" height="128" style="padding: 2px; "onmouseover="this.style.backgroundColor='#303030'; this.style.cursor='pointer'" onmouseout="this.style.backgroundColor='#1B1B1B'"</a>
+          <a href=/<!--[$char.name|replace:' ':'_']--> title="<!--[$char.name]-->"><img src="http://image.eveonline.com/Character/<!--[$char.characterID]-->_128.jpg" width="128" height="128" style="padding: 2px; "onmouseover="this.style.backgroundColor='#303030'; this.style.cursor='pointer'" onmouseout="this.style.backgroundColor='#1B1B1B'"</a>
           <br /><!--[$char.name]-->
         </td>
       <!--[/foreach]-->
@@ -81,9 +81,6 @@ a img{border:none;}
       </tr>
     </tbody>
     </table>
- <!--  <div class="statusmsg" align="center">
-<font size="1">I hope everyone is enjoying the new speed enhancements that have been pushed out recently. There are however a few more niggles left to fix, <br />if you think you can help, and fancy your hand at earning the ISK Bounties, look <a target="_blank" href="http://txsi.co.uk/trac/report/1">here</a> and <a target="_blank" href="https://gate.eveonline.com/Mail/Compose/Shionoya%20Risa">mail</a> me. Thanks!</font>
-<!--  <font size="1">Due to unforseen cicumstances, the settings pages and the new updater are offline for the moment whilst we fix some problems.<br /> We apologise for this and thank you for your understanding.</font> -->
   </div>
 <br />
 <br />
