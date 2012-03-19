@@ -32,7 +32,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="100" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->/][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/pink?n=<!--[$name|replace:' ':'_']-->[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="100" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/pink?n=<!--[$name|replace:' ':'_']-->[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>                  
                 </div>
                 </table><br /><br />
@@ -43,7 +43,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="100" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->/][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/pink?n=<!--[$name|replace:' ':'_']-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="100" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/pink?n=<!--[$name|replace:' ':'_']-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>  
                 </div>
                 </table><br /><br />  
@@ -54,7 +54,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="100" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->/][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/gray?n=<!--[$name|replace:' ':'_']-->[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="100" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/gray?n=<!--[$name|replace:' ':'_']-->[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>  
                 </div>
                 </table><br /><br />    
@@ -65,7 +65,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="100" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->/][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/gray?n=<!--[$name|replace:' ':'_']-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="100" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/gray?n=<!--[$name|replace:' ':'_']-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>  
                 </div>
                 </table><br /><br />  
@@ -76,7 +76,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="100" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->/][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/white?n=<!--[$name|replace:' ':'_']-->[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="100" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/white?n=<!--[$name|replace:' ':'_']-->[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>  
                 </div>
                 </table><br /><br />    
@@ -87,7 +87,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="100" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->/][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/white?n=<!--[$name|replace:' ':'_']-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="100" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/white?n=<!--[$name|replace:' ':'_']-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>  
                 </div>
                 </table><br /><br />  
@@ -98,7 +98,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="100" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->/][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/gold?n=<!--[$name|replace:' ':'_']-->[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="100" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/gold?n=<!--[$name|replace:' ':'_']-->[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>  
                 </div>
                 </table><br /><br />  
@@ -109,7 +109,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="100" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->/][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/gold?n=<!--[$name|replace:' ':'_']-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="100" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/gold?n=<!--[$name|replace:' ':'_']-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>  
                 </div>
                 </table><br /><br /> 
@@ -120,7 +120,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="100" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->/][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/trans.php?n=<!--[$name|replace:' ':'_']-->[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="100" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/trans.php?n=<!--[$name|replace:' ':'_']-->[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>  
                 </div>
                 </table><br /><br />  
@@ -131,7 +131,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="100" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->/][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/trans.php?n=<!--[$name|replace:' ':'_']-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="100" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/trans.php?n=<!--[$name|replace:' ':'_']-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>  
                 </div>
                 </table><br /><br />                                                                                                                                 
@@ -150,7 +150,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="65" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->/][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/amarr?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="65" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/amarr?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>                  
                 </div>
                 </table><br /><br />
@@ -161,7 +161,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="65" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->/][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/caldari?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="65" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/caldari?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>  
                 </div>
                 </table><br /><br />
@@ -172,7 +172,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="65" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->/][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/gallente?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="65" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/gallente?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>  
                 </div>
                 </table><br /><br />
@@ -183,7 +183,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="65" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->/][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/minmatar?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="65" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/minmatar?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>  
                 </div>
                 </table><br /><br />                                                                                                                        
