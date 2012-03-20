@@ -20,7 +20,7 @@
         <td>
           <br /><!--[$char.name]-->
           <br /><strong><!--[$char.skillpointstotal|number_format]--></strong>
-          <br /><a href="/<!--[$char.name|replace:' ':'_']-->/" title="Skillsheet for <!--[$char.name]-->">Skillsheet</a>
+          <br /><a href="/<!--[$char.name|replace:' ':'_']-->" title="Skillsheet for <!--[$char.name]-->">Skillsheet</a>
         </td>
       </tr>
       <!--[/foreach]-->
