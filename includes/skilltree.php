@@ -1296,6 +1296,20 @@ $skillsource[269][22809]['groupID'] = '269';
 $skillsource[269][22809]['groupName'] = 'Mechanic';
 
 ////////////////////////////////////////////////////////////////////////// MISSILE LAUNCHER OPERATION
+$skillsource[256][25718]['typeName'] = 'Assault Missile Specialization';
+$skillsource[256][25718]['rank'] = '5';
+$skillsource[256][25718]['typeID'] = '25718';
+$skillsource[256][25718]['skillCost'] = '3000000';
+$skillsource[256][25718]['groupID'] = '256';
+$skillsource[256][25718]['groupName'] = 'Missile Launcher Operation';
+
+$skillsource[256][25719]['typeName'] = 'Assault Missiles';
+$skillsource[256][25719]['rank'] = '3';
+$skillsource[256][25719]['typeID'] = '25719';
+$skillsource[256][25719]['skillCost'] = '100000';
+$skillsource[256][25719]['groupID'] = '256';
+$skillsource[256][25719]['groupName'] = 'Missile Launcher Operation';
+
 $skillsource[256][28073]['typeName'] = 'Bomb Deployment';
 $skillsource[256][28073]['rank'] = '4';
 $skillsource[256][28073]['typeID'] = '28073';
@@ -1352,20 +1366,6 @@ $skillsource[256][20312]['skillCost'] = '500000';
 $skillsource[256][20312]['groupID'] = '256';
 $skillsource[256][20312]['groupName'] = 'Missile Launcher Operation';
 
-$skillsource[256][25718]['typeName'] = 'Heavy Assault Missile Specialization';
-$skillsource[256][25718]['rank'] = '5';
-$skillsource[256][25718]['typeID'] = '25718';
-$skillsource[256][25718]['skillCost'] = '3000000';
-$skillsource[256][25718]['groupID'] = '256';
-$skillsource[256][25718]['groupName'] = 'Missile Launcher Operation';
-
-$skillsource[256][25719]['typeName'] = 'Heavy Assault Missiles';
-$skillsource[256][25719]['rank'] = '3';
-$skillsource[256][25719]['typeID'] = '25719';
-$skillsource[256][25719]['skillCost'] = '100000';
-$skillsource[256][25719]['groupID'] = '256';
-$skillsource[256][25719]['groupName'] = 'Missile Launcher Operation';
-
 $skillsource[256][20211]['typeName'] = 'Heavy Missile Specialization';
 $skillsource[256][20211]['rank'] = '5';
 $skillsource[256][20211]['typeID'] = '20211';
@@ -1379,6 +1379,20 @@ $skillsource[256][3324]['typeID'] = '3324';
 $skillsource[256][3324]['skillCost'] = '100000';
 $skillsource[256][3324]['groupID'] = '256';
 $skillsource[256][3324]['groupName'] = 'Missile Launcher Operation';
+
+$skillsource[256][20210]['typeName'] = 'Light Missile Specialization';
+$skillsource[256][20210]['rank'] = '3';
+$skillsource[256][20210]['typeID'] = '20210';
+$skillsource[256][20210]['skillCost'] = '1000000';
+$skillsource[256][20210]['groupID'] = '256';
+$skillsource[256][20210]['groupName'] = 'Missile Launcher Operation';
+
+$skillsource[256][3321]['typeName'] = 'Light Missiles';
+$skillsource[256][3321]['rank'] = '2';
+$skillsource[256][3321]['typeID'] = '3321';
+$skillsource[256][3321]['skillCost'] = '20000';
+$skillsource[256][3321]['groupID'] = '256';
+$skillsource[256][3321]['groupName'] = 'Missile Launcher Operation';
 
 $skillsource[256][12441]['typeName'] = 'Missile Bombardment';
 $skillsource[256][12441]['rank'] = '2';
@@ -1421,20 +1435,6 @@ $skillsource[256][3320]['typeID'] = '3320';
 $skillsource[256][3320]['skillCost'] = '10000';
 $skillsource[256][3320]['groupID'] = '256';
 $skillsource[256][3320]['groupName'] = 'Missile Launcher Operation';
-
-$skillsource[256][20210]['typeName'] = 'Standard Missile Specialization';
-$skillsource[256][20210]['rank'] = '3';
-$skillsource[256][20210]['typeID'] = '20210';
-$skillsource[256][20210]['skillCost'] = '1000000';
-$skillsource[256][20210]['groupID'] = '256';
-$skillsource[256][20210]['groupName'] = 'Missile Launcher Operation';
-
-$skillsource[256][3321]['typeName'] = 'Standard Missiles';
-$skillsource[256][3321]['rank'] = '2';
-$skillsource[256][3321]['typeID'] = '3321';
-$skillsource[256][3321]['skillCost'] = '20000';
-$skillsource[256][3321]['groupID'] = '256';
-$skillsource[256][3321]['groupName'] = 'Missile Launcher Operation';
 
 $skillsource[256][20314]['typeName'] = 'Target Navigation Prediction';
 $skillsource[256][20314]['rank'] = '2';
