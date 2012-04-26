@@ -24,8 +24,8 @@
       <!--[assign var='Social' value=9]-->   
       <!--[assign var='SpaceshipCommand' value=60]-->   
       <!--[assign var='Subsystems' value=20]-->   
-      <!--[assign var='Trade' value=13]-->   
-      <!--[assign var='GroupTotal' value=383]-->  
+      <!--[assign var='Trade' value=14]-->   
+      <!--[assign var='GroupTotal' value=384]-->  
       <!--[assign var='totalCost' value=0]-->   
       <!--[assign var='totalSkills' value=0]-->
       <!--[assign var='lvl1total' value=0]-->
