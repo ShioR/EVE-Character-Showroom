@@ -4,7 +4,6 @@
   <tbody>
     <tr>
       <td><br />
-
           <!--[include file='mainheader.tpl']-->
           <!--[if $implants == 1]--><!--[include file='maininfo.tpl']--><!--[else]--><!--[include file='maininfo2.tpl']--><!--[/if]-->
           <!--[include file='queue.tpl']-->
@@ -37,7 +36,19 @@
       <!--[assign var='lvl2sptotal' value=0]-->       
       <!--[assign var='lvl3sptotal' value=0]-->       
       <!--[assign var='lvl4sptotal' value=0]-->       
-      <!--[assign var='lvl5sptotal' value=0]-->       
+      <!--[assign var='lvl5sptotal' value=0]-->  
+      <!--[foreach item='queue' from=$SkillQueue]--> 
+      <!--[assign var='queuePos0' value=$SkillQueue.0.typeID]-->  
+      <!--[assign var='queuePos1' value=$SkillQueue.1.typeID]-->  
+      <!--[assign var='queuePos2' value=$SkillQueue.2.typeID]-->  
+      <!--[assign var='queuePos3' value=$SkillQueue.3.typeID]-->  
+      <!--[assign var='queuePos4' value=$SkillQueue.4.typeID]-->  
+      <!--[assign var='queuePos5' value=$SkillQueue.5.typeID]-->  
+      <!--[assign var='queuePos6' value=$SkillQueue.6.typeID]-->  
+      <!--[assign var='queuePos7' value=$SkillQueue.7.typeID]-->  
+      <!--[assign var='queuePos8' value=$SkillQueue.8.typeID]-->  
+      <!--[assign var='queuePos9' value=$SkillQueue.9.typeID]-->  
+      <!--[/foreach]-->
       <!--[foreach item='skillgroup' key='groupid' from=$skilltree]-->
         <!--[assign var='totalsp' value=0]-->
         <!--[assign var='countsk' value=0]-->
@@ -65,7 +76,61 @@
 							<!--[assign var='totalSPforSkill' value=$skill.skilllevel5]-->
 							<!--[math equation="(x / y) * z" x=$currentSPforSkill y=$totalSPforSkill z=100 format="%.1f" assign='TotalPercentage']-->
               <div style="border-bottom: 1px dotted rgb(80, 80, 80); padding: 2.5px; <!--[if $skill.flag eq 61]-->background-color: #5E5F00;" onmouseout="this.style.backgroundColor='#5E5F00'"<!--[/if]-->" onmouseover="this.style.backgroundColor='#303030'; this.style.cursor='pointer'" onmouseout="this.style.backgroundColor='#1B1B1B'">
-              <div style="float: right;margin-top:4px;"><img alt="level<!--[$skill.level]-->" src="/imgs/level<!--[if $skill.flag neq 61]--><!--[$skill.level]--><!--[else]--><!--[math equation="x + y" x=$skill.level y=1]-->_act<!--[/if]-->.gif" width:48px; height:8px; /></div>
+					<!--[if $skill.flag eq 61]-->
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$skill.level]-->" src="/imgs/level<!--[math equation="x + y" x=$skill.level y=1]-->_act.gif" width:48px; height:8px; /></div>
+					<!--[elseif $queuePos0 eq $skill.typeID]-->
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$queue.level]-->_q.gif" width:48px; height:8px; /></div>
+					<!--[elseif $queuePos1 eq $skill.typeID]-->
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$queue.level]-->_q.gif" width:48px; height:8px; /></div>
+					<!--[elseif $queuePos2 eq $skill.typeID]-->
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$queue.level]-->_q.gif" width:48px; height:8px; /></div>
+					<!--[elseif $queuePos3 eq $skill.typeID]-->
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$queue.level]-->_q.gif" width:48px; height:8px; /></div>
+					<!--[elseif $queuePos4 eq $skill.typeID]-->
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$queue.level]-->_q.gif" width:48px; height:8px; /></div>
+					<!--[elseif $queuePos5 eq $skill.typeID]-->
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$queue.level]-->_q.gif" width:48px; height:8px; /></div>
+					<!--[elseif $queuePos6 eq $skill.typeID]-->
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$queue.level]-->_q.gif" width:48px; height:8px; /></div>
+					<!--[elseif $queuePos7 eq $skill.typeID]-->
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$queue.level]-->_q.gif" width:48px; height:8px; /></div>
+					<!--[elseif $queuePos8 eq $skill.typeID]-->
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$queue.level]-->_q.gif" width:48px; height:8px; /></div>
+					<!--[elseif $queuePos9 eq $skill.typeID]-->
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$queue.level]-->_q.gif" width:48px; height:8px; /></div>
+					<!--[/if]-->
+					<!--[if $queuePos0 eq $skill.typeID]-->
+						<!--[if $skill.flag neq 61]-->
+							<div style="display:none;"></div>
+						<!--[else]-->
+							<div style="display:none;"></div>
+						<!--[/if]-->	
+					<!--[/if]-->	
+					<!--[if $queuePos1 eq $skill.typeID]-->
+						<div style="display:none;"></div>
+					<!--[elseif $queuePos2 eq $skill.typeID]-->
+						<div style="display:none;"></div>
+					<!--[elseif $queuePos3 eq $skill.typeID]-->
+						<div style="display:none;"></div>
+					<!--[elseif $queuePos4 eq $skill.typeID]-->
+						<div style="display:none;"></div>
+					<!--[elseif $queuePos5 eq $skill.typeID]-->
+						<div style="display:none;"></div>
+					<!--[elseif $queuePos6 eq $skill.typeID]-->
+						<div style="display:none;"></div>
+					<!--[elseif $queuePos7 eq $skill.typeID]-->
+						<div style="display:none;"></div>
+					<!--[elseif $queuePos8 eq $skill.typeID]-->
+						<div style="display:none;"></div>
+					<!--[elseif $queuePos9 eq $skill.typeID]-->
+						<div style="display:none;"></div>
+					<!--[elseif $skill.flag neq 61]-->	
+						<!--[if $queuePos0 eq $skill.typeID]-->
+							<div style="display:none;"></div>
+						<!--[else]-->	
+							<div style="float: right;margin-top:4px;"><img alt="level<!--[$skill.level]-->" src="/imgs/level<!--[$skill.level]-->.gif" width:48px; height:8px; /></div>
+						<!--[/if]-->
+					<!--[/if]-->
                 <div style="line-height: 1.45em; font-size: 11px;">
                 <!--[if $TotalPercentage neq 100.0]-->
                   <a style="color: white; text-decoration: none;" onclick="javascript:i(document.getElementById('<!--[$skill.typeID]-->'));" href="#toggle" id="s<!--[$skill.typeID]-->"><!--[$skill.typeName]--></a> / <span style="font-size: x-small;"><i>Rank <!--[$skill.rank]--></i> / <i>SP: <!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> / <!--[$TotalPercentage]-->%</i></span>         
