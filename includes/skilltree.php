@@ -1070,230 +1070,230 @@ $skillsource[258][11574]['skillCost'] = '2000000';
 $skillsource[258][11574]['groupID'] = '258';
 $skillsource[258][11574]['groupName'] = 'Leadership';
 
-////////////////////////////////////////////////////////////////////////// MECHANIC
+////////////////////////////////////////////////////////////////////////// MECHANICS
 $skillsource[269][26253]['typeName'] = 'Armor Rigging';
 $skillsource[269][26253]['rank'] = '3';
 $skillsource[269][26253]['typeID'] = '26253';
 $skillsource[269][26253]['skillCost'] = '100000';
 $skillsource[269][26253]['groupID'] = '269';
-$skillsource[269][26253]['groupName'] = 'Mechanic';
+$skillsource[269][26253]['groupName'] = 'Mechanics';
 
 $skillsource[269][26254]['typeName'] = 'Astronautics Rigging';
 $skillsource[269][26254]['rank'] = '3';
 $skillsource[269][26254]['typeID'] = '26254';
 $skillsource[269][26254]['skillCost'] = '20000';
 $skillsource[269][26254]['groupID'] = '269';
-$skillsource[269][26254]['groupName'] = 'Mechanic';
+$skillsource[269][26254]['groupName'] = 'Mechanics';
 
 $skillsource[269][3398]['typeName'] = 'Battleship Construction';
 $skillsource[269][3398]['rank'] = '8';
 $skillsource[269][3398]['typeID'] = '3398';
 $skillsource[269][3398]['skillCost'] = '25000000';
 $skillsource[269][3398]['groupID'] = '269';
-$skillsource[269][3398]['groupName'] = 'Mechanic';
+$skillsource[269][3398]['groupName'] = 'Mechanics';
 
 $skillsource[269][24568]['typeName'] = 'Capital Remote Armor Repair Systems';
 $skillsource[269][24568]['rank'] = '10';
 $skillsource[269][24568]['typeID'] = '24568';
 $skillsource[269][24568]['skillCost'] = '10000000';
 $skillsource[269][24568]['groupID'] = '269';
-$skillsource[269][24568]['groupName'] = 'Mechanic';
+$skillsource[269][24568]['groupName'] = 'Mechanics';
 
 $skillsource[269][27936]['typeName'] = 'Capital Remote Hull Repair Systems';
 $skillsource[269][27936]['rank'] = '10';
 $skillsource[269][27936]['typeID'] = '27936';
 $skillsource[269][27936]['skillCost'] = '10000000';
 $skillsource[269][27936]['groupID'] = '269';
-$skillsource[269][27936]['groupName'] = 'Mechanic';
+$skillsource[269][27936]['groupName'] = 'Mechanics';
 
 $skillsource[269][21803]['typeName'] = 'Capital Repair Systems';
 $skillsource[269][21803]['rank'] = '8';
 $skillsource[269][21803]['typeID'] = '21803';
 $skillsource[269][21803]['skillCost'] = '17500000';
 $skillsource[269][21803]['groupID'] = '269';
-$skillsource[269][21803]['groupName'] = 'Mechanic';
+$skillsource[269][21803]['groupName'] = 'Mechanics';
 
 $skillsource[269][22242]['typeName'] = 'Capital Ship Construction';
 $skillsource[269][22242]['rank'] = '14';
 $skillsource[269][22242]['typeID'] = '22242';
 $skillsource[269][22242]['skillCost'] = '75000000';
 $skillsource[269][22242]['groupID'] = '269';
-$skillsource[269][22242]['groupName'] = 'Mechanic';
+$skillsource[269][22242]['groupName'] = 'Mechanics';
 
 $skillsource[269][3397]['typeName'] = 'Cruiser Construction';
 $skillsource[269][3397]['rank'] = '5';
 $skillsource[269][3397]['typeID'] = '3397';
 $skillsource[269][3397]['skillCost'] = '1000000';
 $skillsource[269][3397]['groupID'] = '269';
-$skillsource[269][3397]['groupName'] = 'Mechanic';
+$skillsource[269][3397]['groupName'] = 'Mechanics';
 
 $skillsource[269][26255]['typeName'] = 'Drones Rigging';
 $skillsource[269][26255]['rank'] = '3';
 $skillsource[269][26255]['typeID'] = '26255';
 $skillsource[269][26255]['skillCost'] = '100000';
 $skillsource[269][26255]['groupID'] = '269';
-$skillsource[269][26255]['groupName'] = 'Mechanic';
+$skillsource[269][26255]['groupName'] = 'Mechanics';
 
 $skillsource[269][26256]['typeName'] = 'Electronic Superiority Rigging';
 $skillsource[269][26256]['rank'] = '3';
 $skillsource[269][26256]['typeID'] = '26256';
 $skillsource[269][26256]['skillCost'] = '100000';
 $skillsource[269][26256]['groupID'] = '269';
-$skillsource[269][26256]['groupName'] = 'Mechanic';
+$skillsource[269][26256]['groupName'] = 'Mechanics';
 
 $skillsource[269][22806]['typeName'] = 'EM Armor Compensation';
 $skillsource[269][22806]['rank'] = '2';
 $skillsource[269][22806]['typeID'] = '22806';
 $skillsource[269][22806]['skillCost'] = '120000';
 $skillsource[269][22806]['groupID'] = '269';
-$skillsource[269][22806]['groupName'] = 'Mechanic';
+$skillsource[269][22806]['groupName'] = 'Mechanics';
 
 $skillsource[269][26258]['typeName'] = 'Energy Weapon Rigging';
 $skillsource[269][26258]['rank'] = '3';
 $skillsource[269][26258]['typeID'] = '26258';
 $skillsource[269][26258]['skillCost'] = '100000';
 $skillsource[269][26258]['groupID'] = '269';
-$skillsource[269][26258]['groupName'] = 'Mechanic';
+$skillsource[269][26258]['groupName'] = 'Mechanics';
 
 $skillsource[269][22807]['typeName'] = 'Explosive Armor Compensation';
 $skillsource[269][22807]['rank'] = '2';
 $skillsource[269][22807]['typeID'] = '22807';
 $skillsource[269][22807]['skillCost'] = '120000';
 $skillsource[269][22807]['groupID'] = '269';
-$skillsource[269][22807]['groupName'] = 'Mechanic';
+$skillsource[269][22807]['groupName'] = 'Mechanics';
 
 $skillsource[269][3395]['typeName'] = 'Frigate Construction';
 $skillsource[269][3395]['rank'] = '2';
 $skillsource[269][3395]['typeID'] = '3395';
 $skillsource[269][3395]['skillCost'] = '80000';
 $skillsource[269][3395]['groupID'] = '269';
-$skillsource[269][3395]['groupName'] = 'Mechanic';
+$skillsource[269][3395]['groupName'] = 'Mechanics';
 
 $skillsource[269][3394]['typeName'] = 'Hull Upgrades';
 $skillsource[269][3394]['rank'] = '2';
 $skillsource[269][3394]['typeID'] = '3394';
 $skillsource[269][3394]['skillCost'] = '60000';
 $skillsource[269][3394]['groupID'] = '269';
-$skillsource[269][3394]['groupName'] = 'Mechanic';
+$skillsource[269][3394]['groupName'] = 'Mechanics';
 
 $skillsource[269][26259]['typeName'] = 'Hybrid Weapon Rigging';
 $skillsource[269][26259]['rank'] = '3';
 $skillsource[269][26259]['typeID'] = '26259';
 $skillsource[269][26259]['skillCost'] = '100000';
 $skillsource[269][26259]['groupID'] = '269';
-$skillsource[269][26259]['groupName'] = 'Mechanic';
+$skillsource[269][26259]['groupName'] = 'Mechanics';
 
 $skillsource[269][3396]['typeName'] = 'Industrial Construction';
 $skillsource[269][3396]['rank'] = '3';
 $skillsource[269][3396]['typeID'] = '3396';
 $skillsource[269][3396]['skillCost'] = '2000000';
 $skillsource[269][3396]['groupID'] = '269';
-$skillsource[269][3396]['groupName'] = 'Mechanic';
+$skillsource[269][3396]['groupName'] = 'Mechanics';
 
 $skillsource[269][26252]['typeName'] = 'Jury Rigging';
 $skillsource[269][26252]['rank'] = '2';
 $skillsource[269][26252]['typeID'] = '26252';
 $skillsource[269][26252]['skillCost'] = '60000';
 $skillsource[269][26252]['groupID'] = '269';
-$skillsource[269][26252]['groupName'] = 'Mechanic';
+$skillsource[269][26252]['groupName'] = 'Mechanics';
 
 $skillsource[269][22808]['typeName'] = 'Kinetic Armor Compensation';
 $skillsource[269][22808]['rank'] = '2';
 $skillsource[269][22808]['typeID'] = '22808';
 $skillsource[269][22808]['skillCost'] = '120000';
 $skillsource[269][22808]['groupID'] = '269';
-$skillsource[269][22808]['groupName'] = 'Mechanic';
+$skillsource[269][22808]['groupName'] = 'Mechanics';
 
 $skillsource[269][26260]['typeName'] = 'Launcher Rigging';
 $skillsource[269][26260]['rank'] = '3';
 $skillsource[269][26260]['typeID'] = '26260';
 $skillsource[269][26260]['skillCost'] = '100000';
 $skillsource[269][26260]['groupID'] = '269';
-$skillsource[269][26260]['groupName'] = 'Mechanic';
+$skillsource[269][26260]['groupName'] = 'Mechanics';
 
-$skillsource[269][3392]['typeName'] = 'Mechanic';
+$skillsource[269][3392]['typeName'] = 'Mechanics';
 $skillsource[269][3392]['rank'] = '1';
 $skillsource[269][3392]['typeID'] = '3392';
 $skillsource[269][3392]['skillCost'] = '20000';
 $skillsource[269][3392]['groupID'] = '269';
-$skillsource[269][3392]['groupName'] = 'Mechanic';
+$skillsource[269][3392]['groupName'] = 'Mechanics';
 
 $skillsource[269][28880]['typeName'] = 'Nanite Interfacing';
 $skillsource[269][28880]['rank'] = '3';
 $skillsource[269][28880]['typeID'] = '28880';
 $skillsource[269][28880]['skillCost'] = '5000000';
 $skillsource[269][28880]['groupID'] = '269';
-$skillsource[269][28880]['groupName'] = 'Mechanic';
+$skillsource[269][28880]['groupName'] = 'Mechanics';
 
 $skillsource[269][28879]['typeName'] = 'Nanite Operation';
 $skillsource[269][28879]['rank'] = '2';
 $skillsource[269][28879]['typeID'] = '28879';
 $skillsource[269][28879]['skillCost'] = '1000000';
 $skillsource[269][28879]['groupID'] = '269';
-$skillsource[269][28879]['groupName'] = 'Mechanic';
+$skillsource[269][28879]['groupName'] = 'Mechanics';
 
 $skillsource[269][3400]['typeName'] = 'Outpost Construction';
 $skillsource[269][3400]['rank'] = '16';
 $skillsource[269][3400]['typeID'] = '3400';
 $skillsource[269][3400]['skillCost'] = '100000000';
 $skillsource[269][3400]['groupID'] = '269';
-$skillsource[269][3400]['groupName'] = 'Mechanic';
+$skillsource[269][3400]['groupName'] = 'Mechanics';
 
 $skillsource[269][26257]['typeName'] = 'Projectile Weapon Rigging';
 $skillsource[269][26257]['rank'] = '3';
 $skillsource[269][26257]['typeID'] = '26257';
 $skillsource[269][26257]['skillCost'] = '100000';
 $skillsource[269][26257]['groupID'] = '269';
-$skillsource[269][26257]['groupName'] = 'Mechanic';
+$skillsource[269][26257]['groupName'] = 'Mechanics';
 
 $skillsource[269][16069]['typeName'] = 'Remote Armor Repair Systems';
 $skillsource[269][16069]['rank'] = '2';
 $skillsource[269][16069]['typeID'] = '16069';
 $skillsource[269][16069]['skillCost'] = '85000';
 $skillsource[269][16069]['groupID'] = '269';
-$skillsource[269][16069]['groupName'] = 'Mechanic';
+$skillsource[269][16069]['groupName'] = 'Mechanics';
 
 $skillsource[269][27902]['typeName'] = 'Remote Hull Repair Systems';
 $skillsource[269][27902]['rank'] = '2';
 $skillsource[269][27902]['typeID'] = '27902';
 $skillsource[269][27902]['skillCost'] = '100000';
 $skillsource[269][27902]['groupID'] = '269';
-$skillsource[269][27902]['groupName'] = 'Mechanic';
+$skillsource[269][27902]['groupName'] = 'Mechanics';
 
 $skillsource[269][3393]['typeName'] = 'Repair Systems';
 $skillsource[269][3393]['rank'] = '1';
 $skillsource[269][3393]['typeID'] = '3393';
 $skillsource[269][3393]['skillCost'] = '30000';
 $skillsource[269][3393]['groupID'] = '269';
-$skillsource[269][3393]['groupName'] = 'Mechanic';
+$skillsource[269][3393]['groupName'] = 'Mechanics';
 
 $skillsource[269][25863]['typeName'] = 'Salvaging';
 $skillsource[269][25863]['rank'] = '3';
 $skillsource[269][25863]['typeID'] = '25863';
 $skillsource[269][25863]['skillCost'] = '1000000';
 $skillsource[269][25863]['groupID'] = '269';
-$skillsource[269][25863]['groupName'] = 'Mechanic';
+$skillsource[269][25863]['groupName'] = 'Mechanics';
 
 $skillsource[269][26261]['typeName'] = 'Shield Rigging';
 $skillsource[269][26261]['rank'] = '3';
 $skillsource[269][26261]['typeID'] = '26261';
 $skillsource[269][26261]['skillCost'] = '100000';
 $skillsource[269][26261]['groupID'] = '269';
-$skillsource[269][26261]['groupName'] = 'Mechanic';
+$skillsource[269][26261]['groupName'] = 'Mechanics';
 
 $skillsource[269][27906]['typeName'] = 'Tactical Logistics Reconfiguration';
 $skillsource[269][27906]['rank'] = '8';
 $skillsource[269][27906]['typeID'] = '27906';
 $skillsource[269][27906]['skillCost'] = '25000000';
 $skillsource[269][27906]['groupID'] = '269';
-$skillsource[269][27906]['groupName'] = 'Mechanic';
+$skillsource[269][27906]['groupName'] = 'Mechanics';
 
 $skillsource[269][22809]['typeName'] = 'Thermic Armor Compensation';
 $skillsource[269][22809]['rank'] = '2';
 $skillsource[269][22809]['typeID'] = '22809';
 $skillsource[269][22809]['skillCost'] = '120000';
 $skillsource[269][22809]['groupID'] = '269';
-$skillsource[269][22809]['groupName'] = 'Mechanic';
+$skillsource[269][22809]['groupName'] = 'Mechanics';
 
 ////////////////////////////////////////////////////////////////////////// MISSILE LAUNCHER OPERATION
 $skillsource[256][25718]['typeName'] = 'Assault Missile Specialization';
