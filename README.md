@@ -22,4 +22,4 @@ Builds change frequently
         
 Support?
 -------
-Sure, why not? Contact 'Shionoya Risa' in-game and I'll _try_ and help.
+Sure, why not? Contact 'Shionoya Risa' in-game, message me on Github or email and I'll _try_ and help.
