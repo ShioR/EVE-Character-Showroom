@@ -19,11 +19,11 @@
       <!--[assign var='Navigation' value=10]-->   
       <!--[assign var='PlanetManagement' value=5]-->   
       <!--[assign var='Science' value=55]-->   
-      <!--[assign var='Social' value=9]-->   
+      <!--[assign var='Social' value=10]-->   
       <!--[assign var='SpaceshipCommand' value=60]-->   
       <!--[assign var='Subsystems' value=20]-->   
       <!--[assign var='Trade' value=14]-->   
-      <!--[assign var='GroupTotal' value=384]-->  
+      <!--[assign var='GroupTotal' value=385]-->  
       <!--[assign var='totalCost' value=0]-->   
       <!--[assign var='totalSkills' value=0]-->
       <!--[assign var='lvl1total' value=0]-->
