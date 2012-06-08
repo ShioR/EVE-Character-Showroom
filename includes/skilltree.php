@@ -303,6 +303,13 @@ $skillsource[272][3551]['skillCost'] = '36000';
 $skillsource[272][3551]['groupID'] = '272';
 $skillsource[272][3551]['groupName'] = 'Electronics';
 
+$skillsource[272][19921]['typeName'] = 'Target Breaker';
+$skillsource[272][19921]['rank'] = '5';
+$skillsource[272][19921]['typeID'] = '4411';
+$skillsource[272][19921]['skillCost'] = '600000';
+$skillsource[272][19921]['groupID'] = '272';
+$skillsource[272][19921]['groupName'] = 'Electronics';
+
 $skillsource[272][19921]['typeName'] = 'Target Painting';
 $skillsource[272][19921]['rank'] = '3';
 $skillsource[272][19921]['typeID'] = '19921';

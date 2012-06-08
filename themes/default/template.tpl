@@ -9,7 +9,7 @@
         
       <!--[assign var='CorporationManagement' value=7]-->   
       <!--[assign var='Drones' value=19]-->   
-      <!--[assign var='Electronics' value=21]-->   
+      <!--[assign var='Electronics' value=22]-->   
       <!--[assign var='Engineering' value=19]-->   
       <!--[assign var='Gunnery' value=40]-->   
       <!--[assign var='Industry' value=32]-->   
@@ -23,7 +23,7 @@
       <!--[assign var='SpaceshipCommand' value=60]-->   
       <!--[assign var='Subsystems' value=20]-->   
       <!--[assign var='Trade' value=14]-->   
-      <!--[assign var='GroupTotal' value=385]-->  
+      <!--[assign var='GroupTotal' value=386]-->  
       <!--[assign var='totalCost' value=0]-->   
       <!--[assign var='totalSkills' value=0]-->
       <!--[assign var='lvl1total' value=0]-->
