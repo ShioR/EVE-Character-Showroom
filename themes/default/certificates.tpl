@@ -27,9 +27,13 @@
               <div style="margin-left: 30px;">
                 <table style="border-collapse:collapse;border: #666666 1px solid;">
                 <!--[foreach item='certificate' from=$category.owned]-->
-                  <tr>
+                  <tr onmouseover="this.style.cursor='pointer'" onclick="javascript:i(document.getElementById('<!--[$certificate.certificateID]-->'));" href="#toggle" id="c<!--[$certificate.certificateID]-->">
                     <td class="dataTableHeader" style="width:32px;"><img alt="<!--[$certificate.className]-->" <!--[if $certificate.gradeName eq 'Elite']-->src="/imgs/icon79_06.png" <!--[/if]--><!--[if $certificate.gradeName eq 'Improved']-->src="/imgs/icon79_04.png" <!--[/if]--><!--[if $certificate.gradeName eq 'Standard']-->src="/imgs/icon79_02.png" <!--[/if]-->src="/imgs/icon79_01.png" /></td>
-                    <td class="dataTableHeader" style="width:765px;"><!--[$certificate.className]--> - <span <!--[if $certificate.gradeName eq 'Elite']-->style="color: gold;" <!--[/if]--><!--[if $certificate.gradeName eq 'Improved']-->style="color: red;" <!--[/if]--><!--[if $certificate.gradeName eq 'Standard']-->style="color: green;" <!--[/if]-->><!--[$certificate.gradeName]--></span></td>
+                    <td class="dataTableHeader" style="width:765px;"><!--[$certificate.className]--> - <span <!--[if $certificate.gradeName eq 'Elite']-->style="color: gold;" <!--[/if]--><!--[if $certificate.gradeName eq 'Improved']-->style="color: red;" <!--[/if]--><!--[if $certificate.gradeName eq 'Standard']-->style="color: green;" <!--[/if]-->><!--[$certificate.gradeName]--></span><br /></td>
+                  </tr>
+                  <tr>
+					<td style="width:32px;background-color:#434343;border:#666666 1px solid;"></td>
+                    <td id="<!--[$certificate.certificateID]-->" style="width:721px;padding-right:5px;padding-left:5px;padding-bottom:5px;border-left:#666666 0px solid;border-right:#666666 0px solid;color:#999;padding-top:5px;border-bottom:#666666 1px solid;background-color:#434343;text-align:left; font-size:x-small;display:none;"><!--[$certificate.description|wordwrap:125:"<br />"]--></td>
                   </tr>
                 <!--[/foreach]-->
                 </table>
@@ -39,22 +43,6 @@
         <!--[/if]-->
         <!--[/foreach]-->
       </div>
-      <br /><br />
-       <div id="skillsidebox" style="display:none;" >
-          <!--[foreach item='grp' from=$grptable]-->
-            <strong><!--[$grp.grpname]--></strong>: <!--[$grp.spcount]--><br />
-          <!--[/foreach]-->
-            <br /><strong>Total: <!--[$skillpointstotal]--></strong>
-            <br /><br />
-            <a style="color: orange; font-weight: bold; text-decoration: none;" onclick="HideContent('skillsidebox'); return true;" href="#">[ close ]</a>
-          </div>
-        </div>
-      </td>
-    </tr>
-    <tr>
-      <td><div style="margin: auto; width: 100%; text-align: center;"><br /><br /></div></td>
-    </tr>
-  </tbody>
-  </table>
+      <br /><br /><br /><br />
 
   <!--[include file='footer.tpl']-->
