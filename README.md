@@ -15,7 +15,7 @@ https://github.com/ShioR/EVE-Character-Showroom/wiki/Installation
 
 Version numbers
 ---------------
-Crucible v4.187 should be read as (Crucible data dump) v[Version 4].{Build 187}     
+Inferno v5.222 should be read as (Inferno data dump) v[Version 5].{Build 222}     
 Data dumps change nearly every expansion     
 Versions change infrequently    
 Builds change frequently    
