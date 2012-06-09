@@ -183,7 +183,7 @@
                 </div>
                 <!--[/if]-->
 			  <!--[if $skill.flag neq 61]-->	
-              <div id="<!--[$skill.typeID]-->" style="text-align: left; font-size: x-small; color: #777; display:none;";>	
+              <div id="<!--[$skill.typeID]-->" style="text-align: left; font-size: x-small; color: #777; display:none;">	
 							<span style="color:#c8c8c8;">Description: </span><!--[getskillinfo typeID=$skill.typeID]-->
 							<span style="color:#c8c8c8;">Cost: </span><!--[$skill.skillCost|number_format]--> ISK	
 			  </div>
@@ -262,12 +262,4 @@
   </tbody>
   </table>
 
-  <div id="skillsidebox" style="display:none;" >
-  <!--[foreach item='grp' from=$grptable]-->
-    <strong><!--[$grp.grpname]--></strong>: <!--[$grp.spcount]--><br />
-  <!--[/foreach]-->
-    <br /><strong>Total: <!--[$skillpointstotal]--></strong>
-    <br /><br />
-    <a style="color: orange; font-weight: bold; text-decoration: none;" onclick="HideContent('skillsidebox'); return true;" href="#">[ close ]</a>
-  </div>
   <!--[include file='footer.tpl']-->
