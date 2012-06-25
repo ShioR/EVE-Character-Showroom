@@ -14,7 +14,7 @@
       <!--[assign var='Gunnery' value=40]-->   
       <!--[assign var='Industry' value=32]-->   
       <!--[assign var='Leadership' value=14]-->   
-      <!--[assign var='Mechanics' value=32]-->   
+      <!--[assign var='Mechanics' value=33]-->   
       <!--[assign var='Missiles' value=24]-->   
       <!--[assign var='Navigation' value=10]-->   
       <!--[assign var='PlanetManagement' value=5]-->   
@@ -23,7 +23,7 @@
       <!--[assign var='SpaceshipCommand' value=60]-->   
       <!--[assign var='Subsystems' value=20]-->   
       <!--[assign var='Trade' value=14]-->   
-      <!--[assign var='GroupTotal' value=386]-->  
+      <!--[assign var='GroupTotal' value=387]-->  
       <!--[assign var='totalCost' value=0]-->   
       <!--[assign var='totalSkills' value=0]-->
       <!--[assign var='lvl1total' value=0]-->
