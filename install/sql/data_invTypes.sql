@@ -1,6 +1,6 @@
--- ----------------------------
--- Table structure for `data_invTypes`
--- ----------------------------
+	--- ----------------------------
+	--- Table structure for `data_invTypes`
+	--- ----------------------------
 DROP TABLE IF EXISTS `data_invTypes`;
 CREATE TABLE `data_invTypes` (
   `typeID` int(11) NOT NULL,
@@ -420,3 +420,4 @@ INSERT INTO `data_invTypes` VALUES ('3894', '278', 'Distribution Connections', '
 INSERT INTO `data_invTypes` VALUES ('3895', '278', 'Security Connections', 'Understanding of military culture.\r\n\r\nImproves loyalty point gain by 10% per level when working for agents in the Security corporation division.', null, '0', '0', '0.01', '0', '1', null, '20000000', '1', '376', '0', '33');
 INSERT INTO `data_invTypes` VALUES ('3445', '274', 'Black Market Trading', 'Skill at forging cargo manifests and disguising contraband cargo. From a base of 90%, each level of skill reduces chance of contraband detection by 10%.', null, '0', '0', '0.01', '0', '1', '0', '70000', '0', null, '0', '33');
 INSERT INTO `data_invTypes` VALUES ('4411', '272', 'Target Breaker Amplification', 'Improves the continuous reflection of active target spectrum breakers, resulting in much improved defenses against all those who wish to target any vessel in the vicinity.\r\n\r\nReduces duration time and capacitor need of Target Spectrum Breakers by 5% per level.', null, '0', '0', '0.01', '0', '1', null, '600000', '1', '367', '0', '33');
+INSERT INTO `data_invTypes` VALUES ('32797', '269', 'Armor Resistance Phasing', 'Improves control over, and flow between, nano membranes that react to damage by shifting resistances.\r\n\r\nReduces duration time of Reactive Armor Hardeners by 10% per level.', null, '0', '0', '0.01', '0', '1', null, '500000', '1', '372', '0', '33');
