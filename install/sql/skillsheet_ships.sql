@@ -3,11 +3,11 @@
 -- ----------------------------
 DROP TABLE IF EXISTS `skillsheet_ships`;
 CREATE TABLE `skillsheet_ships` (
-  `typeID` smallint(5) NOT NULL DEFAULT '0',
+  `typeID` mediumint(5) NOT NULL DEFAULT '0',
   `groupID` smallint(5) DEFAULT NULL,
   `typeName` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
   `description` text CHARACTER SET utf8,
-  `graphicID` smallint(5) DEFAULT NULL,
+  `graphicID` mediumint(5) DEFAULT NULL,
   `radius` double DEFAULT NULL,
   `mass` double DEFAULT NULL,
   `volume` double DEFAULT NULL,
@@ -270,3 +270,5 @@ INSERT INTO `skillsheet_ships` VALUES ('4302', '419', 'Oracle', null, '4302', nu
 INSERT INTO `skillsheet_ships` VALUES ('4306', '419', 'Naga', null, '4306', null, null, null, null, null, '1', null, '1', null, null);
 INSERT INTO `skillsheet_ships` VALUES ('4308', '419', 'Talos', null, '4308', null, null, null, null, null, '8', null, '1', null, null);
 INSERT INTO `skillsheet_ships` VALUES ('4310', '419', 'Tornado', null, '4310', null, null, null, null, null, '2', null, '1', null, null);
+INSERT INTO `skillsheet_ships` VALUES ('32788', '324', 'Cambion', null, '32788', null, null, null, null, null, '1', null, '1', null, null);
+INSERT INTO `skillsheet_ships` VALUES ('32790', '832', 'Etana', null, '32790', null, null, null, null, null, '1', null, '1', null, null);
