@@ -884,3 +884,9 @@ INSERT INTO `skillsheet_reqs` VALUES ('4310', 'requiredSkill1', '3333', '0', '41
 INSERT INTO `skillsheet_reqs` VALUES ('4310', 'requiredSkill1Level', '3', '0', '419', 'Tornado', '2', 'Minmatar', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('4310', 'requiredSkill2', '12099', '0', '419', 'Tornado', '2', 'Minmatar', 'Battlecruisers', null);
 INSERT INTO `skillsheet_reqs` VALUES ('4310', 'requiredSkill2Level', '3', '0', '419', 'Tornado', '2', 'Minmatar', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('32788', 'requiredSkill1', '3330', '0', '324', 'Cambion', '1', 'Caldari', 'Caldari Frigate', null);
+INSERT INTO `skillsheet_reqs` VALUES ('32788', 'requiredSkill1Level', '3', '0', '324', 'Cambion', '1', 'Caldari', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('32790', 'requiredSkill1', '3334', '0', '832', 'Etana', '1', 'Caldari', 'Caldari Cruiser', null);
+INSERT INTO `skillsheet_reqs` VALUES ('32790', 'requiredSkill1Level', '5', '0', '832', 'Etana', '1', 'Caldari', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('32790', 'requiredSkill2', '12096', '0', '832', 'Etana', '1', 'Caldari', 'Logistics', null);
+INSERT INTO `skillsheet_reqs` VALUES ('32790', 'requiredSkill2Level', '1', '0', '832', 'Etana', '1', 'Caldari', null, null);
