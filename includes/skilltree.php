@@ -21,7 +21,7 @@ $skillsource[266][3732]['skillCost'] = '8000000';
 $skillsource[266][3732]['groupID'] = '266';
 $skillsource[266][3732]['groupName'] = 'Corporation Management';
 
-$skillsource[266][3368]['typeName'] = 'Ethnic Relations';
+$skillsource[266][3368]['typeName'] = 'Diplomatic Relations';
 $skillsource[266][3368]['rank'] = '2';
 $skillsource[266][3368]['typeID'] = '3368';
 $skillsource[266][3368]['skillCost'] = '40000';
