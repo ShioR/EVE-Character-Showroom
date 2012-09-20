@@ -19,9 +19,9 @@ RewriteRule ^imgs/.*$ - [PT]
 RewriteRule ^home skillsheet.php [L,NC,NS]
 RewriteRule ^add skillsheet.php?show=addnew [L,NC,NS]
 RewriteRule ^stats skillsheet.php?show=stats [L,NC,NS]
-RewriteRule ^(?!skillsheet)([^-/]+)/?$ skillsheet.php?name=$1 [L,NC,NS]
-RewriteRule ^pilot/([^-]+)$ skillsheet.php?name=$1 [L,NC,NS]
-RewriteRule ^([^-]+)/([^-]+)?$ skillsheet.php?name=$1&show=$2 [L,NC,NS]
+RewriteRule ^(?!skillsheet)([^/]+)/?$ skillsheet.php?name=$1 [L,NC,NS]
+RewriteRule ^pilot/([^/]+)/?$ skillsheet.php?name=$1 [L,NC,NS]
+RewriteRule ^([^/]+)/(.+)?$ skillsheet.php?name=$1&show=$2 [L,NC,NS]
 
 # hax!
 DirectoryIndex skillsheet.php
