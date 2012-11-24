@@ -4,9 +4,8 @@ Apache 2.2+
 MySQL 5.0.91+   
 PHP 5.2.x with cURL and GD    
      
-**For _optional_ cron jobs;**      
-Support for 5 cron jobs    
-**MySQL 'FILE' Permission** - This is a global permission and unless you have root access probably won't be allowed. Help us fix this! https://github.com/ShioR/EVE-Character-Showroom/issues/33     
+**For cron jobs;**      
+Support for 5 cron jobs  
          
 Installation
 ------------
