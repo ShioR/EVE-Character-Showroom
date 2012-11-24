@@ -5,13 +5,12 @@
 //// insert the new data into the MySQL server. This, with a correct ////
 ///////// setup nullifies the need for the cachedUntil timer. ///////////
 /////////////////////////////////////////////////////////////////////////
-/////// This script should be run as a cron job every 30 MINUTES ////////
-/////////////// EXAMPLE: php /path/to/file/training.php /////////////////
+///////// This script should be run as a cron job every 3 HOURS /////////
+////////////// EXAMPLE: php /path/to/file/standings.php /////////////////
 /////////////////////////////////////////////////////////////////////////
 
-// Include the config file for the database
+// Include the config file for the database so you can connect
 include '../eveconfig/eveconfig.php';
-$xmlpath = _XMLPATH;
 
 // Connect to the server and select the database
 MYSQL_CONNECT($dbconfig['dbhost'], $dbconfig['dbuname'], $dbconfig['dbpass']);
@@ -36,38 +35,19 @@ $characterid=MYSQL_FETCH_ARRAY($charID, MYSQL_ASSOC);
 $auth = array_merge($nafn, $keyID, $vCode, $characterid);
 extract($auth, EXTR_PREFIX_SKIP);
 
-		// Get skill currently training
+// Get SkillInTraining from API Server and do some xml stuff that for some reason seems to work...
 		$url = "https://api.eveonline.com/char/SkillInTraining.xml.aspx?keyID=$keyID&vCode=$vCode&characterID=$characterID";
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HEADER, false);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-        curl_setopt($ch, CURLOPT_CAINFO, getcwd() . "../includes/eveapi.crt");            
-        
+        	$xml = simplexml_load_file($url);
+			header('Content-Type: text/xml'); 
+			$dbxml = $xml->asXML(); 
 
-        $training = curl_exec($ch);
+// Write the new information to the database
+MYSQL_QUERY("UPDATE skillsheet_apis SET training = '$dbxml' WHERE characterID = '$characterID'");
 
-        curl_close($ch);    
-
-// Take the output from the API server and write it to the cache folder (See below for why)
-$file = 'SkillInTraining';
-$f = fopen("$xmlpath/$file/$characterID.$file.xml", "w");
-fwrite($f, $training);
-fclose($f);
-
-// Where the 'cached' XML file was saved to. MySQL needs the full path.
-$path = "'$xmlpath/$file/$characterID.$file.xml'";
-
-// Write the new information to the database from the file, this needs to come from a xml file rather than straight from php, for some reason o.O
-MYSQL_QUERY("UPDATE skillsheet_apis SET training=LOAD_FILE($path) WHERE characterID = '$characterID'");
-
-// Keep running!
+// Keep running so that all characters are updated
 ++$i; 
 } 
-
 // Close the connection
 MYSQL_CLOSE();
 ?>
