@@ -39,8 +39,6 @@ define('_INSTALLED', false);
 define('_SHORTURLS', true);
 // With trailing slash!
 define('_DOMAIN', '');
-// No trailing slash! Please edit this to the FULL path of the xml folder
-define('_XMLPATH', '/home/example/public_html/cache/xml');
 
 // Path to image caches
 $eve_filepath = 'cache/templates'; // Remember to chmod it 777
