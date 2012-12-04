@@ -8,15 +8,15 @@
           <!--[include file='queue.tpl']-->
         
       <!--[assign var='CorporationManagement' value=7]-->   
-      <!--[assign var='Drones' value=19]-->   
-      <!--[assign var='Electronics' value=22]-->   
+      <!--[assign var='Drones' value=20]-->   
+      <!--[assign var='Electronics' value=26]-->   
       <!--[assign var='Engineering' value=19]-->   
       <!--[assign var='Gunnery' value=40]-->   
       <!--[assign var='Industry' value=32]-->   
       <!--[assign var='Leadership' value=14]-->   
       <!--[assign var='Mechanics' value=33]-->   
       <!--[assign var='Missiles' value=24]-->   
-      <!--[assign var='Navigation' value=10]-->   
+      <!--[assign var='Navigation' value=11]-->   
       <!--[assign var='PlanetManagement' value=5]-->   
       <!--[assign var='Science' value=55]-->   
       <!--[assign var='Social' value=10]-->   

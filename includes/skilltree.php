@@ -169,6 +169,13 @@ $skillsource[273][3439]['skillCost'] = '200000';
 $skillsource[273][3439]['groupID'] = '273';
 $skillsource[273][3439]['groupName'] = 'Drones';
 
+$skillsource[273][3440]['typeName'] = 'Salvage Drone Operation';
+$skillsource[273][3440]['rank'] = '4';
+$skillsource[273][3440]['typeID'] = '3440';
+$skillsource[273][3440]['skillCost'] = '220000';
+$skillsource[273][3440]['groupID'] = '273';
+$skillsource[273][3440]['groupName'] = 'Drones';
+
 $skillsource[273][3437]['typeName'] = 'Scout Drone Operation';
 $skillsource[273][3437]['rank'] = '1';
 $skillsource[273][3437]['typeID'] = '3437';
@@ -226,6 +233,20 @@ $skillsource[272][19760]['skillCost'] = '160000';
 $skillsource[272][19760]['groupID'] = '272';
 $skillsource[272][19760]['groupName'] = 'Electronics';
 
+$skillsource[272][33000]['typeName'] = 'Gravimetric Sensor Compensation';
+$skillsource[272][33000]['rank'] = '2';
+$skillsource[272][33000]['typeID'] = '33000';
+$skillsource[272][33000]['skillCost'] = '200000';
+$skillsource[272][33000]['groupID'] = '272';
+$skillsource[272][33000]['groupName'] = 'Electronics';
+
+$skillsource[272][33001]['typeName'] = 'Ladar Sensor Compensation';
+$skillsource[272][33001]['rank'] = '2';
+$skillsource[272][33001]['typeID'] = '33001';
+$skillsource[272][33001]['skillCost'] = '200000';
+$skillsource[272][33001]['groupID'] = '272';
+$skillsource[272][33001]['groupName'] = 'Electronics';
+
 $skillsource[272][19759]['typeName'] = 'Long Distance Jamming';
 $skillsource[272][19759]['rank'] = '4';
 $skillsource[272][19759]['typeID'] = '19759';
@@ -239,6 +260,13 @@ $skillsource[272][3428]['typeID'] = '3428';
 $skillsource[272][3428]['skillCost'] = '88000';
 $skillsource[272][3428]['groupID'] = '272';
 $skillsource[272][3428]['groupName'] = 'Electronics';
+
+$skillsource[272][32999]['typeName'] = 'Magnetometric Sensor Compensation';
+$skillsource[272][32999]['rank'] = '2';
+$skillsource[272][32999]['typeID'] = '32999';
+$skillsource[272][32999]['skillCost'] = '200000';
+$skillsource[272][32999]['groupID'] = '272';
+$skillsource[272][32999]['groupName'] = 'Electronics';
 
 $skillsource[272][3430]['typeName'] = 'Multitasking';
 $skillsource[272][3430]['rank'] = '3';
@@ -260,6 +288,13 @@ $skillsource[272][3435]['typeID'] = '3435';
 $skillsource[272][3435]['skillCost'] = '150000';
 $skillsource[272][3435]['groupID'] = '272';
 $skillsource[272][3435]['groupName'] = 'Electronics';
+
+$skillsource[272][33002]['typeName'] = 'Radae Sensor Compensation';
+$skillsource[272][33002]['rank'] = '2';
+$skillsource[272][33002]['typeID'] = '33002';
+$skillsource[272][33002]['skillCost'] = '200000';
+$skillsource[272][33002]['groupID'] = '272';
+$skillsource[272][33002]['groupName'] = 'Electronics';
 
 $skillsource[272][3433]['typeName'] = 'Sensor Linking';
 $skillsource[272][3433]['rank'] = '3';
@@ -1310,19 +1345,12 @@ $skillsource[269][22809]['groupID'] = '269';
 $skillsource[269][22809]['groupName'] = 'Mechanics';
 
 ////////////////////////////////////////////////////////////////////////// MISSILE LAUNCHER OPERATION
-$skillsource[256][25718]['typeName'] = 'Assault Missile Specialization';
-$skillsource[256][25718]['rank'] = '5';
-$skillsource[256][25718]['typeID'] = '25718';
-$skillsource[256][25718]['skillCost'] = '3000000';
-$skillsource[256][25718]['groupID'] = '256';
-$skillsource[256][25718]['groupName'] = 'Missile Launcher Operation';
-
-$skillsource[256][25719]['typeName'] = 'Assault Missiles';
-$skillsource[256][25719]['rank'] = '3';
-$skillsource[256][25719]['typeID'] = '25719';
-$skillsource[256][25719]['skillCost'] = '100000';
-$skillsource[256][25719]['groupID'] = '256';
-$skillsource[256][25719]['groupName'] = 'Missile Launcher Operation';
+$skillsource[256][3322]['typeName'] = 'Auto-Targeting Missiles';
+$skillsource[256][3322]['rank'] = '3';
+$skillsource[256][3322]['typeID'] = '3322';
+$skillsource[256][3322]['skillCost'] = '25000';
+$skillsource[256][3322]['groupID'] = '256';
+$skillsource[256][3322]['groupName'] = 'Missile Launcher Operation';
 
 $skillsource[256][28073]['typeName'] = 'Bomb Deployment';
 $skillsource[256][28073]['rank'] = '4';
@@ -1366,19 +1394,26 @@ $skillsource[256][3323]['skillCost'] = '30000';
 $skillsource[256][3323]['groupID'] = '256';
 $skillsource[256][3323]['groupName'] = 'Missile Launcher Operation';
 
-$skillsource[256][3322]['typeName'] = 'FoF Missiles';
-$skillsource[256][3322]['rank'] = '3';
-$skillsource[256][3322]['typeID'] = '3322';
-$skillsource[256][3322]['skillCost'] = '25000';
-$skillsource[256][3322]['groupID'] = '256';
-$skillsource[256][3322]['groupName'] = 'Missile Launcher Operation';
-
 $skillsource[256][20312]['typeName'] = 'Guided Missile Precision';
 $skillsource[256][20312]['rank'] = '5';
 $skillsource[256][20312]['typeID'] = '20312';
 $skillsource[256][20312]['skillCost'] = '500000';
 $skillsource[256][20312]['groupID'] = '256';
 $skillsource[256][20312]['groupName'] = 'Missile Launcher Operation';
+
+$skillsource[256][25718]['typeName'] = 'Heavy Assault Missile Specialization';
+$skillsource[256][25718]['rank'] = '5';
+$skillsource[256][25718]['typeID'] = '25718';
+$skillsource[256][25718]['skillCost'] = '3000000';
+$skillsource[256][25718]['groupID'] = '256';
+$skillsource[256][25718]['groupName'] = 'Missile Launcher Operation';
+
+$skillsource[256][25719]['typeName'] = 'Heavy Assault Missiles';
+$skillsource[256][25719]['rank'] = '3';
+$skillsource[256][25719]['typeID'] = '25719';
+$skillsource[256][25719]['skillCost'] = '100000';
+$skillsource[256][25719]['groupID'] = '256';
+$skillsource[256][25719]['groupName'] = 'Missile Launcher Operation';
 
 $skillsource[256][20211]['typeName'] = 'Heavy Missile Specialization';
 $skillsource[256][20211]['rank'] = '5';
@@ -1534,6 +1569,13 @@ $skillsource[275][21610]['typeID'] = '21610';
 $skillsource[275][21610]['skillCost'] = '20000000';
 $skillsource[275][21610]['groupID'] = '275';
 $skillsource[275][21610]['groupName'] = 'Navigation';
+
+$skillsource[275][4385]['typeName'] = 'Micro Jump Drive Operation';
+$skillsource[275][4385]['rank'] = '5';
+$skillsource[275][4385]['typeID'] = '4385';
+$skillsource[275][4385]['skillCost'] = '4500000';
+$skillsource[275][4385]['groupID'] = '275';
+$skillsource[275][4385]['groupName'] = 'Navigation';
 
 $skillsource[275][3449]['typeName'] = 'Navigation';
 $skillsource[275][3449]['rank'] = '1';
