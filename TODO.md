@@ -1,5 +1,6 @@
 To-Do
 ---------   
+* Add new destroyers & images   
 * Add Mining Frig skills & ship & image & probably group   
 * Add Radar Sensor Compensation, Gravimetric Sensor Compensation, Magnetometric Sensor Compensation and Ladar Sensor Compensation skills.   
 * Add Micro Jump Drive Operation skill.    
