@@ -1698,8 +1698,8 @@ function ships($config = array())
                    2  => 'Minmatar',
                    4  => 'Amarr',
                    8  => 'Gallente',
-                   10  => 'ORE',
-                   32  => 'Faction');
+                   16  => 'Pirate',
+                   32  => 'ORE');
 
     $dbconn   =& DBGetConn(true);
 
