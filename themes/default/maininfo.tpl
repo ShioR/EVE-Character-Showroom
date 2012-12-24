@@ -80,7 +80,7 @@
                   </tr>
                   <tr>
                     <td class="dataTableCell">Currently Training</td>
-                    <td colspan="2" style="color: gold; font-weight: bold; text-align: left;" class="dataTableCell"><!--[if $Training]--><a style="color: gold; font-weight: bold; text-decoration: none;" href="#s<!--[$TrainingID]-->"><!--[$Training]--></a><!--[else]--><a style="color: maroon;text-decoration: none;">No skill currently training<!--[/if]--></a></td>
+                    <td colspan="2" style="color: gold; font-weight: bold; text-align: left;" class="dataTableCell"><!--[if $Training]--><a style="color: gold; font-weight: bold; text-decoration: none;" href="/<!--[$name|replace:' ':'_']-->/#s<!--[$TrainingID]-->"><!--[$Training]--></a><!--[else]--><a style="color: maroon;text-decoration: none;">No skill currently training<!--[/if]--></a></td>
                     <td style="text-align: center;" class="dataTableCellLeftRight"><!--[if $Training]--><img alt="Level <!--[$ToLevel]-->" src="/imgs/level<!--[$ToLevel]-->_act.gif" width:48px; height:8px; /><!--[else]--><img alt="No Skill Training" src="/imgs/level0.gif" /><!--[/if]--></td>
                   </tr>
                   <tr>
