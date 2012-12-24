@@ -1710,6 +1710,7 @@ function ships($config = array())
             $sql = "SELECT   typeID,
                              groupID,
                              typeName,
+                             tag,
                              description,
                              graphicID,
                              raceID
@@ -1725,7 +1726,7 @@ function ships($config = array())
             }
 
             for (; !$result->EOF; $result->MoveNext()) {
-                list($typeID, $groupID, $typeName, $description, $graphicID, $raceID) = $result->fields;
+                list($typeID, $groupID, $typeName, $tag, $description, $graphicID, $raceID) = $result->fields;
 
                 $required  = GetRequiredSkills($typeID, $groupID, $skillsearch);
 
@@ -1746,6 +1747,7 @@ function ships($config = array())
                                                                     'groupID'        => $groupID,
                                                                     'group'          => $group,
                                                                     'typeName'       => $typeName,
+                                                                    'tag'			 => $tag,
                                                                     //'description'    => $description,
                                                                     'graphicID'      => $graphicID,
                                                                     'raceID'         => $raceID,
