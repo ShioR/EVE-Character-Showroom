@@ -289,7 +289,7 @@ $skillsource[272][3435]['skillCost'] = '150000';
 $skillsource[272][3435]['groupID'] = '272';
 $skillsource[272][3435]['groupName'] = 'Electronics';
 
-$skillsource[272][33002]['typeName'] = 'Radae Sensor Compensation';
+$skillsource[272][33002]['typeName'] = 'Radar Sensor Compensation';
 $skillsource[272][33002]['rank'] = '2';
 $skillsource[272][33002]['typeID'] = '33002';
 $skillsource[272][33002]['skillCost'] = '200000';
