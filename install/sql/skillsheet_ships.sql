@@ -85,7 +85,7 @@ INSERT INTO `skillsheet_ships` VALUES ('2161', '25', 'Crucifier', '1', null, '10
 INSERT INTO `skillsheet_ships` VALUES ('3764', '30', 'Leviathan', '1', null, '2930', null, null, null, null, null, '1', null, '1', null, null);
 INSERT INTO `skillsheet_ships` VALUES ('3766', '25', 'Vigil', '1', null, '1240', null, null, null, null, null, '2', null, '1', null, null);
 INSERT INTO `skillsheet_ships` VALUES ('11011', '26', 'Guardian-Vexor', '4', null, '62', null, null, null, null, null, '8', null, '1', null, null);
-INSERT INTO `skillsheet_ships` VALUES ('11172', '830', 'Helios', '1', null, '1841', null, null, null, null, null, '8', null, '1', null, null);
+INSERT INTO `skillsheet_ships` VALUES ('11172', '830', 'Helios', '2', null, '1841', null, null, null, null, null, '8', null, '1', null, null);
 INSERT INTO `skillsheet_ships` VALUES ('11174', '893', 'Keres', '2', null, '1913', null, null, null, null, null, '8', null, '1', null, null);
 INSERT INTO `skillsheet_ships` VALUES ('11176', '831', 'Crow', '2', null, '1848', null, null, null, null, null, '1', null, '1', null, null);
 INSERT INTO `skillsheet_ships` VALUES ('11178', '831', 'Raptor', '2', null, '1878', null, null, null, null, null, '1', null, '1', null, null);
