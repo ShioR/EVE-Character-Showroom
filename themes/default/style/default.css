@@ -45,3 +45,5 @@ td.dataTableHeader2{padding-right:5px;padding-left:5px;font-weight:bolder;font-s
 td.dataTableCell3{padding-right:4px;padding-left:4px;font-size:10px;padding-bottom:4px;border-left:#666 1px solid;padding-top:4px;border-bottom:#666 1px solid;}
 td.dataTableCellEnd{padding-right:4px;padding-left:4px;font-size:10px;padding-bottom:4px;border-left:#666 1px solid;border-right:#666 1px solid;padding-top:4px;border-bottom:#666 1px solid;}
 a img {border: none; }
+::-moz-selection { background: #FF8C00; color:#fff; text-shadow: none; }
+::selection { background: #FF8C00; color:#fff; text-shadow: none; }
