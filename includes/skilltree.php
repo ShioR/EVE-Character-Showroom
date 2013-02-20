@@ -1113,6 +1113,13 @@ $skillsource[258][11574]['groupID'] = '258';
 $skillsource[258][11574]['groupName'] = 'Leadership';
 
 ////////////////////////////////////////////////////////////////////////// MECHANICS
+$skillsource[269][33078]['typeName'] = 'Armor Honeycombing';
+$skillsource[269][33078]['rank'] = '3';
+$skillsource[269][33078]['typeID'] = '33078';
+$skillsource[269][33078]['skillCost'] = '1000000';
+$skillsource[269][33078]['groupID'] = '269';
+$skillsource[269][33078]['groupName'] = 'Mechanics';
+
 $skillsource[269][32797]['typeName'] = 'Armor Resistance Phasing';
 $skillsource[269][32797]['rank'] = '3';
 $skillsource[269][32797]['typeID'] = '32797';
