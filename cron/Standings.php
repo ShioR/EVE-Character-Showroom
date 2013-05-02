@@ -47,7 +47,7 @@ extract($auth, EXTR_PREFIX_SKIP);
 MYSQL_QUERY("UPDATE skillsheet_apis SET standings = '$dbxml' WHERE characterID = '$characterID'");
 
 // Keep running so that all characters are updated
-++$i; 
+$i++; 
 } 
 // Close the connection
 MYSQL_CLOSE();
