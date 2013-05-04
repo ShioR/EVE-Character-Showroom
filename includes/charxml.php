@@ -1,6 +1,6 @@
 <?php
 /***********************************************************/
-/*           EVE Character Showroom - Version 4            */
+/*           EVE Character Showroom - Version 5            */
 /*       'Improved' and maintained by Shionoya Risa        */
 /*          Originally created by DeTox MinRohim           */
 /***********************************************************/
@@ -244,8 +244,7 @@ function GetAllCharacters($data = false, $limit = 0)
                      characterID,
                      corporationName,
                      queue,
-                     characterInfo,
-                     standings
+                     characterInfo
                      $getdata
             FROM     skillsheet_apis
             WHERE    public = '1'";
@@ -474,25 +473,6 @@ function GetXML($config = array())
 
             curl_close($ch);
             
-            // Get standings
-            $url = 'https://api.eveonline.com/char/Standings.xml.aspx';
-
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_HEADER, false);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-            curl_setopt($ch, CURLOPT_CAINFO, getcwd() . "../includes/eveapi.crt");             
-            if ($data) {
-                curl_setopt($ch, CURLOPT_POST, 1);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-            }
-
-            $standings = curl_exec($ch);
-
-            curl_close($ch);
-            
              // Get Character Info
             $url = 'https://api.eveonline.com/eve/CharacterInfo.xml.aspx';
 
@@ -528,14 +508,13 @@ function GetXML($config = array())
                         SET    characterInfo   = '".$eve->VarPrepForStore($characterInfo)."',
 							   data            = '".$eve->VarPrepForStore($content)."',
                                training        = '".$eve->VarPrepForStore($training)."',
-                               queue           = '".$eve->VarPrepForStore($queue)."',
-                               standings       = '".$eve->VarPrepForStore($standings)."'
+                               queue           = '".$eve->VarPrepForStore($queue)."'
                         WHERE  characterID     = '".$eve->VarPrepForStore($config['characterID'])."'";
 
                 $dbconn->Execute($sql);
             }
 
-            return array('characterInfo' => $characterInfo, 'data' => $content, 'training' => $training, 'queue' => $queue, 'standings' => $standings);
+            return array('characterInfo' => $characterInfo, 'data' => $content, 'training' => $training, 'queue' => $queue);
 
         } else {
             return WriteCharXMLFile($config);
@@ -611,8 +590,8 @@ function WriteCharXMLFile($config=array())
 
         if (!file_exists($filename) || (time()-filemtime($filename)) > 60*60) {
             $req  = "keyID="       .$config['keyID'];
-            $req .= "&vCode="      .$config['userkey'];
-            $req .= "&characterID=" .$config['charid'];
+            $req .= "&vCode="      .$config['vCode'];
+            $req .= "&characterID=" .$config['characterID'];
             $req .= "&version=2";
 
             // Wallet here only for the example.
