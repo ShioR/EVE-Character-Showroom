@@ -18,9 +18,7 @@
   <!--[elseif $page eq 'ships']-->
   <title><!--[$name]--> / Ships</title>
   <!--[elseif $page eq 'certs']-->
-  <title><!--[$name]--> / Certificates</title>   
-  <!--[elseif $page eq 'standings']-->
-  <title><!--[$name]--> / Standings</title>   
+  <title><!--[$name]--> / Certificates</title> 
   <!--[elseif $page eq 'siglist']-->
   <title><!--[$name]--> / Signatures</title>    
   <!--[else]-->
