@@ -104,36 +104,6 @@ function GetCertsCategories()
 
 }
 
-function GetStandingInfo()
-{
-
-    global $eve;
-
-    $dbconn =& DBGetConn(true);
-
-    $sql = "SELECT * FROM skillsheet_apis.standings WHERE characterID = '".Eve::VarPrepForStore($characterID)."'";
-
-    $result = $dbconn->Execute($sql);
-
-    if ($dbconn->ErrorNo() != 0) {
-        $eve->SessionSetVar('errormsg', 'Get All Characters: ' . $dbconn->ErrorMsg() . $sql);
-        return false;
-    }
-
-    $stands = array();
-
-    for (; !$result->EOF; $result->MoveNext()) {
-        $stand = $result->GetRowAssoc(2);
-        $stand['owned'] = array();
-        $stands[$stand['categoryID']] = $stand;
-    }
-
-    $result->Close();
-
-    return $stands;
-
-}
-
 function GetDefaultCharacter()
 {
 
