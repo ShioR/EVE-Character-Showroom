@@ -5,7 +5,7 @@ MySQL 5.0.91+
 PHP 5.2.x with cURL and GD    
      
 **For cron jobs;**      
-Support for 5 cron jobs  
+Support for 4 cron jobs  
          
 Installation
 ------------
