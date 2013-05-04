@@ -1,6 +1,6 @@
 <?php
 /***********************************************************/
-/*           EVE Character Showroom - Version 4            */
+/*           EVE Character Showroom - Version 5            */
 /*       'Improved' and maintained by Shionoya Risa        */
 /*          Originally created by DeTox MinRohim           */
 /***********************************************************/
@@ -381,13 +381,13 @@ function step5($step)
 
         DBInit();
 
-        $userID = $eve->VarCleanFromInput('userID');
-        $apiKey = $eve->VarCleanFromInput('apiKey');
+        $keyID = $eve->VarCleanFromInput('keyID');
+        $vCode = $eve->VarCleanFromInput('vCode');
 
-        $content = GetCharacters(array('userID' => $userID, 'apiKey' => $apiKey));
+        $content = GetCharacters(array('keyID' => $keyID, 'vCode' => $vCode));
 
         if ($content) {
-            $xml = ParseXMLFile($content);//ParseXMLFile('cache/'.$userID.'.xml', true);
+            $xml = ParseXMLFile($content);//ParseXMLFile('cache/'.$keyID.'.xml', true);
 
             //echo '<pre>';print_r($xml);echo '</pre>';
             // Check if character already exists
@@ -410,8 +410,8 @@ function step5($step)
             //echo '<pre>';print_r($xml);echo '</pre>'; exit;
 
             $eveRender->Assign('submit',    true);
-            $eveRender->Assign('userID',    $userID);
-            $eveRender->Assign('apiKey',    $apiKey);
+            $eveRender->Assign('keyID',    $keyID);
+            $eveRender->Assign('vCode',    $vCode);
             if (isset($xml['error'])) {
                 $eveRender->Assign('error',  $xml['error']);
             } else {
@@ -453,8 +453,8 @@ function step6()
 
         $dbconn =& DBGetConn(true);
 
-        $userID = $eve->VarCleanFromInput('userID');
-        $apiKey = $eve->VarCleanFromInput('apiKey');
+        $keyID = $eve->VarCleanFromInput('keyID');
+        $vCode = $eve->VarCleanFromInput('vCode');
 
         $save    = $eve->VarCleanFromInput('save');
         $names   = $eve->VarCleanFromInput('names');
@@ -503,30 +503,28 @@ function step6()
                                                          public,
                                                          characterID,
                                                          corporationName,
-                                                         userID,
-                                                         apikey,
+                                                         keyID,
+                                                         vCode,
                                                          selected,
                                                          implants,
                                                          characterInfo,
                                                          data,
                                                          training,
                                                          queue,
-                                                         standings,
                                                          cachedUntil)
                             VALUES                      (NULL,                            
                                                          '".$eve->VarPrepForStore($name)        ."',
                                                          '".(($ispublic) ? 1 : 0)."',
                                                          '".$eve->VarPrepForStore($characterID) ."',
                                                          '".$eve->VarPrepForStore($corp)        ."',
-                                                         '".$eve->VarPrepForStore($userID)      ."',
-                                                         '".$eve->VarPrepForStore($apiKey)      ."',
+                                                         '".$eve->VarPrepForStore($keyID)      ."',
+                                                         '".$eve->VarPrepForStore($vCode)      ."',
                                                          '".(($isdefault) ? 1 : 0)              ."',
                                                          '".(($isimplants) ? 1 : 0)              ."',
                                                          '".$eve->VarPrepForStore($characterInfo)      ."',
                                                          '".$eve->VarPrepForStore($data)      ."',
                                                          '".$eve->VarPrepForStore($training)      ."',
-                                                         '".$eve->VarPrepForStore($queue)      ."',                                                        
-                                                         '".$eve->VarPrepForStore($standings)      ."',                                                        
+                                                         '".$eve->VarPrepForStore($queue)      ."',                                                           
                                                          '".$eve->VarPrepForStore($cachedUntil)    ."')";
 
 
