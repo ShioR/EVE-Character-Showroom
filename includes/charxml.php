@@ -274,53 +274,6 @@ function GetAllCharacters($data = false, $limit = 0)
     return $chars;
 
 }
-function GetTXSI($data = false, $limit = 0)
-{
-
-    global $eve;
-
-    $dbconn =& DBGetConn(true);
-
-    $getdata = "";
-
-    if ($data) {
-        $getdata = ", data";
-    }
-
-    $sql = "SELECT   name,
-                     id,
-                     characterID,
-                     queue,
-                     characterInfo,
-                     standings
-                     $getdata
-            FROM     skillsheet_apis
-            WHERE    corporationName = 'The Xenodus Initiative.'";
-            //ORDER BY name";
-
-    if ($limit && is_numeric($limit)) {
-        $result = $dbconn->SelectLimit($sql, $limit, 1);
-    } else {
-        $result = $dbconn->Execute($sql);
-    }
-
-    if ($dbconn->ErrorNo() != 0) {
-        $eve->SessionSetVar('errormsg', 'Get TXSI: ' . $dbconn->ErrorMsg() . $sql);
-        return false;
-    }
-
-    $chars = array();
-
-    for (; !$result->EOF; $result->MoveNext()) {
-        $char = $result->GetRowAssoc(2);
-        $chars[$char['characterID']] = $char;
-    }
-
-    $result->Close();
-
-    return $txsi;
-
-}
 
 function GetCharacters($config = array())
 {
