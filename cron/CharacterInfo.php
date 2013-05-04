@@ -1,12 +1,12 @@
 <?php
 /////////////////////////////////////////////////////////////////////////
 /// Yay for Shio's pro hax skills. This script will get new data from ///
-/// the API server, write it to a local file in the cache folder and ////
+//////////// the API server, load it into simplexml and /////////////////
 //// insert the new data into the MySQL server. This, with a correct ////
 ///////// setup nullifies the need for the cachedUntil timer. ///////////
 /////////////////////////////////////////////////////////////////////////
 ///////// This script should be run as a cron job every 1 HOUR //////////
-////////////// EXAMPLE: php /path/to/file/standings.php /////////////////
+////////////// EXAMPLE: php /path/to/file/CharacterInfo.php /////////////
 /////////////////////////////////////////////////////////////////////////
 
 // Include the config file for the database so you can connect
