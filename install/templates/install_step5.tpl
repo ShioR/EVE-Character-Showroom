@@ -108,7 +108,7 @@ a,a:visited{color:gold;}
 											<td bgcolor='#1b1b1b' align='center'><input type='submit' name="submit" value='Get Characters'></td>
 										</tr>
 										<tr>
-											<td colspan='2'></br></br><span class="newsmalltext"><strong><a target="_blank" href="https://support.eveonline.com/api/Key/CreatePredefined/9306120">Create a new API Key for use on this site</a></strong><br />Your API keys can be found <a target="_blank" href="https://support.eveonline.com/api">here</a></span>.<br /></td>
+											<td colspan='2'></br></br><span class="newsmalltext"><strong><a target="_blank" href="https://support.eveonline.com/api/Key/CreatePredefined/8781832">Create a new API Key for use on this site</a></strong><br />Your API keys can be found <a target="_blank" href="https://support.eveonline.com/api">here</a></span>.<br /></td>
 										</tr>
 						</table>
 					</form>
@@ -128,11 +128,10 @@ a,a:visited{color:gold;}
 					<li><i>'/char/CharacterSheet.xml.aspx'<span style="font-size:x-small;"><sup>2</sup></span></i></li>
 					<li><i>'/char/SkillInTraining.xml.aspx'<span style="font-size:x-small;"><sup>1</sup></span></i></li>
 					<li><i>'/char/SkillQueue.xml.aspx'<span style="font-size:x-small;"><sup>1</sup></span></i></li>
-					<li><i>'/char/Standings.xml.aspx'<span style="font-size:x-small;"><sup>3</sup></span></i></li>
 					<li><i>'/eve/CharacterInfo.xml.aspx'<span style="font-size:x-small;"><sup>2</sup></span></i></li>
 				  </ul>
 				  <p style="color:red;">An easy way to make sure you have the correct permissions is to <a target="_blank" href="https://support.eveonline.com/api/Key/CreatePredefined/9306120">create a pre-defined key!</a></p>  
-                  <p style="font-size:x-small;"><i><sup>1</sup> = Every 15 minutes, <sup>2</sup> = Once per hour, <sup>3</sup> = Every three hours</i> </p></strong></i></p>
+                  <p style="font-size:x-small;"><i><sup>1</sup> = Every 15 minutes, <sup>2</sup> = Once per hour</i></p>
                   <p style="clear:both" /> 
                 </div> 
               </div>  
