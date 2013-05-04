@@ -1,6 +1,6 @@
 <?php
 /***********************************************************/
-/*           EVE Character Showroom - Version 4            */
+/*           EVE Character Showroom - Version 5            */
 /*       'Improved' and maintained by Shionoya Risa        */
 /*          Originally created by DeTox MinRohim           */
 /***********************************************************/
@@ -93,7 +93,6 @@ if (!empty($encode) && $encode == 'password') {
             $character['data']      		   = $getxml['data'];
             $character['training']   		   = $getxml['training'];
             $character['queue']       		   = $getxml['queue'];
-            $character['standings'] 		   = $getxml['standings'];
             $character['cachedUntil']		   = $getxml['cachedUntil'];
         }
     }
@@ -138,9 +137,6 @@ MYSQL_CLOSE();
             break;            
         case 'certs':
             certificates($config);
-            break;
-        case 'standings';
-            standings($config);
             break;
         case 'addnew':
             AddNew($config);
@@ -257,7 +253,6 @@ function AddNew($config)
                                                          data,
                                                          training,
                                                          queue,
-                                                         standings,
                                                          cachedUntil)
                             VALUES                      (NULL,                            
                                                          '".$eve->VarPrepForStore($name)        ."',
@@ -271,8 +266,7 @@ function AddNew($config)
                                                          '".$eve->VarPrepForStore($characterInfo)      ."',
                                                          '".$eve->VarPrepForStore($data)      ."',
                                                          '".$eve->VarPrepForStore($training)      ."',
-                                                         '".$eve->VarPrepForStore($queue)      ."',                                                        
-                                                         '".$eve->VarPrepForStore($standings)      ."',                                                        
+                                                         '".$eve->VarPrepForStore($queue)      ."',                                                            
                                                          '".$eve->VarPrepForStore($cacheTime)    ."')";
 
 
@@ -494,137 +488,6 @@ function certificates($config)
     exit;
 
 }
-
-function standings($config)
-{
-
-    global $skillsource, $eveRender;
-
-    $training = GetTrainingData($config['training']);
-
-    $parse = ParseXMLFile($config['data']);
-    $cinfo = ParseXMLFile($config['characterInfo']);
-    $stand = ParseXMLFile($config['standings']);
-
-    $char 	   = $parse['result'];
-    $info 	   = $cinfo['result'];
-    $standings = $stand['result'];
-
-    $characterID     = $char['characterID'];
-
-    $npc             = $standings['characterNPCStandings'];
-    $name            = $char['name'];
-    $race            = $char['race'];
-    $bloodLine       = $char['bloodLine'];
-    $gender          = $char['gender'];
-    $dob             = $char['DoB'];
-    $secStatus 		 = $info['securityStatus'];
-    $cloneName       = $char['cloneName'];
-    $cloneSP         = $char['cloneSkillPoints'];
-    $ancestry        = $char['ancestry'];    
-    $corporationName = $char['corporationName'];
-    $corporationID   = $char['corporationID'];
-    $allianceName    = $char['allianceName'];
-    $allianceID      = $char['allianceID'];    
-    $balance         = $char['balance'];
-    $attEnhancers    = $char['attributeEnhancers'];
-    if($attEnhancers != ''){
-    $memory			 = $attEnhancers['memoryBonus']['augmentatorValue'];
-    $intelligence	 = $attEnhancers['intelligenceBonus']['augmentatorValue'];
-    $willpower		 = $attEnhancers['willpowerBonus']['augmentatorValue'];
-    $perception		 = $attEnhancers['perceptionBonus']['augmentatorValue'];
-    $charisma		 = $attEnhancers['charismaBonus']['augmentatorValue'];
-    }
-    $attributes      = array('intelligence' => $char['attributes']['intelligence'],
-                             'charisma'     => $char['attributes']['charisma'],
-                             'perception'   => $char['attributes']['perception'],
-                             'memory'       => $char['attributes']['memory'],
-                             'willpower'    => $char['attributes']['willpower']);//echo '<pre>';
-
-    $implants = GetImplants($attEnhancers);
-
-    $skillTraining   = $training;
-
-    $skills          = $char['rowset'][0]['row'];
-
-    $assign = BuildSkillSet($skills, $training);
-
-    $skillsearch = $assign['skillsearch'];
-
-    // Attributes are defined by some skills... changing them here !
-    Attributes($attributes, $assign['skilltree'], $implants);
-
-    $characterNPCStandings = $standings['rowset'][0]['row'];
-
-    foreach ($characterNPCStandings as $standings) {
-        $standing[] = $standings['fromID'];
-    }
-
-    $eveRender->Assign('characterNPCStandings',              $npc);
-    $eveRender->Assign('name',              $name);
-    $eveRender->Assign('race',              $race);
-    $eveRender->Assign('bloodLine',         $bloodLine);
-    $eveRender->Assign('gender',            $gender);
-    $eveRender->Assign('DoB',               $dob);
-    $eveRender->Assign('securityStatus',    $secStatus);
-    $eveRender->Assign('cloneName',         $cloneName);
-    $eveRender->Assign('cloneSkillPoints',  $cloneSP);
-    $eveRender->Assign('ancestry',          $ancestry);     
-    $eveRender->Assign('corporationName',   $corporationName);
-    $eveRender->Assign('corporationID',     $corporationID);
-    $eveRender->Assign('allianceName',      $allianceName);
-    $eveRender->Assign('allianceID',        $allianceID);    
-    $eveRender->Assign('balance',           number_format($balance, 2, '.', ' '));
-    $eveRender->Assign('memoryImp',         $memory);
-    $eveRender->Assign('intelligenceImp',   $intelligence);
-    $eveRender->Assign('willpowerImp',      $willpower);
-    $eveRender->Assign('perceptionImp',     $perception);
-    $eveRender->Assign('charismaImp',       $charisma);
-    if($skillTraining['skillName'] != '') {
-        $eveRender->Assign('Training',          $skillTraining['skillName']);
-        $eveRender->Assign('ToLevel',           $skillTraining['trainingToLevel']);
-        $eveRender->Assign('TrainingID',        $skillTraining['trainingTypeID']);
-        $eveRender->Assign('trainingStartTime', $skillTraining['trainingStartTime']);
-        $eveRender->Assign('trainingEndTime',   $skillTraining['trainingEndTime']);
-        $eveRender->Assign('TrainingTimeLeft',  $skillTraining['TrainingTimeLeft']);
-        $eveRender->Assign('trainingEndstamp',  strtotime($skillTraining['trainingEndTime']));
-        $eveRender->Assign('trainingEndFormat', date("m/d/Y G:i:s", strtotime($skillTraining['trainingEndTime']." GMT")));
-    }
-    $time     = time();
-    $filetime = strtotime($config['cachedUntil']);//filemtime($config['filename']);
-    $left     = ($filetime + 3600) - $time;
-    $diffDate = $left;
-    $days     = floor($diffDate / 24 / 60 / 60 );
-    $diffDate = $diffDate - ($days*24*60*60);
-    $hours    = floor($diffDate / 60 / 60);
-    $diffDate = ($diffDate - ($hours*60*60));
-    $minutes  = floor($diffDate/60);
-    $diffDate = $diffDate - ($minutes*60);
-    $seconds  = floor($diffDate);
-    $eveRender->Assign('skilltree',         $assign['skilltree']);
-    $eveRender->Assign('skillgroups',       $assign['skillgroups']);
-    $eveRender->Assign('characterID',       $characterID);
-    $eveRender->Assign('attributes',        $attributes);
-    $eveRender->Assign('pageupdateminutes', $minutes);
-    $eveRender->Assign('pageupdateseconds', $seconds);
-    $eveRender->Assign('l5total',           $assign['l5total']);
-    $eveRender->Assign('l5spsformat',       number_format($assign['l5sps'], 0, '', ' '));
-    $eveRender->Assign('l5sps',             $assign['l5sps']);
-    $eveRender->Assign('grptable',          $assign['grptable']);
-    $eveRender->Assign('totalsks',          $assign['count']);
-    $eveRender->Assign('totalsps',          $assign['skillpointstotal']);
-    $eveRender->Assign('totalskillpoints',  $assign['totalskillpoints']);
-    $eveRender->Assign('skillpointstotal',  number_format($assign['skillpointstotal'], 0, '', ','));
-    // Version
-    $eveRender->Assign('version',           _SKILLSHEET_VERSION);
-    $eveRender->Assign('dVersion',          _DATA_VERSION);
-    $eveRender->Assign('categories',        $categories);
-
-    $eveRender->Display('standings.tpl');
-    exit;
-
-}
-
 
 function charlist($config)
 {
@@ -1545,9 +1408,6 @@ echo '</body>
     // APOCRYPHA Queue
     $SkillQueue   = GetQueueData($config['queue']);
 
-    // Standings, yo!
-    $characterNPCStandings   = GetStandingInfo($config['standings']);    
-
     $eveRender->force_compile = true;
 
     // Assign the information
@@ -1622,7 +1482,6 @@ echo '</body>
     $eveRender->Assign('totalskillpoints',  $assign['totalskillpoints']);
     $eveRender->Assign('skillpointstotal',  number_format($assign['skillpointstotal'], 0, '', ','));
     $eveRender->Assign('SkillQueue',        $SkillQueue);
-    $eveRender->Assign('Standings',         $Standings);
 
 
     // Version
