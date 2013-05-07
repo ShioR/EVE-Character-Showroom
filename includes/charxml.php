@@ -350,7 +350,7 @@ function GetXML($config = array())
     //$cachetime = $time
     
 // hax the timer to make it a _few_ years ;)
-   if ((time()-strtotime($config['cachedUntil'])) > 360) {
+   if ((time()-strtotime($config['cachedUntil'])) > 3600) {
         $dbconn =& DBGetConn(true);
         $extensions = get_loaded_extensions();
 
