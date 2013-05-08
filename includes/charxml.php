@@ -371,14 +371,14 @@ function GetXML($config = array())
 							   'keyID'		 => $config['keyID'],
                                'version'     => 2);                              
             } elseif (isset($config['keyID']) && isset($config['vCode']) && isset($config['characterID'])) {
-                $data = array('userID'      => $config['keyID'],
-                              'apiKey'      => $config['vCode'],
+                $data = array('keyID'      => $config['keyID'],
+                              'vCode'      => $config['vCode'],
                               'characterID' => $config['characterID'],
                               'version'     => 2);
                               
                 $info = array('characterID'  => $config['characterID'],
-							   'apiKey'		 => $config['vCode'],
-							   'userID'		 => $config['keyID'],
+							   'vCode'		 => $config['vCode'],
+							   'key'		 => $config['keyID'],
                                'version'     => 2);                              
             }
 
