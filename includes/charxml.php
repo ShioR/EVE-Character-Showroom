@@ -369,7 +369,8 @@ function GetXML($config = array())
                 $info = array('characterID'  => $config['characterID'],
 							   'vCode'		 => $config['vCode'],
 							   'keyID'		 => $config['keyID'],
-                               'version'     => 2);                              
+                               'version'     => 2);                           
+                                  
             } elseif (isset($config['keyID']) && isset($config['vCode']) && isset($config['characterID'])) {
                 $data = array('keyID'      => $config['keyID'],
                               'vCode'      => $config['vCode'],
@@ -478,13 +479,14 @@ function GetXML($config = array())
                         SET    characterInfo   = '".$eve->VarPrepForStore($characterInfo)."',
 							   data            = '".$eve->VarPrepForStore($content)."',
                                training        = '".$eve->VarPrepForStore($training)."',
-                               queue           = '".$eve->VarPrepForStore($queue)."'
+                               queue           = '".$eve->VarPrepForStore($queue)."',
+	                           cachedUntil     = '".$eve->VarPrepForStore($cache)."'
                         WHERE  characterID     = '".$eve->VarPrepForStore($config['characterID'])."'";
 
                 $dbconn->Execute($sql);
             }
 
-            return array('characterInfo' => $characterInfo, 'data' => $content, 'training' => $training, 'queue' => $queue);
+            return array('characterInfo' => $characterInfo, 'data' => $content, 'training' => $training, 'queue' => $queue, 'cachedUntil' => $cache);
 
         } else {
             return WriteCharXMLFile($config);
