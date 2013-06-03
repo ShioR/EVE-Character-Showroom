@@ -3,11 +3,11 @@
 -- ----------------------------
 DROP TABLE IF EXISTS `skillsheet_crtclasses`;
 CREATE TABLE `skillsheet_crtclasses` (
-  `classID` int(11) NOT NULL,
-  `description` varchar(500) CHARACTER SET utf8 DEFAULT NULL,
-  `className` varchar(256) CHARACTER SET utf8 DEFAULT NULL,
+  `classID` int(10) NOT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `className` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`classID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of skillsheet_crtclasses
