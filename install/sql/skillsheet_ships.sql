@@ -278,3 +278,7 @@ INSERT INTO `skillsheet_ships` VALUES ('32878', '420', 'Talwar', '1', null, '328
 INSERT INTO `skillsheet_ships` VALUES ('32872', '420', 'Algos', '1', null, '32872', null, null, null, null, null, '8', null, '1', null, null);
 INSERT INTO `skillsheet_ships` VALUES ('32876', '420', 'Corax', '1', null, '32876', null, null, null, null, null, '1', null, '1', null, null);
 INSERT INTO `skillsheet_ships` VALUES ('32874', '420', 'Dragoon', '1', null, '32874', null, null, null, null, null, '4', null, '1', null, null);
+INSERT INTO `skillsheet_ships` VALUES ('33153', '419', 'Drake navy Issue', '4', null, '33153', null, null, null, null, null, '1', null, '1', null, null);
+INSERT INTO `skillsheet_ships` VALUES ('33155', '419', 'Harbinger Navy Issue', '4', null, '33155', null, null, null, null, null, '4', null, '1', null, null);
+INSERT INTO `skillsheet_ships` VALUES ('33151', '419', 'Brutix Navy Issue', '4', null, '33151', null, null, null, null, null, '8', null, '1', null, null);
+INSERT INTO `skillsheet_ships` VALUES ('33157', '419', 'Hurricane Fleet Issue', '4', null, '33157', null, null, null, null, null, '2', null, '1', null, null);
