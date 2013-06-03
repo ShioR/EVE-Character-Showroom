@@ -3,15 +3,15 @@
 -- ----------------------------
 DROP TABLE IF EXISTS `skillsheet_crtrelationships`;
 CREATE TABLE `skillsheet_crtrelationships` (
-  `relationshipID` int(11) NOT NULL,
-  `parentID` int(11) DEFAULT NULL,
-  `parentTypeID` int(11) DEFAULT NULL,
+  `relationshipID` int(10) NOT NULL,
+  `parentID` int(10) DEFAULT NULL,
+  `parentTypeID` int(10) DEFAULT NULL,
   `parentLevel` int(11) DEFAULT NULL,
-  `childID` int(11) DEFAULT NULL,
+  `childID` int(10) DEFAULT NULL,
   PRIMARY KEY (`relationshipID`),
   KEY `skillsheet_crtrelationships_IX_child` (`childID`),
   KEY `skillsheet_crtrelationships_IX_parent` (`parentID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of skillsheet_crtrelationships
