@@ -4,10 +4,10 @@
 DROP TABLE IF EXISTS `skillsheet_crtcategories`;
 CREATE TABLE `skillsheet_crtcategories` (
   `categoryID` int(11) NOT NULL,
-  `description` varchar(500) CHARACTER SET utf8 DEFAULT NULL,
-  `categoryName` varchar(256) CHARACTER SET utf8 DEFAULT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `categoryName` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`categoryID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of skillsheet_crtcategories
