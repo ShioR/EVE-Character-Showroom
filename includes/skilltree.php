@@ -2323,12 +2323,12 @@ $skillsource[257][22551]['skillCost'] = '28000000';
 $skillsource[257][22551]['groupID'] = '257';
 $skillsource[257][22551]['groupName'] = 'Spaceship Command';
 
-$skillsource[257][33096]['typeName'] = 'Gallente Battlecruiser';
-$skillsource[257][33096]['rank'] = '6';
-$skillsource[257][33096]['typeID'] = '33096';
-$skillsource[257][33096]['skillCost'] = '1000000';
-$skillsource[257][33096]['groupID'] = '257';
-$skillsource[257][33096]['groupName'] = 'Spaceship Command';
+$skillsource[257][33097]['typeName'] = 'Gallente Battlecruiser';
+$skillsource[257][33097]['rank'] = '6';
+$skillsource[257][33097]['typeID'] = '33097';
+$skillsource[257][33097]['skillCost'] = '1000000';
+$skillsource[257][33097]['groupID'] = '257';
+$skillsource[257][33097]['groupName'] = 'Spaceship Command';
 
 $skillsource[257][3336]['typeName'] = 'Gallente Battleship';
 $skillsource[257][3336]['rank'] = '8';
