@@ -799,7 +799,7 @@ INSERT INTO `skillsheet_reqs` VALUES ('2998', 'requiredSkill3Level', '1', '0', '
 INSERT INTO `skillsheet_reqs` VALUES ('3514', 'requiredSkill1', '20533', '0', '547', 'Revenant', '32', 'Pirate', 'Capital Ships', null);
 INSERT INTO `skillsheet_reqs` VALUES ('3514', 'requiredSkill1Level', '1', '0', '547', 'Revenant', '32', 'Pirate', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('3514', 'requiredSkill2', '24311', '0', '547', 'Revenant', '32', 'Pirate', 'Amarr Carrier', null);
-INSERT INTO `skillsheet_reqs` VALUES ('3514', 'requiredSkill2Level', '3', '0', '547', 'Revenant', '32', 'Pirate', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('3514', 'requiredSkill2Level', '1', '0', '547', 'Revenant', '32', 'Pirate', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('3514', 'requiredSkill3', '24312', '0', '547', 'Revenant', '32', 'Pirate', 'Caldari Carrier', null);
 INSERT INTO `skillsheet_reqs` VALUES ('3514', 'requiredSkill3Level', '1', '0', '547', 'Revenant', '32', 'Pirate', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('3516', 'requiredSkill1', '3331', '0', '324', 'Malice', '4', 'Amarr', 'Amarr Frigate', null);
