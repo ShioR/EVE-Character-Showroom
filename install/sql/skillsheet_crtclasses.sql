@@ -1,13 +1,13 @@
 -- ----------------------------
--- Table structure for `skillsheet_crtclasses`
+-- Table structure for `skillsheet_skillsheet_crtclasses`
 -- ----------------------------
 DROP TABLE IF EXISTS `skillsheet_crtclasses`;
 CREATE TABLE `skillsheet_crtclasses` (
-  `classID` int(10) NOT NULL,
+  `classID` int(11) NOT NULL,
   `description` varchar(500) DEFAULT NULL,
   `className` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`classID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of skillsheet_crtclasses

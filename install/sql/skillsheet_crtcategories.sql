@@ -3,11 +3,11 @@
 -- ----------------------------
 DROP TABLE IF EXISTS `skillsheet_crtcategories`;
 CREATE TABLE `skillsheet_crtcategories` (
-  `categoryID` int(11) NOT NULL,
+  `categoryID` tinyint(3) unsigned NOT NULL,
   `description` varchar(500) DEFAULT NULL,
   `categoryName` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`categoryID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of skillsheet_crtcategories

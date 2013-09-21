@@ -1,19 +1,21 @@
 -- ----------------------------
--- Table structure for `skillsheet_crtcertificates`
+-- Table structure for `skillsheet_skillsheet_crtcertificates`
 -- ----------------------------
 DROP TABLE IF EXISTS `skillsheet_crtcertificates`;
 CREATE TABLE `skillsheet_crtcertificates` (
-  `certificateID` int(10) NOT NULL,
-  `categoryID` int(11) DEFAULT NULL,
-  `classID` int(10) DEFAULT NULL,
-  `grade` int(11) DEFAULT NULL,
-  `corpID` int(10) DEFAULT NULL,
-  `iconID` int(10) DEFAULT NULL,
+  `certificateID` int(11) NOT NULL,
+  `categoryID` tinyint(3) unsigned DEFAULT NULL,
+  `classID` int(11) DEFAULT NULL,
+  `grade` tinyint(4) DEFAULT NULL,
+  `corpID` int(11) DEFAULT NULL,
+  `iconID` smallint(6) DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`certificateID`),
   KEY `skillsheet_crtcertificates_IX_category` (`categoryID`),
-  KEY `skillsheet_crtcertificates_IX_class` (`classID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `skillsheet_crtcertificates_IX_class` (`classID`),
+  KEY `corpID` (`corpID`),
+  KEY `iconID` (`iconID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of skillsheet_crtcertificates
@@ -46,7 +48,7 @@ INSERT INTO `skillsheet_crtcertificates` VALUES ('26', '4', '8', '1', '1000166',
 INSERT INTO `skillsheet_crtcertificates` VALUES ('27', '4', '9', '1', '1000166', '3178', 'This certificate is available to all graduates of the Imperial Academy who specialized as Special Forces, as a recognition of their competence in specialist Amarr Military skills. The Imperial Academy recommends that graduates holding this certificate aim to qualify for the Standard-level certification soon after graduation.');
 INSERT INTO `skillsheet_crtcertificates` VALUES ('28', '4', '16', '1', '1000044', '3172', 'This certificate is available to all graduates of the School of Applied Knowledge who specialized as Engineers, as a recognition of their competence in core Caldari engineering skills. The School of Applied Knowledge recommends that graduates holding this certificate aim to qualify for the Standard-level certification soon after graduation.');
 INSERT INTO `skillsheet_crtcertificates` VALUES ('29', '4', '18', '1', '1000045', '3175', 'This certificate is available to all graduates of the Science and Trade Institute who specialized as Entrepreneurs, as a recognition of their competence in core Caldari trading skills. The Science and Trade Institute recommends that graduates holding this certificate aim to qualify for the Standard-level certification soon after graduation.');
-INSERT INTO `skillsheet_crtcertificates` VALUES ('30', '4', '19', '1', '1000045', '3175', 'This certificate is available to all graduates of the Science and Trade Institute who specialized as Executive Commanders, as a recognition of their competence in core Caldari leadership skills. The Science and Trade Institute  recommends that graduates holding this certificate aim to qualify for the Standard-level certification soon after graduation.');
+INSERT INTO `skillsheet_crtcertificates` VALUES ('30', '4', '19', '1', '1000045', '3175', 'This certificate is available to all graduates of the Science and Trade Institute who specialized as Executive Commanders, as a recognition of their competence in core Caldari leadership skills. The Science and Trade Institute recommends that graduates holding this certificate aim to qualify for the Standard-level certification soon after graduation.');
 INSERT INTO `skillsheet_crtcertificates` VALUES ('31', '4', '17', '1', '1000044', '3172', 'This certificate is available to all graduates of the School of Applied Knowledge who specialized as Prospectors, as a recognition of their competence in core Caldari mining skills. The School of Applied Knowledge recommends that graduates holding this certificate aim to qualify for the Standard-level certification soon after graduation.');
 INSERT INTO `skillsheet_crtcertificates` VALUES ('32', '4', '14', '1', '1000167', '3178', 'This certificate is available to all graduates of the State War Academy who specialized as Soldiers, as a recognition of their competence in core Caldari military skills. The State War Academy recommends that graduates holding this certificate aim to qualify for the Standard-level certification soon after graduation.');
 INSERT INTO `skillsheet_crtcertificates` VALUES ('33', '4', '15', '1', '1000167', '3178', 'This certificate is available to all graduates of the State War Academy who specialized as Special Forces, as a recognition of their competence in specialist Caldari Military skills. The State War Academy recommends that graduates holding this certificate aim to qualify for the Standard-level certification soon after graduation.');
@@ -260,8 +262,8 @@ INSERT INTO `skillsheet_crtcertificates` VALUES ('242', '12', '102', '5', '10001
 INSERT INTO `skillsheet_crtcertificates` VALUES ('243', '12', '103', '2', '1000129', '0', 'This certificate represents a standard level of competence in mercoxit mining. It certifies that the holder is able to use Tech 1 deep core mining lasers. The holder is aware that mercoxit creates dangerous gas clouds when mined. This represents a good baseline for the aspiring mercoxit miner.');
 INSERT INTO `skillsheet_crtcertificates` VALUES ('244', '12', '103', '3', '1000129', '0', 'This certificate represents an improved level of competence in mercoxit mining. It certifies that the holder is able to use Modulated Deep Core mining lasers and Tech 2 Mercoxit crystals. The holder is aware that Mercoxit is used almost exclusively in Tech 2 production. This is a good level of skill if you regularly mine mercoxit.');
 INSERT INTO `skillsheet_crtcertificates` VALUES ('245', '12', '103', '5', '1000129', '0', 'This certificate represents an elite level of competence in mercoxit mining. It certifies that the holder has maximised their mercoxit-specific mining skills. This represents the peak of efficiency for the dedicated mercoxit miner.');
-INSERT INTO `skillsheet_crtcertificates` VALUES ('250', '12', '105', '2', '1000129', '0', 'This certificate represents a standard level of competence in ice harvesting. It certifies that the holder is able to use ice harvesters. The holder is aware that ice harvesters can only be mounted on mining barges. This represents a good baseline for the aspiring ice harvester.\r\n');
-INSERT INTO `skillsheet_crtcertificates` VALUES ('251', '12', '105', '3', '1000129', '0', 'This certificate represents an improved level of competence in ice harvesting. It certifies that the holder has a good level of skill at harvesting ice. The holder is aware that ice asteroids cannot be harvested dry. This is a good level of skill if you regularly harvest ice.\r\n');
+INSERT INTO `skillsheet_crtcertificates` VALUES ('250', '12', '105', '2', '1000129', '0', 'This certificate represents a standard level of competence in ice harvesting. It certifies that the holder is able to use ice harvesters. The holder is aware that ice harvesters can only be mounted on mining barges. This represents a good baseline for the aspiring ice harvester.\n');
+INSERT INTO `skillsheet_crtcertificates` VALUES ('251', '12', '105', '3', '1000129', '0', 'This certificate represents an improved level of competence in ice harvesting. It certifies that the holder has a good level of skill at harvesting ice. The holder is aware that ice asteroids cannot be harvested dry. This is a good level of skill if you regularly harvest ice.\n');
 INSERT INTO `skillsheet_crtcertificates` VALUES ('253', '12', '105', '5', '1000129', '0', 'This certificate represents an elite level of competence in ice harvesting. It certifies that the holder is able to use Tech 2 ice harvesters and has maximized their ice harvesting skills. This represents the peak of efficiency for the dedicated ice harvester.');
 INSERT INTO `skillsheet_crtcertificates` VALUES ('258', '12', '108', '1', '1000125', '0', 'This certificate represents a basic level of competence in refining. It certifies that the holder is able to use refinery facilities with a moderate degree of efficiency. This is a good skill level if you find yourself having to refine or reprocess things occasionally.');
 INSERT INTO `skillsheet_crtcertificates` VALUES ('259', '12', '108', '2', '1000125', '0', 'This certificate represents a standard level of competence in refining. It certifies that the holder is able to refine ore and reprocess other items with a tolerable level of efficiency. This is a good level of skill for more frequent refiners, and is very beneficial to most miners.');
