@@ -1,6 +1,6 @@
 <?php
 ////////////////////////////////////////////////////////////////////////// ARMOUR (FU America!)
-$skillsource[1210][33078]['typeName'] = 'Armor Layering'
+$skillsource[1210][33078]['typeName'] = 'Armor Layering';
 $skillsource[1210][33078]['rank'] = '3';
 $skillsource[1210][33078]['typeID'] = '33078';
 $skillsource[1210][33078]['skillCost'] = '1000000';
