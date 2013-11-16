@@ -40,7 +40,7 @@ define('_SHORTURLS', true);
 // With trailing slash!
 define('_DOMAIN', '');
 
-// Path to image caches
+// Path to template cache
 $eve_filepath = 'cache/templates'; // Remember to chmod it 777
 
 // Done... no need to touch anything else. (Unless you know what you are doing)
