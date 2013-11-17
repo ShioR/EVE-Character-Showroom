@@ -834,3 +834,11 @@ INSERT INTO `skillsheet_reqs` VALUES ('32874', 'requiredSkill1', '33091', '0', '
 INSERT INTO `skillsheet_reqs` VALUES ('32874', 'requiredskill1Level', '1', '0', '420', 'Dragoon', '4', 'Amarr', '', null);
 INSERT INTO `skillsheet_reqs` VALUES ('32876', 'requiredSkill1', '33092', '0', '420', 'Corax', '1', 'Caldari', 'Caldari Destroyer', null);
 INSERT INTO `skillsheet_reqs` VALUES ('32876', 'requiredskill1Level', '1', '0', '420', 'Corax', '1', 'Caldari', '', null);
+INSERT INTO `skillsheet_reqs` VALUES ('33468', 'requiredSkill1', '0', '0', '25', 'Astero', '64', 'Sisters of EVE', 'Amarr Frigate', null);
+INSERT INTO `skillsheet_reqs` VALUES ('33468', 'requiredSkill1Level', '3', '0', '25', 'Astero', '64', 'Sisters of EVE', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('33468', 'requiredSkill2', '0', '0', '25', 'Astero', '64', 'Sisters of EVE', 'Gallente Frigate', null);
+INSERT INTO `skillsheet_reqs` VALUES ('33468', 'requiredSkill2Level', '3', '0', '25', 'Astero', '64', 'Sisters of EVE', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('33470', 'requiredSkill1', '0', '0', '26', 'Stratios', '64', 'Sisters of EVE', 'Amarr Cruiser', null);
+INSERT INTO `skillsheet_reqs` VALUES ('33470', 'requiredSkill1Level', '2', '0', '26', 'Stratios', '64', 'Sisters of EVE', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('33470', 'requiredSkill2', '0', '0', '26', 'Stratios', '64', 'Sisters of EVE', 'Gallente Cruiser', null);
+INSERT INTO `skillsheet_reqs` VALUES ('33470', 'requiredSkill2Level', '2', '0', '26', 'Stratios', '64', 'Sisters of EVE', null, null);
