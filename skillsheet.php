@@ -1571,8 +1571,6 @@ function ships($config = array())
                              groupID,
                              typeName,
                              tag,
-                             description,
-                             graphicID,
                              raceID
                     FROM     `skillsheet_ships`
                     WHERE    `skillsheet_ships`.groupID   = '".$grouID."'
