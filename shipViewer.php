@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
     <head>
-        <title>ccpwgl ship viewer</title>
+        <title>Ship Viewer</title>
           
 <?php
   // Include config to get db info
@@ -12,10 +12,10 @@
       mysql_select_db($dbconfig['dbname']);
       
        // Get the graphicID from the URL
-            $graphicID = ($_GET['gID']);
+            $typeName = ($_GET['id']);
             
        // Get the graphicFile from the db & close the connection
-				$result = mysql_query("SELECT graphicFile FROM skillsheet_ships WHERE graphicID = '$graphicID'");
+				$result = mysql_query("SELECT graphicFile FROM skillsheet_ships WHERE typeName = '$typeName'");
 				$path = mysql_result($result, 0);
    	mysql_close();
 ?>
