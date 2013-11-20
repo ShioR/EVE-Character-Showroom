@@ -160,7 +160,7 @@ INSERT INTO `skillsheet_reqs` VALUES ('12733', 'requiredSkill1Level', '5', '0', 
 INSERT INTO `skillsheet_reqs` VALUES ('12733', 'requiredSkill2', '19719', '0', '380', 'Prorator', '4', 'Amarr', 'Transport Ships', null);
 INSERT INTO `skillsheet_reqs` VALUES ('12733', 'requiredSkill2Level', '1', '0', '380', 'Prorator', '4', 'Amarr', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('20183', 'requiredSkill1', '20342', '0', '513', 'Providence', '4', 'Amarr', 'Advanced Spaceship Command', null);
-INSERT INTO `skillsheet_reqs` VALUES ('20183', 'requiredSkill1Level', '5', '0', '513', 'Providence', '4', 'Amarr', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('20183', 'requiredSkill1Level', '1', '0', '513', 'Providence', '4', 'Amarr', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('20183', 'requiredSkill2', '20524', '0', '513', 'Providence', '4', 'Amarr', 'Amarr Freighter', null);
 INSERT INTO `skillsheet_reqs` VALUES ('20183', 'requiredSkill2Level', '1', '0', '513', 'Providence', '4', 'Amarr', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('597', 'requiredSkill1', '3331', '0', '25', 'Punisher', '4', 'Amarr', 'Amarr Frigate', null);
@@ -240,7 +240,7 @@ INSERT INTO `skillsheet_reqs` VALUES ('11993', 'requiredSkill1Level', '5', '0', 
 INSERT INTO `skillsheet_reqs` VALUES ('11993', 'requiredSkill2', '16591', '0', '358', 'Cerberus', '1', 'Caldari', 'Heavy Assault Cruisers', null);
 INSERT INTO `skillsheet_reqs` VALUES ('11993', 'requiredSkill2Level', '1', '0', '358', 'Cerberus', '1', 'Caldari', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('20185', 'requiredSkill1', '20342', '0', '513', 'Charon', '1', 'Caldari', 'Advanced Spaceship Command', null);
-INSERT INTO `skillsheet_reqs` VALUES ('20185', 'requiredSkill1Level', '5', '0', '513', 'Charon', '1', 'Caldari', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('20185', 'requiredSkill1Level', '1', '0', '513', 'Charon', '1', 'Caldari', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('20185', 'requiredSkill2', '20526', '0', '513', 'Charon', '1', 'Caldari', 'Caldari Freighter', null);
 INSERT INTO `skillsheet_reqs` VALUES ('20185', 'requiredSkill2Level', '1', '0', '513', 'Charon', '1', 'Caldari', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('23915', 'requiredSkill1', '20533', '0', '547', 'Chimera', '1', 'Caldari', 'Capital Ships', null);
@@ -523,8 +523,8 @@ INSERT INTO `skillsheet_reqs` VALUES ('23913', 'requiredSkill1Level', '1', '0', 
 INSERT INTO `skillsheet_reqs` VALUES ('23913', 'requiredSkill2', '24313', '0', '547', 'Nyx', '8', 'Gallente', 'Gallente Carrier', null);
 INSERT INTO `skillsheet_reqs` VALUES ('23913', 'requiredSkill2Level', '1', '0', '547', 'Nyx', '8', 'Gallente', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('20187', 'requiredSkill1', '20342', '0', '513', 'Obelisk', '8', 'Gallente', 'Advanced Spaceship Command', null);
-INSERT INTO `skillsheet_reqs` VALUES ('20187', 'requiredSkill1Level', '5', '0', '513', 'Obelisk', '8', 'Gallente', null, null);
-INSERT INTO `skillsheet_reqs` VALUES ('20187', 'requiredSkill2', '20527', '0', '513', 'Obelisk', '8', 'Gallente', 'Gallente Freighter', null);
+INSERT INTO `skillsheet_reqs` VALUES ('20187', 'requiredSkill1Level', '1', '0', '513', 'Obelisk', '8', 'Gallente', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('20187', 'requiredSkill2', '0', '0', '513', 'Obelisk', '8', 'Gallente', 'Gallente Freighter', null);
 INSERT INTO `skillsheet_reqs` VALUES ('20187', 'requiredSkill2Level', '1', '0', '513', 'Obelisk', '8', 'Gallente', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('12745', 'requiredSkill1', '3340', '0', '380', 'Occator', '8', 'Gallente', 'Gallente Industrial', null);
 INSERT INTO `skillsheet_reqs` VALUES ('12745', 'requiredSkill1Level', '5', '0', '380', 'Occator', '8', 'Gallente', null, null);
@@ -627,7 +627,7 @@ INSERT INTO `skillsheet_reqs` VALUES ('17932', 'requiredSkill1Level', '3', '0', 
 INSERT INTO `skillsheet_reqs` VALUES ('17932', 'requiredSkill2', '3328', '0', '25', 'Dramiel', '32', 'Pirate', 'Gallente Frigate', null);
 INSERT INTO `skillsheet_reqs` VALUES ('17932', 'requiredSkill2Level', '3', '0', '25', 'Dramiel', '32', 'Pirate', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('20189', 'requiredSkill1', '20342', '0', '513', 'Fenrir', '2', 'Minmatar', 'Advanced Spaceship Command', null);
-INSERT INTO `skillsheet_reqs` VALUES ('20189', 'requiredSkill1Level', '5', '0', '513', 'Fenrir', '2', 'Minmatar', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('20189', 'requiredSkill1Level', '1', '0', '513', 'Fenrir', '2', 'Minmatar', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('20189', 'requiredSkill2', '20528', '0', '513', 'Fenrir', '2', 'Minmatar', 'Minmatar Freighter', null);
 INSERT INTO `skillsheet_reqs` VALUES ('20189', 'requiredSkill2Level', '1', '0', '513', 'Fenrir', '2', 'Minmatar', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('22852', 'requiredSkill1', '20533', '0', '547', 'Hel', '2', 'Minmatar', 'Capital Ships', null);
