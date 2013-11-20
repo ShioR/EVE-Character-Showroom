@@ -7,7 +7,7 @@
   <meta name="resource-type" content="document" />
   <meta http-equiv="expires" content="0" />
   <meta name="author" content="Eve Online" />
-  <meta name="copyright" content="Copyright (c) 2012 The Xenodus Initiative." />
+  <meta name="copyright" content="Copyright (c) 2013 The Xenodus Initiative." />
   <meta name="revisit-after" content="1 days" />
   <meta name="distribution" content="Global" />
   <meta name="generator" content="Eve Online" />
@@ -18,7 +18,7 @@
   <!--[elseif $page eq 'ships']-->
   <title><!--[$name]--> / Ships</title>
   <!--[elseif $page eq 'certs']-->
-  <title><!--[$name]--> / Certificates</title> 
+  <title><!--[$name]--> / Certificates</title>
   <!--[elseif $page eq 'siglist']-->
   <title><!--[$name]--> / Signatures</title>    
   <!--[else]-->
@@ -26,6 +26,7 @@
   <!--[/if]-->
   <link rel="stylesheet" type="text/css" href="/themes/<!--[$theme]-->/style/<!--[$theme]-->.css" />
   <link rel="stylesheet" type="text/css" href="/themes/<!--[$theme]-->/style/piro.css" />
+<script type="text/javascript" src="/includes/charts/FusionCharts.js"></script>
 <script type="text/javascript" src="/themes/<!--[$theme]-->/js/jquery.min.js"></script>
 <script type="text/javascript" src="/themes/<!--[$theme]-->/js/jquery-ui-1.8.2.custom.min.js"></script>
 <script type="text/javascript" src="/themes/<!--[$theme]-->/js/pirobox_extended.js"></script>
@@ -48,18 +49,18 @@ which.style.display="block"}</script>
 </head>
   <div class="headerribbon"<!--[if not $page]--> style="height: 26px;"<!--[/if]-->>
   <!--[if $page]-->
-<span class="headerleft"><img align="left" style="border: 1px solid gray; margin:3px;" src="https://image.eveonline.com/Character/<!--[$characterID]-->_32.jpg" width="32" height="32" title="" alt="<!--[$name]-->" /></a>Skillsheet for <span style="color:gold;"><!--[$name]--></span><span style="color:gold;"> <a style="text-decoration:none;" href="https://gate.eveonline.com/Mail/Compose/<!--[$name]-->" rel="iframe-875-610" class="pirobox"> [Send EVEMail]</a></span><br />Member of <span style="color:gold;"><a style="text-decoration:none;" href="http://evemaps.dotlan.net/corp/<!--[$corporationName|replace:" ":"_"]-->" rel="iframe-875-610" class="pirobox"><!--[$corporationName]--></a></span><!--[if $allianceName neq '']--> <span style="color:gold;"><a style="text-decoration:none;" href="http://evemaps.dotlan.net/alliance/<!--[$allianceName|replace:" ":"_"]-->" rel="iframe-875-610" class="pirobox"> [<!--[$allianceName]-->]</a></span><!--[else]--><!--[/if]--></span>
+<span class="headerleft"><img align="left" style="border: 1px solid gray; margin:3px;" src="<!--[getportrait characterID=$characterID size=32]-->" width="32" height="32" title="" alt="<!--[$name]-->" /></a>Skillsheet for <span style="color:gold;"><!--[$name]--></span><span style="color:gold;"> <a style="text-decoration:none;" href="https://gate.eveonline.com/Mail/Compose/<!--[$name]-->" rel="iframe-875-610" class="pirobox"> [Send EVEMail]</a></span><br />Member of <span style="color:gold;"><a style="text-decoration:none;" href="http://evemaps.dotlan.net/corp/<!--[$corporationName|replace:" ":"_"]-->" rel="iframe-875-610" class="pirobox"><!--[$corporationName]--></a></span><!--[if $allianceName neq '']--> <span style="color:gold;"><a style="text-decoration:none;" href="http://evemaps.dotlan.net/alliance/<!--[$allianceName|replace:" ":"_"]-->" rel="iframe-875-610" class="pirobox"> [<!--[$allianceName]-->]</a></span><!--[else]--><!--[/if]--></span>
     <span class="headerright2">
     <!--[if $page eq 'skills']-->
       [ SKILLS ]
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/ships" title="Ships <!--[$name]--> can fly">SHIPS</a> ]
-      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/certs" title="Certificates for <!--[$name]-->">CERTS</a> ]
+<!--      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/certs" title="Certificates for <!--[$name]-->">CERTS</a> ] -->
 <!--      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/standings" title="Standings for <!--[$name]-->">STANDINGS</a> ] -->
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/sigs" title="Signatures for <!--[$name]-->">SIGNATURES</a> ]
     <!--[elseif $page eq 'ships']-->
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->" title="Skillsheet for <!--[$name]-->">SKILLS</a> ]
       [ SHIPS ]
-      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/certs" title="Certificates for <!--[$name]-->">CERTS</a> ]
+<!--      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/certs" title="Certificates for <!--[$name]-->">CERTS</a> ] -->
 <!--      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/standings" title="Standings for <!--[$name]-->">STANDINGS</a> ] -->
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/sigs" title="Signatures for <!--[$name]-->">SIGNATURES</a> ]
     <!--[elseif $page eq 'certs']-->
@@ -71,13 +72,13 @@ which.style.display="block"}</script>
     <!--[elseif $page eq 'siglist']-->
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->" title="Skillsheet for <!--[$name]-->">SKILLS</a> ]
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/ships" title="Ships <!--[$name]--> can fly">SHIPS</a> ]
-      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/certs" title="Certificates for <!--[$name]-->">CERTS</a> ]
+<!--      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/certs" title="Certificates for <!--[$name]-->">CERTS</a> ] -->
 <!--      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/standings" title="Standings for <!--[$name]-->">STANDINGS</a> ] -->
       [ SIGNATURES ]
     <!--[else]-->
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->" title="Skillsheet for <!--[$name]-->">SKILLS</a> ]   
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/ships" title="Ships <!--[$name]--> can fly">SHIPS</a> ]         
-      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/certs" title="Certificates for <!--[$name]-->">CERTS</a> ]    
+<!--      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/certs" title="Certificates for <!--[$name]-->">CERTS</a> ]   --> 
       [ STANDINGS ]
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/sigs" title="Signatures for <!--[$name]-->">SIGNATURES</a> ]
     <!--[/if]-->
