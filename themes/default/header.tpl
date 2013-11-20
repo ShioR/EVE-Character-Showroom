@@ -26,7 +26,6 @@
   <!--[/if]-->
   <link rel="stylesheet" type="text/css" href="/themes/<!--[$theme]-->/style/<!--[$theme]-->.css" />
   <link rel="stylesheet" type="text/css" href="/themes/<!--[$theme]-->/style/piro.css" />
-<script type="text/javascript" src="/includes/charts/FusionCharts.js"></script>
 <script type="text/javascript" src="/themes/<!--[$theme]-->/js/jquery.min.js"></script>
 <script type="text/javascript" src="/themes/<!--[$theme]-->/js/jquery-ui-1.8.2.custom.min.js"></script>
 <script type="text/javascript" src="/themes/<!--[$theme]-->/js/pirobox_extended.js"></script>
