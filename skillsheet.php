@@ -128,16 +128,7 @@ MYSQL_CLOSE();
             break;
         case 'list':
             charlist($config);
-            break;
-        case 'mobile';
-             mobile($config);
-             break;            
-        case 'corplist':
-            corplist($config);
-            break;            
-        case 'certs':
-            certificates($config);
-            break;
+            break; 
         case 'addnew':
             AddNew($config);
             break;
@@ -152,13 +143,13 @@ MYSQL_CLOSE();
             break;            
         case 'sigs':
             siglist($config);exit;
-            break;
-        case 'settings':
-            settings($config);exit;
-            break;            
+            break;        
         case 'error':
             $eveRender->display('error.tpl');exit;
-            break;                       
+            break;                     
+        case 'shipViewer':
+            shipViewer($config);exit;
+            break;            
         default:
             if ($characterID) {
                 index($config);
@@ -332,163 +323,6 @@ function AddNew($config)
 
 }
 
-function certificates($config)
-{
-
-    global $skillsource, $eveRender;
-
-    $training = GetTrainingData($config['training']);
-
-    $parse = ParseXMLFile($config['data']);
-    $info = ParseXMLFile($config['characterInfo']);
-
-    $char = $parse['result'];
-    $charInfo = $info['result'];
-
-    $characterID     = $char['characterID'];
-
-    $name            = $char['name'];
-    $race            = $char['race'];
-    $bloodLine       = $char['bloodLine'];
-    $gender          = $char['gender'];
-    $dob             = $char['DoB'];
-    $secStatus 		 = $charInfo['securityStatus'];
-    $cloneName       = $char['cloneName'];
-    $cloneSP         = $char['cloneSkillPoints'];
-    $ancestry        = $char['ancestry'];    
-    $corporationName = $char['corporationName'];
-    $corporationID   = $char['corporationID'];
-    $allianceName    = $char['allianceName'];
-    $allianceID      = $char['allianceID'];    
-    $balance         = $char['balance'];
-    $attEnhancers    = $char['attributeEnhancers'];
-    if($attEnhancers != ''){
-    $memory			 = $attEnhancers['memoryBonus']['augmentatorValue'];
-    $intelligence	 = $attEnhancers['intelligenceBonus']['augmentatorValue'];
-    $willpower		 = $attEnhancers['willpowerBonus']['augmentatorValue'];
-    $perception		 = $attEnhancers['perceptionBonus']['augmentatorValue'];
-    $charisma		 = $attEnhancers['charismaBonus']['augmentatorValue'];
-    }
-    $attributes      = array('intelligence' => $char['attributes']['intelligence'],
-                             'charisma'     => $char['attributes']['charisma'],
-                             'perception'   => $char['attributes']['perception'],
-                             'memory'       => $char['attributes']['memory'],
-                             'willpower'    => $char['attributes']['willpower']);//echo '<pre>';
-
-    $implants = GetImplants($attEnhancers);
-
-    $skillTraining   = $training;
-
-    $skills          = $char['rowset'][0]['row'];
-
-    $assign = BuildSkillSet($skills, $training);
-
-    $skillsearch = $assign['skillsearch'];
-
-    // Attributes are defined by some skills... changing them here !
-    Attributes($attributes, $assign['skilltree'], $implants);
-
-    $certs = $char['rowset'][1]['row'];
-
-    foreach ($certs as $certificate) {
-        $certificates[] = $certificate['certificateID'];
-    }
-
-    $categories = GetCertsCategories();
-
-    foreach ($certificates as $certificate) {
-        $certinfo = GetCertInfo($certificate);
-
-        $classID = $certinfo['classID'];
-        $grade = $certinfo['grade'];
-        switch ($grade) {
-            case 1:  $certinfo['gradeName'] = 'Basic';    break;
-            case 2:  $certinfo['gradeName'] = 'Standard'; break;
-            case 3:  $certinfo['gradeName'] = 'Improved'; break;
-            case 5:  $certinfo['gradeName'] = 'Elite';    break;
-            default: $certinfo['gradeName'] = 'Basic';
-        }
-
-        if (isset($categories[$certinfo['categoryID']]['owned'][$certinfo['classID']])) {
-            if ($grade > $categories[$certinfo['categoryID']]['owned'][$certinfo['classID']]['grade']) {
-                $categories[$certinfo['categoryID']]['owned'][$certinfo['classID']] = $certinfo;
-            }
-        } else {
-            $categories[$certinfo['categoryID']]['owned'][$certinfo['classID']] = $certinfo;
-        }
-    }
-
-    foreach ($categories as $categoryID => $category) {
-        if (!$category['owned']) {
-            unset($categories[$categoryID]);
-        }
-    }
-
-    $eveRender->Assign('name',              $name);
-    $eveRender->Assign('race',              $race);
-    $eveRender->Assign('bloodLine',         $bloodLine);
-    $eveRender->Assign('gender',            $gender);
-    $eveRender->Assign('DoB',               $dob);
-    $eveRender->Assign('securityStatus',    $secStatus);
-    $eveRender->Assign('cloneName',         $cloneName);
-    $eveRender->Assign('cloneSkillPoints',  $cloneSP);
-    $eveRender->Assign('ancestry',          $ancestry);     
-    $eveRender->Assign('corporationName',   $corporationName);
-    $eveRender->Assign('corporationID',     $corporationID);
-    $eveRender->Assign('allianceName',      $allianceName);
-    $eveRender->Assign('allianceID',        $allianceID);    
-    $eveRender->Assign('balance',           number_format($balance, 2, '.', ' '));
-    $eveRender->Assign('memoryImp',         $memory);
-    $eveRender->Assign('intelligenceImp',   $intelligence);
-    $eveRender->Assign('willpowerImp',      $willpower);
-    $eveRender->Assign('perceptionImp',     $perception);
-    $eveRender->Assign('charismaImp',       $charisma);
-    if($skillTraining['skillName'] != '') {
-        $eveRender->Assign('Training',          $skillTraining['skillName']);
-        $eveRender->Assign('ToLevel',           $skillTraining['trainingToLevel']);
-        $eveRender->Assign('TrainingID',        $skillTraining['trainingTypeID']);
-        $eveRender->Assign('trainingStartTime', $skillTraining['trainingStartTime']);
-        $eveRender->Assign('trainingEndTime',   $skillTraining['trainingEndTime']);
-        $eveRender->Assign('TrainingTimeLeft',  $skillTraining['TrainingTimeLeft']);
-        $eveRender->Assign('trainingEndstamp',  strtotime($skillTraining['trainingEndTime']));
-        $eveRender->Assign('trainingEndFormat', date("m/d/Y G:i:s", strtotime($skillTraining['trainingEndTime']." GMT")));
-    }
-    $time     = time();
-    $filetime = strtotime($config['cachedUntil']);//filemtime($config['filename']);
-    $left     = ($filetime + 3600) - $time;
-    $diffDate = $left;
-    $days     = floor($diffDate / 24 / 60 / 60 );
-    $diffDate = $diffDate - ($days*24*60*60);
-    $hours    = floor($diffDate / 60 / 60);
-    $diffDate = ($diffDate - ($hours*60*60));
-    $minutes  = floor($diffDate/60);
-    $diffDate = $diffDate - ($minutes*60);
-    $seconds  = floor($diffDate);
-    $eveRender->Assign('skilltree',         $assign['skilltree']);
-    $eveRender->Assign('skillgroups',       $assign['skillgroups']);
-    $eveRender->Assign('characterID',       $characterID);
-    $eveRender->Assign('attributes',        $attributes);
-    $eveRender->Assign('pageupdateminutes', $minutes);
-    $eveRender->Assign('pageupdateseconds', $seconds);
-    $eveRender->Assign('l1total',           $assign['l1total']);
-    $eveRender->Assign('l5total',           $assign['l5total']);
-    $eveRender->Assign('l5spsformat',       number_format($assign['l5sps'], 0, '', ' '));
-    $eveRender->Assign('l5sps',             $assign['l5sps']);
-    $eveRender->Assign('grptable',          $assign['grptable']);
-    $eveRender->Assign('totalsks',          $assign['count']);
-    $eveRender->Assign('totalsps',          $assign['skillpointstotal']);
-    $eveRender->Assign('totalskillpoints',  $assign['totalskillpoints']);
-    $eveRender->Assign('skillpointstotal',  number_format($assign['skillpointstotal'], 0, '', ','));
-    // Version
-    $eveRender->Assign('version',           _SKILLSHEET_VERSION);
-    $eveRender->Assign('dVersion',          _DATA_VERSION);
-    $eveRender->Assign('categories',        $categories);
-
-    $eveRender->Display('certificates.tpl');
-    exit;
-
-}
-
 function charlist($config)
 {
 
@@ -503,178 +337,6 @@ function charlist($config)
 
     $eveRender->Display('charlist.tpl');//return $template = 'shipskills.tpl';
     exit;
-}
-
-function settings($config)
-{
-
-    global $eveRender;                 
-
-    $characters = GetAllCharacters();
-    array_multisort($characters, SORT_ASC);
-
-    $eveRender->Assign('charlist',  $characters);
-    $eveRender->Assign('charcount', count($characters));    
-
-
-    $eveRender->Display('settings.tpl');//return $template = 'shipskills.tpl';
-    exit;
-}
-
-function mobile($config)
-{
-
-    global $skillsource, $eveRender;
-
-    $training = GetTrainingData($config['training']);
-
-    $parse = ParseXMLFile($config['data']);
-    $info = ParseXMLFile($config['characterInfo']);
-
-    $char = $parse['result'];
-    $charInfo = $info['result'];
-
-    $characterID     = $char['characterID'];
-
-    $name            = $char['name'];
-    $race            = $char['race'];
-    $bloodLine       = $char['bloodLine'];
-    $gender          = $char['gender'];
-    $dob             = $char['DoB'];
-    $secStatus 		 = $charInfo['securityStatus'];
-    $cloneName       = $char['cloneName'];
-    $cloneSP         = $char['cloneSkillPoints'];
-    $ancestry        = $char['ancestry'];    
-    $corporationName = $char['corporationName'];
-    $corporationID   = $char['corporationID'];
-    $allianceName    = $char['allianceName'];
-    $allianceID      = $char['allianceID'];    
-    $balance         = $char['balance'];
-    $attEnhancers    = $char['attributeEnhancers'];
-    if($attEnhancers != ''){
-    $memory			 = $attEnhancers['memoryBonus']['augmentatorValue'];
-    $intelligence	 = $attEnhancers['intelligenceBonus']['augmentatorValue'];
-    $willpower		 = $attEnhancers['willpowerBonus']['augmentatorValue'];
-    $perception		 = $attEnhancers['perceptionBonus']['augmentatorValue'];
-    $charisma		 = $attEnhancers['charismaBonus']['augmentatorValue'];
-    }
-    $attributes      = array('intelligence' => $char['attributes']['intelligence'],
-                             'charisma'     => $char['attributes']['charisma'],
-                             'perception'   => $char['attributes']['perception'],
-                             'memory'       => $char['attributes']['memory'],
-                             'willpower'    => $char['attributes']['willpower']);//echo '<pre>';
-
-    $implants = GetImplants($attEnhancers);
-
-    $skillTraining   = $training;
-
-    $skills          = $char['rowset'][0]['row'];
-
-    $assign = BuildSkillSet($skills, $training);
-
-    $skillsearch = $assign['skillsearch'];
-
-    // Attributes are defined by some skills... changing them here !
-    Attributes($attributes, $assign['skilltree'], $implants);
-
-    $certs = $char['rowset'][1]['row'];
-
-    foreach ($certs as $certificate) {
-        $certificates[] = $certificate['certificateID'];
-    }
-
-    $categories = GetCertsCategories();
-
-    foreach ($certificates as $certificate) {
-        $certinfo = GetCertInfo($certificate);
-
-        $classID = $certinfo['classID'];
-        $grade = $certinfo['grade'];
-        switch ($grade) {
-            case 1:  $certinfo['gradeName'] = 'Basic';    break;
-            case 2:  $certinfo['gradeName'] = 'Standard'; break;
-            case 3:  $certinfo['gradeName'] = 'Improved'; break;
-            case 5:  $certinfo['gradeName'] = 'Elite';    break;
-            default: $certinfo['gradeName'] = 'Basic';
-        }
-
-        if (isset($categories[$certinfo['categoryID']]['owned'][$certinfo['classID']])) {
-            if ($grade > $categories[$certinfo['categoryID']]['owned'][$certinfo['classID']]['grade']) {
-                $categories[$certinfo['categoryID']]['owned'][$certinfo['classID']] = $certinfo;
-            }
-        } else {
-            $categories[$certinfo['categoryID']]['owned'][$certinfo['classID']] = $certinfo;
-        }
-    }
-
-    foreach ($categories as $categoryID => $category) {
-        if (!$category['owned']) {
-            unset($categories[$categoryID]);
-        }
-    }
-
-    $eveRender->Assign('name',              $name);
-    $eveRender->Assign('race',              $race);
-    $eveRender->Assign('bloodLine',         $bloodLine);
-    $eveRender->Assign('gender',            $gender);
-    $eveRender->Assign('DoB',               $dob);
-    $eveRender->Assign('securityStatus',    $secStatus);
-    $eveRender->Assign('cloneName',         $cloneName);
-    $eveRender->Assign('cloneSkillPoints',  $cloneSP);
-    $eveRender->Assign('ancestry',          $ancestry);     
-    $eveRender->Assign('corporationName',   $corporationName);
-    $eveRender->Assign('corporationID',     $corporationID);
-    $eveRender->Assign('allianceName',      $allianceName);
-    $eveRender->Assign('allianceID',        $allianceID);    
-    $eveRender->Assign('balance',           number_format($balance, 2, '.', ' '));
-    $eveRender->Assign('memoryImp',         $memory);
-    $eveRender->Assign('intelligenceImp',   $intelligence);
-    $eveRender->Assign('willpowerImp',      $willpower);
-    $eveRender->Assign('perceptionImp',     $perception);
-    $eveRender->Assign('charismaImp',       $charisma);
-    if($skillTraining['skillName'] != '') {
-        $eveRender->Assign('Training',          $skillTraining['skillName']);
-        $eveRender->Assign('ToLevel',           $skillTraining['trainingToLevel']);
-        $eveRender->Assign('TrainingID',        $skillTraining['trainingTypeID']);
-        $eveRender->Assign('trainingStartTime', $skillTraining['trainingStartTime']);
-        $eveRender->Assign('trainingEndTime',   $skillTraining['trainingEndTime']);
-        $eveRender->Assign('TrainingTimeLeft',  $skillTraining['TrainingTimeLeft']);
-        $eveRender->Assign('trainingEndstamp',  strtotime($skillTraining['trainingEndTime']));
-        $eveRender->Assign('trainingEndFormat', date("m/d/Y G:i:s", strtotime($skillTraining['trainingEndTime']." GMT")));
-    }
-    $time     = time();
-    $filetime = strtotime($config['cachedUntil']);//filemtime($config['filename']);
-    $left     = ($filetime + 3600) - $time;
-    $diffDate = $left;
-    $days     = floor($diffDate / 24 / 60 / 60 );
-    $diffDate = $diffDate - ($days*24*60*60);
-    $hours    = floor($diffDate / 60 / 60);
-    $diffDate = ($diffDate - ($hours*60*60));
-    $minutes  = floor($diffDate/60);
-    $diffDate = $diffDate - ($minutes*60);
-    $seconds  = floor($diffDate);
-    $eveRender->Assign('skilltree',         $assign['skilltree']);
-    $eveRender->Assign('skillgroups',       $assign['skillgroups']);
-    $eveRender->Assign('characterID',       $characterID);
-    $eveRender->Assign('attributes',        $attributes);
-    $eveRender->Assign('pageupdateminutes', $minutes);
-    $eveRender->Assign('pageupdateseconds', $seconds);  
-    $eveRender->Assign('l5total',           $assign['l5total']);
-    $eveRender->Assign('l5spsformat',       number_format($assign['l5sps'], 0, '', ' '));
-    $eveRender->Assign('l5sps',             $assign['l5sps']);
-    $eveRender->Assign('grptable',          $assign['grptable']);
-    $eveRender->Assign('totalsks',          $assign['count']);
-    $eveRender->Assign('totalsps',          $assign['skillpointstotal']);
-    $eveRender->Assign('totalskillpoints',  $assign['totalskillpoints']);
-    $eveRender->Assign('skillpointstotal',  number_format($assign['skillpointstotal'], 0, '', ','));
-    // Version
-    $eveRender->Assign('version',           _SKILLSHEET_VERSION);
-    $eveRender->Assign('dVersion',          _DATA_VERSION);
-    $eveRender->Assign('categories',        $categories);
-
-    $eveRender->Display('mobile.tpl');
-    exit;
-
 }
 
 function siglist($config)
@@ -1565,13 +1227,15 @@ function ships($config = array())
 
     $ships = array();
 
-    foreach ($shipgroups as $grouID => $group) {
+       foreach ($shipgroups as $grouID => $group) {
         foreach ($races as $raceNo => $shiprace) {
             $sql = "SELECT   typeID,
                              groupID,
                              typeName,
                              tag,
-                             raceID
+                             raceID,
+                             graphicID,
+                             graphicFile
                     FROM     `skillsheet_ships`
                     WHERE    `skillsheet_ships`.groupID   = '".$grouID."'
                     AND      `skillsheet_ships`.raceID    = '".$raceNo."'
@@ -1584,7 +1248,7 @@ function ships($config = array())
             }
 
             for (; !$result->EOF; $result->MoveNext()) {
-                list($typeID, $groupID, $typeName, $tag, $description, $graphicID, $raceID) = $result->fields;
+                list($typeID, $groupID, $typeName, $tag, $raceID, $graphicID, $graphicFile) = $result->fields;
 
                 $required  = GetRequiredSkills($typeID, $groupID, $skillsearch);
 
@@ -1601,13 +1265,13 @@ function ships($config = array())
                 }
 
                 if ($canfly) {
-                    $shipscanfly[$group][$shiprace][$groupID][] = array('typeID'         => $typeID,
+                    $shipscanfly[$group][$shiprace][$groupID][] = array('typeID'    => $typeID,
                                                                     'groupID'        => $groupID,
                                                                     'group'          => $group,
                                                                     'typeName'       => $typeName,
-                                                                    'tag'			 => $tag,
-                                                                    //'description'    => $description,
+                                                                    'tag'			       => $tag,
                                                                     'graphicID'      => $graphicID,
+                                                                    'graphicFile'    => $graphicFile,
                                                                     'raceID'         => $raceID,
                                                                     'race'           => $races[$raceID],
                                                                     'requiredSkill1' => $required['requiredSkill1'],
@@ -1681,6 +1345,196 @@ function ships($config = array())
     $eveRender->Assign('dVersion',          _DATA_VERSION);
 
     $eveRender->Display('shipskills.tpl');
+    exit;
+}
+
+function shipViewer($config = array())
+{
+
+    global $skillsource, $eveRender;
+
+    $training = GetTrainingData($config['training']);
+
+    $parse = ParseXMLFile($config['data']);
+    $info = ParseXMLFile($config['characterInfo']);
+
+    $char = $parse['result'];
+    $charInfo = $info['result'];
+
+    $characterID     = $char['characterID'];
+
+    $name            = $char['name'];
+    $race            = $char['race'];
+    $bloodLine       = $char['bloodLine'];
+    $gender          = $char['gender'];
+    $dob             = $char['DoB'];
+    $secStatus 		 = $charInfo['securityStatus'];
+    $cloneName       = $char['cloneName'];
+    $cloneSP         = $char['cloneSkillPoints'];
+    $ancestry        = $char['ancestry'];    
+    $corporationName = $char['corporationName'];
+    $corporationID   = $char['corporationID'];
+    $allianceName    = $char['allianceName'];
+    $allianceID      = $char['allianceID'];    
+    $balance         = $char['balance'];
+    $attEnhancers    = $char['attributeEnhancers'];
+    if($attEnhancers != ''){
+    $memory			 = $attEnhancers['memoryBonus']['augmentatorValue'];
+    $intelligence	 = $attEnhancers['intelligenceBonus']['augmentatorValue'];
+    $willpower		 = $attEnhancers['willpowerBonus']['augmentatorValue'];
+    $perception		 = $attEnhancers['perceptionBonus']['augmentatorValue'];
+    $charisma		 = $attEnhancers['charismaBonus']['augmentatorValue'];
+    }
+    $attributes      = array('intelligence' => $char['attributes']['intelligence'],
+                             'charisma'     => $char['attributes']['charisma'],
+                             'perception'   => $char['attributes']['perception'],
+                             'memory'       => $char['attributes']['memory'],
+                             'willpower'    => $char['attributes']['willpower']);//echo '<pre>';
+
+    $implants = GetImplants($attEnhancers);
+
+    $skillTraining   = $training;
+
+    $skills          = $char['rowset'][0]['row'];
+
+    $assign = BuildSkillSet($skills, $training);
+
+    $skillsearch = $assign['skillsearch'];
+
+    // Attributes are defined by some skills... changing them here !
+    Attributes($attributes, $assign['skilltree'], $implants);
+
+    $shipgroups = Shipgroups();
+    $races = array(1  => 'Caldari',
+                   2  => 'Minmatar',
+                   4  => 'Amarr',
+                   8  => 'Gallente',
+                   16  => 'Pirate',
+                   32  => 'ORE',
+                   64  => 'SoE');
+
+    $dbconn   =& DBGetConn(true);
+
+    $ships = array();
+
+    foreach ($shipgroups as $grouID => $group) {
+        foreach ($races as $raceNo => $shiprace) {
+            $sql = "SELECT   typeID,
+                             groupID,
+                             typeName,
+                             tag,
+                             raceID,
+                             graphicID,
+                             graphicFile
+                    FROM     `skillsheet_ships`
+                    WHERE    `skillsheet_ships`.groupID   = '".$grouID."'
+                    AND      `skillsheet_ships`.raceID    = '".$raceNo."'
+                    ORDER BY `skillsheet_ships`.typeName";
+
+            $result = $dbconn->Execute($sql);
+
+            if ($dbconn->ErrorNo() != 0) {
+                echo $dbconn->ErrorMsg() . $sql;exit;
+            }
+
+            for (; !$result->EOF; $result->MoveNext()) {
+                list($typeID, $groupID, $typeName, $tag, $raceID, $graphicID, $graphicFile) = $result->fields;
+
+                $required  = GetRequiredSkills($typeID, $groupID, $skillsearch);
+
+                $canfly = true;
+
+                foreach ($required as $key => $value) {
+                    $reqskillname = $value['skillName'];
+                    if ($groupID == 893 && $value['skillName'] == 'Electronic Attack Ships') {
+                        $reqskillname = 'Electronic Attack Ships';
+                    }
+                    if (!isset($skillsearch["$reqskillname"]) || $skillsearch["$reqskillname"]['level'] < $value['level']) {
+                        $canfly = false;
+                    }
+                }
+
+                if ($canfly) {
+                    $shipscanfly[$group][$shiprace][$groupID][] = array('typeID'    => $typeID,
+                                                                    'groupID'        => $groupID,
+                                                                    'group'          => $group,
+                                                                    'typeName'       => $typeName,
+                                                                    'tag'			       => $tag,
+                                                                    'graphicID'      => $graphicID,
+                                                                    'graphicFile'    => $graphicFile,
+                                                                    'raceID'         => $raceID,
+                                                                    'race'           => $races[$raceID],
+                                                                    'requiredSkill1' => $required['requiredSkill1'],
+                                                                    'requiredSkill2' => ((isset($required['requiredSkill2'])) ? $required['requiredSkill2'] : ''),
+                                                                    'requiredSkill3' => ((isset($required['requiredSkill3'])) ? $required['requiredSkill3'] : ''));
+                                                                    //ksort($typeName, SORT_REGULAR); 
+                }
+            }
+
+            $result->Close();
+        }
+    }
+
+    $eveRender->Assign('name',              $name);
+    $eveRender->Assign('race',              $race);
+    $eveRender->Assign('bloodLine',         $bloodLine);
+    $eveRender->Assign('gender',            $gender);
+    $eveRender->Assign('DoB',               $dob);
+    $eveRender->Assign('securityStatus',    $secStatus);
+    $eveRender->Assign('cloneName',         $cloneName);
+    $eveRender->Assign('cloneSkillPoints',  $cloneSP);
+    $eveRender->Assign('ancestry',          $ancestry);     
+    $eveRender->Assign('corporationName',   $corporationName);
+    $eveRender->Assign('corporationID',     $corporationID);
+    $eveRender->Assign('allianceName',      $allianceName);
+    $eveRender->Assign('allianceID',        $allianceID);    
+    $eveRender->Assign('balance',           number_format($balance, 2, '.', ' '));
+    $eveRender->Assign('memoryImp',         $memory);
+    $eveRender->Assign('intelligenceImp',   $intelligence);
+    $eveRender->Assign('willpowerImp',      $willpower);
+    $eveRender->Assign('perceptionImp',     $perception);
+    $eveRender->Assign('charismaImp',       $charisma);
+    if($skillTraining['skillName'] != '') {
+        $eveRender->Assign('Training',          $skillTraining['skillName']);
+        $eveRender->Assign('ToLevel',           $skillTraining['trainingToLevel']);
+        $eveRender->Assign('TrainingID',        $skillTraining['trainingTypeID']);
+        $eveRender->Assign('trainingStartTime', $skillTraining['trainingStartTime']);
+        $eveRender->Assign('trainingEndTime',   $skillTraining['trainingEndTime']);
+        $eveRender->Assign('TrainingTimeLeft',  $skillTraining['TrainingTimeLeft']);
+        $eveRender->Assign('trainingEndstamp',  strtotime($skillTraining['trainingEndTime']));
+        $eveRender->Assign('trainingEndFormat', date("m/d/Y G:i:s", strtotime($skillTraining['trainingEndTime']." GMT")));
+    }
+    $time     = time();
+    $filetime = strtotime($config['cachedUntil']);//filemtime($config['filename']);
+    $left     = ($filetime + 3600) - $time;
+    $diffDate = $left;
+    $days     = floor($diffDate / 24 / 60 / 60 );
+    $diffDate = $diffDate - ($days*24*60*60);
+    $hours    = floor($diffDate / 60 / 60);
+    $diffDate = ($diffDate - ($hours*60*60));
+    $minutes  = floor($diffDate/60);
+    $diffDate = $diffDate - ($minutes*60);
+    $seconds  = floor($diffDate);
+    $eveRender->Assign('skilltree',         $assign['skilltree']);
+    $eveRender->Assign('skillgroups',       $assign['skillgroups']);
+    $eveRender->Assign('characterID',       $characterID);
+    $eveRender->Assign('attributes',        $attributes);
+    $eveRender->Assign('pageupdateminutes', $minutes);
+    $eveRender->Assign('pageupdateseconds', $seconds);
+    $eveRender->Assign('l5total',           $assign['l5total']);
+    $eveRender->Assign('l5spsformat',       number_format($assign['l5sps'], 0, '', ' '));
+    $eveRender->Assign('l5sps',             $assign['l5sps']);
+    $eveRender->Assign('grptable',          $assign['grptable']);
+    $eveRender->Assign('totalsks',          $assign['count']);
+    $eveRender->Assign('totalsps',          $assign['skillpointstotal']);
+    $eveRender->Assign('totalskillpoints',  $assign['totalskillpoints']);
+    $eveRender->Assign('skillpointstotal',  number_format($assign['skillpointstotal'], 0, '', ','));
+    $eveRender->Assign('shipscanfly',       $shipscanfly);
+    // Version
+    $eveRender->Assign('version',           _SKILLSHEET_VERSION);
+    $eveRender->Assign('dVersion',          _DATA_VERSION);
+
+    $eveRender->Display('shipViewer.tpl');
     exit;
 }
 
