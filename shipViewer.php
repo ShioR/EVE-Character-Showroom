@@ -14,11 +14,33 @@
        // Get the graphicID from the URL
             $typeName = ($_GET['id']);
             
-       // Get the graphicFile from the db & close the connection
-				$result = mysql_query("SELECT graphicFile FROM skillsheet_ships WHERE typeName = '$typeName'");
-				$path = mysql_result($result, 0);
+       // Get the graphicFile from the db
+				$name = mysql_query("SELECT graphicFile FROM skillsheet_ships WHERE typeName = '$typeName'");
+				$path = mysql_result($name, 0);
+		 // Get the raceID from the db & close the connection
+				$raceID = mysql_query("SELECT raceID FROM skillsheet_ships WHERE typeName = '$typeName'");
+				$race = mysql_result($raceID, 0);
    	mysql_close();
 ?>
+<?php
+  // Get racial specific backgrounds
+    if ($race == '1') {
+        $bg = 'res:/dx9/scene/universe/c03_cube.red';
+    } elseif ($race == '2') {    
+        $bg = 'res:/dx9/scene/universe/m03_cube.red';
+    } elseif ($race == '4') {
+        $bg = 'res:/dx9/scene/universe/a04_cube.red';
+    } elseif ($race == '8') {    
+        $bg = 'res:/dx9/scene/universe/g04_cube.red';
+    } elseif ($race == '32') {
+        $bg = 'res:/dx9/scene/universe/g04_cube.red';  
+    } elseif ($race == '64') {
+        $bg = 'res:/dx9/scene/universe/g04_cube.red';
+    } else {
+        $bg = 'res:/dx9/scene/universe/c10_cube.red';
+    }    
+   
+?>   
         <script type="text/javascript" src="/includes/ccpwgl/src/external/glMatrix-0.9.5.min.js"></script>
         <script type="text/javascript" src="/includes/ccpwgl/src/ccpwgl_int.js"></script>
         <script type="text/javascript" src="/includes/ccpwgl/src/test/TestCamera2.js"></script>
@@ -33,7 +55,7 @@
                 var canvas = document.getElementById('mainCanvas');
                 ccpwgl.initialize(canvas);
                 // Nebula
-                var scene = ccpwgl.loadScene('res:/dx9/scene/universe/a04_cube.red');
+                var scene = ccpwgl.loadScene('<?php echo $bg; ?>');
                 // Sun
                 sun = scene.loadSun('res:/dx9/model/lensflare/yellow.red', undefined);
 
