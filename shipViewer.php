@@ -25,19 +25,19 @@
 <?php
   // Get racial specific backgrounds
     if ($race == '1') {
-        $bg = 'res:/dx9/scene/universe/c03_cube.red';
+        $nebula = 'res:/dx9/scene/universe/c03_cube.red';
     } elseif ($race == '2') {    
-        $bg = 'res:/dx9/scene/universe/m03_cube.red';
+        $nebula = 'res:/dx9/scene/universe/m03_cube.red';
     } elseif ($race == '4') {
-        $bg = 'res:/dx9/scene/universe/a04_cube.red';
+        $nebula = 'res:/dx9/scene/universe/a03_cube.red';
     } elseif ($race == '8') {    
-        $bg = 'res:/dx9/scene/universe/g04_cube.red';
+        $nebula = 'res:/dx9/scene/universe/g03_cube.red';
     } elseif ($race == '32') {
-        $bg = 'res:/dx9/scene/universe/g04_cube.red';  
+        $nebula = 'res:/dx9/scene/universe/g03_cube.red';  
     } elseif ($race == '64') {
-        $bg = 'res:/dx9/scene/universe/g04_cube.red';
+        $nebula = 'res:/dx9/scene/universe/g03_cube.red';
     } else {
-        $bg = 'res:/dx9/scene/universe/c10_cube.red';
+        $nebula = 'res:/dx9/scene/universe/c10_cube.red';
     }    
    
 ?>   
@@ -54,10 +54,8 @@
 
                 var canvas = document.getElementById('mainCanvas');
                 ccpwgl.initialize(canvas);
-                // Nebula
-                var scene = ccpwgl.loadScene('<?php echo $bg; ?>');
-                // Sun
-                sun = scene.loadSun('res:/dx9/model/lensflare/yellow.red', undefined);
+                  // Nebula
+                     var scene = ccpwgl.loadScene('<?php echo $nebula; ?>');
 
         		var camera = new TestCamera(canvas);
                 camera.minDistance = 10;
@@ -74,13 +72,9 @@
 
                 // Load the data for the ship
                 var ship = scene.loadShip('<?php echo $path; ?>', undefined);
-               // var ship = scene.loadShip('res:/dx9/model/ship/amarr/Titan/AT1/AT1_T1.red', undefined);
-
-                // Engine trails 
-               // ship.loadBoosters('res:/dx9/model/ship/booster/booster_amarr.red');
-
-
-                ccpwgl.enablePostprocessing(true);
+                
+                // Bloom Setting
+                ccpwgl.enablePostprocessing(false);
 
         		ccpwgl.onPreRender = function () 
         		{ 
