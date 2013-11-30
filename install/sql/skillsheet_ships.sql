@@ -101,7 +101,7 @@ INSERT INTO `skillsheet_ships` VALUES ('11387', '893', 'Hyena', '2', '2', '1', '
 INSERT INTO `skillsheet_ships` VALUES ('11393', '324', 'Retribution', '2', '4', '1', '1920', 'res:/dx9/Model/Ship/Amarr/Frigate/AF3/Sarum/AF3_T2b_Sarum.red');
 INSERT INTO `skillsheet_ships` VALUES ('11400', '324', 'Jaguar', '2', '2', '1', '1950', 'res:/dx9/Model/Ship/Minmatar/Frigate/MF4/Thukker/MF4_T2b_Thukker.red');
 INSERT INTO `skillsheet_ships` VALUES ('11567', '30', 'Avatar', '1', '4', '1', '2910', 'res:/dx9/model/ship/amarr/Titan/AT1/AT1_T1.red');
-INSERT INTO `skillsheet_ships` VALUES ('11936', '27', 'Apocalypse Imperial Issue', '4', '4', '1', '2239', 'res:/dx9/Model/Ship/Amarr/Battleship/AB1/Navy/AB1_T1_Navy.red');
+INSERT INTO `skillsheet_ships` VALUES ('11936', '27', 'Apocalypse Imperial Issue', '4', '4', '1', '2239', 'res:/dx9/Model/Ship/Amarr/Battleship/AB1/Imperial/AB1_T1_Imperial.red');
 INSERT INTO `skillsheet_ships` VALUES ('11938', '27', 'Armageddon Imperial Issue', '4', '4', '1', '2240', 'res:/dx9/Model/Ship/Amarr/Battleship/AB2/Imperial/AB2_T1_Imperial.red');
 INSERT INTO `skillsheet_ships` VALUES ('11940', '25', 'Gold Magnate', '4', '4', '1', '2242', 'res:/dx9/Model/Ship/Tournament/AF7_X/AF7_X_Gold.red');
 INSERT INTO `skillsheet_ships` VALUES ('11942', '25', 'Silver Magnate', '4', '4', '1', '2241', 'res:/dx9/Model/Ship/Tournament/AF7_X/AF7_X_Silver.red');
