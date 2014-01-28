@@ -842,3 +842,7 @@ INSERT INTO `skillsheet_reqs` VALUES ('33470', 'requiredSkill1', '0', '0', '26',
 INSERT INTO `skillsheet_reqs` VALUES ('33470', 'requiredSkill1Level', '2', '0', '26', 'Stratios', '64', 'Sisters of EVE', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('33470', 'requiredSkill2', '0', '0', '26', 'Stratios', '64', 'Sisters of EVE', 'Gallente Cruiser', null);
 INSERT INTO `skillsheet_reqs` VALUES ('33470', 'requiredSkill2Level', '2', '0', '26', 'Stratios', '64', 'Sisters of EVE', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('33472', 'requiredSkill1', '3339', '0', '27', 'Nestor', '64', 'Sisters of EVE', 'Amarr Battleship', null);
+INSERT INTO `skillsheet_reqs` VALUES ('33472', 'requiredSkill1Level', '1', '0', '27', 'Nestor', '64', 'Sisters of EVE', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('33472', 'requiredSkill2', '3336', '0', '27', 'Nestor', '64', 'Sisters of EVE', 'Gallente Battleship', null);
+INSERT INTO `skillsheet_reqs` VALUES ('33472', 'requiredSkill2Level', '1', '0', '27', 'Nestor', '64', 'Sisters of EVE', null, null);
