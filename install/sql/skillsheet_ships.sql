@@ -276,3 +276,4 @@ INSERT INTO `skillsheet_ships` VALUES ('33151', '419', 'Brutix Navy Issue', '4',
 INSERT INTO `skillsheet_ships` VALUES ('33157', '419', 'Hurricane Fleet Issue', '4', '2', '1', '20230', 'res:/dx9/Model/Ship/Minmatar/BattleCruiser/MBC2/Navy/MBC2_T1_Navy.red');
 INSERT INTO `skillsheet_ships` VALUES ('33468', '25', 'Astero', '4', '64', '1', '20386', 'res:/dx9/model/ship/SoE/Frigate/SoEF1/SoEF1_T1.red');
 INSERT INTO `skillsheet_ships` VALUES ('33470', '26', 'Stratios', '4', '64', '1', '20385', 'res:/dx9/model/ship/SoE/Cruiser/SoEC1/SoEC1_T1.red');
+INSERT INTO `skillsheet_ships` VALUES ('33472', '27', 'Nestor', '4', '64', '1', '20384', 'res:/dx9/model/ship/SoE/Battleship/SoEB1/SoEB1_T1.red');
