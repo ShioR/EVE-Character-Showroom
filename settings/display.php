@@ -65,7 +65,7 @@ a,a:visited{color:gold;}
         <td bgcolor='#1B1B1B' align='center'><input type='submit' value='Show/Hide Character'></td>
         </tr>
         <tr>
-           <td colspan='2'></br></br><span class="newsmalltext">Your API keys can be found <a target="_blank" href="https://support.eveonline.com/api">here</a></span>.</td>
+           <td colspan='2'></br></br><span class="newsmalltext">Your API keys can be found <a target="_blank" href="https://community.eveonline.com/support/api-key/">here</a></span>.</td>
          </tr>
           </form>
         </div>          
