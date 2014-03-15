@@ -58,7 +58,7 @@ a,a:visited{color:gold;}
     </thead>
     <tbody>
       <tr>
-        <td>Your API Key as been successfully updated and should be working within a few moments.<br /><br />This will change the API Key for all characters associated with that key.<br /></td>
+        <td>Your API Key has been successfully updated and should be working within a few moments.<br /><br />This will change the API Key for all characters associated with that key.<br /></td>
       </tr>   
      </tbody>
     </table>  
