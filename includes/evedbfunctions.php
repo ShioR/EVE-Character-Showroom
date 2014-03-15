@@ -5,7 +5,7 @@
 /*          Originally created by DeTox MinRohim           */
 /***********************************************************/
 /*   This thing is free for you to take. You take all      */
-/* responsabilities for using it. Whatever you do with it, */
+/* responsibilities for using it. Whatever you do with it, */
 /*  I don't care (although I would appreciate you send me  */
 /*   any enhancement - ISK donations are also accepted).   */
 /*                                                         */
