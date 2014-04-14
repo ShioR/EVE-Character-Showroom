@@ -33,12 +33,12 @@ $characterid=MYSQL_FETCH_ARRAY($charID, MYSQL_ASSOC);
 
 // Merge the above arrays and extract the keys
 $auth = array_merge($nafn, $keyID, $vCode, $characterid);
-extract($auth, EXTR_PREFIX_SKIP);
+extract($auth);
 
 // Get SkillQueue from API Server and do some xml stuff that for some reason seems to work...
 		$url = "https://api.eveonline.com/char/SkillQueue.xml.aspx?keyID=$keyID&vCode=$vCode&characterID=$characterID";
 
-        	$xml = simplexml_load_file($url);
+      $xml = simplexml_load_file($url);
 			header('Content-Type: text/xml'); 
 			$dbxml = $xml->asXML(); 
 

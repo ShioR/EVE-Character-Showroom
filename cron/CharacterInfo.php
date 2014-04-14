@@ -33,12 +33,12 @@ $characterid=MYSQL_FETCH_ARRAY($charID, MYSQL_ASSOC);
 
 // Merge the above arrays and extract the keys
 $auth = array_merge($nafn, $keyID, $vCode, $characterid);
-extract($auth, EXTR_PREFIX_SKIP);
+extract($auth);
 
 // Get CharacterInfo from API Server and do some xml stuff that for some reason seems to work...
 		$url = "https://api.eveonline.com/eve/CharacterInfo.xml.aspx?characterID=$characterID&keyID=$keyID&vCode=$vCode";
 
-        	$xml = simplexml_load_file($url);
+      $xml = simplexml_load_file($url);
 			header('Content-Type: text/xml'); 
 			$dbxml = $xml->asXML(); 
 
@@ -46,7 +46,7 @@ extract($auth, EXTR_PREFIX_SKIP);
 MYSQL_QUERY("UPDATE skillsheet_apis SET characterInfo = '$dbxml' WHERE characterID = '$characterID'");
 
 // Keep running so that all characters are updated
-$i++; 
+$i++;
 } 
 // Close the connection
 MYSQL_CLOSE();
