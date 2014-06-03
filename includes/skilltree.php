@@ -149,6 +149,13 @@ $skillsource[266][3373]['groupID'] = '266';
 $skillsource[266][3373]['groupName'] = 'Corporation Management';
 
 ////////////////////////////////////////////////////////////////////////// DRONES
+$skillsource[273][23566]['typeName'] = 'Advanced Drone Avionics';
+$skillsource[273][23566]['rank'] = '5';
+$skillsource[273][23566]['typeID'] = '23566';
+$skillsource[273][23566]['skillCost'] = '400000';
+$skillsource[273][23566]['groupID'] = '273';
+$skillsource[273][23566]['groupName'] = 'Drones';
+
 $skillsource[273][24613]['typeName'] = 'Advanced Drone Interfacing';
 $skillsource[273][24613]['rank'] = '8';
 $skillsource[273][24613]['typeID'] = '24613';
@@ -170,12 +177,12 @@ $skillsource[273][12487]['skillCost'] = '9000000';
 $skillsource[273][12487]['groupID'] = '273';
 $skillsource[273][12487]['groupName'] = 'Drones';
 
-$skillsource[273][24241]['typeName'] = 'Combat Drone Operation';
-$skillsource[273][24241]['rank'] = '2';
-$skillsource[273][24241]['typeID'] = '24241';
-$skillsource[273][24241]['skillCost'] = '50000';
-$skillsource[273][24241]['groupID'] = '273';
-$skillsource[273][24241]['groupName'] = 'Drones';
+$skillsource[273][3437]['typeName'] = 'Drone Avionics';
+$skillsource[273][3437]['rank'] = '1';
+$skillsource[273][3437]['typeID'] = '3437';
+$skillsource[273][3437]['skillCost'] = '40000';
+$skillsource[273][3437]['groupID'] = '273';
+$skillsource[273][3437]['groupName'] = 'Drones';
 
 $skillsource[273][23618]['typeName'] = 'Drone Durability';
 $skillsource[273][23618]['rank'] = '5';
@@ -212,13 +219,6 @@ $skillsource[273][3436]['skillCost'] = '20000';
 $skillsource[273][3436]['groupID'] = '273';
 $skillsource[273][3436]['groupName'] = 'Drones';
 
-$skillsource[273][23566]['typeName'] = 'Electronic Warfare Drone Interfacing';
-$skillsource[273][23566]['rank'] = '5';
-$skillsource[273][23566]['typeID'] = '23566';
-$skillsource[273][23566]['skillCost'] = '400000';
-$skillsource[273][23566]['groupID'] = '273';
-$skillsource[273][23566]['groupName'] = 'Drones';
-
 $skillsource[273][32339]['typeName'] = 'Fighter Bombers';
 $skillsource[273][32339]['rank'] = '12';
 $skillsource[273][32339]['typeID'] = '32339';
@@ -247,6 +247,20 @@ $skillsource[273][3441]['skillCost'] = '380000';
 $skillsource[273][3441]['groupID'] = '273';
 $skillsource[273][3441]['groupName'] = 'Drones';
 
+$skillsource[273][24241]['typeName'] = 'Light Drone Operation';
+$skillsource[273][24241]['rank'] = '1';
+$skillsource[273][24241]['typeID'] = '24241';
+$skillsource[273][24241]['skillCost'] = '50000';
+$skillsource[273][24241]['groupID'] = '273';
+$skillsource[273][24241]['groupName'] = 'Drones';
+
+$skillsource[273][33699]['typeName'] = 'Medium Drone Operation';
+$skillsource[273][33699]['rank'] = '2';
+$skillsource[273][33699]['typeID'] = '33699';
+$skillsource[273][33699]['skillCost'] = '100000';
+$skillsource[273][33699]['groupID'] = '273';
+$skillsource[273][33699]['groupName'] = 'Drones';
+
 $skillsource[273][3438]['typeName'] = 'Mining Drone Operation';
 $skillsource[273][3438]['rank'] = '2';
 $skillsource[273][3438]['typeID'] = '3438';
@@ -274,13 +288,6 @@ $skillsource[273][3440]['typeID'] = '3440';
 $skillsource[273][3440]['skillCost'] = '220000';
 $skillsource[273][3440]['groupID'] = '273';
 $skillsource[273][3440]['groupName'] = 'Drones';
-
-$skillsource[273][3437]['typeName'] = 'Scout Drone Operation';
-$skillsource[273][3437]['rank'] = '1';
-$skillsource[273][3437]['typeID'] = '3437';
-$skillsource[273][3437]['skillCost'] = '40000';
-$skillsource[273][3437]['groupID'] = '273';
-$skillsource[273][3437]['groupName'] = 'Drones';
 
 $skillsource[273][23594]['typeName'] = 'Sentry Drone Interfacing';
 $skillsource[273][23594]['rank'] = '5';
@@ -2271,6 +2278,13 @@ $skillsource[257][22551]['typeID'] = '22551';
 $skillsource[257][22551]['skillCost'] = '28000000';
 $skillsource[257][22551]['groupID'] = '257';
 $skillsource[257][22551]['groupName'] = 'Spaceship Command';
+
+$skillsource[257][33856]['typeName'] = 'Expedition Frigates';
+$skillsource[257][33856]['rank'] = '4';
+$skillsource[257][33856]['typeID'] = '33856';
+$skillsource[257][33856]['skillCost'] = '4000000';
+$skillsource[257][33856]['groupID'] = '257';
+$skillsource[257][33856]['groupName'] = 'Spaceship Command';
 
 $skillsource[257][33097]['typeName'] = 'Gallente Battlecruiser';
 $skillsource[257][33097]['rank'] = '6';
