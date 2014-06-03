@@ -277,3 +277,7 @@ INSERT INTO `skillsheet_ships` VALUES ('33157', '419', 'Hurricane Fleet Issue', 
 INSERT INTO `skillsheet_ships` VALUES ('33468', '25', 'Astero', '4', '64', '1', '20386', 'res:/dx9/model/ship/SoE/Frigate/SoEF1/SoEF1_T1.red');
 INSERT INTO `skillsheet_ships` VALUES ('33470', '26', 'Stratios', '4', '64', '1', '20385', 'res:/dx9/model/ship/SoE/Cruiser/SoEC1/SoEC1_T1.red');
 INSERT INTO `skillsheet_ships` VALUES ('33472', '27', 'Nestor', '4', '64', '1', '20384', 'res:/dx9/model/ship/SoE/Battleship/SoEB1/SoEB1_T1.red');
+INSERT INTO `skillsheet_ships` VALUES ('33697', '25', 'Prospect', '2', '32', '1', '20600', 'res:/dx9/Model/Ship/Ore/Frigate/OreF1/development/OreF1_T2b_development.red');
+INSERT INTO `skillsheet_ships` VALUES ('33820', '27', 'Barghest', '4', '16', '1', '20615', 'res:/dx9/model/ship/caldari/BattleShip/CB4/Mordus/CB4_T1_Mordus.red');
+INSERT INTO `skillsheet_ships` VALUES ('33816', '25', 'Garmur', '4', '16', '1', '20616', 'res:/dx9/model/ship/caldari/Frigate/CF9/Mordus/CF9_T1_Mordus.red');
+INSERT INTO `skillsheet_ships` VALUES ('33818', '26', 'Orthrus', '4', '16', '1', '20614', 'res:/dx9/model/ship/caldari/Cruiser/CC5/Mordus/CC5_T1_Mordus.red');
