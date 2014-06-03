@@ -9,7 +9,7 @@
         
       <!--[assign var='Armor' value=14]-->   
       <!--[assign var='CorporationManagement' value=7]-->   
-      <!--[assign var='Drones' value=20]-->   
+      <!--[assign var='Drones' value=21]-->   
       <!--[assign var='ElectronicSystems' value=15]-->   
       <!--[assign var='Engineering' value=14]-->   
       <!--[assign var='Gunnery' value=39]-->   
@@ -25,11 +25,11 @@
       <!--[assign var='Science' value=39]-->   
       <!--[assign var='Shields' value=12]-->   
       <!--[assign var='Social' value=9]-->   
-      <!--[assign var='SpaceshipCommand' value=67]-->   
+      <!--[assign var='SpaceshipCommand' value=68]-->   
       <!--[assign var='Subsystems' value=20]-->   
       <!--[assign var='Targeting' value=8]-->   
       <!--[assign var='Trade' value=13]-->   
-      <!--[assign var='GroupTotal' value=396]-->  
+      <!--[assign var='GroupTotal' value=398]-->  
       <!--[assign var='totalCost' value=0]-->   
       <!--[assign var='totalSkills' value=0]-->
       <!--[assign var='lvl1total' value=0]-->
