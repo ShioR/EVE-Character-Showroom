@@ -1229,6 +1229,13 @@ $skillsource[1044][13279]['groupID'] = '1044';
 $skillsource[1044][13279]['groupName'] = 'Planet Management';
 
 ////////////////////////////////////////////////////////////////////////// PRODUCTION
+$skillsource[268][3388]['typeName'] = 'Advanced Industry';
+$skillsource[268][3388]['rank'] = '3';
+$skillsource[268][3388]['typeID'] = '3388';
+$skillsource[268][3388]['skillCost'] = '250000';
+$skillsource[268][3388]['groupID'] = '268';
+$skillsource[268][3388]['groupName'] = 'Production';
+
 $skillsource[268][24625]['typeName'] = 'Advanced Mass Production';
 $skillsource[268][24625]['rank'] = '8';
 $skillsource[268][24625]['typeID'] = '24625';
@@ -1298,13 +1305,6 @@ $skillsource[268][3400]['typeID'] = '3400';
 $skillsource[268][3400]['skillCost'] = '100000000';
 $skillsource[268][3400]['groupID'] = '268';
 $skillsource[268][3400]['groupName'] = 'Production';
-
-$skillsource[268][3388]['typeName'] = 'Production Efficiency';
-$skillsource[268][3388]['rank'] = '3';
-$skillsource[268][3388]['typeID'] = '3388';
-$skillsource[268][3388]['skillCost'] = '250000';
-$skillsource[268][3388]['groupID'] = '268';
-$skillsource[268][3388]['groupName'] = 'Production';
 
 $skillsource[268][24268]['typeName'] = 'Supply Chain Management';
 $skillsource[268][24268]['rank'] = '3';
@@ -1461,19 +1461,19 @@ $skillsource[1218][12192]['skillCost'] = '100000';
 $skillsource[1218][12192]['groupID'] = '1218';
 $skillsource[1218][12192]['groupName'] = 'Resource Processing';
 
-$skillsource[1218][3389]['typeName'] = 'Refinery Efficiency';
-$skillsource[1218][3389]['rank'] = '3';
-$skillsource[1218][3389]['typeID'] = '3389';
-$skillsource[1218][3389]['skillCost'] = '280000';
-$skillsource[1218][3389]['groupID'] = '1218';
-$skillsource[1218][3389]['groupName'] = 'Resource Processing';
-
-$skillsource[1218][3385]['typeName'] = 'Refining';
+$skillsource[1218][3385]['typeName'] = 'Reprocessing';
 $skillsource[1218][3385]['rank'] = '1';
 $skillsource[1218][3385]['typeID'] = '3385';
 $skillsource[1218][3385]['skillCost'] = '50000';
 $skillsource[1218][3385]['groupID'] = '1218';
 $skillsource[1218][3385]['groupName'] = 'Resource Processing';
+
+$skillsource[1218][3389]['typeName'] = 'Reprocessing Efficiency';
+$skillsource[1218][3389]['rank'] = '3';
+$skillsource[1218][3389]['typeID'] = '3389';
+$skillsource[1218][3389]['skillCost'] = '280000';
+$skillsource[1218][3389]['groupID'] = '1218';
+$skillsource[1218][3389]['groupName'] = 'Resource Processing';
 
 $skillsource[1218][25863]['typeName'] = 'Salvaging';
 $skillsource[1218][25863]['rank'] = '3';
