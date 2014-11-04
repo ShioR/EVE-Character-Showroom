@@ -1229,19 +1229,19 @@ $skillsource[1044][13279]['groupID'] = '1044';
 $skillsource[1044][13279]['groupName'] = 'Planet Management';
 
 ////////////////////////////////////////////////////////////////////////// PRODUCTION
+$skillsource[268][3396]['typeName'] = 'Advanced Industrial Ship Construction';
+$skillsource[268][3396]['rank'] = '3';
+$skillsource[268][3396]['typeID'] = '3396';
+$skillsource[268][3396]['skillCost'] = '2000000';
+$skillsource[268][3396]['groupID'] = '268';
+$skillsource[268][3396]['groupName'] = 'Production';
+
 $skillsource[268][3388]['typeName'] = 'Advanced Industry';
 $skillsource[268][3388]['rank'] = '3';
 $skillsource[268][3388]['typeID'] = '3388';
 $skillsource[268][3388]['skillCost'] = '250000';
 $skillsource[268][3388]['groupID'] = '268';
 $skillsource[268][3388]['groupName'] = 'Production';
-
-$skillsource[268][24625]['typeName'] = 'Advanced Mass Production';
-$skillsource[268][24625]['rank'] = '8';
-$skillsource[268][24625]['typeID'] = '24625';
-$skillsource[268][24625]['skillCost'] = '20000000';
-$skillsource[268][24625]['groupID'] = '268';
-$skillsource[268][24625]['groupName'] = 'Production';
 
 $skillsource[268][3398]['typeName'] = 'Advanced Large Ship Construction';
 $skillsource[268][3398]['rank'] = '8';
@@ -1250,12 +1250,12 @@ $skillsource[268][3398]['skillCost'] = '25000000';
 $skillsource[268][3398]['groupID'] = '268';
 $skillsource[268][3398]['groupName'] = 'Production';
 
-$skillsource[268][22242]['typeName'] = 'Capital Ship Construction';
-$skillsource[268][22242]['rank'] = '14';
-$skillsource[268][22242]['typeID'] = '22242';
-$skillsource[268][22242]['skillCost'] = '75000000';
-$skillsource[268][22242]['groupID'] = '268';
-$skillsource[268][22242]['groupName'] = 'Production';
+$skillsource[268][24625]['typeName'] = 'Advanced Mass Production';
+$skillsource[268][24625]['rank'] = '8';
+$skillsource[268][24625]['typeID'] = '24625';
+$skillsource[268][24625]['skillCost'] = '20000000';
+$skillsource[268][24625]['groupID'] = '268';
+$skillsource[268][24625]['groupName'] = 'Production';
 
 $skillsource[268][3397]['typeName'] = 'Advanced Medium Ship Construction';
 $skillsource[268][3397]['rank'] = '5';
@@ -1264,12 +1264,12 @@ $skillsource[268][3397]['skillCost'] = '1000000';
 $skillsource[268][3397]['groupID'] = '268';
 $skillsource[268][3397]['groupName'] = 'Production';
 
-$skillsource[268][26224]['typeName'] = 'Drug Manufacturing';
-$skillsource[268][26224]['rank'] = '2';
-$skillsource[268][26224]['typeID'] = '26224';
-$skillsource[268][26224]['skillCost'] = '25000000';
-$skillsource[268][26224]['groupID'] = '268';
-$skillsource[268][26224]['groupName'] = 'Production';
+$skillsource[268][22242]['typeName'] = 'Capital Ship Construction';
+$skillsource[268][22242]['rank'] = '14';
+$skillsource[268][22242]['typeID'] = '22242';
+$skillsource[268][22242]['skillCost'] = '75000000';
+$skillsource[268][22242]['groupID'] = '268';
+$skillsource[268][22242]['groupName'] = 'Production';
 
 $skillsource[268][3395]['typeName'] = 'Advanced Small Ship Construction';
 $skillsource[268][3395]['rank'] = '2';
@@ -1278,12 +1278,12 @@ $skillsource[268][3395]['skillCost'] = '80000';
 $skillsource[268][3395]['groupID'] = '268';
 $skillsource[268][3395]['groupName'] = 'Production';
 
-$skillsource[268][3396]['typeName'] = 'Advanced Industrial Ship Construction';
-$skillsource[268][3396]['rank'] = '3';
-$skillsource[268][3396]['typeID'] = '3396';
-$skillsource[268][3396]['skillCost'] = '2000000';
-$skillsource[268][3396]['groupID'] = '268';
-$skillsource[268][3396]['groupName'] = 'Production';
+$skillsource[268][26224]['typeName'] = 'Drug Manufacturing';
+$skillsource[268][26224]['rank'] = '2';
+$skillsource[268][26224]['typeID'] = '26224';
+$skillsource[268][26224]['skillCost'] = '25000000';
+$skillsource[268][26224]['groupID'] = '268';
+$skillsource[268][26224]['groupName'] = 'Production';
 
 $skillsource[268][3380]['typeName'] = 'Industry';
 $skillsource[268][3380]['rank'] = '1';
@@ -1849,13 +1849,6 @@ $skillsource[270][12179]['skillCost'] = '40000000';
 $skillsource[270][12179]['groupID'] = '270';
 $skillsource[270][12179]['groupName'] = 'Science';
 
-$skillsource[270][3408]['typeName'] = 'Sleeper Encryption Methods';
-$skillsource[270][3408]['rank'] = '4';
-$skillsource[270][3408]['typeID'] = '3408';
-$skillsource[270][3408]['skillCost'] = '15000000';
-$skillsource[270][3408]['groupID'] = '270';
-$skillsource[270][3408]['groupName'] = 'Science';
-
 $skillsource[270][11449]['typeName'] = 'Rocket Science';
 $skillsource[270][11449]['rank'] = '5';
 $skillsource[270][11449]['typeID'] = '11449';
@@ -1876,6 +1869,13 @@ $skillsource[270][24270]['typeID'] = '24270';
 $skillsource[270][24270]['skillCost'] = '7500000';
 $skillsource[270][24270]['groupID'] = '270';
 $skillsource[270][24270]['groupName'] = 'Science';
+
+$skillsource[270][3408]['typeName'] = 'Sleeper Encryption Methods';
+$skillsource[270][3408]['rank'] = '4';
+$skillsource[270][3408]['typeID'] = '3408';
+$skillsource[270][3408]['skillCost'] = '15000000';
+$skillsource[270][3408]['groupID'] = '270';
+$skillsource[270][3408]['groupName'] = 'Science';
 
 $skillsource[270][21789]['typeName'] = 'Sleeper Technology';
 $skillsource[270][21789]['rank'] = '5';
