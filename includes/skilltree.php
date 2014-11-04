@@ -1243,7 +1243,7 @@ $skillsource[268][24625]['skillCost'] = '20000000';
 $skillsource[268][24625]['groupID'] = '268';
 $skillsource[268][24625]['groupName'] = 'Production';
 
-$skillsource[268][3398]['typeName'] = 'Battleship Construction';
+$skillsource[268][3398]['typeName'] = 'Advanced Large Ship Construction';
 $skillsource[268][3398]['rank'] = '8';
 $skillsource[268][3398]['typeID'] = '3398';
 $skillsource[268][3398]['skillCost'] = '25000000';
@@ -1257,7 +1257,7 @@ $skillsource[268][22242]['skillCost'] = '75000000';
 $skillsource[268][22242]['groupID'] = '268';
 $skillsource[268][22242]['groupName'] = 'Production';
 
-$skillsource[268][3397]['typeName'] = 'Cruiser Construction';
+$skillsource[268][3397]['typeName'] = 'Advanced Medium Ship Construction';
 $skillsource[268][3397]['rank'] = '5';
 $skillsource[268][3397]['typeID'] = '3397';
 $skillsource[268][3397]['skillCost'] = '1000000';
@@ -1271,14 +1271,14 @@ $skillsource[268][26224]['skillCost'] = '25000000';
 $skillsource[268][26224]['groupID'] = '268';
 $skillsource[268][26224]['groupName'] = 'Production';
 
-$skillsource[268][3395]['typeName'] = 'Frigate Construction';
+$skillsource[268][3395]['typeName'] = 'Advanced Small Ship Construction';
 $skillsource[268][3395]['rank'] = '2';
 $skillsource[268][3395]['typeID'] = '3395';
 $skillsource[268][3395]['skillCost'] = '80000';
 $skillsource[268][3395]['groupID'] = '268';
 $skillsource[268][3395]['groupName'] = 'Production';
 
-$skillsource[268][3396]['typeName'] = 'Industrial Construction';
+$skillsource[268][3396]['typeName'] = 'Advanced Industrial Ship Construction';
 $skillsource[268][3396]['rank'] = '3';
 $skillsource[268][3396]['typeID'] = '3396';
 $skillsource[268][3396]['skillCost'] = '2000000';
@@ -1849,7 +1849,7 @@ $skillsource[270][12179]['skillCost'] = '40000000';
 $skillsource[270][12179]['groupID'] = '270';
 $skillsource[270][12179]['groupName'] = 'Science';
 
-$skillsource[270][3408]['typeName'] = 'Reverse Engineering';
+$skillsource[270][3408]['typeName'] = 'Sleeper Encryption Methods';
 $skillsource[270][3408]['rank'] = '4';
 $skillsource[270][3408]['typeID'] = '3408';
 $skillsource[270][3408]['skillCost'] = '15000000';
