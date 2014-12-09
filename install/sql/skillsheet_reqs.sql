@@ -862,3 +862,7 @@ INSERT INTO `skillsheet_reqs` VALUES ('33820', 'requiredSkill1', '3336', '0', '2
 INSERT INTO `skillsheet_reqs` VALUES ('33820', 'requiredSkill1Level', '1', '0', '27', 'Barghest', '16', 'Pirate', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('33820', 'requiredSkill2', '3338', '0', '27', 'Barghest', '16', 'Pirate', 'Caldari Battleship', null);
 INSERT INTO `skillsheet_reqs` VALUES ('33820', 'requiredSkill2Level', '1', '0', '27', 'Barghest', '16', 'Pirate', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('34317', 'requiredSkill1', '34390', '0', '1305', 'Confessor', '4', 'Amarr', 'Amarr Tactical Destroyer', null);
+INSERT INTO `skillsheet_reqs` VALUES ('34317', 'requiredSkill1Level', '1', '0', '1305', 'Confessor', '4', 'Amarr', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('34328', 'requiredSkill1', '34327', '0', '513', 'Bowhead', '32', 'ORE', 'ORE Freighter', null);
+INSERT INTO `skillsheet_reqs` VALUES ('34328', 'requiredSkill1Level', '1', '0', '513', 'Bowhead', '32', 'ORE', null, null);
