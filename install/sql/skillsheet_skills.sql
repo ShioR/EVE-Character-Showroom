@@ -1,5 +1,3 @@
-SET FOREIGN_KEY_CHECKS=0;
-
 -- ----------------------------
 -- Table structure for `skillsheet_skills`
 -- ----------------------------
@@ -455,3 +453,5 @@ INSERT INTO `skillsheet_skills` VALUES ('16596', '274', 'Wholesale', 'Ability to
 INSERT INTO `skillsheet_skills` VALUES ('11574', '258', 'Wing Command', 'Allows command of a Wing. Grants the Wing Commander the ability to operate a new Squadron per skill level, up to a maximum of 5 Squadrons.', '0', '0.01', '0', '1', null, '2000000', '1', '370', '0', null, '33', null, null);
 INSERT INTO `skillsheet_skills` VALUES ('23124', '270', 'Yan Jung Technology', 'Basic understanding of interfacing with Yan Jung technology.\n\nThe Yan Jung nation possessed advanced gravitronic technology and force field theories.\n\nAllows the rudimentary use of Yan Jung components in the creation of advanced technology, even though the scientific theories behind them remain a mystery.', '0', '0.01', '0', '1', null, '0', '1', '375', '0', null, '33', null, null);
 INSERT INTO `skillsheet_skills` VALUES ('33856', '257', 'Expedition Frigates', 'Skill for operation of Expedition Frigates. Can not be trained on Trial Accounts.', '0', '0.01', '0', '1', null, '4000000', '1', '377', '0', null, '33', null, null);
+INSERT INTO `skillsheet_skills` VALUES ('34327', '257', 'ORE Freighter', 'Skill at operating ORE freighters. \r\n\r\nThis skill cannot be trained on Trial Accounts.', '0', '0.01', '0', '1', null, '35000000', '1', '377', '0', null, '33', null, null);
+INSERT INTO `skillsheet_skills` VALUES ('34390', '257', 'Amarr Tactical Destroyer', 'Skill at operating Amarr Tactical Destroyers.', '0', '0.014', '0', '1', null, '1000000', '1', '377', '0', null, '33', null, null);
