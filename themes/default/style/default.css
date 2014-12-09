@@ -7,7 +7,6 @@ td.dataTableHeaderRight{padding-right:5px;padding-left:5px;font-weight:bolder;fo
 td.dataTableCell{padding-right:4px;padding-left:4px;font-size:10px;padding-bottom:4px;border-left:#666666 1px solid;border-right:#666666 0px solid;padding-top:4px;border-bottom:#666666 1px solid;}
 td.dataTableCellRight{padding-right:4px;padding-left:4px;font-size:10px;padding-bottom:4px;border-left:#666666 0px solid;border-right:#666666 1px solid;padding-top:4px;border-bottom:#666666 1px solid;}
 td.dataTableCellLeftRight{padding-right:4px;padding-left:4px;font-size:10px;padding-bottom:4px;border-left:#666666 1px solid;border-right:#666666 1px solid;padding-top:4px;border-bottom:#666666 1px solid;}
-td.dataTableCellClone{padding-bottom:4px;padding-top:4px;text-align:center;font-size:x-small;background-color:maroon;}
 .headerribbon{margin:0px;height:40px;position:fixed;top:0;left:0;width:100%;z-index:100;font-weight:bold;border-bottom:1px solid gray;background:rgb(44, 44, 56);vertical-align:middle;display:block;}
 .headerleft{float:left;width:59%;z-index:160;line-height:20px;}
 .headerright{float:right;width:44%;text-align:right;}
