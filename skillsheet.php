@@ -360,8 +360,6 @@ function siglist($config)
     $gender          = $char['gender'];
     $dob             = $char['DoB'];
     $secStatus 		 = $charInfo['securityStatus'];
-    $cloneName       = $char['cloneName'];
-    $cloneSP         = $char['cloneSkillPoints'];
     $ancestry        = $char['ancestry'];    
     $corporationName = $char['corporationName'];
     $corporationID   = $char['corporationID'];
@@ -437,8 +435,6 @@ function siglist($config)
     $eveRender->Assign('gender',            $gender);
     $eveRender->Assign('DoB',               $dob);
     $eveRender->Assign('securityStatus',    $secStatus);
-    $eveRender->Assign('cloneName',         $cloneName);
-    $eveRender->Assign('cloneSkillPoints',  $cloneSP);
     $eveRender->Assign('ancestry',          $ancestry);     
     $eveRender->Assign('corporationName',   $corporationName);
     $eveRender->Assign('corporationID',     $corporationID);
@@ -516,8 +512,6 @@ function sig($config)
     $gender          = $char['gender'];
     $dob             = $char['DoB'];
     $secStatus 		 = $charInfo['securityStatus'];
-    $cloneName       = $char['cloneName'];
-    $cloneSP         = $char['cloneSkillPoints'];
     $ancestry        = $char['ancestry'];    
     $corporationName = $char['corporationName'];
     $corporationID   = $char['corporationID'];
@@ -593,8 +587,6 @@ function sig($config)
     $eveRender->Assign('gender',            $gender);
     $eveRender->Assign('DoB',               $dob);
     $eveRender->Assign('securityStatus',    $secStatus);
-    $eveRender->Assign('cloneName',         $cloneName);
-    $eveRender->Assign('cloneSkillPoints',  $cloneSP);
     $eveRender->Assign('ancestry',          $ancestry);     
     $eveRender->Assign('corporationName',   $corporationName);
     $eveRender->Assign('corporationID',     $corporationID);
@@ -673,8 +665,6 @@ function newsig($config)
     $gender          = $char['gender'];
     $dob             = $char['DoB'];
     $secStatus 		 = $charInfo['securityStatus'];
-    $cloneName       = $char['cloneName'];
-    $cloneSP         = $char['cloneSkillPoints'];
     $ancestry        = $char['ancestry'];    
     $corporationName = $char['corporationName'];
     $corporationID   = $char['corporationID'];
@@ -750,8 +740,6 @@ function newsig($config)
     $eveRender->Assign('gender',            $gender);
     $eveRender->Assign('DoB',               $dob);
     $eveRender->Assign('securityStatus',    $secStatus);
-    $eveRender->Assign('cloneName',         $cloneName);
-    $eveRender->Assign('cloneSkillPoints',  $cloneSP);
     $eveRender->Assign('ancestry',          $ancestry);     
     $eveRender->Assign('corporationName',   $corporationName);
     $eveRender->Assign('corporationID',     $corporationID);
@@ -1034,8 +1022,6 @@ echo '</body>
     $gender          = $char['gender'];
     $dob             = $char['DoB'];
     $secStatus 		 = $info['securityStatus'];
-    $cloneName       = $char['cloneName'];
-    $cloneSP         = $char['cloneSkillPoints'];
     $ancestry        = $char['ancestry'];    
     $corporationName = $char['corporationName'];
     $corporationID   = $char['corporationID'];
@@ -1079,8 +1065,6 @@ echo '</body>
     $eveRender->Assign('gender',            $gender);
     $eveRender->Assign('DoB',               $dob);
     $eveRender->Assign('securityStatus',    $secStatus);
-    $eveRender->Assign('cloneName',         $cloneName);
-    $eveRender->Assign('cloneSkillPoints',  $cloneSP);
     $eveRender->Assign('ancestry',          $ancestry);     
     $eveRender->Assign('corporationName',   $corporationName);
     $eveRender->Assign('corporationID',     $corporationID);
@@ -1179,8 +1163,6 @@ function ships($config = array())
     $gender          = $char['gender'];
     $dob             = $char['DoB'];
     $secStatus 		 = $charInfo['securityStatus'];
-    $cloneName       = $char['cloneName'];
-    $cloneSP         = $char['cloneSkillPoints'];
     $ancestry        = $char['ancestry'];    
     $corporationName = $char['corporationName'];
     $corporationID   = $char['corporationID'];
@@ -1291,8 +1273,6 @@ function ships($config = array())
     $eveRender->Assign('gender',            $gender);
     $eveRender->Assign('DoB',               $dob);
     $eveRender->Assign('securityStatus',    $secStatus);
-    $eveRender->Assign('cloneName',         $cloneName);
-    $eveRender->Assign('cloneSkillPoints',  $cloneSP);
     $eveRender->Assign('ancestry',          $ancestry);     
     $eveRender->Assign('corporationName',   $corporationName);
     $eveRender->Assign('corporationID',     $corporationID);
@@ -1369,8 +1349,6 @@ function shipViewer($config = array())
     $gender          = $char['gender'];
     $dob             = $char['DoB'];
     $secStatus 		 = $charInfo['securityStatus'];
-    $cloneName       = $char['cloneName'];
-    $cloneSP         = $char['cloneSkillPoints'];
     $ancestry        = $char['ancestry'];    
     $corporationName = $char['corporationName'];
     $corporationID   = $char['corporationID'];
@@ -1481,8 +1459,6 @@ function shipViewer($config = array())
     $eveRender->Assign('gender',            $gender);
     $eveRender->Assign('DoB',               $dob);
     $eveRender->Assign('securityStatus',    $secStatus);
-    $eveRender->Assign('cloneName',         $cloneName);
-    $eveRender->Assign('cloneSkillPoints',  $cloneSP);
     $eveRender->Assign('ancestry',          $ancestry);     
     $eveRender->Assign('corporationName',   $corporationName);
     $eveRender->Assign('corporationID',     $corporationID);
