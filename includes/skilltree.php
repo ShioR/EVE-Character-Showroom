@@ -2139,6 +2139,13 @@ $skillsource[257][30650]['skillCost'] = '1500000';
 $skillsource[257][30650]['groupID'] = '257';
 $skillsource[257][30650]['groupName'] = 'Spaceship Command';
 
+$skillsource[257][34390]['typeName'] = 'Amarr Tactical Destroyer';
+$skillsource[257][34390]['rank'] = '3';
+$skillsource[257][34390]['typeID'] = '34390';
+$skillsource[257][34390]['skillCost'] = '1000000';
+$skillsource[257][34390]['groupID'] = '257';
+$skillsource[257][34390]['groupName'] = 'Spaceship Command';
+
 $skillsource[257][3347]['typeName'] = 'Amarr Titan';
 $skillsource[257][3347]['rank'] = '16';
 $skillsource[257][3347]['typeID'] = '3347';
@@ -2509,6 +2516,14 @@ $skillsource[257][3345]['typeID'] = '3345';
 $skillsource[257][3345]['skillCost'] = '5500000000';
 $skillsource[257][3345]['groupID'] = '257';
 $skillsource[257][3345]['groupName'] = 'Spaceship Command';
+
+
+$skillsource[257][34327]['typeName'] = 'ORE Freighter';
+$skillsource[257][34327]['rank'] = '9';
+$skillsource[257][34327]['typeID'] = '34327';
+$skillsource[257][34327]['skillCost'] = '35000000';
+$skillsource[257][34327]['groupID'] = '257';
+$skillsource[257][34327]['groupName'] = 'Spaceship Command';
 
 $skillsource[257][3184]['typeName'] = 'ORE Industrial';
 $skillsource[257][3184]['rank'] = '4';
