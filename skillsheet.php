@@ -384,7 +384,7 @@ function siglist($config)
 
     $skillTraining   = $training;
 
-    $skills          = $char['rowset'][0]['row'];
+    $skills          = $char['rowset'][3]['row'];
 
     $assign = BuildSkillSet($skills, $training);
 
@@ -536,7 +536,7 @@ function sig($config)
 
     $skillTraining   = $training;
 
-    $skills          = $char['rowset'][0]['row'];
+    $skills          = $char['rowset'][3]['row'];
 
     $assign = BuildSkillSet($skills, $training);
 
@@ -689,7 +689,7 @@ function newsig($config)
 
     $skillTraining   = $training;
 
-    $skills          = $char['rowset'][0]['row'];
+    $skills          = $char['rowset'][3]['row'];
 
     $assign = BuildSkillSet($skills, $training);
 
@@ -1046,7 +1046,7 @@ echo '</body>
 
     $skillTraining   = $training;
 
-    $skills          = $char['rowset'][0]['row'];
+    $skills          = $char['rowset'][3]['row'];
 
     $assign = BuildSkillSet($skills, $training);
 
@@ -1187,7 +1187,7 @@ function ships($config = array())
 
     $skillTraining   = $training;
 
-    $skills          = $char['rowset'][0]['row'];
+    $skills          = $char['rowset'][3]['row'];
 
     $assign = BuildSkillSet($skills, $training);
 
@@ -1373,7 +1373,7 @@ function shipViewer($config = array())
 
     $skillTraining   = $training;
 
-    $skills          = $char['rowset'][0]['row'];
+    $skills          = $char['rowset'][3]['row'];
 
     $assign = BuildSkillSet($skills, $training);
 
