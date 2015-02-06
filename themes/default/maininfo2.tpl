@@ -119,6 +119,11 @@
                   <td colspan="3" style="color: gold; font-weight: bold;" class="dataTableCellLeftRight">Data is cached for a further <!--[if $pageupdateminutes eq 0 and $pageupdateseconds eq 0]-->60<!--[else]--><!--[$pageupdateminutes]--><!--[/if]--> minutes and <!--[$pageupdateseconds]--> seconds
                   </td>
                   </tr>
+                  <tr>
+                      <!--[if $freeSP >= '1']-->
+                      <td colspan="4" class="dataTableCellFreeSP">This character has <span style="text-align:right; font-size:xx-small; color:white;"><strong><!--[$freeSP|number_format]--></span></strong> skill points unspent!</td>
+                    <!--[else]--><!--[/if]-->
+                 </tr>
                 </tbody>
                 </table>
               </td>

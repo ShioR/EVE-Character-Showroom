@@ -102,7 +102,7 @@
                     </td>
                   </tr>
                   <tr>
-                    <td class="dataTableCell">ETA (Eve Time)</td>
+                    <td class="dataTableCell">ETA (EVE Time)</td>
                     <td colspan="3" style="color: gold; font-weight: bold;text-align: left;" class="dataTableCellLeftRight"><!--[if $Training]--><!--[$trainingEndTime|date_format:"%A, %B %e %Y, %H:%M:%S"]--><!--[else]--><a style="color: maroon;text-decoration: none;">N/A<!--[/if]--></a></td>
                   </tr>
 
@@ -119,6 +119,11 @@
                   <td colspan="3" style="color: gold; font-weight: bold;" class="dataTableCellLeftRight">Data is cached for a further <!--[if $pageupdateminutes eq 0 and $pageupdateseconds eq 0]-->60<!--[else]--><!--[$pageupdateminutes]--><!--[/if]--> minutes and <!--[$pageupdateseconds]--> seconds
                   </td>
                   </tr>
+                  <tr>
+                      <!--[if $freeSP >= '1']-->
+                      <td colspan="4" class="dataTableCellFreeSP">This character has <span style="text-align:right; font-size:xx-small; color:white;"><strong><!--[$freeSP|number_format]--></span></strong> skill points unspent!</td>
+                    <!--[else]--><!--[/if]-->
+                 </tr>
                 </tbody>
                 </table>
               </td>
