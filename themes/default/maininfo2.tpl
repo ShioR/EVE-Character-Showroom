@@ -2,9 +2,9 @@
  <tbody>
           <tr>
             <td valign="top" align="center">
-            	<table style="width:256px; height:256px; background: url(http://image.eveonline.com/Character/<!--[$characterID]-->_256.jpg);" cellpadding="0" cellspacing="0" border="1px solid gray;">
+            	<table style="margin:0px 3px 3px 3px; width:256px; height:256px; background: url(http://image.eveonline.com/Character/<!--[$characterID]-->_256.jpg);" cellpadding="0" cellspacing="0">
             		<tr>
-            			<td><div id="corpLogoContainer">
+            			<td><div id="corpLogoContainer" style="border:1px solid gray;">
             			     <div id="corpLogo"> <a href="http://evemaps.dotlan.net/corp/<!--[$corporationName|replace:" ":"_"]-->" rel="iframe-875-610" class="pirobox">
 	            					<img style="border: 1px solid gray; background-color: #1B1B1B;"	src="<!--[getcorplogo corporationID=$corporationID size=256]-->"
 	            						width="64" 
@@ -34,7 +34,7 @@
             			</td>
             		</tr>
             	</table>
-              <td valign="top"><table class="dataTable" border="0" cellpadding="2" cellspacing="0" width="460" summary="Character Info">
+              <td valign="top" style="padding-top:1px;"><table class="dataTable" border="0" cellpadding="2" cellspacing="0" width="460" summary="Character Info">
                 <tbody>
                   <tr>
                     <td colspan="2" class="dataTableHeader">Info</td>
