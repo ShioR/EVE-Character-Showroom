@@ -366,6 +366,7 @@ function siglist($config)
     $allianceName    = $char['allianceName'];
     $allianceID      = $char['allianceID'];    
     $balance         = $char['balance'];
+    $freeSP          = $char['freeSkillPoints'];
     $attEnhancers    = $char['attributeEnhancers'];
     if($attEnhancers != ''){
     $memory			 = $attEnhancers['memoryBonus']['augmentatorValue'];
@@ -441,6 +442,7 @@ function siglist($config)
     $eveRender->Assign('allianceName',      $allianceName);
     $eveRender->Assign('allianceID',        $allianceID);    
     $eveRender->Assign('balance',           number_format($balance, 2, '.', ' '));
+    $eveRender->Assign('freeSP',            $freeSP);
     $eveRender->Assign('memoryImp',         $memory);
     $eveRender->Assign('intelligenceImp',   $intelligence);
     $eveRender->Assign('willpowerImp',      $willpower);
@@ -518,6 +520,7 @@ function sig($config)
     $allianceName    = $char['allianceName'];
     $allianceID      = $char['allianceID'];    
     $balance         = $char['balance'];
+    $freeSP          = $char['freeSkillPoints'];
     $attEnhancers    = $char['attributeEnhancers'];
     if($attEnhancers != ''){
     $memory			 = $attEnhancers['memoryBonus']['augmentatorValue'];
@@ -593,6 +596,7 @@ function sig($config)
     $eveRender->Assign('allianceName',      $allianceName);
     $eveRender->Assign('allianceID',        $allianceID);    
     $eveRender->Assign('balance',           number_format($balance, 2, '.', ' '));
+    $eveRender->Assign('freeSP',            $freeSP);
     $eveRender->Assign('memoryImp',         $memory);
     $eveRender->Assign('intelligenceImp',   $intelligence);
     $eveRender->Assign('willpowerImp',      $willpower);
@@ -671,6 +675,7 @@ function newsig($config)
     $allianceName    = $char['allianceName'];
     $allianceID      = $char['allianceID'];    
     $balance         = $char['balance'];
+    $freeSP          = $char['freeSkillPoints'];
     $attEnhancers    = $char['attributeEnhancers'];
     if($attEnhancers != ''){
     $memory			 = $attEnhancers['memoryBonus']['augmentatorValue'];
@@ -746,6 +751,7 @@ function newsig($config)
     $eveRender->Assign('allianceName',      $allianceName);
     $eveRender->Assign('allianceID',        $allianceID);    
     $eveRender->Assign('balance',           number_format($balance, 2, '.', ' '));
+    $eveRender->Assign('freeSP',            $freeSP);
     $eveRender->Assign('memoryImp',         $memory);
     $eveRender->Assign('intelligenceImp',   $intelligence);
     $eveRender->Assign('willpowerImp',      $willpower);
@@ -1028,6 +1034,7 @@ echo '</body>
     $allianceName    = $char['allianceName'];
     $allianceID      = $char['allianceID'];    
     $balance         = $char['balance'];
+    $freeSP          = $char['freeSkillPoints'];
     $attEnhancers    = $char['attributeEnhancers'];
     if($attEnhancers != ''){
     $memory			 = $attEnhancers['memoryBonus']['augmentatorValue'];
@@ -1071,6 +1078,7 @@ echo '</body>
     $eveRender->Assign('allianceName',      $allianceName);
     $eveRender->Assign('allianceID',        $allianceID);    
     $eveRender->Assign('balance',           number_format($balance, 2, '.', ' '));
+    $eveRender->Assign('freeSP',            $freeSP);
     $eveRender->Assign('memoryImp',         $memory);
     $eveRender->Assign('intelligenceImp',   $intelligence);
     $eveRender->Assign('willpowerImp',      $willpower);
@@ -1169,6 +1177,7 @@ function ships($config = array())
     $allianceName    = $char['allianceName'];
     $allianceID      = $char['allianceID'];    
     $balance         = $char['balance'];
+    $freeSP          = $char['freeSkillPoints'];
     $attEnhancers    = $char['attributeEnhancers'];
     if($attEnhancers != ''){
     $memory			 = $attEnhancers['memoryBonus']['augmentatorValue'];
@@ -1279,6 +1288,7 @@ function ships($config = array())
     $eveRender->Assign('allianceName',      $allianceName);
     $eveRender->Assign('allianceID',        $allianceID);    
     $eveRender->Assign('balance',           number_format($balance, 2, '.', ' '));
+    $eveRender->Assign('freeSP',            $freeSP);
     $eveRender->Assign('memoryImp',         $memory);
     $eveRender->Assign('intelligenceImp',   $intelligence);
     $eveRender->Assign('willpowerImp',      $willpower);
@@ -1355,6 +1365,7 @@ function shipViewer($config = array())
     $allianceName    = $char['allianceName'];
     $allianceID      = $char['allianceID'];    
     $balance         = $char['balance'];
+    $freeSP          = $char['freeSkillPoints'];
     $attEnhancers    = $char['attributeEnhancers'];
     if($attEnhancers != ''){
     $memory			 = $attEnhancers['memoryBonus']['augmentatorValue'];
@@ -1465,6 +1476,7 @@ function shipViewer($config = array())
     $eveRender->Assign('allianceName',      $allianceName);
     $eveRender->Assign('allianceID',        $allianceID);    
     $eveRender->Assign('balance',           number_format($balance, 2, '.', ' '));
+    $eveRender->Assign('freeSP',            $freeSP);
     $eveRender->Assign('memoryImp',         $memory);
     $eveRender->Assign('intelligenceImp',   $intelligence);
     $eveRender->Assign('willpowerImp',      $willpower);
