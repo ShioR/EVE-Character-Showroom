@@ -43,32 +43,32 @@
                   <tr>
                     <td class="dataTableCell">Character Name</td>
                     <td class="dataTableCell"><strong><!--[$name]--></strong> <!--[if $securityStatus > 0]--><span style="color:deepskyblue;">[+<!--[$securityStatus|round:2]-->]</span><!--[elseif $securityStatus == 0]--><span style="color:grey;">[<!--[$securityStatus|round:2]-->]</span><!--[elseif $securityStatus < -5]--><span style="color:firebrick;">[<!--[$securityStatus|round:2]-->]</span><!--[elseif ( $securityStatus < 0 or $securityStatus > -5 )]--><span style="color:darkorange;">[<!--[$securityStatus|round:2]-->]</span><!--[/if]--></td>
-                    <td class="dataTableCell">Intelligence</td>
-                    <td class="dataTableCellLeftRight" align="center"><!--[$attributes.intelligence]--><!--[if $intelligenceImp >= 1]--> [+<!--[$intelligenceImp]-->]<!--[else]--><!--[/if]--></td>
+                    <td class="dataTableCell">Perception</td>
+                    <td class="dataTableCellLeftRight" align="center"><!--[$attributes.perception]--></td>
                   </tr>
                   <tr>
                     <td class="dataTableCell">Corporation</td>
                     <td class="dataTableCell"><!--[$corporationName]--></td>
-                    <td class="dataTableCell">Perception</td>
-                    <td class="dataTableCellLeftRight" align="center"><!--[$attributes.perception]--><!--[if $perceptionImp >= 1]--> [+<!--[$perceptionImp]-->]<!--[else]--><!--[/if]--></td>
+                    <td class="dataTableCell">Memory</td>
+                    <td class="dataTableCellLeftRight" align="center"><!--[$attributes.memory]--></td>
                   </tr>
                   <tr>
                     <td class="dataTableCell">Race / <i>Bloodline</i></td>
                     <td class="dataTableCell"><!--[$race]--> / <i><!--[$bloodLine]--></i></td>
-                    <td class="dataTableCell">Charisma</td>
-                    <td class="dataTableCellLeftRight" align="center"><!--[$attributes.charisma]--><!--[if $charismaImp >= 1]--> [+<!--[$charismaImp]-->]<!--[else]--><!--[/if]--></td>
+                    <td class="dataTableCell">Willpower</td>
+                    <td class="dataTableCellLeftRight" align="center"><!--[$attributes.willpower]--></td>
                   </tr>
                   <tr>
                     <td class="dataTableCell">Total Skills</td>
                     <td class="dataTableCell"><!--[$totalsks]--></td>
-                    <td class="dataTableCell">Willpower</td>
-                    <td class="dataTableCellLeftRight" align="center"><!--[$attributes.willpower]--><!--[if $willpowerImp >= 1]--> [+<!--[$willpowerImp]-->]<!--[else]--><!--[/if]--></td>
+                    <td class="dataTableCell">Intelligence</td>
+                    <td class="dataTableCellLeftRight" align="center"><!--[$attributes.intelligence]--></td>
                   </tr>
                   <tr>
                     <td class="dataTableCell">Total Skill Points</td>
                     <td class="dataTableCell"><!--[$skillpointstotal]--></td>
-                    <td class="dataTableCell">Memory</td>
-                    <td class="dataTableCellLeftRight" align="center"><!--[$attributes.memory]--><!--[if $memoryImp >= 1]--> [+<!--[$memoryImp]-->]<!--[else]--><!--[/if]--></td>
+                    <td class="dataTableCell">Charisma</td>
+                    <td class="dataTableCellLeftRight" align="center"><!--[$attributes.charisma]--></td>
                   </tr>                  
                   <tr>                
                     <td class="dataTableCell">Date of Birth</td>
