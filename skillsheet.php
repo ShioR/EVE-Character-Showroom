@@ -1704,92 +1704,47 @@ function GetQueueData($queue = '')
 }
 
 
-function Attributes(&$attributes, $skilltree, $implants)
+// Removed implant calculations for the time being, was causing smarty errors because the parameter was missing, thanks again CCP.
+function Attributes(&$attributes, $implants)
 {
-
-    $learning = 1;
-    if (isset($skilltree[267][3374]['level'])) {
-        $learning = $learning + (float)($skilltree[267][3374]['level'] * 0.02);
-    }
 
     // Intelligence
     $int = $attributes['intelligence'];
-    if (isset($skilltree[267][3377]['level'])) {
-        $int = $int + $skilltree[267][3377]['level'];
-        if (isset($skilltree[267][12376]['level'])) {
-            $int = $int + $skilltree[267][12376]['level'];
-        }
-    }
-
-    if (isset($implants['intelligence'])) {
+/*    if (isset($implants['intelligence'])) {
         $int += $implants['intelligence'];
-    }
-
-    $int = (float)($int * $learning);
+    }*/
 
     $attributes['intelligence'] = $int;
 
     // Perception
     $per = $attributes['perception'];
-    if (isset($skilltree[267][3379]['level'])) {
-        $per = $per + $skilltree[267][3379]['level'];
-        if (isset($skilltree[267][12387]['level'])) {
-            $per = $per + $skilltree[267][12387]['level'];
-        }
-    }
-    if (isset($implants['perception'])) {
+/*    if (isset($implants['perception'])) {
         $per += $implants['perception'];
-    }
-
-    $per = (float)($per * $learning);
+    }*/
 
     $attributes['perception'] = $per;
 
     // Charisma
     $cha = $attributes['charisma'];
-    if (isset($skilltree[267][3376]['level'])) {
-        $cha = $cha + $skilltree[267][3376]['level'];
-        if (isset($skilltree[267][12383]['level'])) {
-            $cha = $cha + $skilltree[267][12383]['level'];
-        }
-    }
-    if (isset($implants['charisma'])) {
+/*    if (isset($implants['charisma'])) {
         $cha += $implants['charisma'];
-    }
-
-    $cha = (float)($cha * $learning);
+    }*/
 
     $attributes['charisma'] = $cha;
 
     // Willpower
     $wil = $attributes['willpower'];
-    if (isset($skilltree[267][3375]['level'])) {
-        $wil = $wil + $skilltree[267][3375]['level'];
-        if (isset($skilltree[267][12386]['level'])) {
-            $wil = $wil + $skilltree[267][12386]['level'];
-        }
-    }
-    if (isset($implants['willpower'])) {
+/*    if (isset($implants['willpower'])) {
         $wil += $implants['willpower'];
-    }
-
-    $wil = (float)($wil * $learning);
+    }*/
 
     $attributes['willpower'] = $wil;
 
     // Memory
     $mem = $attributes['memory'];
-    if (isset($skilltree[267][3378]['level'])) {
-        $mem = $mem + $skilltree[267][3378]['level'];
-        if (isset($skilltree[267][12385]['level'])) {
-            $mem = $mem + $skilltree[267][12385]['level'];
-        }
-    }
-    if (isset($implants['memory'])) {
+/*    if (isset($implants['memory'])) {
         $mem += $implants['memory'];
-    }
-
-    $mem = (float)($mem * $learning);
+    }*/
 
     $attributes['memory'] = $mem;
 
