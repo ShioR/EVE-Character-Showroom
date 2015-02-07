@@ -8,6 +8,7 @@
           <!--[include file='mainheader.tpl']-->
 
           <!--[if $implants == 1]--><!--[include file='maininfo.tpl']--><!--[else]--><!--[include file='maininfo2.tpl']--><!--[/if]-->
+          <!--[include file='queue.tpl']-->
 
 <br />
 
