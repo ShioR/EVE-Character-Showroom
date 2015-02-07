@@ -9,7 +9,7 @@ Support for 4 cron jobs
          
 Installation
 ------------
-**Please don't try and install without checking the installation instructions first!**     
+**Please read the installation instructions first!**     
 https://github.com/ShioR/EVE-Character-Showroom/wiki/Installation     
 
 Version numbers
