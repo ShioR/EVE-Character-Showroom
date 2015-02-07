@@ -6,7 +6,7 @@
 	    </tr>
 	    <tr style="font-weight: bold;">
 	   <!--   <td class="dataTableCell">#</td>	    -->
-	      <td class="dataTableCell">Skill Name</td>
+	      <td class="dataTableCell">Skill</td>
 	      <td class="dataTableCell">Skill Points</td>
 	      <td class="dataTableCell">Starts</td>
 	      <td class="dataTableCell" colspan="1">ETA</td>
