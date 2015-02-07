@@ -8,7 +8,8 @@
 
           <!--[include file='mainheader.tpl']-->
           <!--[if $implants == 1]--><!--[include file='maininfo.tpl']--><!--[else]--><!--[include file='maininfo2.tpl']--><!--[/if]-->
-          
+          <!--[include file='queue.tpl']-->
+<br />
   <div style="margin-top: 40px; margin-bottom: -24px;">
         <div style="margin-top: 10px;">
           <div style="border-top: 1px solid rgb(67, 67, 67); border-bottom: 1px solid rgb(67, 67, 67); background: rgb(44, 44, 56)  no-repeat scroll 24px 5px; margin-bottom: 10px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 21px;">
