@@ -367,68 +367,32 @@ function siglist($config)
     $allianceID      = $char['allianceID'];    
     $balance         = $char['balance'];
     $freeSP          = $char['freeSkillPoints'];
-    $attEnhancers    = $char['attributeEnhancers'];
+   /* $attEnhancers    = $char['attributeEnhancers'];
     if($attEnhancers != ''){
     $memory			 = $attEnhancers['memoryBonus']['augmentatorValue'];
     $intelligence	 = $attEnhancers['intelligenceBonus']['augmentatorValue'];
     $willpower		 = $attEnhancers['willpowerBonus']['augmentatorValue'];
     $perception		 = $attEnhancers['perceptionBonus']['augmentatorValue'];
     $charisma		 = $attEnhancers['charismaBonus']['augmentatorValue'];
-    }
+    }*/
     $attributes      = array('intelligence' => $char['attributes']['intelligence'],
                              'charisma'     => $char['attributes']['charisma'],
                              'perception'   => $char['attributes']['perception'],
                              'memory'       => $char['attributes']['memory'],
                              'willpower'    => $char['attributes']['willpower']);//echo '<pre>';
 
-    $implants = GetImplants($attEnhancers);
+//    $implants = GetImplants($attEnhancers);
 
     $skillTraining   = $training;
 
     $skills          = $char['rowset'][3]['row'];
 
     $assign = BuildSkillSet($skills, $training);
+    
+    // APOCRYPHA Queue
+    $SkillQueue   = GetQueueData($config['queue']);
 
     $skillsearch = $assign['skillsearch'];
-
-    // Attributes are defined by some skills... changing them here !
-    Attributes($attributes, $assign['skilltree'], $implants);
-
-    $certs = $char['rowset'][1]['row'];
-
-    foreach ($certs as $certificate) {
-        $certificates[] = $certificate['certificateID'];
-    }
-
-    $categories = GetCertsCategories();
-
-    foreach ($certificates as $certificate) {
-        $certinfo = GetCertInfo($certificate);
-
-        $classID = $certinfo['classID'];
-        $grade = $certinfo['grade'];
-        switch ($grade) {
-            case 1:  $certinfo['gradeName'] = 'Basic';    break;
-            case 2:  $certinfo['gradeName'] = 'Standard'; break;
-            case 3:  $certinfo['gradeName'] = 'Improved'; break;
-            case 5:  $certinfo['gradeName'] = 'Elite';    break;
-            default: $certinfo['gradeName'] = 'Basic';
-        }
-
-        if (isset($categories[$certinfo['categoryID']]['owned'][$certinfo['classID']])) {
-            if ($grade > $categories[$certinfo['categoryID']]['owned'][$certinfo['classID']]['grade']) {
-                $categories[$certinfo['categoryID']]['owned'][$certinfo['classID']] = $certinfo;
-            }
-        } else {
-            $categories[$certinfo['categoryID']]['owned'][$certinfo['classID']] = $certinfo;
-        }
-    }
-
-    foreach ($categories as $categoryID => $category) {
-        if (!$category['owned']) {
-            unset($categories[$categoryID]);
-        }
-    }
 
     $eveRender->Assign('name',              $name);
     $eveRender->Assign('race',              $race);
@@ -483,10 +447,10 @@ function siglist($config)
     $eveRender->Assign('totalsps',          $assign['skillpointstotal']);
     $eveRender->Assign('totalskillpoints',  $assign['totalskillpoints']);
     $eveRender->Assign('skillpointstotal',  number_format($assign['skillpointstotal'], 0, '', ','));
+    $eveRender->Assign('SkillQueue',        $SkillQueue);
     // Version
     $eveRender->Assign('version',           _SKILLSHEET_VERSION);
     $eveRender->Assign('dVersion',          _DATA_VERSION);
-    $eveRender->Assign('categories',        $categories);
 
     $eveRender->Display('siglist.tpl');
     exit;
@@ -521,21 +485,21 @@ function sig($config)
     $allianceID      = $char['allianceID'];    
     $balance         = $char['balance'];
     $freeSP          = $char['freeSkillPoints'];
-    $attEnhancers    = $char['attributeEnhancers'];
+    /*$attEnhancers    = $char['attributeEnhancers'];
     if($attEnhancers != ''){
     $memory			 = $attEnhancers['memoryBonus']['augmentatorValue'];
     $intelligence	 = $attEnhancers['intelligenceBonus']['augmentatorValue'];
     $willpower		 = $attEnhancers['willpowerBonus']['augmentatorValue'];
     $perception		 = $attEnhancers['perceptionBonus']['augmentatorValue'];
     $charisma		 = $attEnhancers['charismaBonus']['augmentatorValue'];
-    }
+    }*/
     $attributes      = array('intelligence' => $char['attributes']['intelligence'],
                              'charisma'     => $char['attributes']['charisma'],
                              'perception'   => $char['attributes']['perception'],
                              'memory'       => $char['attributes']['memory'],
                              'willpower'    => $char['attributes']['willpower']);//echo '<pre>';
 
-    $implants = GetImplants($attEnhancers);
+//    $implants = GetImplants($attEnhancers);
 
     $skillTraining   = $training;
 
@@ -544,45 +508,6 @@ function sig($config)
     $assign = BuildSkillSet($skills, $training);
 
     $skillsearch = $assign['skillsearch'];
-
-    // Attributes are defined by some skills... changing them here !
-    Attributes($attributes, $assign['skilltree'], $implants);
-
-    $certs = $char['rowset'][1]['row'];
-
-    foreach ($certs as $certificate) {
-        $certificates[] = $certificate['certificateID'];
-    }
-
-    $categories = GetCertsCategories();
-
-    foreach ($certificates as $certificate) {
-        $certinfo = GetCertInfo($certificate);
-
-        $classID = $certinfo['classID'];
-        $grade = $certinfo['grade'];
-        switch ($grade) {
-            case 1:  $certinfo['gradeName'] = 'Basic';    break;
-            case 2:  $certinfo['gradeName'] = 'Standard'; break;
-            case 3:  $certinfo['gradeName'] = 'Improved'; break;
-            case 5:  $certinfo['gradeName'] = 'Elite';    break;
-            default: $certinfo['gradeName'] = 'Basic';
-        }
-
-        if (isset($categories[$certinfo['categoryID']]['owned'][$certinfo['classID']])) {
-            if ($grade > $categories[$certinfo['categoryID']]['owned'][$certinfo['classID']]['grade']) {
-                $categories[$certinfo['categoryID']]['owned'][$certinfo['classID']] = $certinfo;
-            }
-        } else {
-            $categories[$certinfo['categoryID']]['owned'][$certinfo['classID']] = $certinfo;
-        }
-    }
-
-    foreach ($categories as $categoryID => $category) {
-        if (!$category['owned']) {
-            unset($categories[$categoryID]);
-        }
-    }
 
     $eveRender->Assign('name',              $name);
     $eveRender->Assign('race',              $race);
@@ -640,7 +565,6 @@ function sig($config)
     // Version
     $eveRender->Assign('version',           _SKILLSHEET_VERSION);
     $eveRender->Assign('dVersion',          _DATA_VERSION);
-    $eveRender->Assign('categories',        $categories);
 
     $eveRender->Display('sig.tpl');
     exit;
@@ -676,21 +600,21 @@ function newsig($config)
     $allianceID      = $char['allianceID'];    
     $balance         = $char['balance'];
     $freeSP          = $char['freeSkillPoints'];
-    $attEnhancers    = $char['attributeEnhancers'];
+  /*  $attEnhancers    = $char['attributeEnhancers'];
     if($attEnhancers != ''){
     $memory			 = $attEnhancers['memoryBonus']['augmentatorValue'];
     $intelligence	 = $attEnhancers['intelligenceBonus']['augmentatorValue'];
     $willpower		 = $attEnhancers['willpowerBonus']['augmentatorValue'];
     $perception		 = $attEnhancers['perceptionBonus']['augmentatorValue'];
     $charisma		 = $attEnhancers['charismaBonus']['augmentatorValue'];
-    }
+    }*/
     $attributes      = array('intelligence' => $char['attributes']['intelligence'],
                              'charisma'     => $char['attributes']['charisma'],
                              'perception'   => $char['attributes']['perception'],
                              'memory'       => $char['attributes']['memory'],
                              'willpower'    => $char['attributes']['willpower']);//echo '<pre>';
 
-    $implants = GetImplants($attEnhancers);
+//    $implants = GetImplants($attEnhancers);
 
     $skillTraining   = $training;
 
@@ -699,45 +623,7 @@ function newsig($config)
     $assign = BuildSkillSet($skills, $training);
 
     $skillsearch = $assign['skillsearch'];
-
-    // Attributes are defined by some skills... changing them here !
-    Attributes($attributes, $assign['skilltree'], $implants);
-
-    $certs = $char['rowset'][1]['row'];
-
-    foreach ($certs as $certificate) {
-        $certificates[] = $certificate['certificateID'];
-    }
-
-    $categories = GetCertsCategories();
-
-    foreach ($certificates as $certificate) {
-        $certinfo = GetCertInfo($certificate);
-
-        $classID = $certinfo['classID'];
-        $grade = $certinfo['grade'];
-        switch ($grade) {
-            case 1:  $certinfo['gradeName'] = 'Basic';    break;
-            case 2:  $certinfo['gradeName'] = 'Standard'; break;
-            case 3:  $certinfo['gradeName'] = 'Improved'; break;
-            case 5:  $certinfo['gradeName'] = 'Elite';    break;
-            default: $certinfo['gradeName'] = 'Basic';
-        }
-
-        if (isset($categories[$certinfo['categoryID']]['owned'][$certinfo['classID']])) {
-            if ($grade > $categories[$certinfo['categoryID']]['owned'][$certinfo['classID']]['grade']) {
-                $categories[$certinfo['categoryID']]['owned'][$certinfo['classID']] = $certinfo;
-            }
-        } else {
-            $categories[$certinfo['categoryID']]['owned'][$certinfo['classID']] = $certinfo;
-        }
-    }
-
-    foreach ($categories as $categoryID => $category) {
-        if (!$category['owned']) {
-            unset($categories[$categoryID]);
-        }
-    }
+    
 	$eveRender->Assign('error3', 			$error3);
     $eveRender->Assign('name',              $name);
     $eveRender->Assign('race',              $race);
@@ -795,14 +681,13 @@ function newsig($config)
     // Version
     $eveRender->Assign('version',           _SKILLSHEET_VERSION);
     $eveRender->Assign('dVersion',          _DATA_VERSION);
-    $eveRender->Assign('categories',        $categories);
 
     $eveRender->Display('newsig.tpl');
     exit;
 
 }
 
-function GetImplants($attEnhancers = array())
+/*function GetImplants($attEnhancers = array())
 {
 
     if (!$attEnhancers) {
@@ -826,7 +711,7 @@ function GetImplants($attEnhancers = array())
 
     return $implants;
 
-}
+}*/
 
 function BuildSkillSet($skills, $training)
 {
@@ -1035,14 +920,14 @@ echo '</body>
     $allianceID      = $char['allianceID'];    
     $balance         = $char['balance'];
     $freeSP          = $char['freeSkillPoints'];
-    $attEnhancers    = $char['attributeEnhancers'];
+   /* $attEnhancers    = $char['attributeEnhancers'];
     if($attEnhancers != ''){
     $memory			 = $attEnhancers['memoryBonus']['augmentatorValue'];
     $intelligence	 = $attEnhancers['intelligenceBonus']['augmentatorValue'];
     $willpower		 = $attEnhancers['willpowerBonus']['augmentatorValue'];
     $perception		 = $attEnhancers['perceptionBonus']['augmentatorValue'];
     $charisma		 = $attEnhancers['charismaBonus']['augmentatorValue'];
-    }
+    }*/
     $attributes      = array('intelligence' => $char['attributes']['intelligence'],
                              'charisma'     => $char['attributes']['charisma'],
                              'perception'   => $char['attributes']['perception'],
@@ -1056,9 +941,6 @@ echo '</body>
     $skills          = $char['rowset'][3]['row'];
 
     $assign = BuildSkillSet($skills, $training);
-
-    // Attributes are defined by some skills... changing them here !
-    Attributes($attributes, $assign['skilltree'], $implants);
     
     // APOCRYPHA Queue
     $SkillQueue   = GetQueueData($config['queue']);
@@ -1199,6 +1081,9 @@ function ships($config = array())
     $skills          = $char['rowset'][3]['row'];
 
     $assign = BuildSkillSet($skills, $training);
+    
+    // APOCRYPHA Queue
+    $SkillQueue   = GetQueueData($config['queue']);
 
     $skillsearch = $assign['skillsearch'];
 
@@ -1329,6 +1214,7 @@ function ships($config = array())
     $eveRender->Assign('totalsps',          $assign['skillpointstotal']);
     $eveRender->Assign('totalskillpoints',  $assign['totalskillpoints']);
     $eveRender->Assign('skillpointstotal',  number_format($assign['skillpointstotal'], 0, '', ','));
+    $eveRender->Assign('SkillQueue',        $SkillQueue);
     $eveRender->Assign('shipscanfly',       $shipscanfly);
     // Version
     $eveRender->Assign('version',           _SKILLSHEET_VERSION);
@@ -1366,21 +1252,21 @@ function shipViewer($config = array())
     $allianceID      = $char['allianceID'];    
     $balance         = $char['balance'];
     $freeSP          = $char['freeSkillPoints'];
-    $attEnhancers    = $char['attributeEnhancers'];
+   /* $attEnhancers    = $char['attributeEnhancers'];
     if($attEnhancers != ''){
     $memory			 = $attEnhancers['memoryBonus']['augmentatorValue'];
     $intelligence	 = $attEnhancers['intelligenceBonus']['augmentatorValue'];
     $willpower		 = $attEnhancers['willpowerBonus']['augmentatorValue'];
     $perception		 = $attEnhancers['perceptionBonus']['augmentatorValue'];
     $charisma		 = $attEnhancers['charismaBonus']['augmentatorValue'];
-    }
+    }*/
     $attributes      = array('intelligence' => $char['attributes']['intelligence'],
                              'charisma'     => $char['attributes']['charisma'],
                              'perception'   => $char['attributes']['perception'],
                              'memory'       => $char['attributes']['memory'],
                              'willpower'    => $char['attributes']['willpower']);//echo '<pre>';
 
-    $implants = GetImplants($attEnhancers);
+//    $implants = GetImplants($attEnhancers);
 
     $skillTraining   = $training;
 
@@ -1389,9 +1275,6 @@ function shipViewer($config = array())
     $assign = BuildSkillSet($skills, $training);
 
     $skillsearch = $assign['skillsearch'];
-
-    // Attributes are defined by some skills... changing them here !
-    Attributes($attributes, $assign['skilltree'], $implants);
 
     $shipgroups = Shipgroups();
     $races = array(1  => 'Caldari',
