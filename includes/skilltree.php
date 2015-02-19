@@ -2510,6 +2510,13 @@ $skillsource[257][30653]['skillCost'] = '1500000';
 $skillsource[257][30653]['groupID'] = '257';
 $skillsource[257][30653]['groupName'] = 'Spaceship Command';
 
+$skillsource[257][34533]['typeName'] = 'Minmatar Tactical Destroyer';
+$skillsource[257][34533]['rank'] = '3';
+$skillsource[257][34533]['typeID'] = '34533';
+$skillsource[257][34533]['skillCost'] = '1000000';
+$skillsource[257][34533]['groupID'] = '257';
+$skillsource[257][34533]['groupName'] = 'Spaceship Command';
+
 $skillsource[257][3345]['typeName'] = 'Minmatar Titan';
 $skillsource[257][3345]['rank'] = '16';
 $skillsource[257][3345]['typeID'] = '3345';
