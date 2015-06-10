@@ -25,7 +25,16 @@ function Tw2MotherLode()
     {
         this._loadedObjects = {};
     };
-    
+
+    this.UnloadAndClear = function ()
+    {
+        for (var path in this._loadedObjects)
+        {
+            this._loadedObjects[path].Unload();
+        }
+        this._loadedObjects = {};
+    };
+
     this.PurgeInactive = function (curFrame, frameLimit, frameDistance)
     {
         for (var path in this._loadedObjects)
@@ -99,7 +108,12 @@ Tw2LoadingObject.prototype.Prepare = function (text, xml)
         }
 
         this._constructorFunction = null;
-        this._objects[this._inPrepare]._loadCallback(this._constructor.result);
+        try {
+            this._objects[this._inPrepare]._loadCallback(this._constructor.result);
+        }
+        catch (e) {
+            console.error(e);
+        }
         this._inPrepare++;
     }
     resMan.motherLode.Remove(this.path);
@@ -112,7 +126,15 @@ Inherit(Tw2LoadingObject, Tw2Resource);
 function Tw2ResMan()
 {
     this.resourcePaths = {};
-    this.resourcePaths['res'] = 'res/';
+    
+    this.resourcePaths['res'] = '//developers.eveonline.com/ccpwgl/assetpath/893551/';
+    if(window.location.protocol == "https:") {
+        this.resourcePaths['res'] = 'https:' + this.resourcePaths['res'];
+    } else {
+        this.resourcePaths['res'] = 'http:' + this.resourcePaths['res'];
+    }
+    
+    
     
     this._extensions = {};
     this.motherLode = new Tw2MotherLode();
@@ -236,14 +258,20 @@ function Tw2ResMan()
         var preparedCount = 0;
         while (resMan._prepareQueue.length)
         {
-            if (!resMan._prepareQueue[0][0].Prepare(resMan._prepareQueue[0][1], resMan._prepareQueue[0][2]))
+            try {
+                var result = resMan._prepareQueue[0][0].Prepare(resMan._prepareQueue[0][1], resMan._prepareQueue[0][2]);
+            } catch (e) {
+                resMan._prepareQueue.shift();
+                throw e;
+            }
+            if (!result)
             {
-                var now = new Date();
+                now = new Date();
                 console.info('Prepared ', resMan._prepareQueue[0][0].path, ' in ', (now.getTime() - startTime) * 0.001, ' secs');
                 resMan._prepareQueue.shift();
                 preparedCount++;
             }
-            var now = new Date();
+            now = new Date();
             resMan.prepareBudget -= (now.getTime() - startTime) * 0.001;
             if (resMan.prepareBudget < 0)
             {
@@ -458,6 +486,10 @@ function Tw2ResMan()
     {
         this.motherLode.Clear();
     };
+
+    this.UnloadAndClear = function () {
+        this.motherLode.UnloadAndClear();
+    }
 }
 
 var resMan = new Tw2ResMan();

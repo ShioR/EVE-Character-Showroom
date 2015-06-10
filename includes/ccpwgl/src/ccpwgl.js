@@ -85,6 +85,14 @@
     var resourceUnloadPolicy = ccpwgl.ResourceUnloadPolicy.USAGE_BASED;
 
     /**
+    * Callback that is fired before updating scne state and before any rendering occurs. The dt parameter passed to the
+    * function is frame time in seconds.
+    * If there is no current scene set this callback is not called.
+    * @type {!function(dt): void}
+    */
+    ccpwgl.onUpdate = null;
+
+    /**
     * Callback that is fired before rendering a scene, but after setting view/projection
     * matrixes and clearing the back buffer. Can be used for per-frame update or for
     * rendering something on the background. The dt parameter passed to the function is
@@ -111,6 +119,8 @@
     */
     ccpwgl.onPostRender = null;
 
+    var sof = new ccpwgl_int.EveSOF();
+
     /**
     * Internal render/update function. Is called every frame. 
     * @param {number} dt Frame time.
@@ -131,6 +141,10 @@
         }
         if (updateEnabled)
         {
+            if (ccpwgl.onUpdate)
+            {
+                ccpwgl.onUpdate(dt);
+            }
             for (var i = 0; i < scene.objects.length; ++i)
             {
                 if (scene.objects[i].onUpdate)
@@ -204,6 +218,8 @@
     *   rendered image. Disabling postprocessing effects might result in better performance.
     *   Defaults to false. You can also turn this option on and off with 
     *   ccpwgl.enablePostprocessing call.
+    * - glParams: object; WebGL context creation parameters, see 
+    *   https://www.khronos.org/registry/webgl/specs/1.0/#2.2. Defaults to none.
     *
     * @param {HtmlCanvas} canvas HTML Canvas object that is used for WebGL output.
     * @param {Object} params Optional parameters.
@@ -223,7 +239,8 @@
         d.mipLevelSkipCount = getOption(params, 'textureQuality', 0);
         d.shaderModel = getOption(params, 'shaderQuality', 'hi');
         d.enableAnisotropicFiltering = getOption(params, 'anisotropicFilter', true);
-        if (!d.CreateDevice(canvas))
+        var glParams = getOption(params, 'glParams', undefined);
+        if (!d.CreateDevice(canvas, glParams))
         {
             throw new ccpwgl.NoWebGLError();
         }
@@ -286,6 +303,55 @@
     ccpwgl.setCamera = function (newCamera)
     {
         camera = newCamera;
+    };
+    
+    /**
+     * Returns the whole Space Object Factory file.
+     * Provides a callback that is called once SOF data has been loaded.
+     * @param callback Function that is called when SOF data is ready. Called with a single parameter
+     */
+    ccpwgl.getSofData = function (callback)
+    {
+        sof.GetSofData(callback);
+    };
+
+    /**
+     * Query ship hull names from space object factory database. Along with getSofFactionNames and getSofRaceNames this
+     * function can be used to get all supported ship DNA strings (DNA string has a form "hull:faction:race" that can
+     * be passed to loadShip function) to construct "random" ships. The function is asyncronous so the user needs to
+     * provide a callback that is called once SOF data has been loaded.
+     * @param callback Function that is called when SOF data is ready. Called with a single parameter that is an mapping
+     * of all hull names to their descriptions.
+     */
+    ccpwgl.getSofHullNames = function (callback)
+    {
+        sof.GetHullNames(callback);
+    };
+
+    /**
+     * Query ship faction names from space object factory database. Along with getSofHullNames and getSofRaceNames this
+     * function can be used to get all supported ship DNA strings (DNA string has a form "hull:faction:race" that can
+     * be passed to loadShip function) to construct "random" ships. The function is asyncronous so the user needs to
+     * provide a callback that is called once SOF data has been loaded.
+     * @param callback Function that is called when SOF data is ready. Called with a single parameter that is an mapping
+     * of all faction names to their descriptions.
+     */
+    ccpwgl.getSofFactionNames = function (callback)
+    {
+        sof.GetFactionNames(callback);
+    };
+
+    /**
+     * Query ship race names from space object factory database. Along with getSofHullNames and getSofFactionNames this
+     * function can be used to get all supported ship DNA strings (DNA string has a form "hull:faction:race" that can
+     * be passed to loadShip function) to construct "random" ships. The function is asyncronous so the user needs to
+     * provide a callback that is called once SOF data has been loaded.
+     * @param callback Function that is called when SOF data is ready. Called with a single parameter that is an mapping
+     * of all race names to their descriptions.
+     */
+    ccpwgl.getSofRaceNames = function (callback)
+    {
+        sof.GetRaceNames(callback);
     };
 
     /**
@@ -423,10 +489,10 @@
         this.turrets = [];
         /** Per-frame on update callback @type {!function(dt): void} **/
         this.onUpdate = null;
-        /** Loaded turret color scheme ccpwgl_int object. **/
-        this.turretColorScheme = null;
         /** Local transforms for Tech3 ship parts **/
         this.partTransforms = [];
+        /** Ship SOF DNA if the ship was constructed with SOF **/
+        this.dna = undefined;
 
         var self = this;
         if (typeof resPath == 'string')
@@ -472,16 +538,18 @@
                 {
                     if (self.turrets[i])
                     {
-                        doMountTurret.call(self, i, self.turrets[i].path, self.turrets[i].state);
+                        doMountTurret.call(self, i, self.turrets[i].path, self.turrets[i].state, self.turrets[i].target);
                     }
                 }
-                if (onload && self.isLoaded())
+                if (self.isLoaded())
                 {
                     if (self.wrappedObjects.length > 1)
                     {
                         assembleT3Ship();
                     }
-                    onload.call(self);
+                    if (onload) {
+                        onload.call(self);
+                    }
                 }
             };
         }
@@ -492,11 +560,6 @@
             {
                 throw new TypeError('Invalid number of parts passed to Tech3 ship constructor');
             }
-        }
-
-        for (var i = 0; i < resPath.length; ++i)
-        {
-            ccpwgl_int.resMan.GetObject(resPath[i], OnShipPartLoaded(i));
         }
 
         function assembleT3Ship()
@@ -518,6 +581,9 @@
                     {
                         if (systems[j - 1])
                         {
+                            if (i == 4) {
+                                break;
+                            }
                             throw new TypeError('Invalid parts passed to Tech3 ship constructor');
                         }
                         systems[j - 1] = [i, loc.subarray(12, 15)];
@@ -535,7 +601,7 @@
                 }
             }
             var offset = vec3.create();
-            for (var i = 0; i < systems.length; ++i)
+            for (i = 0; i < systems.length; ++i)
             {
                 var index = systems[i][0];
                 self.partTransforms[index] = mat4.identity(mat4.create());
@@ -663,41 +729,6 @@
         };
 
         /**
-        * Loads color scheme .red file used for turrets. Turrets can use color scheme files
-        * to have their colors match the ship (provided the color scheme is appropriate for 
-        * the given ship). Without the color scheme, turrets will be rendered with default colors.
-        *
-        * @param {string} resPath Res paths for color scheme .red file.
-        * @param {!function(): void} onload Optional callback function that is called
-        *   when color scheme .red file is loaded. this will point to Ship instance.
-        */
-        this.setTurretColorScheme = function (resPath, onload)
-        {
-            var self = this;
-            ccpwgl_int.resMan.GetObject(
-                resPath,
-                function (obj)
-                {
-                    self.turretColorScheme = obj;
-                    if (self.isLoaded())
-                    {
-                        for (var i = 0; i < self.turrets.length; ++i)
-                        {
-                            if (self.turrets[i])
-                            {
-                                doMountTurret.call(self, i, self.turrets[i].path, self.turrets[i].state);
-                            }
-                        }
-                    }
-                    if (onload)
-                    {
-                        onload.call(self);
-                    }
-                }
-            );
-        };
-
-        /**
         * Returns number of turret slots available on the ship.
         *
         * @throws If the ship's .red file is not yet loaded.
@@ -727,7 +758,7 @@
                     }
                 }
             }
-            this.turretCount = slots.length;
+            this.turretCount = slots.length - 1;
             return this.turretCount;
         };
 
@@ -739,10 +770,10 @@
         */
         this.mountTurret = function (index, resPath)
         {
-            this.turrets[index] = { path: resPath, state: ccpwgl.TurretState.IDLE };
+            this.turrets[index] = { path: resPath, state: ccpwgl.TurretState.IDLE, target: vec3.create() };
             if (this.isLoaded())
             {
-                doMountTurret.call(this, index, resPath, ccpwgl.TurretState.IDLE);
+                doMountTurret.call(this, index, resPath, ccpwgl.TurretState.IDLE, this.turrets[index].target);
             }
         };
 
@@ -786,7 +817,7 @@
             {
                 throw new ReferenceError('turret at index ' + index + ' is not defined');
             }
-            if (this.turrets[index].state != state)
+            if (this.turrets[index].state != state || state == ccpwgl.TurretState.FIRING)
             {
                 this.turrets[index].state = state;
                 var name = 'locator_turret_' + index;
@@ -818,8 +849,39 @@
             }
         };
 
+        /**
+        * Sets turret's target position. The specified slot must have a turret.
+        *
+        * @throws If the specified slot doesn't have turret mounted.
+        * @param {number} index Turret slot.
+        * @param {vec3} target Target position in world space.
+        */
+        this.setTurretTargetPosition = function (index, target)
+        {
+            if (!this.turrets[index])
+            {
+                throw new ReferenceError('turret at index ' + index + ' is not defined');
+            }
+            vec3.set(target, this.turrets[index].target);
+            var name = 'locator_turret_' + index;
+            for (var j = 0; j < this.wrappedObjects.length; ++j)
+            {
+                if (this.wrappedObjects[j])
+                {
+                    for (var i = 0; i < this.wrappedObjects[j].turretSets.length; ++i)
+                    {
+                        if (this.wrappedObjects[j].turretSets[i].locatorName == name)
+                        {
+                            vec3.set(target, this.wrappedObjects[j].turretSets[i].targetPosition);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
         /** Internal helper method that mount a turret on a loaded ship **/
-        function doMountTurret(slot, resPath, state)
+        function doMountTurret(slot, resPath, state, targetPosition)
         {
             var name = 'locator_turret_' + slot;
             var objectIndex = null;
@@ -856,31 +918,21 @@
                     break;
                 }
             }
-            var shipColorScheme = this.turretColorScheme;
+
+
             ship.RebuildTurretPositions();
             ccpwgl_int.resMan.GetObject(
                 resPath,
                 function (object)
                 {
                     object.locatorName = name;
-                    if (shipColorScheme && object.turretEffect && object.turretEffect.name != 'not_overridable')
-                    {
-                        var scheme = shipColorScheme;
-                        for (var param in scheme.parameters)
-                        {
-                            if (typeof (scheme.parameters[param].resourcePath) == 'undefined')
-                            {
-                                if (object.turretEffect.name == 'half_overridable' && param == 'GlowColor')
-                                {
-                                    continue;
-                                }
-                                object.turretEffect.parameters[param] = scheme.parameters[param];
-                            }
-                        }
-                        object.turretEffect.BindParameters();
+                    if (self.dna) {
+                        var faction = self.dna.split(':')[1];
+                        sof.SetupTurretMaterial(object, faction, faction);
                     }
                     ship.turretSets.push(object);
                     ship.RebuildTurretPositions();
+                    object.targetPosition = targetPosition;
                     switch (state)
                     {
                         case ccpwgl.TurretState.FIRING:
@@ -909,6 +961,18 @@
         */
         this.setSiegeState = function (state, onswitch)
         {
+            function getOnComplete(index, state, nextAnim) {
+                return function () {
+                    self.internalSiegeState = state;
+                    self.wrappedObjects[index].animation.StopAllAnimations();
+                    self.wrappedObjects[index].animation.PlayAnimation(nextAnim, true);
+                    if (onswitch)
+                    {
+                        onswitch.call(self, self.internalSiegeState);
+                    }
+                };
+
+            }
             if (this.siegeState != state)
             {
                 this.siegeState = state;
@@ -920,25 +984,16 @@
                         {
                             switch (this.internalSiegeState)
                             {
-                                case ccpwgl.ShipSiegeState.IDLE:
+                                case ccpwgl.ShipSiegeState.NORMAL:
                                 case 101:
                                     // 101 is transforming from siege state. Ideally we'd want to switch to StartSiege
                                     // with correct offset into animation, but we don't have that functionality yet...
                                     this.internalSiegeState = 100;
                                     this.wrappedObjects[j].animation.StopAllAnimations();
                                     this.wrappedObjects[j].animation.PlayAnimation(
-                                    'StartSiege',
-                                    false,
-                                    function ()
-                                    {
-                                        self.internalSiegeState = ccpwgl.ShipSiegeState.SIEGE;
-                                        self.wrappedObjects[j].animation.StopAllAnimations();
-                                        self.wrappedObjects[j].animation.PlayAnimation('SiegeLoop', true);
-                                        if (onswitch)
-                                        {
-                                            onswitch.call(self, self.internalSiegeState);
-                                        }
-                                    });
+                                        'StartSiege',
+                                        false,
+                                        getOnComplete(j, ccpwgl.ShipSiegeState.SIEGE, 'SiegeLoop'));
                                     break;
                                 default:
                                     this.internalSiegeState = ccpwgl.ShipSiegeState.SIEGE;
@@ -961,21 +1016,12 @@
                                     this.internalSiegeState = 101;
                                     this.wrappedObjects[j].animation.StopAllAnimations();
                                     this.wrappedObjects[j].animation.PlayAnimation(
-                                    'EndSiege',
-                                    false,
-                                    function ()
-                                    {
-                                        self.internalSiegeState = ccpwgl.ShipSiegeState.IDLE;
-                                        self.wrappedObjects[j].animation.StopAllAnimations();
-                                        self.wrappedObjects[j].animation.PlayAnimation('NormalLoop', true);
-                                    });
-                                    if (onswitch)
-                                    {
-                                        onswitch.call(self, self.internalSiegeState);
-                                    }
+                                        'EndSiege',
+                                        false,
+                                        getOnComplete(j, ccpwgl.ShipSiegeState.NORMAL, 'NormalLoop'));
                                     break;
                                 default:
-                                    this.internalSiegeState = ccpwgl.ShipSiegeState.IDLE;
+                                    this.internalSiegeState = ccpwgl.ShipSiegeState.NORMAL;
                                     this.wrappedObjects[j].animation.StopAllAnimations();
                                     this.wrappedObjects[j].animation.PlayAnimation('NormalLoop', true);
                                     if (onswitch)
@@ -1020,6 +1066,18 @@
                 result = result.concat(this.wrappedObjects[i].locators);
             }
             return result;
+        }
+
+        for (var i = 0; i < resPath.length; ++i)
+        {
+            if (resPath[i].match(/(\w|\d|[-_])+:(\w|\d|[-_])+:(\w|\d|[-_])+/)) {
+                if (i == 0)
+                    this.dna = resPath[0];
+                sof.BuildFromDNA(resPath[i], OnShipPartLoaded(i))
+            }
+            else {
+                ccpwgl_int.resMan.GetObject(resPath[i], OnShipPartLoaded(i));
+            }
         }
     }
 
@@ -1067,6 +1125,13 @@
         */
         this.setTransform = function (newTransform)
         {
+            var tr = this.wrappedObjects[0].highDetail;
+            tr.translation[0] = newTransform[12];
+            tr.translation[1] = newTransform[13];
+            tr.translation[2] = newTransform[14];
+            tr.scaling[0] = vec3.length(newTransform);
+            tr.scaling[1] = vec3.length(newTransform.subarray(4));
+            tr.scaling[2] = vec3.length(newTransform.subarray(8));
             this.wrappedObjects[0].highDetail.localTransform.set(newTransform);
         };
 
@@ -1208,7 +1273,7 @@
         * Loads a ship from .red file and adds it to scene's objects list.
         *
         * @param {string} resPath Res path to ship .red file
-        * @param {!function(): void} onload Optional callback function that is called
+        * @param {!function(): void} [onload] Optional callback function that is called
         *   when ship .red file is loaded. this will point to Ship instance.
         * @returns {ccpwgl.Ship} A newly created ship instance.
         */
@@ -1306,7 +1371,7 @@
         */
         this.getObject = function (index)
         {
-            if (index > 0 && index < this.objects.length)
+            if (index >= 0 && index < this.objects.length)
             {
                 return this.objects[index];
             }
@@ -1484,7 +1549,7 @@
     * will be automatically updated rendered into the canvas).
     *
     * @param {string} resPath Res path to scene's .red file
-    * @param {!function(): void} onload Optional callback function that is called
+    * @param {!function(): void} [onload] Optional callback function that is called
     *   when scene .red file is loaded. this will point to Scene instance.
     * @returns {ccpwgl.Scene} Newly constructed scene.
     */
@@ -1499,16 +1564,25 @@
     * Creates a new epmpty scne. The scene will not have background nebula and will
     * use a solid color to fill the background.
     *
-    * @param {vec4} backgroundColor Scene background color as RGBA vector.
+    * @param {string|vec4} background Scene background color as RGBA vector or background cubemap res path.
     * @returns {ccpwgl.Scene} Newly constructed scene.
     */
-    ccpwgl.createScene = function (backgroundColor)
+    ccpwgl.createScene = function (background)
     {
-        if (backgroundColor)
+        if (background && typeof background != 'string')
         {
-            clearColor = backgroundColor;
+            clearColor = background;
         }
         scene = new Scene();
+        if (background && typeof background == 'string') {
+            var effect = ccpwgl_int.resMan.GetObject('res:/dx9/scene/starfield/starfieldNebula.red', function (obj) {
+                scene.wrappedScene.backgroundEffect = obj;
+                if ('NebulaMap' in obj.parameters) {
+                    obj.parameters['NebulaMap'].resourcePath = background;
+                    obj.parameters['NebulaMap'].Initialize();
+                }
+            });
+        }
         scene.create();
         return scene;
     };
