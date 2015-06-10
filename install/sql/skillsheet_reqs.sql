@@ -866,3 +866,7 @@ INSERT INTO `skillsheet_reqs` VALUES ('34317', 'requiredSkill1', '34390', '0', '
 INSERT INTO `skillsheet_reqs` VALUES ('34317', 'requiredSkill1Level', '1', '0', '1305', 'Confessor', '4', 'Amarr', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('34328', 'requiredSkill1', '34327', '0', '513', 'Bowhead', '32', 'ORE', 'ORE Freighter', null);
 INSERT INTO `skillsheet_reqs` VALUES ('34328', 'requiredSkill1Level', '1', '0', '513', 'Bowhead', '32', 'ORE', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('34562', 'requiredSkll1', '34533', '0', '1305', 'Svipul', '2', 'Minmatar', 'Minmatar Tactical Destroyer', null);
+INSERT INTO `skillsheet_reqs` VALUES ('34562', 'requiredSkill1Level', '1', '0', '1305', 'Svipul', '2', 'Minmatar', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('34828', 'requiredSkill1', '35680', '0', '1305', 'Jackdaw', '1', 'Caldari', 'Caldari Tactical Destroyer', null);
+INSERT INTO `skillsheet_reqs` VALUES ('34828', 'requiredSkill1Level', '1', '0', '1305', 'Jackdaw', '1', 'Caldari', null, null);
