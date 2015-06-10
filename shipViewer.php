@@ -49,32 +49,33 @@
 
             function onDocumentLoad()
             {
-                ccpwgl.setResourcePath('res', 'http://web.ccpgamescdn.com/ccpwgl/res/');
+              //  ccpwgl.setResourcePath('res', 'https://web.ccpgamescdn.com/ccpwgl/res/');
 
 
                 var canvas = document.getElementById('mainCanvas');
                 ccpwgl.initialize(canvas);
-                  // Nebula
-                     var scene = ccpwgl.loadScene('<?php echo $nebula; ?>');
+                
+                    // Nebula
+                var scene = ccpwgl.loadScene('<?php echo $nebula; ?>');
 
         		var camera = new TestCamera(canvas);
-                camera.minDistance = 10;
-                camera.maxDistance = 20000;
-                camera.fov = 30;
-                camera.distance = 3500;
-                camera.rotationX = -0.5;
-                camera.rotationY = 0.2;
-                camera.nearPlane = 1;
-                camera.farPlane = 10000000;
-                camera.minPitch = -0.5;
-                camera.maxPitch = 0.65;
-                ccpwgl.setCamera(camera);
+                    camera.minDistance = 10;
+                    camera.maxDistance = 20000;
+                    camera.fov = 30;
+                    camera.distance = 3500;
+                    camera.rotationX = -0.5;
+                    camera.rotationY = 0.2;
+                    camera.nearPlane = 1;
+                    camera.farPlane = 10000000;
+                    camera.minPitch = -0.5;
+                    camera.maxPitch = 0.65;
+                    ccpwgl.setCamera(camera);
 
-                // Load the data for the ship
-                var ship = scene.loadShip('<?php echo $path; ?>', undefined);
+                    // Load the data for the ship
+                scene.loadShip('<?php echo $path; ?>', undefined);
                 
                 // Bloom Setting
-                ccpwgl.enablePostprocessing(false);
+                ccpwgl.enablePostprocessing(true);
 
         		ccpwgl.onPreRender = function () 
         		{ 
