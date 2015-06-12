@@ -156,7 +156,7 @@
 </head>
 <body bgcolor="#222222" style="height: 100%">
 <div class="headerribbon">
-  <span class="headerleft">EVE Character Showroom 4.0: Installation Step <!--[$step]--></span>
+  <span class="headerleft">EVE Character Showroom 5: Installation Step <!--[$step]--></span>
 </div>
 <br />
 <br />
