@@ -280,6 +280,7 @@ INSERT INTO `skillsheet_ships` VALUES ('33472', '27', 'Nestor', '4', '64', '1', 
 INSERT INTO `skillsheet_ships` VALUES ('33697', '25', 'Prospect', '2', '32', '1', '20600', 'oref1_t2b:development:ore');
 INSERT INTO `skillsheet_ships` VALUES ('33820', '27', 'Barghest', '4', '16', '1', '20615', 'morb1_t1:mordubase:mordu');
 INSERT INTO `skillsheet_ships` VALUES ('33816', '25', 'Garmur', '4', '16', '1', '20616', 'morf1_t1:mordubase:mordu');
+INSERT INTO `skillsheet_ships` VALUES ('35683', '1305', 'Hecate', '3', '8', '1', null, 'gde3_t3:gallentebase:gallente');
 INSERT INTO `skillsheet_ships` VALUES ('33818', '26', 'Orthrus', '4', '16', '1', '20614', 'morc1_t1:mordubase:mordu');
 INSERT INTO `skillsheet_ships` VALUES ('34328', '513', 'Bowhead', '1', '32', '1', '20977', 'orecs2_t1:orebase:ore');
 INSERT INTO `skillsheet_ships` VALUES ('34317', '1305', 'Confessor', '3', '4', '1', '20980', 'ade3_t3:amarrbase:amarr');
