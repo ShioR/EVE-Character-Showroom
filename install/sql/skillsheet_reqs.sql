@@ -870,3 +870,5 @@ INSERT INTO `skillsheet_reqs` VALUES ('34562', 'requiredSkll1', '34533', '0', '1
 INSERT INTO `skillsheet_reqs` VALUES ('34562', 'requiredSkill1Level', '1', '0', '1305', 'Svipul', '2', 'Minmatar', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('34828', 'requiredSkill1', '35680', '0', '1305', 'Jackdaw', '1', 'Caldari', 'Caldari Tactical Destroyer', null);
 INSERT INTO `skillsheet_reqs` VALUES ('34828', 'requiredSkill1Level', '1', '0', '1305', 'Jackdaw', '1', 'Caldari', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('35683', 'requiredSkill1', '35685', '0', '1305', 'Hecate', '8', 'Gallente', 'Gallente Tactical Destroyer', null);
+INSERT INTO `skillsheet_reqs` VALUES ('35683', 'requiredSkill1Level', '1', '0', '1305', 'Hecate', '8', 'Gallente', null, null);
