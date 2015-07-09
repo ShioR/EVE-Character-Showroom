@@ -2808,6 +2808,13 @@ $skillsource[274][25233]['skillCost'] = '150000';
 $skillsource[274][25233]['groupID'] = '274';
 $skillsource[274][25233]['groupName'] = 'Trade';
 
+$skillsource[274][33467]['typeName'] = 'Customs Code Expertise';
+$skillsource[274][33467]['rank'] = '2';
+$skillsource[274][33467]['typeID'] = '33467';
+$skillsource[274][33467]['skillCost'] = '3000000';
+$skillsource[274][33467]['groupID'] = '274';
+$skillsource[274][33467]['groupName'] = 'Trade';
+
 $skillsource[274][16595]['typeName'] = 'Daytrading';
 $skillsource[274][16595]['rank'] = '1';
 $skillsource[274][16595]['typeID'] = '16595';
