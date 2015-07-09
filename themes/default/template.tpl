@@ -7,7 +7,7 @@
           <!--[if $implants == 1]--><!--[include file='maininfo.tpl']--><!--[else]--><!--[include file='maininfo2.tpl']--><!--[/if]-->
           <!--[include file='queue.tpl']-->
         
-      <!--[assign var='Armor' value=14]-->   
+     <!--[assign var='Armor' value=14]-->   
       <!--[assign var='CorporationManagement' value=7]-->   
       <!--[assign var='Drones' value=21]-->   
       <!--[assign var='ElectronicSystems' value=15]-->   
@@ -15,7 +15,7 @@
       <!--[assign var='Gunnery' value=39]-->   
       <!--[assign var='Leadership' value=14]-->   
       <!--[assign var='Missiles' value=24]-->   
-      <!--[assign var='Navigation' value=11]-->   
+      <!--[assign var='Navigation' value=13]-->   
       <!--[assign var='NeuralEnhancement' value=8]-->   
       <!--[assign var='PlanetManagement' value=5]-->   
       <!--[assign var='Production' value=12]-->   
@@ -25,11 +25,11 @@
       <!--[assign var='Science' value=39]-->   
       <!--[assign var='Shields' value=12]-->   
       <!--[assign var='Social' value=9]-->   
-      <!--[assign var='SpaceshipCommand' value=70]-->   
+      <!--[assign var='SpaceshipCommand' value=71]-->   
       <!--[assign var='Subsystems' value=20]-->   
       <!--[assign var='Targeting' value=8]-->   
-      <!--[assign var='Trade' value=13]-->   
-      <!--[assign var='GroupTotal' value=400]-->  
+      <!--[assign var='Trade' value=14]-->   
+      <!--[assign var='GroupTotal' value=404]-->  
       <!--[assign var='totalCost' value=0]-->   
       <!--[assign var='totalSkills' value=0]-->
       <!--[assign var='lvl1total' value=0]-->
