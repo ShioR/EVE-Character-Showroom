@@ -11,8 +11,10 @@ function smarty_function_getskillinfo($params, &$smarty)
 				$result = mysql_query("SELECT description FROM skillsheet_skills WHERE typeID = '$typeID'");
 		// Wordwrap to stop the page getting borked
 				$text = mysql_result($result, 0);
-				$description = wordwrap($text, 112, "<br />\n");
-				echo $description, "<br />\n";
+				$description = wordwrap($text, 112, "<br>");
+				echo nl2br($description);
+        // Extra line break at the end to put the skill cost onto a new line
+                echo "<br>";
    	mysql_close();
 		// Fini!
 }
