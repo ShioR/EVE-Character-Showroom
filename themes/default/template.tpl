@@ -162,7 +162,7 @@
                       <strong>Level <!--[math equation="x + y" x=$skill.level y=1]--></strong>
                     </div>
                     <div>
-                     <span class="navdot">&#xB7;</span><span style="color:gold;">SP done: </span>
+                     <span class="navdot">&#xB7;</span><span style="color:gold;">Progress: </span>
                       <strong><!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> <span style="color:gold;font-size: 10px;">(<!--[$TotalPercentage]-->%)</span></strong>
                     </div>
                     <div>
