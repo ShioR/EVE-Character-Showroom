@@ -113,19 +113,19 @@ $skillsource[266][3363]['skillCost'] = '20000';
 $skillsource[266][3363]['groupID'] = '266';
 $skillsource[266][3363]['groupName'] = 'Corporation Management';
 
-$skillsource[266][3732]['typeName'] = 'Empire Control';
-$skillsource[266][3732]['rank'] = '5';
-$skillsource[266][3732]['typeID'] = '3732';
-$skillsource[266][3732]['skillCost'] = '8000000';
-$skillsource[266][3732]['groupID'] = '266';
-$skillsource[266][3732]['groupName'] = 'Corporation Management';
-
 $skillsource[266][3368]['typeName'] = 'Diplomatic Relations';
 $skillsource[266][3368]['rank'] = '2';
 $skillsource[266][3368]['typeID'] = '3368';
 $skillsource[266][3368]['skillCost'] = '40000';
 $skillsource[266][3368]['groupID'] = '266';
 $skillsource[266][3368]['groupName'] = 'Corporation Management';
+
+$skillsource[266][3732]['typeName'] = 'Empire Control';
+$skillsource[266][3732]['rank'] = '5';
+$skillsource[266][3732]['typeID'] = '3732';
+$skillsource[266][3732]['skillCost'] = '8000000';
+$skillsource[266][3732]['groupID'] = '266';
+$skillsource[266][3732]['groupName'] = 'Corporation Management';
 
 $skillsource[266][3731]['typeName'] = 'Megacorp Management';
 $skillsource[266][3731]['rank'] = '3';
@@ -431,7 +431,7 @@ $skillsource[1216][3417]['skillCost'] = '40000';
 $skillsource[1216][3417]['groupID'] = '1216';
 $skillsource[1216][3417]['groupName'] = 'Engineering';
 
-$skillsource[1216][24572]['typeName'] = 'Capital Energy Emission Systems';
+$skillsource[1216][24572]['typeName'] = 'Capital Capacitor Emission Systems';
 $skillsource[1216][24572]['rank'] = '10';
 $skillsource[1216][24572]['typeID'] = '24572';
 $skillsource[1216][24572]['skillCost'] = '10000000';
@@ -1264,19 +1264,19 @@ $skillsource[268][3397]['skillCost'] = '1000000';
 $skillsource[268][3397]['groupID'] = '268';
 $skillsource[268][3397]['groupName'] = 'Production';
 
-$skillsource[268][22242]['typeName'] = 'Capital Ship Construction';
-$skillsource[268][22242]['rank'] = '14';
-$skillsource[268][22242]['typeID'] = '22242';
-$skillsource[268][22242]['skillCost'] = '75000000';
-$skillsource[268][22242]['groupID'] = '268';
-$skillsource[268][22242]['groupName'] = 'Production';
-
 $skillsource[268][3395]['typeName'] = 'Advanced Small Ship Construction';
 $skillsource[268][3395]['rank'] = '2';
 $skillsource[268][3395]['typeID'] = '3395';
 $skillsource[268][3395]['skillCost'] = '80000';
 $skillsource[268][3395]['groupID'] = '268';
 $skillsource[268][3395]['groupName'] = 'Production';
+
+$skillsource[268][22242]['typeName'] = 'Capital Ship Construction';
+$skillsource[268][22242]['rank'] = '14';
+$skillsource[268][22242]['typeID'] = '22242';
+$skillsource[268][22242]['skillCost'] = '75000000';
+$skillsource[268][22242]['groupID'] = '268';
+$skillsource[268][22242]['groupName'] = 'Production';
 
 $skillsource[268][26224]['typeName'] = 'Drug Manufacturing';
 $skillsource[268][26224]['rank'] = '2';
@@ -1646,7 +1646,7 @@ $skillsource[270][23087]['skillCost'] = '160000';
 $skillsource[270][23087]['groupID'] = '270';
 $skillsource[270][23087]['groupName'] = 'Science';
 
-$skillsource[270][11444]['typeName'] = 'Amarrian Starship Engineering';
+$skillsource[270][11444]['typeName'] = 'Amarr Starship Engineering';
 $skillsource[270][11444]['rank'] = '5';
 $skillsource[270][11444]['typeID'] = '11444';
 $skillsource[270][11444]['skillCost'] = '10000000';
@@ -1716,7 +1716,7 @@ $skillsource[270][23121]['skillCost'] = '185000';
 $skillsource[270][23121]['groupID'] = '270';
 $skillsource[270][23121]['groupName'] = 'Science';
 
-$skillsource[270][11450]['typeName'] = 'Gallentean Starship Engineering';
+$skillsource[270][11450]['typeName'] = 'Gallente Starship Engineering';
 $skillsource[270][11450]['rank'] = '5';
 $skillsource[270][11450]['typeID'] = '11450';
 $skillsource[270][11450]['skillCost'] = '10000000';
@@ -2004,13 +2004,6 @@ $skillsource[278][3361]['typeID'] = '3361';
 $skillsource[278][3361]['skillCost'] = '200000';
 $skillsource[278][3361]['groupID'] = '278';
 $skillsource[278][3361]['groupName'] = 'Social';
-
-$skillsource[278][3362]['typeName'] = 'DED Connections';
-$skillsource[278][3362]['rank'] = '1';
-$skillsource[278][3362]['typeID'] = '3362';
-$skillsource[278][3362]['skillCost'] = '420000';
-$skillsource[278][3362]['groupID'] = '278';
-$skillsource[278][3362]['groupName'] = 'Social';
 
 $skillsource[278][3357]['typeName'] = 'Diplomacy';
 $skillsource[278][3357]['rank'] = '1';
@@ -2779,13 +2772,6 @@ $skillsource[274][16622]['typeID'] = '16622';
 $skillsource[274][16622]['skillCost'] = '5000000';
 $skillsource[274][16622]['groupID'] = '274';
 $skillsource[274][16622]['groupName'] = 'Trade';
-
-$skillsource[274][3445]['typeName'] = 'Black Market Trading';
-$skillsource[274][3445]['rank'] = '2';
-$skillsource[274][3445]['typeID'] = '3445';
-$skillsource[274][3445]['skillCost'] = '70000';
-$skillsource[274][3445]['groupID'] = '274';
-$skillsource[274][3445]['groupName'] = 'Trade';
 
 $skillsource[274][3446]['typeName'] = 'Broker Relations';
 $skillsource[274][3446]['rank'] = '2';
