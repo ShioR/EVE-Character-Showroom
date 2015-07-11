@@ -6,8 +6,7 @@
           <!--[include file='mainheader.tpl']-->
           <!--[if $implants == 1]--><!--[include file='maininfo.tpl']--><!--[else]--><!--[include file='maininfo2.tpl']--><!--[/if]-->
           <!--[include file='queue.tpl']-->
-        
-      <!--[assign var='GroupTotal' value=406]-->  
+          
       <!--[assign var='totalCost' value=0]-->   
       <!--[assign var='totalSkills' value=0]-->
       <!--[assign var='lvl1total' value=0]-->
@@ -21,41 +20,41 @@
       <!--[assign var='lvl4sptotal' value=0]-->       
       <!--[assign var='lvl5sptotal' value=0]-->  
       <!--[foreach item='queue' from=$SkillQueue]--> 
-      <!--[assign var='queuePos0' value=$SkillQueue.0.typeID]-->  
-      <!--[assign var='queuePos1' value=$SkillQueue.1.typeID]-->  
-      <!--[assign var='queuePos2' value=$SkillQueue.2.typeID]-->  
-      <!--[assign var='queuePos3' value=$SkillQueue.3.typeID]-->  
-      <!--[assign var='queuePos4' value=$SkillQueue.4.typeID]-->  
-      <!--[assign var='queuePos5' value=$SkillQueue.5.typeID]-->  
-      <!--[assign var='queuePos6' value=$SkillQueue.6.typeID]-->  
-      <!--[assign var='queuePos7' value=$SkillQueue.7.typeID]-->  
-      <!--[assign var='queuePos8' value=$SkillQueue.8.typeID]-->  
-      <!--[assign var='queuePos9' value=$SkillQueue.9.typeID]-->  
-      <!--[assign var='queueLevel0' value=$SkillQueue.0.level]-->  
-      <!--[assign var='queueLevel1' value=$SkillQueue.1.level]-->  
-      <!--[assign var='queueLevel2' value=$SkillQueue.2.level]-->  
-      <!--[assign var='queueLevel3' value=$SkillQueue.3.level]-->  
-      <!--[assign var='queueLevel4' value=$SkillQueue.4.level]-->  
-      <!--[assign var='queueLevel5' value=$SkillQueue.5.level]-->  
-      <!--[assign var='queueLevel6' value=$SkillQueue.6.level]-->  
-      <!--[assign var='queueLevel7' value=$SkillQueue.7.level]-->  
-      <!--[assign var='queueLevel8' value=$SkillQueue.8.level]-->  
-      <!--[assign var='queueLevel9' value=$SkillQueue.9.level]-->
+          <!--[assign var='queuePos0' value=$SkillQueue.0.typeID]-->  
+          <!--[assign var='queuePos1' value=$SkillQueue.1.typeID]-->  
+          <!--[assign var='queuePos2' value=$SkillQueue.2.typeID]-->  
+          <!--[assign var='queuePos3' value=$SkillQueue.3.typeID]-->  
+          <!--[assign var='queuePos4' value=$SkillQueue.4.typeID]-->  
+          <!--[assign var='queuePos5' value=$SkillQueue.5.typeID]-->  
+          <!--[assign var='queuePos6' value=$SkillQueue.6.typeID]-->  
+          <!--[assign var='queuePos7' value=$SkillQueue.7.typeID]-->  
+          <!--[assign var='queuePos8' value=$SkillQueue.8.typeID]-->  
+          <!--[assign var='queuePos9' value=$SkillQueue.9.typeID]-->  
+          <!--[assign var='queueLevel0' value=$SkillQueue.0.level]-->  
+          <!--[assign var='queueLevel1' value=$SkillQueue.1.level]-->  
+          <!--[assign var='queueLevel2' value=$SkillQueue.2.level]-->  
+          <!--[assign var='queueLevel3' value=$SkillQueue.3.level]-->  
+          <!--[assign var='queueLevel4' value=$SkillQueue.4.level]-->  
+          <!--[assign var='queueLevel5' value=$SkillQueue.5.level]-->  
+          <!--[assign var='queueLevel6' value=$SkillQueue.6.level]-->  
+          <!--[assign var='queueLevel7' value=$SkillQueue.7.level]-->  
+          <!--[assign var='queueLevel8' value=$SkillQueue.8.level]-->  
+          <!--[assign var='queueLevel9' value=$SkillQueue.9.level]-->
       <!--[/foreach]-->
       <!--[foreach item='skillgroup' key='groupid' from=$skilltree]-->
-        <!--[assign var='totalsp' value=0]-->
-        <!--[assign var='countsk' value=0]-->
-        <!--[assign var='lvl1' value=0]-->
-        <!--[assign var='lvl2' value=0]-->
-        <!--[assign var='lvl3' value=0]-->
-        <!--[assign var='lvl4' value=0]-->
-        <!--[assign var='lvl5' value=0]-->
-        <!--[assign var='lvl1sp' value=0]-->      
-        <!--[assign var='lvl2sp' value=0]-->      
-        <!--[assign var='lvl3sp' value=0]-->      
-        <!--[assign var='lvl4sp' value=0]-->      
-        <!--[assign var='lvl5sp' value=0]-->      
-        <!--[assign var='groupname' value=$skillgroups.$groupid]-->
+          <!--[assign var='totalsp' value=0]-->
+          <!--[assign var='countsk' value=0]-->
+          <!--[assign var='lvl1' value=0]-->
+          <!--[assign var='lvl2' value=0]-->
+          <!--[assign var='lvl3' value=0]-->
+          <!--[assign var='lvl4' value=0]-->
+          <!--[assign var='lvl5' value=0]-->
+          <!--[assign var='lvl1sp' value=0]-->      
+          <!--[assign var='lvl2sp' value=0]-->      
+          <!--[assign var='lvl3sp' value=0]-->      
+          <!--[assign var='lvl4sp' value=0]-->      
+          <!--[assign var='lvl5sp' value=0]-->      
+          <!--[assign var='groupname' value=$skillgroups.$groupid]-->
         <!--[if $groupid eq 256]-->
           <!--[assign var='groupname' value='Missiles']-->
         <!--[/if]-->
@@ -215,7 +214,7 @@
 			    	<!--[math equation="x + y" x=$lvl5 y=$lvl5total assign='lvl5total']-->	
 			    	<!--[math equation="x + y" x=$countsk y=$totalSkills assign='totalSkills']-->	    	
       <!--[/foreach]-->
-      <!--[math equation="(x / y) * z" x=$totalSkills y=$GroupTotal z=100 format="%.1f" assign='GroupTotalPercentage']-->       
+      <!--[math equation="(x / y) * z" x=$totalSkills y=$getskillstotal z=100 format="%.1f" assign='GroupTotalPercentage']-->       
       <!--[math equation="(x / y) * z" x=$lvl1total y=$totalSkills z=100 format="%.1f" assign='TotalPercentageSkills1']-->      
       <!--[math equation="(x / y) * z" x=$lvl2total y=$totalSkills z=100 format="%.1f" assign='TotalPercentageSkills2']-->      
       <!--[math equation="(x / y) * z" x=$lvl3total y=$totalSkills z=100 format="%.1f" assign='TotalPercentageSkills3']-->      
@@ -230,7 +229,7 @@
             <div style="line-height: 1.45em; margin-left: 82px; font-size: 11px;">
              <br /><strong>Totals:</strong>
               <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong>~ <!--[$totalCost|number_format]--></strong> ISK spent on skills.</span>
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$totalSkills]--></strong>/<!--[gettotalskills]--> (<!--[$GroupTotalPercentage]-->%) <!--[if $totalSkills == 1]-->skill<!--[elseif $totalSkills != 1]-->skills<!--[/if]--> trained for a total of <strong><!--[$skillpointstotal]--></strong> skillpoints.</span>
+              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$totalSkills]--></strong>/<!--[$getskillstotal]--> (<!--[$GroupTotalPercentage]-->%) <!--[if $totalSkills == 1]-->skill<!--[elseif $totalSkills != 1]-->skills<!--[/if]--> trained for a total of <strong><!--[$skillpointstotal]--></strong> skillpoints.</span>
               <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl1total]--></strong> (<!--[$TotalPercentageSkills1]-->%) <!--[if $lvl1total == 1]-->skill<!--[elseif $lvl1total != 1]-->skills<!--[/if]--> trained to <strong>level 1</strong><!--[if $lvl1total == 0]-->. <!--[elseif $lvl1total > 0]-->for a total of <strong><!--[$lvl1sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints1]-->%</strong> of your total skillpoints.</span><!--[/if]-->
               <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl2total]--></strong> (<!--[$TotalPercentageSkills2]-->%) <!--[if $lvl2total == 1]-->skill<!--[elseif $lvl2total != 1]-->skills<!--[/if]--> trained to <strong>level 2</strong><!--[if $lvl2total == 0]-->. <!--[elseif $lvl2total > 0]--> for a total of <strong><!--[$lvl2sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints2]-->%</strong> of your total skillpoints.</span><!--[/if]-->
               <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl3total]--></strong> (<!--[$TotalPercentageSkills3]-->%) <!--[if $lvl3total == 1]-->skill<!--[elseif $lvl3total != 1]-->skills<!--[/if]--> trained to <strong>level 3</strong><!--[if $lvl3total == 0]-->. <!--[elseif $lvl3total > 0]--> for a total of <strong><!--[$lvl3sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints3]-->%</strong> of your total skillpoints.</span><!--[/if]-->
@@ -245,5 +244,4 @@
     </tr>
   </tbody>
   </table>
-
   <!--[include file='footer.tpl']-->
