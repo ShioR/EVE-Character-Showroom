@@ -101,16 +101,28 @@ if (!empty($encode) && $encode == 'password') {
     $sys['filepath'] = 'cache/templates';
 
     $config = array_merge($sys, $character);
+    
 // Show/hide implants code
 include '../eveconfig/eveconfig.php';
-MYSQL_CONNECT($dbconfig['dbhost'], $dbconfig['dbuname'], $dbconfig['dbpass']);
-MYSQL_SELECT_DB($dbconfig['dbname']);
+    mysql_connect($dbconfig['dbhost'], $dbconfig['dbuname'], $dbconfig['dbpass']);
+    mysql_select_db($dbconfig['dbname']);
 
 				$result = mysql_query("SELECT implants FROM skillsheet_apis WHERE name = '$name'");
 				$showImplants = mysql_result($result, 0);
 				define('_IMPLANTS', $showImplants);
 				
-MYSQL_CLOSE();		
+    mysql_close();		
+
+// Count the total skills in database
+    mysql_connect($dbconfig['dbhost'], $dbconfig['dbuname'], $dbconfig['dbpass']);
+   	mysql_select_db($dbconfig['dbname']);
+		// Get the total using the published flag
+				$result = mysql_query("SELECT published FROM skillsheet_skills WHERE published = '1'"); 
+		// Count rows & assume it's correct...
+				$total = mysql_num_rows($result);
+               // Define the output
+                define('_TOTALSKILLS', $total);
+   	mysql_close();
 				
     include_once('includes/eveRender.class.php');
 
@@ -121,6 +133,7 @@ MYSQL_CLOSE();
     $eveRender->Assign('version',        _SKILLSHEET_VERSION);
     $eveRender->Assign('dVersion',       _DATA_VERSION);
     $eveRender->Assign('implants',       _IMPLANTS);
+    $eveRender->Assign('getskillstotal', _TOTALSKILLS);
     
     switch ($show) {
         case 'ships':
@@ -1025,7 +1038,7 @@ echo '</body>
     $eveRender->Assign('dVersion',          _DATA_VERSION);
 
     // Display the template.
-    $eveRender->Display('template'.(($config['igb']) ? 'igb' : '').'.tpl');
+    $eveRender->Display('template.tpl');
 
     // We're done !
     exit;
