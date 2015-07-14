@@ -1,6 +1,6 @@
-<?
+<?php
 // Fetch the domain from the config
-require_once "../eveconfig/eveconfig.php";
+require_once "../includes/config.php";
 $domain = _DOMAIN;
 
 // Set the content-type
