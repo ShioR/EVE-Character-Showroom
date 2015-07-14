@@ -1,5 +1,7 @@
+SET FOREIGN_KEY_CHECKS=0;
+
 -- ----------------------------
--- Table structure for `skillsheet_reqs`
+-- Table structure for skillsheet_reqs
 -- ----------------------------
 DROP TABLE IF EXISTS `skillsheet_reqs`;
 CREATE TABLE `skillsheet_reqs` (
@@ -13,7 +15,7 @@ CREATE TABLE `skillsheet_reqs` (
   `raceName` varchar(35) NOT NULL DEFAULT '',
   `SkillName` varchar(125) DEFAULT NULL,
   `SkillName2` varchar(125) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of skillsheet_reqs
