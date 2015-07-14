@@ -1,16 +1,17 @@
+SET FOREIGN_KEY_CHECKS=0;
+
 -- ----------------------------
--- Table structure for `skillsheet_implants`
+-- Table structure for skillsheet_implants
 -- ----------------------------
 DROP TABLE IF EXISTS `skillsheet_implants`;
 CREATE TABLE `skillsheet_implants` (
   `typeID` int(11) NOT NULL,
   `groupID` int(11) DEFAULT NULL,
-  `typeName` varchar(100) DEFAULT NULL,
-  `description` varchar(3000) DEFAULT NULL,
+  `typeName` varchar(150) NOT NULL,
+  `description` text DEFAULT NULL,
   `bonus` int(2) NOT NULL,
-  PRIMARY KEY (`typeID`),
-  KEY `skillsheet_implants_IX_Group` (`groupID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`typeID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of skillsheet_implants
