@@ -7,7 +7,7 @@
   <meta name="resource-type" content="document" />
   <meta http-equiv="expires" content="0" />
   <meta name="author" content="Eve Online" />
-  <meta name="copyright" content="Copyright (c) 2012 The Xenodus Initiative." />
+  <meta name="copyright" content="Copyright (c) 2015 The Xenodus Initiative." />
   <meta name="revisit-after" content="1 days" />
   <meta name="distribution" content="Global" />
   <meta name="generator" content="Eve Online" />
@@ -65,7 +65,7 @@ a,a:visited{color:gold;}
           </form>
         </div>          
 <?
-include '../eveconfig/eveconfig.php';
+include '../includes/config.php';
 mysql_connect($dbconfig['dbhost'], $dbconfig['dbuname'], $dbconfig['dbpass']) or die(mysql_error());
 mysql_select_db($dbconfig['dbname']);
 
