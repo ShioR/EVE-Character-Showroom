@@ -5,7 +5,7 @@
           
 <?php
   // Include config to get db info
-    include 'eveconfig/eveconfig.php';
+    include 'includes/config.php';
     
       // Connect to db using credentials from the config file
       mysql_connect($dbconfig['dbhost'], $dbconfig['dbuname'], $dbconfig['dbpass']);
