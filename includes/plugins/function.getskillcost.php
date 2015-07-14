@@ -2,7 +2,7 @@
 function smarty_function_getskillcost($params, &$smarty)
 {
     global $eve;
-    include 'eveconfig/eveconfig.php';
+    include(dirname(__FILE__).'/../config.php');
     mysql_connect($dbconfig['dbhost'], $dbconfig['dbuname'], $dbconfig['dbpass']);
    	mysql_select_db($dbconfig['dbname']);
 		// get the description using the typeID // Base price too, for teh epeens!
