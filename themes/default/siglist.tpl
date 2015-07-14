@@ -1,4 +1,4 @@
-  <!--[include file='header.tpl' page='siglist']-->
+<!--[include file='header.tpl' page='siglist']-->
 
   <table class="mcenter" style="width:768px;margin-top:25px;" summary="Main">
   <tbody>
@@ -32,7 +32,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="102" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/pink?n=<!--[$name|replace:' ':'_']-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="102" value="[url=<!--[getdomain]--><!--[$name|replace:' ':'_']-->][img]<!--[getdomain]-->sigs/pink?n=<!--[$name|replace:' ':'_']-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>  
                 </div>
                 </table><br /><br />  
@@ -43,7 +43,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="102" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/gray?n=<!--[$name|replace:' ':'_']-->[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="102" value="[url=<!--[getdomain]--><!--[$name|replace:' ':'_']-->][img]<!--[getdomain]-->sigs/gray?n=<!--[$name|replace:' ':'_']-->[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>  
                 </div><div>
                     </div></td>  
@@ -56,7 +56,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="102" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/white?n=<!--[$name|replace:' ':'_']-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="102" value="[url=<!--[getdomain]--><!--[$name|replace:' ':'_']-->][img]<!--[getdomain]-->sigs/white?n=<!--[$name|replace:' ':'_']-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>  
                 </div>
                 </table><br /><br />
@@ -67,7 +67,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="102" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/gold?n=<!--[$name|replace:' ':'_']-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="102" value="[url=<!--[getdomain]--><!--[$name|replace:' ':'_']-->][img]<!--[getdomain]-->sigs/gold?n=<!--[$name|replace:' ':'_']-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>  
                 </div>
                 </table><br /><br />
@@ -78,7 +78,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="102" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/trans.php?n=<!--[$name|replace:' ':'_']-->[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="102" value="[url=<!--[getdomain]--><!--[$name|replace:' ':'_']-->][img]<!--[getdomain]-->sigs/trans.php?n=<!--[$name|replace:' ':'_']-->[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>  
                 </div>
                 </table><br /><br />                                                                                                                                 
@@ -97,7 +97,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="67" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/amarr?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="67" value="[url=<!--[getdomain]--><!--[$name|replace:' ':'_']-->][img]<!--[getdomain]-->sigs/amarr?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>                  
                 </div>
                 </table><br /><br />
@@ -108,7 +108,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="67" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/caldari?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="67" value="[url=<!--[getdomain]--><!--[$name|replace:' ':'_']-->][img]<!--[getdomain]-->sigs/caldari?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>  
                 </div>
                 </table><br /><br />
@@ -119,7 +119,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="67" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/gallente?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="67" value="[url=<!--[getdomain]--><!--[$name|replace:' ':'_']-->][img]<!--[getdomain]-->sigs/gallente?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>  
                 </div>
                 </table><br /><br />
@@ -130,7 +130,7 @@
                   <tr>
                     <td class="dataTableHeader">BBCode :</td>
                     <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="67" value="[url=http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/<!--[$name|replace:' ':'_']-->][img]http://<!--[php]-->echo $_SERVER['SERVER_NAME'];<!--[/php]-->/sigs/minmatar?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
+                      <input id="BBCode" name="BBCode" type="text" size="67" value="[url=<!--[getdomain]--><!--[$name|replace:' ':'_']-->][img]<!--[getdomain]-->sigs/minmatar?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
                     </div></td>  
                 </div>
                 </table><br /><br />                                                                                                                        
