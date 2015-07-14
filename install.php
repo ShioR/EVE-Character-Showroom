@@ -40,7 +40,7 @@ if (is_dir('includes/plugins')) {
     array_push($eveRender->plugins_dir, 'includes/plugins');
 }
 
-include 'eveconfig/eveconfig.php';
+include 'includes/config.php';
 
 $step = $eve->VarCleanFromInput('step');
 
