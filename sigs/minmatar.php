@@ -1,13 +1,13 @@
-<?
+<?php
 // Fetch the domain from the config
-require_once "../eveconfig/eveconfig.php";
+require_once "../includes/config.php";
 $domain = _DOMAIN;
 
 // Set the content-type
 header('Content-type: image/jpeg');
 
 // Create the image from the base
-$im = imagecreatefromjpeg('bases/minmatar.jpg');
+$im = imagecreatefromjpeg('bg/minmatar.jpg');
 
 // Create some colors
 $black = imagecolorallocate($im, 0, 0, 0);
