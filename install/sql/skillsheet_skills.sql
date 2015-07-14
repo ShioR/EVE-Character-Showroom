@@ -1,3 +1,5 @@
+SET FOREIGN_KEY_CHECKS=0;
+
 -- ----------------------------
 -- Table structure for skillsheet_skills
 -- ----------------------------
@@ -19,9 +21,8 @@ CREATE TABLE `skillsheet_skills` (
   `iconID` int(11) DEFAULT NULL,
   `radius` decimal(19,4) DEFAULT NULL,
   `soundID` int(11) DEFAULT NULL,
-  PRIMARY KEY (`typeID`),
-  KEY `invTypes_IX_Group` (`groupID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`typeID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of skillsheet_skills
