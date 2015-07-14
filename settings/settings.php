@@ -71,12 +71,11 @@ a,a:visited{color:gold;}
       <td style="text-align: center;color:grey;">All images and logos are Copyright &copy; <a style="text-decoration: none;color:grey;" title="Copyright CCP" href="http://www.ccpgames.com/">CCP</a></td>
     </tr>
     <tr>
-      <td style="text-align: center; font-size: x-small;"><a style="text-decoration: none;color:grey;" href="/stats" title="Character Stats">Top SP</a> / <a style="text-decoration: none;color:grey;" target="_blank" href="http://txsi.co.uk/trac/changeset/latest/" title="Changelog">';echo _SKILLSHEET_VERSION; echo'</a> / <a style="text-decoration: none;color:grey;" target="_blank" href="https://github.com/ShioR/EVE-Character-Showroom/issues/new" title="Feedback">Feedback</a>
+      <td style="text-align: center; font-size: x-small;"><a style="text-decoration: none;color:grey;" href="#top" title="Strap in baby, we\'re going express to the top!">Top</a> / <a style="text-decoration: none;color:grey;" target="_blank" href="https://github.com/ShioR/EVE-Character-Showroom/commits/master/" title="Github">';echo _DATA_VERSION; echo '&nbsp;'; echo _SKILLSHEET_VERSION; echo'</a> / <a style="text-decoration: none;color:grey;" target="_blank" href="https://github.com/ShioR/EVE-Character-Showroom/issues/new" title="Bugs">Submit Bug</a>
 </td>
 </tr>
 <tr>
 <td>
-<center><a style="font-size:xx-small; text-decoration:none; color:grey;" href="http://www.deepspacesupply.com/index.php/affiliate/index/listCategories/program_id/1/?429b1823f5a2afe=1&df08b0441bac900=3c59dc048e8850243be8079a5c74d079" target="_blank">Support the site, buy a GTC!</a></center>
 </td>
 </tr>
     </tr>
