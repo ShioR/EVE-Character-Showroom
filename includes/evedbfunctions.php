@@ -1,6 +1,6 @@
 <?php
 /***********************************************************/
-/*           EVE Character Showroom - Version 4            */
+/*           EVE Character Showroom - Version 5            */
 /*       'Improved' and maintained by Shionoya Risa        */
 /*          Originally created by DeTox MinRohim           */
 /***********************************************************/
@@ -49,7 +49,7 @@ function EveDBInit()
     // Initialise and load configuration
     $evedbconfig = array();
     $evedebug = array();
-    include 'eveconfig/evedbconfig.php';
+    include 'config.php';
     $GLOBALS['evedbconfig'] = $evedbconfig;
     $GLOBALS['dbtables'] = $dbtables;
     $GLOBALS['evedebug'] = $evedebug;
