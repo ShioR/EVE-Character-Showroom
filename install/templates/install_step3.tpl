@@ -26,7 +26,7 @@
               <tr>
                 <td width="120"><strong>Domain:</strong></td>
                 <td><input type="text" name="domain" id="domain" size="20" maxlength="80" value="<!--[$domain]-->" /></td>
-                <td><span style="color:darkorange;">Please include the trailing slash. http://example.com/</span></td>
+                <td><span style="color:darkorange;">Make sure you include 'http://' and the trailing slash '/' or signatures WILL NOT work. <strong>http://example.com/</strong></span></td>
               </tr>
               <tr>
                 <td width="120"></td>
