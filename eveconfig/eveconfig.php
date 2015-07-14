@@ -37,8 +37,8 @@ $evedebug['pagerendertime'] = 0;
 
 define('_INSTALLED', false);
 define('_SHORTURLS', true);
-// With trailing slash!
-define('_DOMAIN', '');
+// Make sure you include 'http://' and the trailing slash '/' or signatures WILL NOT work.
+define('_DOMAIN', 'http://example.com/');
 
 // Path to template cache
 $eve_filepath = 'cache/templates'; // Remember to chmod it 777
@@ -46,7 +46,7 @@ $eve_filepath = 'cache/templates'; // Remember to chmod it 777
 // Done... no need to touch anything else. (Unless you know what you are doing)
 ///////////////////////////////////////////////////////////
 
-$eveconfig['default']    = $default;
+//$eveconfig['default']    = $default;
+//$eveconfig['eveconnect'] = $eveconnect;
 $eveconfig['filepath']   = $eve_filepath;
-$eveconfig['eveconnect'] = $eveconnect;
 ?>
