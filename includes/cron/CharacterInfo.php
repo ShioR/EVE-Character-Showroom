@@ -6,11 +6,11 @@
 ///////// setup nullifies the need for the cachedUntil timer. ///////////
 /////////////////////////////////////////////////////////////////////////
 ///////// This script should be run as a cron job every 1 HOUR //////////
-////////////// EXAMPLE: php /path/to/file/CharacterSheet.php ////////////
+////////////// EXAMPLE: php /path/to/file/CharacterInfo.php /////////////
 /////////////////////////////////////////////////////////////////////////
 
 // Include the config file for the database so you can connect
-include '../eveconfig/eveconfig.php';
+include '../config.php';
 
 // Connect to the server and select the database
 MYSQL_CONNECT($dbconfig['dbhost'], $dbconfig['dbuname'], $dbconfig['dbpass']);
@@ -35,18 +35,18 @@ $characterid=MYSQL_FETCH_ARRAY($charID, MYSQL_ASSOC);
 $auth = array_merge($nafn, $keyID, $vCode, $characterid);
 extract($auth);
 
-// Get CharacterSheet from API Server and do some xml stuff that for some reason seems to work...
-		$url = "https://api.eveonline.com/char/CharacterSheet.xml.aspx?keyID=$keyID&vCode=$vCode&characterID=$characterID";
+// Get CharacterInfo from API Server and do some xml stuff that for some reason seems to work...
+		$url = "https://api.eveonline.com/eve/CharacterInfo.xml.aspx?characterID=$characterID&keyID=$keyID&vCode=$vCode";
 
       $xml = simplexml_load_file($url);
 			header('Content-Type: text/xml'); 
 			$dbxml = $xml->asXML(); 
 
 // Write the new information to the database
-MYSQL_QUERY("UPDATE skillsheet_apis SET data = '$dbxml' WHERE characterID = '$characterID'");
+MYSQL_QUERY("UPDATE skillsheet_apis SET characterInfo = '$dbxml' WHERE characterID = '$characterID'");
 
 // Keep running so that all characters are updated
-$i++; 
+$i++;
 } 
 // Close the connection
 MYSQL_CLOSE();
