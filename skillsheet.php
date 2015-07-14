@@ -103,7 +103,7 @@ if (!empty($encode) && $encode == 'password') {
     $config = array_merge($sys, $character);
     
 // Show/hide implants code
-include '../eveconfig/eveconfig.php';
+include 'includes/config.php';
     mysql_connect($dbconfig['dbhost'], $dbconfig['dbuname'], $dbconfig['dbpass']);
     mysql_select_db($dbconfig['dbname']);
 
