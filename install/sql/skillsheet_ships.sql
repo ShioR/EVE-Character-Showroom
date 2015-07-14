@@ -1,17 +1,19 @@
+SET FOREIGN_KEY_CHECKS=0;
+
 -- ----------------------------
--- Table structure for `skillsheet_ships`
+-- Table structure for skillsheet_ships
 -- ----------------------------
 DROP TABLE IF EXISTS `skillsheet_ships`;
 CREATE TABLE `skillsheet_ships` (
   `typeID` mediumint(5) NOT NULL DEFAULT '0',
   `groupID` smallint(5) DEFAULT NULL,
-  `typeName` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
+  `typeName` varchar(100) DEFAULT NULL,
   `tag` mediumint(4) DEFAULT NULL,
   `raceID` tinyint(3) unsigned DEFAULT NULL,
   `published` tinyint(4) DEFAULT NULL,
   `graphicID` mediumint(5) DEFAULT NULL,
   `graphicFile` varchar(255) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of skillsheet_ships
