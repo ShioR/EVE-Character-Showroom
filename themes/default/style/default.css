@@ -34,6 +34,7 @@ a.sklnk, a.sklnk:visited{color:white;text-decoration:none;}
 .headtop3{border-top:1px solid rgb(67, 67, 67);border-bottom:1px solid rgb(67, 67, 67);margin-bottom:10px;-moz-background-clip:-moz-initial;-moz-background-origin:-moz-initial;-moz-background-inline-policy:-moz-initial;height:22px;}
 td.dataTableCellBottom{padding-right:4px;padding-left:4px;font-size:10px;padding-bottom:4px;padding-top:4px;border-bottom:#666 1px solid;}
 td.dataTableCell2{padding-right:4px;padding-left:4px;font-size:10px;padding-bottom:4px;padding-top:4px;}
+td a {display:block;width:100%;height:100%;cursor:pointer;}
 #corpLogoContainer{position:relative;width:255px;height:255px;}
 #corpLogo{position:absolute;bottom:94px;right:262px;z-index:20;}
 #allianceLogo{position:absolute;bottom:94px;right:332px;z-index:20;}

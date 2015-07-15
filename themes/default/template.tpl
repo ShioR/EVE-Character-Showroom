@@ -126,16 +126,16 @@
 					<!--[/if]-->
                 <div style="line-height: 1.45em; font-size: 11px;">
                 <!--[if $TotalPercentage neq 100.0]-->
-                  <a style="color: white; text-decoration: none;" onclick="javascript:i(document.getElementById('<!--[$skill.typeID]-->'));" href="#toggle" id="s<!--[$skill.typeID]-->"><!--[$skill.typeName]--></a> / <span style="font-size: x-small;"><i>Rank <!--[$skill.rank]--></i> / <i>SP: <!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> / <!--[$TotalPercentage]-->%</i></span>         
+                  <a style="color: white; text-decoration: none;" onclick="javascript:i(document.getElementById('<!--[$skill.typeID]-->'));" href="#toggle" id="s<!--[$skill.typeID]-->"><!--[$skill.typeName]--> / <span style="font-size: x-small;"><i>Rank <!--[$skill.rank]--></i> / <i>SP: <!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> / <!--[$TotalPercentage]-->%</a></i></span>         
                 <!--[else]-->
-                	<span style="color:gold;"><a style="color: white; text-decoration: none;" onclick="javascript:i(document.getElementById('<!--[$skill.typeID]-->'));" href="#toggle" id="s<!--[$skill.typeID]-->"><!--[$skill.typeName]--></a> / <span style="font-size: x-small;"><i>Rank <!--[$skill.rank]--></i> / <i>SP: <!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> / <!--[$TotalPercentage]-->%</i></span></span>
+                	<a style="color:white; text-decoration:none;" onclick="javascript:i(document.getElementById('<!--[$skill.typeID]-->'));" href="#toggle" id="s<!--[$skill.typeID]-->"><!--[$skill.typeName]--> / <span style="color:gold; font-size: x-small;"><i>Rank <!--[$skill.rank]--></i> / <i>SP: <!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> / <!--[$TotalPercentage]-->%</a></i></span>
                 <!--[/if]-->
                 </div>
                 <!--[if $skill.flag eq 61]-->
                 <div>
                   <div style="line-height: 1.5em;margin-left:12px;font-size:11px">
                     <div>
-                      <span class="navdot">&#xB7;</span><span style="color:gold;">Currently training to: </span>
+                      <span class="navdot">&#xB7;</span><span style="color:gold;">Training to: </span>
                       <strong>Level <!--[math equation="x + y" x=$skill.level y=1]--></strong>
                     </div>
                     <div>

@@ -73,7 +73,7 @@
                   <tr>                
                     <td class="dataTableCell">Date of Birth</td>
                     <td colspan="2" class="dataTableCell" align="left"><!--[$DoB|date_format:"%A, %B %d, %Y"]--></td>
-                     <td colspan="1" class="dataTableCellLeftRight" align="center"> <a style="text-decoration:none;" href="/settings/" rel="iframe-500-300" class="pirobox">Settings</a></td>
+                    <td colspan="1" class="dataTableCellLeftRight" align="center" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"> <a style="text-decoration:none;" href="/settings/" rel="iframe-500-300" class="pirobox">Settings</a></td>
                   </tr>
                   <tr>
                     <td colspan="4" class="dataTableHeaderRight">Training</td>

@@ -1,20 +1,14 @@
-    <table style="margin: auto auto 20px; width: 70%;" summary="Copyright Info">
-  <tbody>
-    <tr>
-      <td style="text-align: center;color:grey;">All images and logos are Copyright &copy; <a style="text-decoration: none;color:grey;" title="Copyright CCP" href="http://www.ccpgames.com/">CCP</a></td>
-    </tr>
-    <tr>
-      <td style="text-align: center; font-size: x-small;"><a style="text-decoration: none;color:grey;" href="/stats" title="Character Stats">Top SP</a> / <a style="text-decoration: none;color:grey;" target="_blank" href="https://github.com/ShioR/EVE-Character-Showroom/commits/master/" title="Github"><!--[$dVersion]--> <!--[$version]--></a> / <a style="text-decoration: none;color:grey;" target="_blank" href="https://github.com/ShioR/EVE-Character-Showroom/issues/new" title="New Ticket">Issues?</a>
-</td>
-</tr>
-<tr>
-<td style="font-size:xx-small; text-decoration:none; color:grey;" align="center">
-</td>
-</tr>
-    </tr>
-  </tbody>
-  </table>
-  <div id="overlay" style="display:none;" onmouseover="this.style.cursor='pointer'" onclick="hideBox()"></div>
+
+<!-- FOOTER -->
+
+<div style="margin: auto auto 20px; width: 70%;" alt="Copyright">
+    <div style="text-align:center; color: grey;">All images and logos are Copyright &copy; <a style="text-decoration:none; color:grey;" title="CCP hf" href="http://ccpgames.com/">CCP hf</a></div>
+    <div style="text-align: center; font-size: x-small;"><a style="text-decoration: none;color:grey;" href="#top" title="Express to the top!">Top</a> / <a style="text-decoration: none;color:grey;" target="_blank" href="https://github.com/ShioR/EVE-Character-Showroom/commits/master/" title="Github"><!--[$dVersion]--> <!--[$version]--></a> / <a style="text-decoration: none;color:grey;" target="_blank" href="https://github.com/ShioR/EVE-Character-Showroom/issues/new" title="Bugs">Submit Bug</a></div>
+</div>
+
+<!-- DATA FOR SKILL POINT DISTRIBUTION GRAPH -->
+
+   <div id="overlay" style="display:none;" onmouseover="this.style.cursor='pointer'" onclick="hideBox()"></div>
 	<div id="chart" style="display:none;">
 	  <OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="700" height="430" id="Column3D" >
          <param name="movie" value="/includes/charts/Column3D.swf" />
