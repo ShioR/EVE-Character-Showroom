@@ -1,6 +1,6 @@
 <!--[include file='header.tpl' page='siglist']-->
 
-  <table class="mcenter" style="width:768px;margin-top:25px;" summary="Main">
+<table class="mcenter" style="width:768px;margin-top:25px;" summary="Main">
   <tbody>
     <tr>
       <td><br /><br /><br />
@@ -10,7 +10,7 @@
           <!--[if $implants == 1]--><!--[include file='maininfo.tpl']--><!--[else]--><!--[include file='maininfo2.tpl']--><!--[/if]-->
           <!--[include file='queue.tpl']-->
 <br />
-  <div style="margin-top: 40px; margin-bottom: -24px;">
+  <div style="margin-top: 40px;">
         <div style="margin-top: 10px;">
           <div style="border-top: 1px solid rgb(67, 67, 67); border-bottom: 1px solid rgb(67, 67, 67); background: rgb(44, 44, 56)  no-repeat scroll 24px 5px; margin-bottom: 10px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 21px;">
             <font style="border: 0px none; position:relative; left: 15px; top: 4px; font-weight: bold;">Signatures for <!--[$name]--></font>
@@ -18,128 +18,137 @@
         </div>
       </div>
       <br />
-      <br />
-      <div style="color:gold; cursor:pointer;" onclick="javascript:i(document.getElementById('bar'));" href="#toggle">Show 'bar' style signatures</div>       
-      <div style="color:gold; cursor:pointer;" onclick="javascript:i(document.getElementById('race'));" href="#toggle">Show 'racial' style signatures</div>
-      <br />
-          <div style="margin-top: 5px; display:none;" id="bar">
-            <div style="margin-top: 5px;">
-              <div style="margin-left: 30px;">
-                <table style="border-collapse:collapse;border: #666666 1px solid;">        
-                    <td class="dataTableHeader" style="width:138px;">Pink</td>
-                    <td class="dataTableHeader" style="width:630px;"><img alt="Sig, yo!" src="/sigs/pink?n=<!--[$name|replace:' ':'_']-->&s=y" /></td>
-                  </tr>
-                  <tr>
-                    <td class="dataTableHeader">BBCode :</td>
-                    <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="102" value="[url=<!--[getdomain]--><!--[$name|replace:' ':'_']-->][img]<!--[getdomain]-->sigs/pink?n=<!--[$name|replace:' ':'_']-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
-                    </div></td>  
-                </div>
-                </table><br /><br />  
-                <table style="border-collapse:collapse;border: #666666 1px solid;">        
-                    <td class="dataTableHeader" style="width:138px;">Gray</td>
-                    <td class="dataTableHeader" style="width:630px;"><img alt="Sig, yo!" src="/sigs/gray?n=<!--[$name|replace:' ':'_']-->" /></td>
-                  </tr>
-                  <tr>
-                    <td class="dataTableHeader">BBCode :</td>
-                    <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="102" value="[url=<!--[getdomain]--><!--[$name|replace:' ':'_']-->][img]<!--[getdomain]-->sigs/gray?n=<!--[$name|replace:' ':'_']-->[/img][/url]" onclick="this.focus();this.select();" />
-                    </div></td>  
-                </div><div>
-                    </div></td>  
-                </div>
-                </table><br /><br />  
-                <table style="border-collapse:collapse;border: #666666 1px solid;">        
-                    <td class="dataTableHeader" style="width:138px;">Blue</td>
-                    <td class="dataTableHeader" style="width:630px;"><img alt="Sig, yo!" src="/sigs/white?n=<!--[$name|replace:' ':'_']-->&s=y" /></td>
-                  </tr>
-                  <tr>
-                    <td class="dataTableHeader">BBCode :</td>
-                    <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="102" value="[url=<!--[getdomain]--><!--[$name|replace:' ':'_']-->][img]<!--[getdomain]-->sigs/white?n=<!--[$name|replace:' ':'_']-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
-                    </div></td>  
-                </div>
-                </table><br /><br />
-                <table style="border-collapse:collapse;border: #666666 1px solid;">        
-                    <td class="dataTableHeader" style="width:138px;">Gold</td>
-                    <td class="dataTableHeader" style="width:630px;"><img alt="Sig, yo!" src="/sigs/gold?n=<!--[$name|replace:' ':'_']-->&s=y" /></td>
-                  </tr>
-                  <tr>
-                    <td class="dataTableHeader">BBCode :</td>
-                    <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="102" value="[url=<!--[getdomain]--><!--[$name|replace:' ':'_']-->][img]<!--[getdomain]-->sigs/gold?n=<!--[$name|replace:' ':'_']-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
-                    </div></td>  
-                </div>
-                </table><br /><br />
-                <table style="border-collapse:collapse;border: #666666 1px solid;">        
-                    <td class="dataTableHeader" style="width:138px;">Transparent</td>
-                    <td class="dataTableHeader" style="width:630px;background-color:azure;"><img alt="Sig, yo!" src="/sigs/trans.php?n=<!--[$name|replace:' ':'_']-->" /></td>
-                  </tr>
-                  <tr>
-                    <td class="dataTableHeader">BBCode :</td>
-                    <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="102" value="[url=<!--[getdomain]--><!--[$name|replace:' ':'_']-->][img]<!--[getdomain]-->sigs/trans.php?n=<!--[$name|replace:' ':'_']-->[/img][/url]" onclick="this.focus();this.select();" />
-                    </div></td>  
-                </div>
-                </table><br /><br />                                                                                                                                 
+          <div style="width:810px; margin:auto;">
+          <div style="width:400px; float:left; margin-left:-6px;">
+          <table style="width:400px; background-color:#434343; padding:2px;">  
+            <tr>
+                <td><div style="text-align:center; margin-bottom:2px;">Amarr</div>
+                    <img style="display:block; margin-right:auto; margin-left:auto;" alt="Amarr" src="/sigs/amarr?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input style="margin-top:2px; width:400px; border:0px;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/amarr?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y.jpg" onclick="this.focus();this.select();" readonly/>
+                </td> 
+            </tr>    
+          </table> 
               </div>
-            </div>
-          </div>
-      </div>
-   <div style="margin-top: 5px; display:none;" id="race">
-            <div style="margin-top: 5px;" align="center">
-              <div style="margin-left: 30px;">
-                <table style="border-collapse:collapse;border: #666666 1px solid;">
-                  <tr>
-                    <td class="dataTableHeader" style="width:138px;">Amarr</td>
-                    <td class="dataTableHeader" style="width:420px;" align="center"><img alt="Sig, yo!" src="/sigs/amarr?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y" /></td>
-                  </tr>
-                  <tr>
-                    <td class="dataTableHeader">BBCode :</td>
-                    <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="67" value="[url=<!--[getdomain]--><!--[$name|replace:' ':'_']-->][img]<!--[getdomain]-->sigs/amarr?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
-                    </div></td>                  
-                </div>
-                </table><br /><br />
-                <table style="border-collapse:collapse;border: #666666 1px solid;">        
-                    <td class="dataTableHeader" style="width:138px;">Caldari</td>
-                    <td class="dataTableHeader" style="width:420px;" align="center"><img alt="Sig, yo!" src="/sigs/caldari?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y" /></td>
-                  </tr>
-                  <tr>
-                    <td class="dataTableHeader">BBCode :</td>
-                    <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="67" value="[url=<!--[getdomain]--><!--[$name|replace:' ':'_']-->][img]<!--[getdomain]-->sigs/caldari?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
-                    </div></td>  
-                </div>
-                </table><br /><br />
-                <table style="border-collapse:collapse;border: #666666 1px solid;">        
-                    <td class="dataTableHeader" style="width:138px;">Gallente</td>
-                    <td class="dataTableHeader" style="width:420px;" align="center"><img alt="Sig, yo!" src="/sigs/gallente?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y" /></td>
-                  </tr>
-                  <tr>
-                    <td class="dataTableHeader">BBCode :</td>
-                    <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="67" value="[url=<!--[getdomain]--><!--[$name|replace:' ':'_']-->][img]<!--[getdomain]-->sigs/gallente?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
-                    </div></td>  
-                </div>
-                </table><br /><br />
-                <table style="border-collapse:collapse;border: #666666 1px solid;">        
-                    <td class="dataTableHeader" style="width:138px;">Minmatar</td>
-                    <td class="dataTableHeader" style="width:420px;" align="center"><img alt="Sig, yo!" src="/sigs/minmatar?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y" /></td>
-                  </tr>
-                  <tr>
-                    <td class="dataTableHeader">BBCode :</td>
-                    <td><div>
-                      <input id="BBCode" name="BBCode" type="text" size="67" value="[url=<!--[getdomain]--><!--[$name|replace:' ':'_']-->][img]<!--[getdomain]-->sigs/minmatar?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y[/img][/url]" onclick="this.focus();this.select();" />
-                    </div></td>  
-                </div>
-                </table><br /><br />                                                                                                                        
+          <div style="width:400px; float:right;">
+          <table style="width:400px; background-color:#434343; padding:2px;">  
+            <tr>
+                <td><div style="text-align:center; margin-bottom:2px;">Caldari</div>
+                    <img style="display:block; margin-right:auto; margin-left:auto;" alt="Caldari" src="/sigs/caldari?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input style="margin-top:2px; width:400px; border:0px;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/caldari?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y.jpg" onclick="this.focus();this.select();" readonly/>
+                </td> 
+            </tr>    
+          </table>
+        <br />
               </div>
-            </div>
-          </div>
-      </div>
+          <div style="clear:both;"></div>
+    </div>
+          <div style="width:810px; margin:auto;">
+          <div style="width:400px; float:left; margin-left:-6px;">
+          <table style="width:400px; background-color:#434343; padding:2px;">  
+            <tr>
+                <td><div style="text-align:center; margin-bottom:2px;">Gallente</div>
+                    <img style="display:block; margin-right:auto; margin-left:auto;" alt="Gallente" src="/sigs/gallente?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input style="margin-top:2px; width:400px; border:0px;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/gallente?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y.jpg" onclick="this.focus();this.select();" readonly/>
+                </td> 
+            </tr>    
+          </table>
+              </div>
+          <div style="width:400px; float:right;">
+          <table style="width:400px; background-color:#434343; padding:2px;">  
+            <tr>
+                <td><div style="text-align:center; margin-bottom:2px;">Minmatar</div>
+                    <img style="display:block; margin-right:auto; margin-left:auto;" alt="Minmatar" src="/sigs/minmatar?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input style="margin-top:2px; width:400px; border:0px;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/minmatar?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y.jpg" onclick="this.focus();this.select();" readonly/>
+                </td> 
+            </tr>    
+          </table>
+              </div>
+          <div style="clear:both;"></div>
+    </div>
+        <br />
+          <div align="center">
+          <table style="width:630px; background-color:#434343; padding:2px;">  
+            <tr>
+                <td><div style="text-align:center; margin-bottom:2px;">Pink</div>
+                    <img alt="Pink" src="/sigs/pink?n=<!--[$name|replace:' ':'_']-->&s=y" />
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/pink?n=<!--[$name|replace:' ':'_']-->&s=y.jpg" onclick="this.focus();this.select();" readonly/>
+                </td> 
+            </tr>    
+          </table>
+        <br />
+          <table style="width:630px; background-color:#434343; padding:2px;">  
+            <tr>
+                <td><div style="text-align:center; margin-bottom:2px;">Gray</div>
+                    <img alt="Gray" src="/sigs/gray?n=<!--[$name|replace:' ':'_']-->&s=y" />
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/gray?n=<!--[$name|replace:' ':'_']-->&s=y.jpg" onclick="this.focus();this.select();" readonly/>
+                </td> 
+            </tr>    
+          </table>
+        <br /> 
+          <table style="width:630px; background-color:#434343; padding:2px;">  
+            <tr>
+                <td><div style="text-align:center; margin-bottom:2px;">Gold</div>
+                    <img alt="Gold" src="/sigs/gold?n=<!--[$name|replace:' ':'_']-->&s=y" />
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/gold?n=<!--[$name|replace:' ':'_']-->&s=y.jpg" onclick="this.focus();this.select();" readonly/>
+                </td> 
+            </tr>    
+          </table>
+        <br /> 
+          <table style="width:630px; background-color:#434343; padding:2px;">  
+            <tr>
+                <td><div style="text-align:center; margin-bottom:2px;">Transparent (Dark Background)</div>
+                    <img alt="Transparent (Dark BG)" src="/sigs/transd?n=<!--[$name|replace:' ':'_']-->" />
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/transd?n=<!--[$name|replace:' ':'_']-->.jpg" onclick="this.focus();this.select();" readonly/>
+                </td> 
+            </tr>    
+          </table>
+        <br /> 
+          <table style="width:630px; background-color:#eaf8fc; padding:2px;">  
+            <tr>
+                <td><div style="text-align:center; margin-bottom:2px;color:#1b1b1b;">Transparent (Light Background)</div>
+                    <img alt="Transparent (Light BG)" src="/sigs/trans?n=<!--[$name|replace:' ':'_']-->" />
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/trans?n=<!--[$name|replace:' ':'_']-->.jpg" onclick="this.focus();this.select();" readonly/>
+                </td> 
+            </tr>    
+          </table>
+    </div>
       <br /><br />
-        </div>
       </td>
     </tr>
     <tr>
