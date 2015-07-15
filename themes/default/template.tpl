@@ -1,4 +1,4 @@
-  <!--[include file='header.tpl' page='skills']-->
+ <!--[include file='header.tpl' page='skills']-->
   <table class="main" summary="Main">
   <tbody>
     <tr>
@@ -68,7 +68,7 @@
 							<!--[assign var='currentSPforSkill' value=$skill.skillpoints]-->
 							<!--[assign var='totalSPforSkill' value=$skill.skilllevel5]-->
 							<!--[math equation="(x / y) * z" x=$currentSPforSkill y=$totalSPforSkill z=100 format="%.1f" assign='TotalPercentage']-->
-              <div style="border-bottom: 1px dotted rgb(80, 80, 80); padding: 2.5px; <!--[if $skill.flag eq 61]-->background-color: #5E5F00;" onmouseout="this.style.backgroundColor='#5E5F00'"<!--[/if]-->" onmouseover="this.style.backgroundColor='#303030'; this.style.cursor='pointer'" onmouseout="this.style.backgroundColor='#1B1B1B'">
+              <div style="border-bottom: 1px dotted rgb(80, 80, 80); padding: 2.5px; <!--[if $skill.flag eq 61]-->background-color: #303030;" onmouseout="this.style.backgroundColor='#303030'"<!--[/if]-->" onmouseover="this.style.backgroundColor='#303030'; this.style.cursor='pointer'" onmouseout="this.style.backgroundColor='#1B1B1B'">
 					<!--[if $skill.flag eq 61]-->
 						<div style="float: right;margin-top:4px;"><img alt="level<!--[$skill.level]-->" src="/imgs/level<!--[math equation="x + y" x=$skill.level y=1]-->_act.gif" width:48px; height:8px; /></div>
 					<!--[elseif $queuePos0 eq $skill.typeID]-->
