@@ -35,7 +35,6 @@ imagettftext($im, 10.5, 0, 75, 18, $white, $font, $text);
 // Fetch the characterID from the database
     // Connect to DB using mysqli
         $mysqli = mysqli_connect($dbconfig['dbhost'], $dbconfig['dbuname'], $dbconfig['dbpass'], $dbconfig['dbname']);
-    // Grab the list of implants the character has in their current, active clone
         $query = "SELECT skillsheet_apis.characterID FROM skillsheet_apis WHERE name = '$navn'";
         $result = mysqli_query($mysqli, $query);
         $out = mysqli_fetch_row($result);
