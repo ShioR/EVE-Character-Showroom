@@ -23,12 +23,12 @@
           <table style="width:400px; background-color:#434343; padding:2px;">  
             <tr>
                 <td><div style="text-align:center; margin-bottom:2px;">Amarr</div>
-                    <img style="display:block; margin-right:auto; margin-left:auto;" alt="Amarr" src="/sigs/amarr?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y" />
+                    <img style="display:block; margin-right:auto; margin-left:auto;" alt="Amarr" src="/sigs/amarr?n=<!--[$name|replace:' ':'_']-->" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input style="margin-top:2px; width:400px; border:0px;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/amarr?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y.jpg" onclick="this.focus();this.select();" readonly/>
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/amarr?n=<!--[$name|replace:' ':'_']-->" onclick="this.focus();this.select();" readonly/>
                 </td> 
             </tr>    
           </table> 
@@ -37,12 +37,12 @@
           <table style="width:400px; background-color:#434343; padding:2px;">  
             <tr>
                 <td><div style="text-align:center; margin-bottom:2px;">Caldari</div>
-                    <img style="display:block; margin-right:auto; margin-left:auto;" alt="Caldari" src="/sigs/caldari?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y" />
+                    <img style="display:block; margin-right:auto; margin-left:auto;" alt="Caldari" src="/sigs/caldari?n=<!--[$name|replace:' ':'_']-->" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input style="margin-top:2px; width:400px; border:0px;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/caldari?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y.jpg" onclick="this.focus();this.select();" readonly/>
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/caldari?n=<!--[$name|replace:' ':'_']-->" onclick="this.focus();this.select();" readonly/>
                 </td> 
             </tr>    
           </table>
@@ -55,12 +55,12 @@
           <table style="width:400px; background-color:#434343; padding:2px;">  
             <tr>
                 <td><div style="text-align:center; margin-bottom:2px;">Gallente</div>
-                    <img style="display:block; margin-right:auto; margin-left:auto;" alt="Gallente" src="/sigs/gallente?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y" />
+                    <img style="display:block; margin-right:auto; margin-left:auto;" alt="Gallente" src="/sigs/gallente?n=<!--[$name|replace:' ':'_']-->" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input style="margin-top:2px; width:400px; border:0px;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/gallente?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y.jpg" onclick="this.focus();this.select();" readonly/>
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/gallente?n=<!--[$name|replace:' ':'_']-->" onclick="this.focus();this.select();" readonly/>
                 </td> 
             </tr>    
           </table>
@@ -69,12 +69,12 @@
           <table style="width:400px; background-color:#434343; padding:2px;">  
             <tr>
                 <td><div style="text-align:center; margin-bottom:2px;">Minmatar</div>
-                    <img style="display:block; margin-right:auto; margin-left:auto;" alt="Minmatar" src="/sigs/minmatar?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y" />
+                    <img style="display:block; margin-right:auto; margin-left:auto;" alt="Minmatar" src="/sigs/minmatar?n=<!--[$name|replace:' ':'_']-->" />
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input style="margin-top:2px; width:400px; border:0px;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/minmatar?n=<!--[$name|replace:' ':'_']-->&id=<!--[$characterID]-->&s=y.jpg" onclick="this.focus();this.select();" readonly/>
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/minmatar?n=<!--[$name|replace:' ':'_']-->" onclick="this.focus();this.select();" readonly/>
                 </td> 
             </tr>    
           </table>
