@@ -145,7 +145,7 @@ function step2($step)
 
     $folders = array('templates' => 'cache/templates');
 
-    $files = array('evedbconfig' => 'eveconfig/eveconfig.php');
+    $files = array('evedbconfig' => 'includes/config.php');
 
     $cache = is_writable('cache');
 
@@ -628,7 +628,7 @@ function updateInstallValue()
     global $reg_src, $reg_rep;
     add_src_rep("_INSTALLED",  'true');
 
-    $ret = modify_file('eveconfig/eveconfig.php', '', $reg_src, $reg_rep);
+    $ret = modify_file('includes/config.php', '', $reg_src, $reg_rep);
 
     if (preg_match("/Error/", $ret)) {
         show_error_info();
@@ -669,10 +669,8 @@ function update_dbconfig_php($args = array())
     add_src_rep("dbtabletype", $dbtabletype);
     add_src_rep("encoded",     '0');
     add_src_rep("pconnect",    '0');
-    //add_src_rep("_INSTALLED",  'true');
-//echo '<pre>';print_r($reg_src);echo '</pre>';echo '<pre>';print_r($reg_rep);echo '</pre>';exit;
-    //$ret = modify_file('eveconfig/dbconfig.php', 'eveconfig/dbconfig-old.php', $reg_src, $reg_rep);
-    $ret = modify_file('eveconfig/eveconfig.php', '', $reg_src, $reg_rep);
+    
+    $ret = modify_file('includes/config.php', '', $reg_src, $reg_rep);
 
     if (preg_match("/Error/", $ret)) {
         show_error_info();
