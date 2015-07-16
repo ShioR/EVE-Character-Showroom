@@ -1,23 +1,23 @@
 Server Requirements
 ===================
 Apache 2.2+   
-MySQL 5.0.91+   
+MySQL 5.5+   
 PHP 5.4.x with cURL and GD    
      
 **For cron jobs;**      
-Support for 4 cron jobs  
+Support for 4+ cron jobs  
          
 Installation
 ------------
-**Please read the installation instructions first!**     
+**Please read the installation instructions!**     
 https://github.com/ShioR/EVE-Character-Showroom/wiki/Installation     
 
 Version numbers
 ---------------
-Inferno v5.222 should be read as (Inferno data dump) v[Version 5].{Build 222}     
-Data dumps change nearly every expansion     
-Versions change infrequently    
-Builds change frequently    
+Aegis v5.335 should be read as (Aegis Static Data) v[Version 5].{Build 222}     
+Static Data changes nearly every release     
+Version changes infrequently    
+Build changes frequently    
         
 Support?
 -------
