@@ -27,19 +27,19 @@
     if ($race == '1') {
         $nebula = 'res:/dx9/scene/universe/c03_cube.red';
     } elseif ($race == '2') {    
-        $nebula = 'res:/dx9/scene/universe/m03_cube.red';
+        $nebula = 'res:/dx9/scene/universe/m01_cube.red';
     } elseif ($race == '4') {
-        $nebula = 'res:/dx9/scene/universe/a03_cube.red';
+        $nebula = 'res:/dx9/scene/universe/a04_cube.red';
     } elseif ($race == '8') {    
-        $nebula = 'res:/dx9/scene/universe/g03_cube.red';
+        $nebula = 'res:/dx9/scene/universe/g04_cube.red';
     } elseif ($race == '32') {
-        $nebula = 'res:/dx9/scene/universe/g03_cube.red';  
+        $nebula = 'res:/dx9/scene/universe/g04_cube.red';  
     } elseif ($race == '64') {
-        $nebula = 'res:/dx9/scene/universe/g03_cube.red';
+        $nebula = 'res:/dx9/scene/universe/g04_cube.red';
     } else {
         $nebula = 'res:/dx9/scene/universe/c10_cube.red';
-    }    
-   
+    }   
+
 ?>   
         <script type="text/javascript" src="/includes/ccpwgl/src/external/glMatrix-0.9.5.min.js"></script>
         <script type="text/javascript" src="/includes/ccpwgl/src/ccpwgl_int.js"></script>
