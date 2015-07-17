@@ -2,7 +2,7 @@ Server Requirements
 ===================
 Apache 2.2+   
 MySQL 5.5+   
-PHP 5.4.x with cURL and GD    
+PHP 5.4+ with cURL and GD    
      
 **For cron jobs;**      
 Support for 4+ cron jobs  
