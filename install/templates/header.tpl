@@ -13,7 +13,7 @@
   <meta name="generator" content="Eve Online" />
   <meta name="rating" content="General" />
   <meta name="KEYWORDS" content="eveonline, skills" />
-  <title>Skill Sheet</title>
+  <title>Install / EVE Character Showroom</title>
   <style type="text/css">
   /*<![CDATA[*/
    body{font-size:8pt;margin:0;color:#fff;font-family:Verdana,Arial;padding:0}
@@ -39,7 +39,7 @@ a,a:visited{color:#ffd700}
 </head>
 <body bgcolor="#222222" style="height: 100%">
 <div class="headerribbon">
-  <span class="headerleft">EVE Character Showroom 5: Installation Step <!--[$step]--></span>
+  <span class="headerleft">EVE Character Showroom v5 - Installation | Step: <!--[$step]-->/6</span>
 </div>
 <br />
 <br />
