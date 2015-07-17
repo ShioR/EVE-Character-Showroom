@@ -49,9 +49,7 @@ imagettftext($im, 10.5, 0, 75, 18, $white, $font, $text);
     } else {
         $portrait = imagecreatefromjpeg('https://image.eveonline.com/Character/'.$id.'_64.jpg');
     }
-    
 
-//$portrait = imagecreatefromjpeg('https://image.eveonline.com/Character/'.$id.'_64.jpg');
 imagecopyresampled($im, $portrait, 6, 8, 0, 0, 64, 64, 64, 64);
 
 // Use imagejpeg() to create the image with 95% quality
