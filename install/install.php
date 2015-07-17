@@ -16,9 +16,8 @@
 /*   ISK donations to Shionoya Risa are also accepted ;)   */
 /***********************************************************/
 
-//include_once 'includes/eveRender.class.php';
-include_once 'includes/eveclass.php';
-include_once 'includes/Smarty/Smarty.class.php';
+include_once '../includes/eveclass.php';
+include_once '../includes/Smarty/Smarty.class.php';
 
 $eve = New Eve();
 
@@ -30,17 +29,15 @@ $reg_rep = array();
 $eveRender = new Smarty();
 $eveRender->left_delimiter = '<!--[';
 $eveRender->right_delimiter = ']-->';
-//$eveRender->debugging = true;
-//$eveRender->error_reporting = true;
-$eveRender->compile_dir = 'cache/templates';
-$eveRender->template_dir = 'install/templates';
+$eveRender->compile_dir = '../cache/templates';
+$eveRender->template_dir = '../install/templates';
 $eveRender->caching = false;
 $eveRender->force_compile = true;
-if (is_dir('includes/plugins')) {
-    array_push($eveRender->plugins_dir, 'includes/plugins');
+if (is_dir('../includes/plugins')) {
+    array_push($eveRender->plugins_dir, '../includes/plugins');
 }
 
-include 'includes/config.php';
+include '../includes/config.php';
 
 $step = $eve->VarCleanFromInput('step');
 
@@ -49,7 +46,6 @@ if (empty($step) || !is_numeric($step)) {
     if (defined('_INSTALLED') && _INSTALLED == true) {
         $eve->SessionSetVar('statusmsg', 'Installation already done... jumping to Adding Characters section');
         $eve->RedirectUrl('install.php?step=5');
-        //$step = 5;
     } else {
         unset($GLOBALS['dbconfig']);
         $step = 1;
@@ -64,28 +60,17 @@ if (defined('_INSTALLED') && _INSTALLED == true && $step < 5) {
 
 $stoppage = false;
 
-
-//$eveRenderbak = $eveRender;
-//echo '<pre>';print_r($GLOBALS);echo '</pre><hr />';
 $func = "step{$step}";
 if ($step == 4) {
     $val = step4($step);
 } else {
     $val = $func($step);
 }
-/*
-if ($val) {
-    echo 'ok';
-} else {
-    echo 'shit';
-}//exit;*/
-//echo '<hr /><pre>';print_r($eveRender);echo '</pre>';
 
 $eveRender->Assign('stoppage',  $stoppage);
 $eveRender->Assign('step',      $step);
 $eveRender->Assign('nextstep',  $step+1);
 
-//$eveRender->display('header.tpl');
 
 if ($step == 4 && $eve->VarCleanFromInput('sub') == 'data') {
     $template = 'install_step4_data.tpl';
@@ -94,27 +79,21 @@ if ($step == 4 && $eve->VarCleanFromInput('sub') == 'data') {
 }
 
 $eveRender->display($template);
-//$eveRender->display('footer.tpl');
 
 
 function setEveRender()
 {
-    //global $eve;
-    include_once 'includes/eveRender.class.php';
+    include_once '../includes/eveRender.class.php';
     $Render = new Smarty();
     $Render->left_delimiter = '<!--[';
     $Render->right_delimiter = ']-->';
-    //$Render->debugging = true;
-    //$Render->error_reporting = true;
-    $Render->compile_dir = 'cache/templates';
-    $Render->template_dir = 'install/templates';
-    if (is_dir('includes/plugins')) {
-        array_push($Render->plugins_dir, 'includes/plugins');
+    $Render->compile_dir = '../cache/templates';
+    $Render->template_dir = '../install/templates';
+    if (is_dir('../includes/plugins')) {
+        array_push($Render->plugins_dir, '../includes/plugins');
     }
-    //$eveRender->plugins_dir = 'includes/plugins';
     $Render->caching = false;
     $Render->force_compile = true;
-    //echo '<pre>';print_r($eveRender);echo '</pre>';exit;
     return $Render;
 }
 
@@ -136,18 +115,16 @@ function step2($step)
 
     $extensions = get_loaded_extensions();
     $functions  = get_defined_functions();
-    //$hash      = ((in_array('hash',      $extensions)) ? 'Yes' : 'No');
     $simpleXML = ((in_array('SimpleXML', $extensions)) ? 'Yes' : 'No');
     $curl      = ((in_array('curl',      $extensions)) ? 'Yes' : 'No');
     $fopen     = ((in_array('fopen',     $functions['internal']))  ? 'Yes' : 'No');
 
 
 
-    $folders = array('templates' => 'cache/templates');
+    $folders = array('templates' => '../cache/templates');
+    $files = array('evedbconfig' => '../includes/config.php');
 
-    $files = array('evedbconfig' => 'includes/config.php');
-
-    $cache = is_writable('cache');
+    $cache = is_writable('../cache');
 
     if ($cache) {
         foreach ($folders as $dirname => $dir) {
@@ -175,7 +152,6 @@ function step2($step)
         }
     }
 
-    $eveRender->Assign('hash',        $hash);
     $eveRender->Assign('simpleXML',   $simpleXML);
     $eveRender->Assign('curl',        $curl);
     $eveRender->Assign('curlversion', (($curl=='Yes') ? curl_version() : '0'));
@@ -226,7 +202,7 @@ function step3($step)
         $GLOBALS['dbconfig']['debug']    = 0;
         $GLOBALS['dbdebug']['debug_sql'] == 0;
 
-        include 'includes/dbfunctions.php';
+        include '../includes/dbfunctions.php';
 
         if (!DBInit()) {
             $server = false;
@@ -253,9 +229,6 @@ function step3($step)
         $stoppage = true;
     }
 
-    //$done = false;
-
-    //if ($goforit) {
         $write = $eve->VarCleanFromInput('write');
         if (!empty($write)) {
             $host      = $eve->VarCleanFromInput('write_host');
@@ -294,19 +267,14 @@ function step3($step)
 function step4($step)
 {
 
-    //global $eveRender, $eve, $stoppage;
     global $eve, $eveRender, $stoppage;
-    //$eveRender = setEveRender();
-
-//echo '<pre>';print_r($_SESSION);echo '</pre>';exit;
-
 
     $data = $eve->VarCleanFromInput('data');
 
     if ($data) {
 
         // at this point, we wrote the config file so we're good to include that one
-        include_once 'includes/dbfunctions.php';
+        include_once '../includes/dbfunctions.php';
         DBInit();
 
         $struct = $opt = $data = array();
@@ -327,14 +295,13 @@ function step4($step)
         }
 
         foreach ($files as $file) {
-            $sql = file_get_contents('install/sql/'.$file);
+            $sql = file_get_contents('sql/'.$file);
             $sql = explode(';', $sql);
             foreach ($sql as $query) {
                 $query = trim($query);
                 if (empty($query)) { continue; }
-                //echo '<pre>';print_r($query);echo '</pre>';exit;
                 $dbconn->Execute($query);
-                if ($dbconn->ErrorNo() != 0) {//echo 'b';exit;
+                if ($dbconn->ErrorNo() != 0) {
                     $stoppage = true;
                     echo $dbconn->ErrorMsg();exit;
                 }
@@ -348,17 +315,6 @@ function step4($step)
     $eveRender->Assign('stoppage',  $stoppage);
     $eveRender->Assign('step',      $step);
     $eveRender->Assign('nextstep',  $step+1);
-//echo 'true';
-    //echo '<pre>';print_r($eveRender);echo '</pre>';exit;
-/*
-    if ($step == 4 && $eve->VarCleanFromInput('sub') == 'data') {
-        $template = 'install_step4_data.tpl';
-    } else {
-        $template = (($step == 1) ? 'main.tpl' : 'install_step'.$step.'.tpl');
-    }*/
-//echo '<pre>';print_r($GLOBALS);echo '</pre>';exit;
-    //$eveRender->display($template);exit;
-
 
     return true;
 
@@ -367,17 +323,15 @@ function step4($step)
 
 function step5($step)
 {
-    //global $eveRender, $eve, $stoppage;
     global $eve, $eveRender, $stoppage;
-    //$eveRender = setEveRender();
 
     $submit = $eve->VarCleanFromInput('submit');
 
     $do = $eve->VarCleanFromInput('do');
 
     if (!empty($submit)) {
-        include_once 'includes/dbfunctions.php';
-        include_once 'includes/charxml.php';
+        include_once '../includes/dbfunctions.php';
+        include_once '../includes/charxml.php';
 
         DBInit();
 
@@ -387,9 +341,8 @@ function step5($step)
         $content = GetCharacters(array('keyID' => $keyID, 'vCode' => $vCode));
 
         if ($content) {
-            $xml = ParseXMLFile($content);//ParseXMLFile('cache/'.$keyID.'.xml', true);
-
-            //echo '<pre>';print_r($xml);echo '</pre>';
+            $xml = ParseXMLFile($content);
+            
             // Check if character already exists
             if (isset($xml['result']['rowset']['row']['name'])) {
                 $test = GetCharacterByID($xml['result']['rowset']['row']['characterID']);
@@ -402,12 +355,10 @@ function step5($step)
                 foreach ($xml['result']['rowset']['row'] as $key => $check) {
                     $test = GetCharacterByID($check['characterID']);
                     if (!$test) {
-                        //unset($xml['result']['rowset']['row'][$key]);
                         $chars[] = $check;
                     }
                 }
             }
-            //echo '<pre>';print_r($xml);echo '</pre>'; exit;
 
             $eveRender->Assign('submit',    true);
             $eveRender->Assign('keyID',    $keyID);
@@ -426,14 +377,7 @@ function step5($step)
     $eveRender->Assign('stoppage',  $stoppage);
     $eveRender->Assign('step',      $step);
     $eveRender->Assign('nextstep',  $step+1);
-//echo 'true';
-    //echo '<pre>';print_r($eveRender);echo '</pre>';exit;
-    //$template = (($step == 1) ? 'main.tpl' : 'install_step'.$step.'.tpl');
-
-//echo '<pre>';print_r($GLOBALS);echo '</pre>';exit;
-    //$eveRender->display($template);exit;
-
-
+    
     return true;
 
 }
@@ -446,8 +390,8 @@ function step6()
 
     if ($submit) {
 
-        include_once 'includes/dbfunctions.php';
-        include_once 'includes/charxml.php';
+        include_once '../includes/dbfunctions.php';
+        include_once '../includes/charxml.php';
 
         DBInit();
 
@@ -461,18 +405,8 @@ function step6()
         $corps   = $eve->VarCleanFromInput('corps');
         $public  = $eve->VarCleanFromInput('public');
         $implants  = $eve->VarCleanFromInput('implants');
-        //$default = $eve->VarCleanFromInput('default');
-        //$passwords = $eve->VarCleanFromInput('passwords');
 
         if ($save) {
-
-            //if (empty($default)) {
-                //$keys = array_keys($save);
-                //$default[$keys[0]] = on;
-            //}
-
-            // Checking if there is already a default character
-            //$defaultchar = GetDefaultCharacter();
 
             foreach ($save as $characterID => $value) {
 
@@ -489,11 +423,6 @@ function step6()
                     if (isset($default[$characterID]) && !$defaultchar) {
                         $isdefault = true;
                     }
-
-/*                $password = "";
-                if (isset($passwords[$characterID]) && !empty($passwords[$characterID])) {
-                    $password = sha1(trim($passwords[$characterID]));
-                }*/
 
                 $name = $names[$characterID];
                 $corp = $corps[$characterID];
@@ -538,18 +467,11 @@ function step6()
             }
 
             $eveRender->display('install_step6.tpl');exit;
-            //echo '<pre>';print_r($save);echo '</pre>';
-            //echo '<pre>';print_r($public);echo '</pre>';
-            //echo '<pre>';print_r($default);echo '</pre>';exit;
 
         }
     }
 
-        //$eveRender->Assign('done', true);
-
-    return $eve->RedirectUrl('install.php?step=5'); //true;
-
-    //$eveRender->Assign('baseurl', $eve->GetBaseUrl());
+    return $eve->RedirectUrl('install.php?step=5'); 
 
     return true;
 }
@@ -569,7 +491,7 @@ function step8()
 
     $eveRender->clear_compiled_tpl();
 
-    $eve->RedirectUrl('index.php');
+    $eve->RedirectUrl('skillsheet.php');
     return;
 
 }
@@ -610,9 +532,6 @@ function add_src_rep($key, $rep)
     $reg_src[] = "/ \['$key'\] \s* = \s* (\d*\.?\d*) ; /x";
     $reg_rep[] = "['$key'] = $rep;";
 
-    // INSTALLED
-    //$reg_src[] = "/\'$key\', \s*false\\1/x";
-    //$reg_rep[] = "'$key', \\1$rep\\1";
     if ($key == '_INSTALLED' || $key == '_SHORTURLS') {
         $reg_src[] = "/\'$key\', \s*\'(.*)\\1\'/x";
         $reg_rep[] = "'$key', \\1$rep\\1";
@@ -628,7 +547,7 @@ function updateInstallValue()
     global $reg_src, $reg_rep;
     add_src_rep("_INSTALLED",  'true');
 
-    $ret = modify_file('includes/config.php', '', $reg_src, $reg_rep);
+    $ret = modify_file('../includes/config.php', '', $reg_src, $reg_rep);
 
     if (preg_match("/Error/", $ret)) {
         show_error_info();
@@ -655,10 +574,6 @@ function update_dbconfig_php($args = array())
     $dbtabletype = $args['dbtabletype'];
     $encoded     = 0;
 
-    /*
-    global $reg_src, $reg_rep;
-    global $dbhost, $dbuname, $dbpass, $dbname, $prefix, $dbtype, $dbtabletype;
-    global $email, $url, $HTTP_ENV_VARS;*/
 
     add_src_rep("dbhost",      $dbhost);
     add_src_rep("dbuname",     $dbuname);
@@ -670,7 +585,7 @@ function update_dbconfig_php($args = array())
     add_src_rep("encoded",     '0');
     add_src_rep("pconnect",    '0');
     
-    $ret = modify_file('includes/config.php', '', $reg_src, $reg_rep);
+    $ret = modify_file('../includes/config.php', '', $reg_src, $reg_rep);
 
     if (preg_match("/Error/", $ret)) {
         show_error_info();
