@@ -5,7 +5,6 @@
 	      <td colspan="5" class="dataTableHeader2">Skill Queue</td>
 	    </tr>
 	    <tr style="font-weight: bold;">
-	   <!--   <td class="dataTableCell">#</td>	    -->
 	      <td class="dataTableCell">Skill</td>
 	      <td class="dataTableCell">Skill Points</td>
 	      <td class="dataTableCell">Starts</td>
@@ -15,21 +14,36 @@
 <!--[foreach item='queue' from=$SkillQueue]-->
 	<!--[if $Training]-->
 	    <tr>
-            <!--[if $queue.queuePosition == 0]--><td style="display:none;"> <!--[elseif $queue.queuePosition > 0]--><td class="dataTableCell13"  onclick="javascript:i(document.getElementById('<!--[$queue.typeID]-->'));" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"><a style="color: white; text-decoration: none;"  href="#s<!--[$queue.typeID]-->" id="q<!--[$queue.typeID]-->"><!--[$queue.typeName]--> <span style="font-size: 9px;font-weight:normal;"><i> / Rank <!--[$queue.rank]--></i></span></a></td><!--[/if]-->
-	     <!--[if $queue.queuePosition == 0]--><td style="display:none;"> <!--[elseif $queue.queuePosition > 0]--> <td class="dataTableCell2" width="150" align="left"><!--[$queue.startSP|number_format]--> of <span style="color: gold;"><!--[$queue.endSP|number_format]--></span></td><!--[/if]-->
-	      <!--[if $queue.queuePosition == 0]--><td style="display:none;"> <!--[elseif $queue.queuePosition > 0]--><td class="dataTableCell2" width="120"><!--[$queue.startTime|date_format:"%a, %b %d, %H:%M"]--></td><!--[/if]-->
-	      <!--[if $queue.queuePosition == 0]--><td style="display:none;"> <!--[elseif $queue.queuePosition > 0]--><td class="dataTableCell2" width="120"><!--[$queue.endTime|date_format:"%a, %b %d, %H:%M"]--></td><!--[/if]-->
-	      <!--[if $queue.queuePosition == 0]--><td style="display:none;"> <!--[elseif $queue.queuePosition > 0]--><td class="dataTableCell2" width="48"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$queue.level]-->_q.gif" width:48px; height:8px; /></td><!--[/if]-->
+            <!--[if $queue.queuePosition == 0]-->
+                <td style="display:none;">
+            <!--[elseif $queue.queuePosition > 0]-->
+                <td class="dataTableCell13"  onclick="javascript:i(document.getElementById('<!--[$queue.typeID]-->'));" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"><a style="color: white; text-decoration: none;"  href="#s<!--[$queue.typeID]-->" id="q<!--[$queue.typeID]-->"><!--[$queue.typeName]--> <span style="font-size: 9px;font-weight:normal;"><i> / Rank <!--[$queue.rank]--></i></span></a></td>
+            <!--[/if]-->
+	        <!--[if $queue.queuePosition == 0]-->
+                <td style="display:none;">
+            <!--[elseif $queue.queuePosition > 0]--> <td class="dataTableCell2" width="150" align="left"><!--[$queue.startSP|number_format]--> of <span style="color: gold;"><!--[$queue.endSP|number_format]--></span></td>
+            <!--[/if]-->
+	        <!--[if $queue.queuePosition == 0]-->
+                <td style="display:none;">
+            <!--[elseif $queue.queuePosition > 0]--><td class="dataTableCell2" width="120"><!--[$queue.startTime|date_format:"%a, %b %d, %H:%M"]--></td>
+            <!--[/if]-->
+	        <!--[if $queue.queuePosition == 0]-->
+                <td style="display:none;">
+            <!--[elseif $queue.queuePosition > 0]--><td class="dataTableCell2" width="120"><!--[$queue.endTime|date_format:"%a, %b %d, %H:%M"]--></td><!--[/if]-->
+	        <!--[if $queue.queuePosition == 0]-->
+                <td style="display:none;">
+            <!--[elseif $queue.queuePosition > 0]--><td class="dataTableCell2" width="48"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$queue.level]-->_q.gif" width:48px; height:8px; /></td>
+            <!--[/if]-->
 	    </tr>
-	 <!--[else]-->   
-	 	  <tr>
-	       <td class="dataTableCell2"><a style="color: white; text-decoration: none;" onclick="javascript:i(document.getElementById('<!--[$queue.typeID]-->'));" href="#s<!--[$queue.typeID]-->" id="q<!--[$queue.typeID]-->"><!--[$queue.typeName]--></a> <span style="font-size: 9px;font-weight:normal;"> / Rank <!--[$queue.rank]--></td>
-	      <td class="dataTableCell2" width="150" align="left"><!--[$queue.startSP|number_format]--> of <span style="color: gold;"><!--[$queue.endSP|number_format]--></span></td>
-	      <td class="dataTableCell2" width="120"><!--[$queue.startTime|date_format:"%a, %b %d, %H:%M"]--></td>
-	      <td class="dataTableCell2" width="120"><!--[$queue.endTime|date_format:"%a, %b %d, %H:%M"]--></td>
-	      <td class="dataTableCell2" width="48"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$queue.level]-->_q.gif" width:48px; height:8px; /></td>
+	       <!--[else]-->   
+        <tr>
+	           <td class="dataTableCell13"  onclick="javascript:i(document.getElementById('<!--[$queue.typeID]-->'));" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"><a style="color: white; text-decoration: none;"  href="#s<!--[$queue.typeID]-->" id="q<!--[$queue.typeID]-->"><!--[$queue.typeName]--> <span style="font-size: 9px;font-weight:normal;"><i> / Rank <!--[$queue.rank]--></i></span></a></td>
+	           <td class="dataTableCell2" width="150" align="left"><!--[$queue.startSP|number_format]--> of <span style="color: gold;"><!--[$queue.endSP|number_format]--></span></td>
+	           <td class="dataTableCell2" width="120"><!--[$queue.startTime|date_format:"%a, %b %d, %H:%M"]--></td>
+	           <td class="dataTableCell2" width="120"><!--[$queue.endTime|date_format:"%a, %b %d, %H:%M"]--></td>
+	           <td class="dataTableCell2" width="48"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$queue.level]-->_q.gif" width:48px; height:8px; /></td>
 	    </tr>
-	    <!--[/if]-->
+	       <!--[/if]-->
 <!--[/foreach]-->
 	  </tbody>
   </table>
