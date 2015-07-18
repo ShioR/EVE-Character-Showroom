@@ -1,1 +1,1 @@
-<!--[$name]--> has <!--[$totalsks]--> skills<!--[if $Training]-->, <!--[$skillpointstotal]--> SP and is training <!--[$Training]--> to level <!--[$ToLevel]-->.<!--[else]--> and <!--[$skillpointstotal]--> skillpoints.<!--[/if]-->
+<!--[$name]--> has <!--[$totalsks]--> skills<!--[if $Training]-->, <!--[$skillpointstotal]--> SP and is training <!--[$Training]--> to level <!--[$ToLevel]--><!--[else]--> and <!--[$skillpointstotal]--> skillpoints<!--[/if]-->
