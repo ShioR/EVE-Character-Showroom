@@ -80,43 +80,52 @@
                   </tr>
                   <tr>
                     <td class="dataTableCell">Currently Training</td>
-                    <td colspan="2" style="color: gold; font-weight: bold; text-align: left;" class="dataTableCell" onmouseover="this.style.backgroundColor='#303030'; this.style.cursor='pointer'" onmouseout="this.style.backgroundColor='#1B1B1B'"><!--[if $Training]--><a style="color: gold; font-weight: bold; text-decoration: none;" href="/<!--[$name|replace:' ':'_']-->/#s<!--[$TrainingID]-->"><!--[$Training]--></a><!--[else]--><a style="color: maroon;text-decoration: none;">No skill currently training<!--[/if]--></a></td>
-                    <td style="text-align: center;" class="dataTableCellLeftRight"><!--[if $Training]--><img alt="Level <!--[$ToLevel]-->" src="/imgs/level<!--[$ToLevel]-->_act.gif" width:48px; height:8px; /><!--[else]--><img alt="No Skill Training" src="/imgs/level0.gif" /><!--[/if]--></td>
+                        <!--[if $Training]-->
+                            <td colspan="2" style="color:gold; font-weight:bold; text-align:left;" class="dataTableCell" onmouseover="this.style.backgroundColor='#303030'; this.style.cursor='pointer';" onmouseout="this.style.backgroundColor='#1B1B1B'"><a style="color:gold; font-weight:bold; text-decoration:none;" href="/<!--[$name|replace:' ':'_']-->/#s<!--[$TrainingID]-->"><!--[$Training]--></a></td>
+                        <!--[else]-->
+                            <td colspan="2" style="color:gold; font-weight:bold; text-align:left;" class="dataTableCell"><span style="color: white;text-decoration: none;">NO SKILL TRAINING</span></td>
+                        <!--[/if]-->
+                        <!--[if $Training]-->
+                            <td style="text-align:center;" class="dataTableCellLeftRight"><img alt="Level <!--[$ToLevel]-->" src="/imgs/level<!--[$ToLevel]-->_act.gif" width:48px; height:8px; />
+                        <!--[else]-->
+                            <td style="text-align:center;" class="dataTableCellLeftRight"><img alt="No Skill Training" src="/imgs/levelx.gif" /></td>
+                        <!--[/if]-->
                   </tr>
                   <tr>
                     <td class="dataTableCell">Time Remaining</td>
-                    <td colspan="3" style="color: gold; font-weight: bold;text-align: left;" class="dataTableCellLeftRight"><!--[if $Training]-->
-                      <script type="text/javascript">
-                      /*<![CDATA[*/
-                        TargetDate = "<!--[$trainingEndFormat]-->";
-                        BackColor = "none";
-                        ForeColor = "none";
-                        CountActive = true;
-                        CountStepper = -1;
-                        LeadingZero = false;
-                        DisplayFormat = "%%D%% Days, %%H%% Hours, %%M%% Minutes and %%S%% Seconds";
-                        FinishMessage = "Done!";
-                      /*]]>*/
-                      </script>
-                      <script src="/themes/default/js/countdown.js" type="text/javascript"></script><!--[else]--><a style="color: maroon;text-decoration: none;">N/A</a><!--[/if]-->
-                    </td>
+                        <!--[if $Training]-->
+                            <td colspan="3" style="color:gold; font-weight:bold; text-align:left;" class="dataTableCellLeftRight">
+                                <script type="text/javascript">
+                                    /*<![CDATA[*/
+                                    TargetDate = "<!--[$trainingEndFormat]-->";
+                                    BackColor = "none";
+                                    ForeColor = "none";
+                                    CountActive = true;
+                                    CountStepper = -1;
+                                    LeadingZero = false;
+                                    DisplayFormat = "%%D%% Days, %%H%% Hours, %%M%% Minutes and %%S%% Seconds";
+                                    FinishMessage = "Done!";
+                                    /*]]>*/
+                                </script>
+                                <script src="/themes/default/js/countdown.js" type="text/javascript"></script>
+                            </td>
+                        <!--[else]-->
+                            <td colspan="3" style="color:gold; font-weight:bold; text-align:left;" class="dataTableCellLeftRight">
+                            </td>
+                        <!--[/if]-->
                   </tr>
                   <tr>
-                    <td class="dataTableCell">ETA (Eve Time)</td>
-                    <td colspan="3" style="color: gold; font-weight: bold;text-align: left;" class="dataTableCellLeftRight"><!--[if $Training]--><!--[$trainingEndTime|date_format:"%A, %B %e %Y, %H:%M:%S"]--><!--[else]--><a style="color: maroon;text-decoration: none;">N/A<!--[/if]--></a></td>
+                    <td class="dataTableCell">ETA (EVE Time)</td>
+                        <!--[if $Training]-->
+                            <td colspan="3" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCellLeftRight"><!--[$trainingEndTime|date_format:"%A, %B %e %Y, %H:%M:%S"]-->
+                            </td>
+                        <!--[else]-->
+                            <td colspan="3" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCellLeftRight"></td>
+                        <!--[/if]-->
                   </tr>
-
-  <!--[*
-                  <tr>
-                    <td colspan="2" class="dataTableCell">Currently training</td>
-                    <td style="color: gold; font-weight: bold;" class="dataTableCell"><a style="color: gold; font-weight: bold; text-decoration: none;" href="#s<!--[$TrainingID]-->"><!--[$Training]--></a></td>
-                    <td style="text-align: center;" class="dataTableCellLeftRight"><img alt="Level <!--[$ToLevel]-->" src="/imgs/level<!--[$ToLevel]-->_act.gif" /></td>
-                  </tr>
-  *]-->
-
                   <tr>
                   <td class="dataTableCell">Data Cache</td>
-                  <td colspan="3" style="color: gold; font-weight: bold;" class="dataTableCellLeftRight">Data is cached for a further <!--[if $pageupdateminutes eq 0 and $pageupdateseconds eq 0]-->60<!--[else]--><!--[$pageupdateminutes]--><!--[/if]--> minutes and <!--[$pageupdateseconds]--> seconds
+                  <td colspan="3" style="color: gold; font-weight: bold;" class="dataTableCellLeftRight">Data is cached for <!--[if $pageupdateminutes eq 0 and $pageupdateseconds eq 0]-->60<!--[else]--><!--[$pageupdateminutes]--><!--[/if]--> minutes and <!--[$pageupdateseconds]--> seconds
                   </td>
                   </tr>
                   <tr>
