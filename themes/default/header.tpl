@@ -53,33 +53,15 @@ which.style.display="block"}</script>
     <!--[if $page eq 'skills']-->
       [ SKILLS ]
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/ships" title="Ships <!--[$name]--> can fly">SHIPS</a> ]
-<!--      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/certs" title="Certificates for <!--[$name]-->">CERTS</a> ] -->
-<!--      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/standings" title="Standings for <!--[$name]-->">STANDINGS</a> ] -->
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/sigs" title="Signatures for <!--[$name]-->">SIGNATURES</a> ]
     <!--[elseif $page eq 'ships']-->
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->" title="Skillsheet for <!--[$name]-->">SKILLS</a> ]
       [ SHIPS ]
-<!--      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/certs" title="Certificates for <!--[$name]-->">CERTS</a> ] -->
-<!--      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/standings" title="Standings for <!--[$name]-->">STANDINGS</a> ] -->
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/sigs" title="Signatures for <!--[$name]-->">SIGNATURES</a> ]
-    <!--[elseif $page eq 'certs']-->
-      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->" title="Skillsheet for <!--[$name]-->">SKILLS</a> ]   
-      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/ships" title="Ships <!--[$name]--> can fly">SHIPS</a> ] 
-      [ CERTS ]
-<!--      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/standings" title="Standings for <!--[$name]-->">STANDINGS</a> ] -->
-      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/sigs" title="Signatures for <!--[$name]-->">SIGNATURES</a> ]
-    <!--[elseif $page eq 'siglist']-->
+    <!--[else]-->
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->" title="Skillsheet for <!--[$name]-->">SKILLS</a> ]
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/ships" title="Ships <!--[$name]--> can fly">SHIPS</a> ]
-<!--      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/certs" title="Certificates for <!--[$name]-->">CERTS</a> ] -->
-<!--      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/standings" title="Standings for <!--[$name]-->">STANDINGS</a> ] -->
       [ SIGNATURES ]
-    <!--[else]-->
-      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->" title="Skillsheet for <!--[$name]-->">SKILLS</a> ]   
-      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/ships" title="Ships <!--[$name]--> can fly">SHIPS</a> ]         
-<!--      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/certs" title="Certificates for <!--[$name]-->">CERTS</a> ]   --> 
-      [ STANDINGS ]
-      [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/sigs" title="Signatures for <!--[$name]-->">SIGNATURES</a> ]
     <!--[/if]-->
 	<span style="color:gold;"><a href="#chart" rel="inline-700-430" class="pirobox"><img src="/imgs/chart_bar.png" align="absmiddle" width="16 height="16" border="0" title="Toggle Skills Barchart" alt="Toggle Skills Barchart" hspace="4" /></a></span>    
    <br /> <span class="gold"><!--[$totalsks]--></span> skills for a total of <span class="gold"><!--[$skillpointstotal]--></span> SP's. </span>
