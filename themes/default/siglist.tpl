@@ -177,7 +177,7 @@
             </tr>
             <tr>
                 <td align="center">
-                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/pink?n=<!--[$name|replace:' ':'_']-->&s=y.jpg" onclick="this.focus();this.select();" readonly/>
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/pink?n=<!--[$name|replace:' ':'_']-->&s=y" onclick="this.focus();this.select();" readonly/>
                 </td> 
             </tr>    
           </table>
@@ -190,7 +190,7 @@
             </tr>
             <tr>
                 <td align="center">
-                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/gray?n=<!--[$name|replace:' ':'_']-->&s=y.jpg" onclick="this.focus();this.select();" readonly/>
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/gray?n=<!--[$name|replace:' ':'_']-->&s=y" onclick="this.focus();this.select();" readonly/>
                 </td> 
             </tr>    
           </table>
@@ -203,7 +203,7 @@
             </tr>
             <tr>
                 <td align="center">
-                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/gold?n=<!--[$name|replace:' ':'_']-->&s=y.jpg" onclick="this.focus();this.select();" readonly/>
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/gold?n=<!--[$name|replace:' ':'_']-->&s=y" onclick="this.focus();this.select();" readonly/>
                 </td> 
             </tr>    
           </table>
@@ -216,7 +216,7 @@
             </tr>
             <tr>
                 <td align="center">
-                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/transd?n=<!--[$name|replace:' ':'_']-->.jpg" onclick="this.focus();this.select();" readonly/>
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/transd?n=<!--[$name|replace:' ':'_']-->" onclick="this.focus();this.select();" readonly/>
                 </td> 
             </tr>    
           </table>
@@ -229,7 +229,7 @@
             </tr>
             <tr>
                 <td align="center">
-                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/trans?n=<!--[$name|replace:' ':'_']-->.jpg" onclick="this.focus();this.select();" readonly/>
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/trans?n=<!--[$name|replace:' ':'_']-->" onclick="this.focus();this.select();" readonly/>
                 </td> 
             </tr>    
           </table>
