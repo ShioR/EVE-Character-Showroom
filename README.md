@@ -1,5 +1,5 @@
 Server Requirements
-===================
+-------------------
 Apache 2.2+   
 MySQL 5.5+   
 PHP 5.4+ with cURL and GD    
