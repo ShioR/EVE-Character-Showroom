@@ -63,7 +63,7 @@ which.style.display="block"}</script>
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/ships" title="Ships <!--[$name]--> can fly">SHIPS</a> ]
       [ SIGNATURES ]
     <!--[/if]-->
-	<span style="color:gold;"><a href="#chart" rel="inline-700-430" class="pirobox"><img src="/imgs/chart_bar.png" align="absmiddle" width="16 height="16" border="0" title="Toggle Skills Barchart" alt="Toggle Skills Barchart" hspace="4" /></a></span>    
+	<span style="color:gold;"><a href="/<!--[$name|replace:' ':'_']-->/chart" rel="iframe-718-448" class="pirobox"><img src="/imgs/chart_bar.png" align="absmiddle" width="16" height="16" border="0" title="Toggle Skills Barchart" alt="Toggle Skills Barchart" hspace="4" /></a></span>
    <br /> <span class="gold"><!--[$totalsks]--></span> skills for a total of <span class="gold"><!--[$skillpointstotal]--></span> SP's. </span>
   <!--[else]-->
   <span class="headerleft"><a href="/" title="Skills Shrowroom">Showroom: Characters List</a></span>
