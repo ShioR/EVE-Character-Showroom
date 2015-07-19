@@ -156,7 +156,10 @@ include 'includes/config.php';
             break;            
         case 'sigs':
             siglist($config);exit;
-            break;        
+            break;   
+        case 'chart':
+            chart($config);
+            break;       
         case 'error':
             $eveRender->display('error.tpl');exit;
             break;                     
@@ -466,6 +469,41 @@ function siglist($config)
     $eveRender->Assign('dVersion',          _DATA_VERSION);
 
     $eveRender->Display('siglist.tpl');
+    exit;
+
+}
+
+
+}function chart($config)
+{
+
+    global $skillsource, $eveRender;
+
+    $training = GetTrainingData($config['training']);
+
+    $parse = ParseXMLFile($config['data']);
+    $info = ParseXMLFile($config['characterInfo']);
+
+    $char = $parse['result'];
+    $charInfo = $info['result'];
+
+    $characterID     = $char['characterID'];
+
+    $name            = $char['name'];
+
+    $skillTraining   = $training;
+
+    $skills          = $char['rowset'][3]['row'];
+
+    $assign = BuildSkillSet($skills, $training);
+
+    $skillsearch = $assign['skillsearch'];
+
+
+    $eveRender->Assign('name',              $name);
+    $eveRender->Assign('grptable',          $assign['grptable']);
+
+    $eveRender->Display('chart.tpl');
     exit;
 
 }
