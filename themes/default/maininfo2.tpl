@@ -104,7 +104,7 @@
                                     CountStepper = -1;
                                     LeadingZero = false;
                                     DisplayFormat = "%%D%% Days, %%H%% Hours, %%M%% Minutes and %%S%% Seconds";
-                                    FinishMessage = "Done!";
+                                    FinishMessage = "Finished!";
                                     /*]]>*/
                                 </script>
                                 <script src="/themes/default/js/countdown.js" type="text/javascript"></script>
