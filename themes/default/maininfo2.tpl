@@ -1,3 +1,6 @@
+
+<!-- CHARACTER INFO -->
+<!--[strip]-->
 <table style="margin-left: 80px;" align="center" border="0" cellpadding="2" cellspacing="0" summary="Character Info">
  <tbody>
           <tr>
@@ -139,3 +142,4 @@
             </tr>
           </tbody>
           </table>
+<!--[/strip]-->
