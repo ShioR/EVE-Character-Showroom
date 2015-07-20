@@ -41,23 +41,19 @@ $typeName = ucwords(strtolower($name));
   // Include config to get db info
     include 'includes/config.php';
     
-      // Connect to db using credentials from the config file
-      mysql_connect($dbconfig['dbhost'], $dbconfig['dbuname'], $dbconfig['dbpass']);
-      mysql_select_db($dbconfig['dbname']);
-      
-       // Get the graphicID from the URL
-            $typeName = ($_GET['id']);
-            
-       // Get the graphicFile from the db
-				$name = mysql_query("SELECT graphicFile FROM skillsheet_ships WHERE typeName = '$typeName'");
-				$path = mysql_result($name, 0);
-		 // Get the raceID from the db & close the connection
-				$raceID = mysql_query("SELECT raceID FROM skillsheet_ships WHERE typeName = '$typeName'");
-				$race = mysql_result($raceID, 0);
-   	mysql_close();
-?>
-<?php
-  // Get racial specific backgrounds
+        // Connect to db using credentials from the config file
+            $connect = mysqli_connect($dbconfig['dbhost'], $dbconfig['dbuname'], $dbconfig['dbpass'], $dbconfig['dbname']);
+        // Get the graphicFile and raceID from the db
+            $query = "SELECT graphicFile, raceID FROM skillsheet_ships WHERE typeName = '$typeName'";
+            $result = mysqli_query($connect, $query);
+            $output = mysqli_fetch_row($result);
+            $graphicFile = $output[0];
+            $race = $output[1];
+        // Free result & close connection
+            mysqli_free_result($result);
+            mysqli_close($connect);
+
+  // Set racial specific backgrounds
     if ($race == '1') {
         $nebula = 'res:/dx9/scene/universe/c03_cube.red';
     } elseif ($race == '2') {    
@@ -80,12 +76,9 @@ $typeName = ucwords(strtolower($name));
         <script type="text/javascript" src="/includes/ccpwgl/src/test/TestCamera2.js"></script>
         <script type="text/javascript" src="/includes/ccpwgl/src/ccpwgl.js"></script>
         <script type="text/javascript">
-
+            
             function onDocumentLoad()
             {
-              //  ccpwgl.setResourcePath('res', 'https://web.ccpgamescdn.com/ccpwgl/res/');
-
-
                 var canvas = document.getElementById('mainCanvas');
                 ccpwgl.initialize(canvas);
                 
@@ -106,7 +99,7 @@ $typeName = ucwords(strtolower($name));
                     ccpwgl.setCamera(camera);
 
                     // Load the data for the ship
-                scene.loadShip('<?php echo $path; ?>', undefined);
+                scene.loadShip('<?php echo $graphicFile; ?>', undefined);
                 
                 // Bloom Setting
                 ccpwgl.enablePostprocessing(true);
@@ -114,18 +107,15 @@ $typeName = ucwords(strtolower($name));
         		ccpwgl.onPreRender = function () 
         		{ 
         		
-        		
         		};
         		
-
             }
         	
             onload = onDocumentLoad;
 
         </script>
-
     </head>
     <body style="margin:0">
-          <canvas id="mainCanvas" style="position:fixed;width:100%;height:100%"></canvas>
+        <canvas id="mainCanvas" style="position:fixed;width:100%;height:100%"></canvas>
     </body>
 </html>
