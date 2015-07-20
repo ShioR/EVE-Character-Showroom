@@ -1,5 +1,4 @@
 <!--[include file='header.tpl' page='siglist']-->
-
 <table class="mcenter" style="width:768px;margin-top:25px;" summary="Main">
   <tbody>
     <tr>
@@ -9,6 +8,9 @@
           <!--[include file='mainheader.tpl']-->
           <!--[if $implants == 1]--><!--[include file='maininfo.tpl']--><!--[else]--><!--[include file='maininfo2.tpl']--><!--[/if]-->
           <!--[include file='queue.tpl']-->
+          
+<!-- SIGNATURES -->
+<!--[strip]-->
 <br />
   <div style="margin-top: 40px;">
         <div style="margin-top: 10px;">
@@ -242,5 +244,5 @@
     </tr>
   </tbody>
   </table>
-
+<!--[/strip]-->
   <!--[include file='footer.tpl']-->
