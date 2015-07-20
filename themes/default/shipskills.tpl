@@ -9,7 +9,9 @@
 
           <!--[if $implants == 1]--><!--[include file='maininfo.tpl']--><!--[else]--><!--[include file='maininfo2.tpl']--><!--[/if]-->
           <!--[include file='queue.tpl']-->
-
+          
+<!-- SHIPS -->
+<!--[strip]-->          
 <br />
 
       <!--[foreach item='races' key='shipclass' from=$shipscanfly]-->
@@ -54,8 +56,7 @@
     </tr>
   </tbody>
   </table>
-
+<!--[/strip]-->
   <!--[include file='footer.tpl']-->
-
 </body>
 </html>
