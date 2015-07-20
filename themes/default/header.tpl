@@ -47,7 +47,6 @@ else
 which.style.display="block"}</script>
 </head>
 <!-- HEADER -->
-<!--[strip]-->
   <div class="headerribbon"<!--[if not $page]--> style="height: 26px;"<!--[/if]-->>
   <!--[if $page]-->
 <span class="headerleft"><img align="left" style="border: 1px solid gray; margin:3px;" src="<!--[getportrait characterID=$characterID size=32]-->" width="32" height="32" title="" alt="<!--[$name]-->" /></a>Skillsheet for <span style="color:gold;"><!--[$name]--></span><span style="color:gold;"> <a style="text-decoration:none;" href="https://gate.eveonline.com/Mail/Compose/<!--[$name]-->" rel="iframe-875-610" class="pirobox"> [Send EVEMail]</a></span><br />Member of <span style="color:gold;"><a style="text-decoration:none;" href="http://evemaps.dotlan.net/corp/<!--[$corporationName|replace:" ":"_"]-->" rel="iframe-875-610" class="pirobox"><!--[$corporationName]--></a></span><!--[if $allianceName neq '']--> <span style="color:gold;"><a style="text-decoration:none;" href="http://evemaps.dotlan.net/alliance/<!--[$allianceName|replace:" ":"_"]-->" rel="iframe-875-610" class="pirobox"> [<!--[$allianceName]-->]</a></span><!--[else]--><!--[/if]--></span>
@@ -75,4 +74,3 @@ which.style.display="block"}</script>
   <!--[literal]-->
     <!--[if IE]>--><br /><!--<![endif]-->
   <!--[/literal]-->
-<!--[/strip]-->
