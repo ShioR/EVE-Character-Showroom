@@ -1,3 +1,6 @@
+
+<!-- QUEUE -->
+<!--[strip]-->
 <!--[if $SkillQueue]-->
 	<table class="dataTable2" border="0" cellpadding="2" cellspacing="0" width="100%" summary="Skill Queue Info" style="margin-top: 40px;">
 	  <tbody style=" border-color: #000;">
@@ -48,3 +51,4 @@
 	  </tbody>
   </table>
 <!--[/if]-->
+<!--[/strip]-->
