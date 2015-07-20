@@ -1,4 +1,5 @@
- <!--[include file='header.tpl' page='skills']-->
+
+<!--[include file='header.tpl' page='skills']-->
   <table class="main" summary="Main">
   <tbody>
     <tr>
@@ -7,6 +8,8 @@
           <!--[if $implants == 1]--><!--[include file='maininfo.tpl']--><!--[else]--><!--[include file='maininfo2.tpl']--><!--[/if]-->
           <!--[include file='queue.tpl']-->
           
+<!-- SKILLS -->
+<!--[strip]-->
       <!--[assign var='totalCost' value=0]-->   
       <!--[assign var='totalSkills' value=0]-->
       <!--[assign var='lvl1total' value=0]-->
@@ -244,4 +247,5 @@
     </tr>
   </tbody>
   </table>
-  <!--[include file='footer.tpl']-->
+<!--[/strip]-->
+<!--[include file='footer.tpl']-->
