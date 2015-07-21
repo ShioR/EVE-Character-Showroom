@@ -350,7 +350,7 @@ function charlist($config)
     global $eveRender;                 
 
     $characters = GetAllCharacters();
-    array_multisort($characters, SORT_ASC);
+    array_multisort($characters, SORT_DESC);
 
     $eveRender->Assign('charlist',  $characters);
     $eveRender->Assign('charcount', count($characters));    
