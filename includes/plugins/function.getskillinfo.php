@@ -40,8 +40,6 @@ function smarty_function_getskillinfo($params, &$smarty)
             $result = mysqli_query($connect, $query);
             $output = mysqli_fetch_row($result);
             $description = wordwrap($output[0], 112, "<br />");
-        // Strip the <b> tag from the description
-            $description = str_replace(array('<b>'), '', $description);
             echo nl2br($description);
         // Extra line break at the end to put the skill cost onto a new line
             echo "<br />";
