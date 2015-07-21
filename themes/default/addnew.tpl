@@ -7,7 +7,7 @@
   <meta name="resource-type" content="document" />
   <meta http-equiv="expires" content="0" />
   <meta name="author" content="Eve Online" />
-  <meta name="copyright" content="Copyright (c) 2011 The Xenodus Initiative." />
+  <meta name="copyright" content="Copyright (c) 2015 The Xenodus Initiative." />
   <meta name="revisit-after" content="1 days" />
   <meta name="distribution" content="Global" />
   <meta name="generator" content="Eve Online" />
@@ -45,7 +45,7 @@ a,a:visited{color:gold;}
         <div id="content" style="margin-left:10px;width:70%;margin-top:50px;" >
           <div class="block-header2">Add Characters</div>
           <br />
-				<!--[if $submit]-->
+<!--[if $submit]-->
 					<form id="addcharacters" method="post" action="skillsheet.php?show=addnew">
 						<div>
 							<input type="hidden" name="keyID" value="<!--[$keyID]-->" />
@@ -96,16 +96,16 @@ a,a:visited{color:gold;}
 						<table border='0' cellspacing='0' cellpadding='0' align='left'>
 										<tr id='cat'>
 										<tr>
-											<td bgcolor='#2c2c38'><strong>Key ID:</strong></td>
-											<td bgcolor='#2c2c38' align='center'><input id="keyID" name="keyID" type="text" tabindex="1"></td>
+											<td bgcolor='#1b1b1b'><strong>Key ID:</strong></td>
+											<td bgcolor='#1b1b1b' align='center'><input id="keyID" name="keyID" type="text" tabindex="1"></td>
 										</tr>
 										<tr>
-											<td bgcolor='#2c2c38'><strong>Verification Code:</strong></td>
-											<td bgcolor='#2c2c38' align='center'><input id="key" name="vCode" type="text" tabindex="2"></td>
+											<td bgcolor='#1b1b1b'><strong>Verification Code:</strong></td>
+											<td bgcolor='#1b1b1b' align='center'><input id="key" name="vCode" type="text" tabindex="2"></td>
 										</tr>
 										<tr>
 											<td></td>
-											<td bgcolor='#2c2c38' align='center'><input type='submit' name="submit" value='Get Characters'></td>
+											<td bgcolor='#1b1b1b' align='center'><input type='submit' name="submit" value='Get Characters'></td>
 										</tr>
 										<tr>
 											<td colspan='2'></br></br><span class="newsmalltext"><strong><a target="_blank" href="https://support.eveonline.com/api/Key/CreatePredefined/8781832">Create a new API Key for use on this site</a></strong><br />Your API keys can be found <a target="_blank" href="https://support.eveonline.com/api">here</a></span>.<br /></td>
@@ -123,17 +123,27 @@ a,a:visited{color:gold;}
 						<br />
 						<br />
 						<br />
-				  <p style="color:red;"><i><strong>Please be aware that in order to use this site you need to give your new API Key the correct permissions!<br />The information that need is as follows;</p>
-				  <ul style="color:darkorange;">
+              <p><span style="color:orange;"><i><strong>Please be aware that in order to use this site you need to give your new API Key the correct permissions!</strong></i></span><br />We need access to;</p>
+				  <ul>
 					<li><i>'/char/CharacterSheet.xml.aspx'<span style="font-size:x-small;"><sup>2</sup></span></i></li>
 					<li><i>'/char/SkillInTraining.xml.aspx'<span style="font-size:x-small;"><sup>1</sup></span></i></li>
 					<li><i>'/char/SkillQueue.xml.aspx'<span style="font-size:x-small;"><sup>1</sup></span></i></li>
 					<li><i>'/eve/CharacterInfo.xml.aspx'<span style="font-size:x-small;"><sup>2</sup></span></i></li>
 				  </ul>
-				  <p style="color:red;">An easy way to make sure you have the correct permissions is to <a target="_blank" href="https://support.eveonline.com/api/Key/CreatePredefined/8781832>create a pre-defined key!</a></p>  
-                  <p style="font-size:x-small;"><i><sup>1</sup> = Every 30 minutes, <sup>2</sup> = Once per hour</i> </p></strong></i></p>
+				  <p>An easy way to make sure you have the correct permissions is to <a target="_blank" href="https://support.eveonline.com/api/Key/CreatePredefined/8781832">create a pre-defined key!</a></p>  
+				  <p style="color:red;">Please note that if you don't tick 'No Expiry' you key will expire and access to the API key you provided us will be revoked. Either tick 'No Expiry' or <a href="/settings/api" rel="iframe-500-300" class="pirobox">update your key.</a></p>
+                  <p style="font-size:xx-small;"><i><sup>1</sup> = Every 30 minutes, <sup>2</sup> = Once per hour</i> </p></strong></i></p>
                   <p style="clear:both" /> 
                 </div> 
               </div>  
-</body>
+        <div id="footerWrapper"> 
+          <div id="footer"> 
+            <p style="padding-top:15px"> 
+  <!--[include file='footer.tpl']-->
+            </p> 
+          </div> 
+        </div> 
+      </div> 
+    </div> 
+  </body>
 </html>
