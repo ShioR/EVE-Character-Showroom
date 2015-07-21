@@ -1167,12 +1167,12 @@ function GetTrainingData($trainfile = '')
     <table summary="Characters List" style="border: #666666 1px solid; margin-left: 10px; width:910px;">
     <thead>
       <tr style="background: rgb(44, 44, 56);">
-        <th colspan="<!--[$charcount]-->" class="dataTableHeader">No training information</th>
+        <th colspan="<!--[$charcount]-->" class="dataTableHeader">NO INFORMATION FOUND!</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>No information about this character was retrieved last time the API was queried. <br /> This will likely resolve itself, alternatively you can check back in an hour to try again.<br />You can check the status of the API <a href="http://eve-offline.net/api/">here.</a><br /><a href="javascript:history.back()" title="Go back">Go Back</a></td>
+        <td>No information about this character was retrieved last time the API was queried.<br />This will likely resolve itself, check back in an hour to try again.<br />You can check the status of the API <a href="http://eve-offline.net/api/" target="_blank">here.</a><br /><a href="javascript:history.back()" title="Go back">Go Back</a></td>
       </tr>   
      </tbody>
     </table>  
