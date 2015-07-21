@@ -2,23 +2,20 @@
 function smarty_function_getskillinfo($params, &$smarty)
 {
     global $eve;
-    include(dirname(__FILE__).'/../config.php');        
-    // Connect to db using credentials from the config file
-            $connect = mysqli_connect($dbconfig['dbhost'], $dbconfig['dbuname'], $dbconfig['dbpass'], $dbconfig['dbname']);
+    include(dirname(__FILE__).'/../config.php');
+    mysql_connect($dbconfig['dbhost'], $dbconfig['dbuname'], $dbconfig['dbpass']);
+   	mysql_select_db($dbconfig['dbname']);
 		// Get the skill.typeID var from smarty
-            $typeID = $params['typeID'];
-        // Get the description from the database
-            $query = "SELECT description FROM skillsheet_skills WHERE typeID = '$typeID'";
-            $result = mysqli_query($connect, $query);
-            $output = mysqli_fetch_row($result);
-            $description = wordwrap($output[0], 112, "<br />");
-        // Strip the <b> tag from the description
-            $description = str_replace(array('<b>'), '', $description);
-            echo nl2br($description);
+				$typeID = $params['typeID'];
+		// get the description using the typeID // Base price too, for teh epeens!
+				$result = mysql_query("SELECT description FROM skillsheet_skills WHERE typeID = '$typeID'");
+		// Wordwrap to stop the page getting borked
+				$text = mysql_result($result, 0);
+				$description = wordwrap($text, 112, "<br>");
+				echo nl2br($description);
         // Extra line break at the end to put the skill cost onto a new line
-            echo "<br />";
-        // Free result & close connection
-            mysqli_free_result($result);
-            mysqli_close($connect);
+                echo "<br>";
+   	mysql_close();
+		// Fini!
 }
 ?>
