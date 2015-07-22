@@ -75,45 +75,74 @@ $typeName = ucwords(strtolower($name));
         <script type="text/javascript" src="/includes/ccpwgl/src/ccpwgl_int.js"></script>
         <script type="text/javascript" src="/includes/ccpwgl/src/test/TestCamera2.js"></script>
         <script type="text/javascript" src="/includes/ccpwgl/src/ccpwgl.js"></script>
-        <script type="text/javascript">
+        <script type="text/javascript">       
             
             function onDocumentLoad()
             {
                 var canvas = document.getElementById('mainCanvas');
                 ccpwgl.initialize(canvas);
-                
-                    // Nebula
                 var scene = ccpwgl.loadScene('<?php echo $nebula; ?>');
 
-        		var camera = new TestCamera(canvas);
-                    camera.minDistance = 10;
-                    camera.maxDistance = 20000;
-                    camera.fov = 30;
-                    camera.distance = 3500;
-                    camera.rotationX = -0.5;
-                    camera.rotationY = 0.2;
-                    camera.nearPlane = 1;
-                    camera.farPlane = 10000000;
-                    camera.minPitch = -0.5;
-                    camera.maxPitch = 0.65;
-                    ccpwgl.setCamera(camera);
+                var camera = new TestCamera(canvas);
+                camera.minDistance = 10;
+                camera.maxDistance = 10000;
+                camera.fov = 30;
+                camera.distance = 5000;
+                camera.rotationX = -0.5;
+                camera.rotationY = 0.2;
+                camera.nearPlane = 1;
+                camera.farPlane = 10000000;
+                camera.minPitch = -0.5;
+                camera.maxPitch = 0.65;
+                ccpwgl.setCamera(camera);
 
-                    // Load the data for the ship
-                scene.loadShip('<?php echo $graphicFile; ?>', undefined);
-                
-                // Bloom Setting
+                // Load the data for the Confessor
+                var ship = scene.loadShip('<?php echo $graphicFile; ?>', whenLoaded);
+
+                var distanceScaler = 4.5;
+
+                /**
+                 * A function that auto focuses the scene's camera to a space object
+                 * @param (spaceObject) a ccpwgl space object (Ship, Object or Planet)
+                 * @param (distanceScaler) numeric value
+                 * @throws SpaceObject is not loaded
+                 */
+                function autoFocus(spaceObject, distanceScaler)
+                {
+                    // The spaceObject must be loaded to get it's bounding sphere data
+                    if (!spaceObject.isLoaded())
+                    {
+                        throw new ccpwgl.IsStillLoadingError();
+                    }
+
+                    // Set the camera's point of interest as the space object's position in world space
+                    camera.poi[0] = spaceObject.getTransform()[12];
+                    camera.poi[1] = spaceObject.getTransform()[13];
+                    camera.poi[2] = spaceObject.getTransform()[14];
+
+                    // Get the radius of the space object
+                    var spaceObjectRadius = parseInt(spaceObject.getBoundingSphere()[1]);
+
+                    // Set the camera's minimum distance
+                    camera.minDistance = spaceObjectRadius * 0.8;
+
+                    // Set the camera's distance
+                    camera.distance = spaceObjectRadius * distanceScaler;
+                }
+
+                // A callback function that is run once the ship's base javascript object has loaded.
+                function whenLoaded()
+                {
+                    autoFocus(ship, distanceScaler)
+                }
+
                 ccpwgl.enablePostprocessing(true);
 
-        		ccpwgl.onPreRender = function () 
-        		{ 
-        		
-        		};
-        		
             }
-        	
-            onload = onDocumentLoad;
 
-        </script>
+        onload = onDocumentLoad;
+
+    </script>
     </head>
     <body style="margin:0">
         <canvas id="mainCanvas" style="position:fixed;width:100%;height:100%"></canvas>
