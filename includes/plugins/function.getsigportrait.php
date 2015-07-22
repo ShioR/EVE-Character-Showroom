@@ -1,5 +1,6 @@
 <?php
-function getportrait()
+// Yes, I know this actually pulls all sizes, but the benefit outweighs the cost imo.
+function getportrait($id)
 {
     global $id, $domain;
     $path = '../cache/characters/';
@@ -34,7 +35,7 @@ function getportrait()
         }
     }
 
-        return $domain.'cache/characters/'.$id.'_64.jpg';
+        return '../cache/characters/'.$id.'_64.jpg';
      
     }
 ?>
