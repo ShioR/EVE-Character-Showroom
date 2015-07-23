@@ -34,7 +34,7 @@ function getportrait($id)
     $path = '../cache/characters/';
     if (!file_exists($path.$id.'_256.jpg')) {
 
-      $distantImg = 'https://image.eveonline.com/Character/'.$id.'_256.jpg';
+      $distantImg = 'https://imageserver.eveonline.com/Character/'.$id.'_256.jpg';
 
         $local    = $path.$id;
         $localimage = $path.$id.'_256.jpg';

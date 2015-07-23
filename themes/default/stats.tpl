@@ -15,7 +15,7 @@
       <!--[foreach item='char' from=$charlist]-->      
       <tr>
         <td class="txtcenter">
-          <img src="https://image.eveonline.com/Character/<!--[$char.characterID]-->_64.jpg" class="mbAvatar" style="border:1px solid gray" alt="<!--[$char.name]-->" />
+          <img src="https://imageserver.eveonline.com/Character/<!--[$char.characterID]-->_64.jpg" class="mbAvatar" style="border:1px solid gray" alt="<!--[$char.name]-->" />
         </td>
         <td>
           <br /><!--[$char.name]-->

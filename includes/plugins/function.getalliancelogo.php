@@ -40,7 +40,7 @@ function smarty_function_getalliancelogo($params, &$smarty)
     $path = 'cache/alliances/';
     if (!file_exists($path.$params['allianceID'].'_'.$params['size'].'.png')) {
 
-      $distantImg = 'https://image.eveonline.com/Alliance/'.$params['allianceID'].'_128.png';
+      $distantImg = 'https://imageserver.eveonline.com/Alliance/'.$params['allianceID'].'_128.png';
 
         $local    = $path.$params['allianceID'];
         $localimage = $path.$params['allianceID'].'_128.png';

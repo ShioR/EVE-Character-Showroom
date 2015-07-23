@@ -40,7 +40,7 @@ function smarty_function_getcorplogo($params, &$smarty)
     $path = 'cache/corps/';
     if (!file_exists($path.$params['corporationID'].'_'.$params['size'].'.png')) {
 
-      $distantImg = 'https://image.eveonline.com/Corporation/'.$params['corporationID'].'_256.png';
+      $distantImg = 'https://imageserver.eveonline.com/Corporation/'.$params['corporationID'].'_256.png';
 
         $local    = $path.$params['corporationID'];
         $localimage = $path.$params['corporationID'].'_256.png';

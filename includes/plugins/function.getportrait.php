@@ -40,7 +40,7 @@ function smarty_function_getportrait($params, &$smarty)
     $path = 'cache/characters/';
     if (!file_exists($path.$params['characterID'].'_'.$params['size'].'.jpg')) {
 
-      $distantImg = 'https://image.eveonline.com/Character/'.$params['characterID'].'_256.jpg';
+      $distantImg = 'https://imageserver.eveonline.com/Character/'.$params['characterID'].'_256.jpg';
 
         $local    = $path.$params['characterID'];
         $localimage = $path.$params['characterID'].'_256.jpg';
