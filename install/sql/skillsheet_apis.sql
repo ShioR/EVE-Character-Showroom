@@ -13,7 +13,6 @@ CREATE TABLE `skillsheet_apis` (
   `keyID` varchar(10) NOT NULL DEFAULT '',
   `vCode` varchar(200) NOT NULL DEFAULT '',
   `selected` tinyint(1) NOT NULL DEFAULT '0',
-  `password` varchar(100) NOT NULL DEFAULT '',
   `implants` tinyint(1) NOT NULL DEFAULT '1',
   `characterInfo` text NOT NULL,
   `data` text NOT NULL,
