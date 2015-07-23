@@ -136,7 +136,7 @@ function ADODBInit()
     if (!defined('ADODB_DIR')) {
         define('ADODB_DIR', 'includes/adodb');
     }
-    include 'includes/adodb/adodb.inc.php';
+    include 'adodb/adodb.inc.php';
 
     // ADODB Error handle
     if ($GLOBALS['evedebug']['debug_sql']) {
