@@ -437,7 +437,7 @@ function step6()
 
                 $name = $names[$characterID];
                 $corp = $corps[$characterID];
-                $cacheTime = date("Y-m-d H:00:00", strtotime('- 2 hour'));    
+                $cacheTime = date("0000-00-00 00:00:00");    
 
                 $sql = "INSERT INTO skillsheet_apis (id,
                                                          name,
