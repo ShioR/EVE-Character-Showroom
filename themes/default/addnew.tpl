@@ -62,7 +62,7 @@ a,a:visited{color:gold;}
 											<td class="txtcenter">
 												<input type="hidden" name="names[<!--[$char.characterID]-->]" value="<!--[$char.name]-->" />
 												<input type="hidden" name="corps[<!--[$char.characterID]-->]" value="<!--[$char.corporationName]-->" />
-												<img src="https://image.eveonline.com/Character/<!--[$char.characterID]-->_128.jpg" class="mbAvatar" style="border:1px solid gray" alt="<!--[$char.name]-->" />
+												<img src="https://imageserver.eveonline.com/Character/<!--[$char.characterID]-->_128.jpg" class="mbAvatar" style="border:1px solid gray" alt="<!--[$char.name]-->" />
 												<br /><!--[$char.name]-->
 												<br /><!--[$char.corporationName]-->
 												<hr />
