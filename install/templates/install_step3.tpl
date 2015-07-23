@@ -9,24 +9,24 @@
             <table class="kb-subtable">
               <tr>
                 <td width="120"><strong>MySQL Host:</strong></td>
-                <td><input type="text" name="host" id="host" size="20" maxlength="80" value="<!--[$host]-->" /></td>
+                <td><input type="text" name="host" id="host" size="20" maxlength="80" placeholder="Usually localhost" value="<!--[$host]-->" /></td>
               </tr>
               <tr>
                 <td width="120"><strong>User:</strong></td>
-                <td><input type="text" name="user" id="user" size="20" maxlength="80" value="<!--[$user]-->" /></td>
+                <td><input type="text" name="user" id="user" size="20" maxlength="80" placeholder="MySQL user" value="<!--[$user]-->" /></td>
               </tr>
               <tr>
                 <td width="120"><strong>Password:</strong></td>
-                <td><input type="password" name="dbpass" id="pass" size="20" maxlength="80" value="<!--[$dbpass]-->" /></td>
+                <td><input type="password" name="dbpass" id="pass" size="20" maxlength="80" placeholder="MySQL user password" value="<!--[$dbpass]-->" /></td>
               </tr>
               <tr>
                 <td width="120"><strong>Database:</strong></td>
-                <td><input type="text" name="db" id="db" size="20" maxlength="80" value="<!--[$db]-->" /></td>
+                <td><input type="text" name="db" id="db" size="20" maxlength="80" placeholder="MySQL database" value="<!--[$db]-->" /></td>
               </tr>
               <tr>
                 <td width="120"><strong>Domain:</strong></td>
-                <td><input type="text" name="domain" id="domain" size="20" maxlength="80" value="<!--[$domain]-->" /></td>
-                <td><span style="color:darkorange;">Make sure you include 'http://' and the trailing slash '/' or signatures WILL NOT work. <strong>http://example.com/</strong></span></td>
+                <td><input type="text" name="domain" id="domain" size="20" maxlength="80" placeholder="http://example.com/" value="<!--[$domain]-->" /></td>
+                  <td><span style="color:darkorange;">Make sure you include 'http://' and the trailing slash '/' or signatures WILL NOT work.</span><br /><span style="color:grey;"><strong>Examples:</strong> http://example.com/ | http://sub.example.com/ | http://192.168.0.66/</span></td>
               </tr>
               <tr>
                 <td width="120"></td>
@@ -36,7 +36,7 @@
             </form>
             <!--[if $submit]-->
               <div class="block-header2">Testing Settings</div>
-              Got the data you supplied, trying to connect to that sql server now...<br /><br />
+              Got the data you supplied, trying to connect to MySQL server now...<br /><br />
               <!--[if $server]-->
                 Connection to Server OK!<!--[if $version]--> running Version <!--[$version]--><br /><br /><!--[/if]-->
                 <!--[if $selectdb]-->
@@ -48,7 +48,7 @@
                 Could not connect to the server or database, please check your settings.<br />
               <!--[/if]-->
               <!--[if not $stoppage]-->
-                Please confirm that this is the information you want to write down in the database configuration file.<br /><br />
+                Please confirm that this is the information you want to write to the configuration file.<br /><br />
                 <form id="write" name="writedbconfig" method="post" action="install.php?step=3">
                   <input type="hidden"  name="write_host"      value="<!--[$host]-->" />
                   <input type="hidden"  name="write_user"      value="<!--[$user]-->" />
