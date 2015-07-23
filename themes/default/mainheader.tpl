@@ -7,7 +7,7 @@
         <!--[/literal]--><a style="color: gold; font-weight: bold;" href="/" title="List of Characters">All Pilots...</a>&nbsp;
       <!--[else]-->
         <!--[foreach item=char from=$charlist.chars]-->
-          &nbsp;&nbsp;<a href="/<!--[$char.charname|replace:' ':'_']-->" title="<!--[$char.charname]-->"><img src="https://imageserver.eveonline.com/Character/<!--[$char.charid]-->_32.jpg" class="mbAvatar" style="border:1px solid gray;" alt="<!--[$char.charname]-->" /></a>
+          &nbsp;&nbsp;<span onclick="location.href='/<!--[$char.charname|replace:' ':'_']-->'" onmouseover="this.style.cursor='pointer';" title="<!--[$char.charname]-->"><img src="https://imageserver.eveonline.com/Character/<!--[$char.charid]-->_32.jpg" class="mbAvatar" style="border:1px solid gray;" alt="<!--[$char.charname]-->" /></span>
         <!--[/foreach]-->
       <!--[/if]-->
       </div>
