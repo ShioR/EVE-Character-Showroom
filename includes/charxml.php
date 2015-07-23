@@ -208,7 +208,7 @@ function GetCharacters($config = array())
         curl_setopt($ch, CURLOPT_HEADER, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-        curl_setopt($ch, CURLOPT_CAINFO, getcwd() . "../includes/eveapi.crt");
+        curl_setopt($ch, CURLOPT_CAINFO, getcwd() . "eveapi.crt");
         if ($data) {
             curl_setopt($ch, CURLOPT_POST, 1);
             curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
@@ -330,7 +330,7 @@ function GetXML($config = array())
             curl_setopt($ch, CURLOPT_HEADER, false);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-            curl_setopt($ch, CURLOPT_CAINFO, getcwd() . "../includes/eveapi.crt");            
+            curl_setopt($ch, CURLOPT_CAINFO, getcwd() . "eveapi.crt");            
             if ($data) {
                 curl_setopt($ch, CURLOPT_POST, 1);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
@@ -355,7 +355,7 @@ function GetXML($config = array())
             curl_setopt($ch, CURLOPT_HEADER, false);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-            curl_setopt($ch, CURLOPT_CAINFO, getcwd() . "../includes/eveapi.crt");            
+            curl_setopt($ch, CURLOPT_CAINFO, getcwd() . "eveapi.crt");            
             if ($data) {
                 curl_setopt($ch, CURLOPT_POST, 1);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
@@ -375,7 +375,7 @@ function GetXML($config = array())
             curl_setopt($ch, CURLOPT_HEADER, false);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-            curl_setopt($ch, CURLOPT_CAINFO, getcwd() . "../includes/eveapi.crt");             
+            curl_setopt($ch, CURLOPT_CAINFO, getcwd() . "eveapi.crt");             
             if ($data) {
                 curl_setopt($ch, CURLOPT_POST, 1);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
@@ -394,7 +394,7 @@ function GetXML($config = array())
             curl_setopt($ch, CURLOPT_HEADER, false);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-            curl_setopt($ch, CURLOPT_CAINFO, getcwd() . "../includes/eveapi.crt");             
+            curl_setopt($ch, CURLOPT_CAINFO, getcwd() . "eveapi.crt");             
             if ($data) {
                 curl_setopt($ch, CURLOPT_POST, 1);
                 curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($info));
