@@ -253,7 +253,7 @@ function AddNew($config)
                     $corpID = $corpsID[$characterID];
                     $alliance = $alliances[$characterID];
                     $allianceID = $alliancesID[$characterID];
-                    $cacheTime = date("Y-m-d 00:00:00");         
+                    $cacheTime = date("Y-m-d H:00:00", strtotime('- 2 hour'));        
 
                     $sql = "INSERT INTO skillsheet_apis (id,
                                                          name,
@@ -281,7 +281,7 @@ function AddNew($config)
                                                          '".$eve->VarPrepForStore($characterInfo)      ."',
                                                          '".$eve->VarPrepForStore($data)      ."',
                                                          '".$eve->VarPrepForStore($training)      ."',
-                                                         '".$eve->VarPrepForStore($queue)      ."',                                                            
+                                                         '".$eve->VarPrepForStore($queue)      ."',                                                             
                                                          '".$eve->VarPrepForStore($cacheTime)    ."')";
 
 
