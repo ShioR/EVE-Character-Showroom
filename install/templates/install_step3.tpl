@@ -35,10 +35,9 @@
             </table>
             </form>
             <!--[if $submit]-->
-              <div class="block-header2">Testing Settings</div>
-              Got the data you supplied, trying to connect to MySQL server now...<br /><br />
+            <br /><br /><br />
               <!--[if $server]-->
-                Connection to Server OK!<!--[if $version]--> running Version <!--[$version]--><br /><br /><!--[/if]-->
+                Connection to Server OK!<!--[if $version]--> Version <!--[$version]--><br /><br /><!--[/if]-->
                 <!--[if $selectdb]-->
                   Successfully selected database <strong><!--[$db]--></strong>, everything is fine to continue.<br />
                 <!--[else]-->
@@ -48,14 +47,14 @@
                 Could not connect to the server or database, please check your settings.<br />
               <!--[/if]-->
               <!--[if not $stoppage]-->
-                Please confirm that this is the information you want to write to the configuration file.<br /><br />
+                Please confirm that this is the information you want to write to the configuration file.<br />If you're happy, click 'Write Data to Config' below.<br /><br />
                 <form id="write" name="writedbconfig" method="post" action="install.php?step=3">
                   <input type="hidden"  name="write_host"      value="<!--[$host]-->" />
                   <input type="hidden"  name="write_user"      value="<!--[$user]-->" />
                   <input type="hidden"  name="write_pass"      value="<!--[$dbpass]-->" />
                   <input type="hidden"  name="write_db"        value="<!--[$db]-->" />
                   <input type="hidden"  name="write_domain"    value="<!--[$domain]-->" />
-                  <input type="submit" name="write" value="Write Database Config" />
+                  <input type="submit" name="write" value="Write Data to Config" />
                 </form>
               <!--[/if]-->
               <p><!--[if $stoppage]--><a href="install.php?step=<!--[$step]-->" title="Retry">Retry<!--[else]--><a href="install.php?step=<!--[$nextstep]-->">Next Step<!--[/if]--></a></p>
