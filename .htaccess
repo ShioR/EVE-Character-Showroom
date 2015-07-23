@@ -15,6 +15,7 @@ RewriteRule ^sigs/.*$ - [PT]
 RewriteRule ^imgs/.*$ - [PT]
 
 # Yo! Wassup dawg? Nifty stuff below, watch your step!
+RewriteRule ^install.php install.php [L,NC,NS]
 RewriteRule ^shipViewer shipViewer.php [L,NC,NS]
 RewriteRule ^ship/([^/]+)/?$ shipViewer.php?id=$1 [L,NC,NS]
 RewriteRule ^home skillsheet.php [L,NC,NS]
