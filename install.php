@@ -1,23 +1,34 @@
 <?php
-/***********************************************************/
-/*           EVE Character Showroom - Version 5            */
-/*       'Improved' and maintained by Shionoya Risa        */
-/*          Originally created by DeTox MinRohim           */
-/***********************************************************/
-/*   This thing is free for you to take. You take all      */
-/* responsabilities for using it. Whatever you do with it, */
-/*  I don't care (although I would appreciate you send me  */
-/*   any enhancement - ISK donations are also accepted).   */
-/*                                                         */
-/*   Lots of code snippets have been found in my travels   */
-/*    if you think one of those snippets is yours, tell    */
-/*         me. I will give all appropriate credits.        */
-/***********************************************************/
-/*   ISK donations to Shionoya Risa are also accepted ;)   */
-/***********************************************************/
+/**********************************************************/
+/*           EVE Character Showroom - Version 5           */
+/*       'Improved' and maintained by Shionoya Risa       */
+/*          Originally created by DeTox MinRohim          */
+/*            Copyright (C) 2015 Shionoya Risa            */
+/**********************************************************/
+/* This program is free software: you can redistribute it */
+/*   and/or modify it under the terms of the GNU General  */
+/*     Public License as published by the Free Software   */
+/*     Foundation, either version 3 of the License, or    */
+/*           (at your option) any later version.          */
+/*  This program is distributed in the hope that it will  */
+/*  be useful, but WITHOUT ANY WARRANTY; without even the */
+/*   implied warranty of MERCHANTABILITY or FITNESS FOR   */
+/*                  A PARTICULAR PURPOSE.                 */
+/*  See the GNU General Public License for more details.  */
+/*         You should have received a copy of the         */
+/*   GNU General Public License along with this program.  */
+/*        If not, see http://www.gnu.org/licenses/        */
+/**********************************************************/
+/*   Lots of code snippets have been found in my travels  */
+/*    if you think one of those snippets is yours, tell   */
+/*         me. I will give all appropriate credits.       */
+/**********************************************************/
+/*  All EVE Online logos, images, trademarks and related  */
+/* materials are copyright (C) CCP hf http://ccpgames.com */
+/**********************************************************/
 
-include_once '../includes/eveclass.php';
-include_once '../includes/Smarty/Smarty.class.php';
+include_once 'includes/eveclass.php';
+include_once 'includes/Smarty/Smarty.class.php';
 
 $eve = New Eve();
 
@@ -29,15 +40,15 @@ $reg_rep = array();
 $eveRender = new Smarty();
 $eveRender->left_delimiter = '<!--[';
 $eveRender->right_delimiter = ']-->';
-$eveRender->compile_dir = '../cache/templates';
-$eveRender->template_dir = '../install/templates';
+$eveRender->compile_dir = 'cache/templates';
+$eveRender->template_dir = 'install/templates';
 $eveRender->caching = false;
 $eveRender->force_compile = true;
-if (is_dir('../includes/plugins')) {
-    array_push($eveRender->plugins_dir, '../includes/plugins');
+if (is_dir('includes/plugins')) {
+    array_push($eveRender->plugins_dir, 'includes/plugins');
 }
 
-include '../includes/config.php';
+include 'includes/config.php';
 
 $step = $eve->VarCleanFromInput('step');
 
@@ -83,14 +94,14 @@ $eveRender->display($template);
 
 function setEveRender()
 {
-    include_once '../includes/eveRender.class.php';
+    include_once 'includes/eveRender.class.php';
     $Render = new Smarty();
     $Render->left_delimiter = '<!--[';
     $Render->right_delimiter = ']-->';
-    $Render->compile_dir = '../cache/templates';
-    $Render->template_dir = '../install/templates';
-    if (is_dir('../includes/plugins')) {
-        array_push($Render->plugins_dir, '../includes/plugins');
+    $Render->compile_dir = 'cache/templates';
+    $Render->template_dir = 'install/templates';
+    if (is_dir('includes/plugins')) {
+        array_push($Render->plugins_dir, 'includes/plugins');
     }
     $Render->caching = false;
     $Render->force_compile = true;
@@ -121,10 +132,10 @@ function step2($step)
 
 
 
-    $folders = array('templates' => '../cache/templates');
-    $files = array('evedbconfig' => '../includes/config.php');
+    $folders = array('templates' => 'cache/templates');
+    $files = array('evedbconfig' => 'includes/config.php');
 
-    $cache = is_writable('../cache');
+    $cache = is_writable('cache');
 
     if ($cache) {
         foreach ($folders as $dirname => $dir) {
@@ -192,7 +203,7 @@ function step3($step)
     if (!empty($user) && !empty($submit)) {
 
 
-        $GLOBALS['dbconfig']['dbtype']   = 'mysql';
+        $GLOBALS['dbconfig']['dbtype']   = 'mysqli';
         $GLOBALS['dbconfig']['dbhost']   = $host;
         $GLOBALS['dbconfig']['dbname']   = $db;
         $GLOBALS['dbconfig']['dbuname']  = $user;
@@ -202,7 +213,7 @@ function step3($step)
         $GLOBALS['dbconfig']['debug']    = 0;
         $GLOBALS['dbdebug']['debug_sql'] == 0;
 
-        include '../includes/dbfunctions.php';
+        include 'includes/dbfunctions.php';
 
         if (!DBInit()) {
             $server = false;
@@ -240,7 +251,7 @@ function step3($step)
                           'dbuname'     => $user,
                           'dbpass'      => $dbpass,
                           'dbname'      => $db,
-                          'dbtype'      => 'mysql',
+                          'dbtype'      => 'mysqli',
                           'domain'      => $domain,
                           'dbtabletype' => 'MyISAM');
 
@@ -274,7 +285,7 @@ function step4($step)
     if ($data) {
 
         // at this point, we wrote the config file so we're good to include that one
-        include_once '../includes/dbfunctions.php';
+        include_once 'includes/dbfunctions.php';
         DBInit();
 
         $struct = $opt = $data = array();
@@ -295,7 +306,7 @@ function step4($step)
         }
 
         foreach ($files as $file) {
-            $sql = file_get_contents('sql/'.$file);
+            $sql = file_get_contents('install/sql/'.$file);
             $sql = explode(';', $sql);
             foreach ($sql as $query) {
                 $query = trim($query);
@@ -330,8 +341,8 @@ function step5($step)
     $do = $eve->VarCleanFromInput('do');
 
     if (!empty($submit)) {
-        include_once '../includes/dbfunctions.php';
-        include_once '../includes/charxml.php';
+        include_once 'includes/dbfunctions.php';
+        include_once 'includes/charxml.php';
 
         DBInit();
 
@@ -390,8 +401,8 @@ function step6()
 
     if ($submit) {
 
-        include_once '../includes/dbfunctions.php';
-        include_once '../includes/charxml.php';
+        include_once 'includes/dbfunctions.php';
+        include_once 'includes/charxml.php';
 
         DBInit();
 
@@ -426,6 +437,7 @@ function step6()
 
                 $name = $names[$characterID];
                 $corp = $corps[$characterID];
+                $cacheTime = date("Y-m-d H:00:00", strtotime('- 2 hour'));    
 
                 $sql = "INSERT INTO skillsheet_apis (id,
                                                          name,
@@ -454,7 +466,7 @@ function step6()
                                                          '".$eve->VarPrepForStore($data)      ."',
                                                          '".$eve->VarPrepForStore($training)      ."',
                                                          '".$eve->VarPrepForStore($queue)      ."',                                                           
-                                                         '".$eve->VarPrepForStore($cachedUntil)    ."')";
+                                                         '".$eve->VarPrepForStore($cacheTime)    ."')";
 
 
                     $dbconn->Execute($sql);
@@ -547,7 +559,7 @@ function updateInstallValue()
     global $reg_src, $reg_rep;
     add_src_rep("_INSTALLED",  'true');
 
-    $ret = modify_file('../includes/config.php', '', $reg_src, $reg_rep);
+    $ret = modify_file('includes/config.php', '', $reg_src, $reg_rep);
 
     if (preg_match("/Error/", $ret)) {
         show_error_info();
@@ -585,7 +597,7 @@ function update_dbconfig_php($args = array())
     add_src_rep("encoded",     '0');
     add_src_rep("pconnect",    '0');
     
-    $ret = modify_file('../includes/config.php', '', $reg_src, $reg_rep);
+    $ret = modify_file('includes/config.php', '', $reg_src, $reg_rep);
 
     if (preg_match("/Error/", $ret)) {
         show_error_info();
