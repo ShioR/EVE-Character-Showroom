@@ -33,6 +33,7 @@ include "../includes/plugins/function.getsigportrait.php";
 
 $name = stripslashes($_GET['n']);       // Grab this from the query string
 $nafn = str_replace('_', ' ', $name);   // MySQL friendly name (replaces any underscores with a space)
+$nafn = str_replace("'", "\'", $nafn);  // MySQL friendly name (escapes apostrophes)
 $domain = _DOMAIN;                      // Not needed, but easier to remember if I do it like this
 $sigName = 'guristas';                  // Used for for loading the bg image
 
@@ -47,7 +48,7 @@ $white = imagecolorallocate($im, 255, 255, 255);
 $darkgrey = imagecolorallocatealpha($im, 40, 40, 40, 50);
 
 // The signature text URL
-$text = file_get_contents ($domain.$name.'/newsig'); 
+$text = file_get_contents($domain.$name.'/newsig'); 
 // Location of the font to use
 $font = 'din1451e.ttf';
 
