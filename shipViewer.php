@@ -43,31 +43,54 @@ $typeName = ucwords(strtolower($name));
     
         // Connect to db using credentials from the config file
             $connect = mysqli_connect($dbconfig['dbhost'], $dbconfig['dbuname'], $dbconfig['dbpass'], $dbconfig['dbname']);
-        // Get the graphicFile and raceID from the db
-            $query = "SELECT graphicFile, raceID FROM skillsheet_ships WHERE typeName = '$typeName'";
+        // Get the graphicFile and factionID from the db
+            $query = "SELECT graphicFile, factionID FROM skillsheet_ships WHERE typeName = '$typeName'";
             $result = mysqli_query($connect, $query);
             $output = mysqli_fetch_row($result);
             $graphicFile = $output[0];
-            $race = $output[1];
+            $faction = $output[1];
         // Free result & close connection
             mysqli_free_result($result);
             mysqli_close($connect);
 
   // Set racial specific backgrounds
-    if ($race == '1') {
-        $nebula = 'res:/dx9/scene/universe/c03_cube.red';
-    } elseif ($race == '2') {    
-        $nebula = 'res:/dx9/scene/universe/m01_cube.red';
-    } elseif ($race == '4') {
-        $nebula = 'res:/dx9/scene/universe/a04_cube.red';
-    } elseif ($race == '8') {    
-        $nebula = 'res:/dx9/scene/universe/g04_cube.red';
-    } elseif ($race == '32') {
-        $nebula = 'res:/dx9/scene/universe/g04_cube.red';  
-    } elseif ($race == '64') {
-        $nebula = 'res:/dx9/scene/universe/g04_cube.red';
+        // Calamari - The Forge
+    if ($faction == '500001') {
+        $nebula = 'res:/dx9/scene/universe/c02_cube.red';
+        // Slaves - Heimatar
+    } elseif ($faction == '500002') {    
+        $nebula = 'res:/dx9/scene/universe/m02_cube.red';
+        // Amarr victor! - Domain
+    } elseif ($faction == '500003') {
+        $nebula = 'res:/dx9/scene/universe/a03_cube.red';
+        // Galscrubte - Everyshore
+    } elseif ($faction == '500004') {    
+        $nebula = 'res:/dx9/scene/universe/g03_cube.red';
+        // Guristas - Venal
+    } elseif ($faction == '500010') {    
+        $nebula = 'res:/dx9/scene/universe/c12_cube.red';
+        // Angels - Curse
+    } elseif ($faction == '500011') {    
+        $nebula = 'res:/dx9/scene/universe/m06_cube.red';
+        // Blood Raiders - Delve
+    } elseif ($faction == '500012') {    
+        $nebula = 'res:/dx9/scene/universe/a11_cube.red';
+        // ORE - Outer ring
+    } elseif ($faction == '500014') {
+        $nebula = 'res:/dx9/scene/universe/g08_cube.red';  
+        // Sisters of EVE - Pure Blind
+    } elseif ($faction == '500016') {
+        $nebula = 'res:/dx9/scene/universe/c05_cube.red';  
+        // Mordus Legon - Pure Blind
+    } elseif ($faction == '500018') {
+        $nebula = 'res:/dx9/scene/universe/c05_cube.red';  
+        // Sanshas - Stain
+    } elseif ($faction == '500019') {
+        $nebula = 'res:/dx9/scene/universe/a16_cube.red';
+        // If all else fails, must be those pesky Serpentis again, right?
+        // I heard they come from Fountain
     } else {
-        $nebula = 'res:/dx9/scene/universe/c10_cube.red';
+        $nebula = 'res:/dx9/scene/universe/g10_cube.red';
     }   
 
 ?>   
@@ -96,7 +119,7 @@ $typeName = ucwords(strtolower($name));
                 camera.maxPitch = 0.65;
                 ccpwgl.setCamera(camera);
 
-                // Load the data for the Confessor
+                // Load the data for the ship
                 var ship = scene.loadShip('<?php echo $graphicFile; ?>', whenLoaded);
 
                 var distanceScaler = 4.5;
@@ -134,7 +157,109 @@ $typeName = ucwords(strtolower($name));
                 function whenLoaded()
                 {
                     autoFocus(ship, distanceScaler)
+                var rotation = [0, 0, 0]; // Values are in degrees
+                var position = [0, 0, 0];
+                var scale = [1, 1, 1];
+                /**
+                 *  Creates a new transform from an identity matrix and supplied arguments
+                 *  @param (position) vec3 array - Position in space [x,y,z]
+                 *  @param (rotation) vec3 array - Rotation in space [x,y,z]
+                 *  @param (scale) vec3 array - Scale [x,y,z]
+                 *  @returns {mat4} Transform matrix
+                 */
+                function createTransform(rotation, position, scale)
+                {
+                        var transform = mat4.identity(mat4.create());
+                        mat4.translate(transform, position);
+                        mat4.rotate(transform, rotation[0] * ( Math.PI / 180 ), [1, 0, 0]);
+                        mat4.rotate(transform, rotation[1] * ( Math.PI / 180 ), [0, 1, 0]);
+                        mat4.rotate(transform, rotation[2] * ( Math.PI / 180 ), [0, 0, 1]);
+                        mat4.scale(transform, scale);
+                        return transform;
                 }
+                // Rotation
+                Object.defineProperty(ship, 'rotation', {
+                    get: function ()
+                    {
+                        return rotation;
+                    },
+                    set: function (vec3)
+                    {
+                        if (!ship.isLoaded())
+                        {
+                            throw new ccpwgl.IsStillLoadingError();
+                        }
+                        try
+                        {
+                            var newTransform = createTransform(vec3, position, scale);
+                            ship.setTransform(newTransform)
+                        }
+                        catch (err)
+                        {
+                            throw('Transform Error');
+                        }
+                        rotation = vec3;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                // Position
+                Object.defineProperty(ship, 'position', {
+                    get: function ()
+                    {
+                        return position;
+                    },
+                    set: function (vec3)
+                    {
+                        if (!ship.isLoaded())
+                        {
+                            throw new ccpwgl.IsStillLoadingError();
+                        }
+                        try
+                        {
+                            var newTransform = createTransform(rotation, vec3, scale);
+                            ship.setTransform(newTransform)
+                        }
+                        catch (err)
+                        {
+                            throw('Transform Error');
+                        }
+                        position = vec3;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                // Scale
+                Object.defineProperty(ship, 'scale', {
+                    get: function ()
+                    {
+                        return scale;
+                    },
+                    set: function (vec3)
+                    {
+                        if (!ship.isLoaded())
+                        {
+                            throw new ccpwgl.IsStillLoadingError();
+                        }
+                        try
+                        {
+                            var newTransform = createTransform(rotation, position, vec3);
+                            ship.setTransform(newTransform)
+                        }
+                        catch (err)
+                        {
+                            throw('Transform Error');
+                        }
+                        scale = vec3;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                // Example values
+                ship.rotation = [0, 0, 0];
+                ship.position = [0, 0, 0];
+                ship.scale = [1, 1, 1];
+            }
 
                 ccpwgl.enablePostprocessing(true);
 
