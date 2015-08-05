@@ -111,8 +111,8 @@ $typeName = ucwords(strtolower($name));
                 camera.maxDistance = 10000;
                 camera.fov = 30;
                 camera.distance = 5000;
-                camera.rotationX = -0.5;
-                camera.rotationY = 0.2;
+                camera.rotationX = 2.8;
+                camera.rotationY = 0.25;
                 camera.nearPlane = 1;
                 camera.farPlane = 10000000;
                 camera.minPitch = -0.5;
@@ -256,7 +256,7 @@ $typeName = ucwords(strtolower($name));
                     configurable: true
                 });
                 // Example values
-                ship.rotation = [0, 0, 0];
+                ship.rotation = [0, 180, 0];
                 ship.position = [0, 0, 0];
                 ship.scale = [1, 1, 1];
             }
