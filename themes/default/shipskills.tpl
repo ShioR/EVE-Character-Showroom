@@ -30,7 +30,7 @@
              <div>
               <table border="0" cellpadding="0" cellspacing="0" style="max-width: 768px;">
                 <tr>
-<td width="72" align="center"><img alt="<!--[$race]-->" title="<!--[$race]-->" src="/imgs/races/<!--[$race|lower]-->.png" width:44px; height:40px; hspace="10" /><!--<br /><!--[$race]-->--></td>
+<td width="72" align="center"><img alt="<!--[$race]-->" title="<!--[$race]-->" src="/imgs/races/<!--[$race|lower]-->.png" hspace="10" /></td>
                                <!--[foreach item='ship' from=$ships]-->
                   <td style="background-image:url('https://imageserver.eveonline.com/Render/<!--[$ship.typeID]-->_64.png'); background-position:center; background-repeat:no-repeat; cursor: pointer; padding: 3px;" valign="top" align="center" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"><a href="/ship/<!--[$ship.typeName]-->" rel="iframe-full-full" class="pirobox" title="<!--[$ship.typeName]-->"><!--[if $ship.tag >= 4]--><img src="/imgs/ships/faction.png"/><!--[elseif $ship.tag == 3]--><img src="/imgs/ships/tech3.png"/><!--[elseif $ship.tag == 2]--><img src="/imgs/ships/tech2.png"/><!--[else $ship.tag == 1]--><img src="/imgs/ships/t1.png"/><!--[/if]--><br /></td>
                 <!--[/foreach]-->
