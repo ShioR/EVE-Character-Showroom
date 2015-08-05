@@ -762,13 +762,18 @@ function ships($config = array())
     $skillsearch = $assign['skillsearch'];
 
     $shipgroups = Shipgroups();
-    $races = array(1  => 'Caldari',
-                   2  => 'Minmatar',
-                   4  => 'Amarr',
-                   8  => 'Gallente',
-                   16  => 'Pirate',
-                   32  => 'ORE',
-                   64  => 'SoE');
+    $races = array(500001  => 'Caldari',
+                   500002  => 'Minmatar',
+                   500003  => 'Amarr',
+                   500004  => 'Gallente',
+                   500010  => 'Guristas',
+                   500011  => 'Angel',
+                   500012  => 'BloodRaiders',
+                   500014  => 'ORE',
+                   500016  => 'SoE',
+                   500018  => 'Mordus',
+                   500019  => 'Sansha',
+                   500020  => 'Serpentis');
 
     $dbconn   =& DBGetConn(true);
 
@@ -780,12 +785,12 @@ function ships($config = array())
                              groupID,
                              typeName,
                              tag,
-                             raceID,
+                             factionID,
                              graphicID,
                              graphicFile
                     FROM     `skillsheet_ships`
                     WHERE    `skillsheet_ships`.groupID   = '".$grouID."'
-                    AND      `skillsheet_ships`.raceID    = '".$raceNo."'
+                    AND      `skillsheet_ships`.factionID    = '".$raceNo."'
                     ORDER BY `skillsheet_ships`.typeName";
 
             $result = $dbconn->Execute($sql);
