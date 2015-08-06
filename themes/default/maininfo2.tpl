@@ -4,8 +4,7 @@
 <table style="margin-left: 80px;" align="center" border="0" cellpadding="2" cellspacing="0" summary="Character Info">
  <tbody>
           <tr>
-            <td valign="top" align="center">
-            	<table style="margin:0px 3px 3px 3px; width:256px; height:256px; background: url(https://imageserver.eveonline.com/Character/<!--[$characterID]-->_256.jpg);" cellpadding="0" cellspacing="0">
+                <a href="https://imageserver.eveonline.com/Character/<!--[$characterID]-->_1024.jpg" rel="iframe-1024-1024" class="pirobox"><table style="margin:0px 3px 3px 3px; width:256px; height:256px; cursor:zoom-in; background: url(https://imageserver.eveonline.com/Character/<!--[$characterID]-->_256.jpg);" cellpadding="0" cellspacing="0"></a>
             		<tr>
             			<td><div id="corpLogoContainer" style="border:1px solid gray;">
             			     <div id="corpLogo"> <a href="http://evemaps.dotlan.net/corp/<!--[$corporationName|replace:" ":"_"]-->" rel="iframe-875-610" class="pirobox">
