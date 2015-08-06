@@ -64,14 +64,14 @@
         <div style="margin-top: 50px; margin-bottom: -24px;">
           <div style="margin-top: 10px;">
             <div style="border-top: 1px solid rgb(67, 67, 67); border-bottom: 1px solid rgb(67, 67, 67); background: rgb(44, 44, 56) url(/imgs/<!--[$groupid]-->.jpg)  no-repeat scroll 74px 5px; margin-bottom: 10px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 21px;"></div>
-             <a class="sklnk" title="<!--[$groupname]-->"><img alt="<!--[$skillgroups.$groupid]-->" src="/imgs/<!--[$groupid]-->.png" style="border: 0px none ; width: 64px; height: 64px; top: -52px;" class="newsTitleImage" /></a>
+             <div class="sklnk" title="<!--[$groupname]-->"><img alt="<!--[$skillgroups.$groupid]-->" src="/imgs/<!--[$groupid]-->.png" style="border: 0px none ; width: 64px; height: 64px; top: -52px;" class="newsTitleImage" /></div>
             <div style="margin-left: 82px;">
               <!--[foreach item='skill' key='skillid' from=$skillgroup]-->
 							<!--[assign var='SkillLevel' value=$skill.level scope="global"]-->
 							<!--[assign var='currentSPforSkill' value=$skill.skillpoints]-->
 							<!--[assign var='totalSPforSkill' value=$skill.skilllevel5]-->
 							<!--[math equation="(x / y) * z" x=$currentSPforSkill y=$totalSPforSkill z=100 format="%.1f" assign='TotalPercentage']-->
-              <div style="border-bottom: 1px dotted rgb(80, 80, 80); padding: 2.5px; <!--[if $skill.flag eq 61]-->background-color: #303030;" onmouseout="this.style.backgroundColor='#303030'"<!--[/if]-->" onmouseover="this.style.backgroundColor='#303030'; this.style.cursor='pointer'" onmouseout="this.style.backgroundColor='#1B1B1B'">
+              <div style="border-bottom: 1px dotted rgb(80, 80, 80); padding: 2.5px; <!--[if $skill.flag eq 61]-->background-color: #303030;" onmouseout="this.style.backgroundColor='#303030'"<!--[/if]-->" onmouseover="this.style.backgroundColor='#303030'; this.style.cursor='default'" onmouseout="this.style.backgroundColor='#1B1B1B'">
 					<!--[if $skill.flag eq 61]-->
 						<div style="float: right;margin-top:4px;"><img alt="level<!--[$skill.level]-->" src="/imgs/level<!--[math equation="x + y" x=$skill.level y=1]-->_act.gif" width:48px; height:8px; /></div>
 					<!--[elseif $queuePos0 eq $skill.typeID]-->
@@ -129,9 +129,9 @@
 					<!--[/if]-->
                 <div style="line-height: 1.45em; font-size: 11px;">
                 <!--[if $TotalPercentage neq 100.0]-->
-                  <a style="color: white; text-decoration: none;" onclick="javascript:i(document.getElementById('<!--[$skill.typeID]-->'));" href="#toggle" id="s<!--[$skill.typeID]-->"><!--[$skill.typeName]--> / <span style="font-size: x-small;"><i>Rank <!--[$skill.rank]--></i> / <i>SP: <!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> / <!--[$TotalPercentage]-->%</a></i></span>         
+                  <div style="color:white; text-decoration:none; cursor:help;" onclick="javascript:i(document.getElementById('<!--[$skill.typeID]-->'));" href="#toggle" id="s<!--[$skill.typeID]-->"><!--[$skill.typeName]--> / <span style="font-size: x-small;"><i>Rank <!--[$skill.rank]--></i> / <i>SP: <!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> / <!--[$TotalPercentage]-->%</div></i></span>         
                 <!--[else]-->
-                	<a style="color:white; text-decoration:none;" onclick="javascript:i(document.getElementById('<!--[$skill.typeID]-->'));" href="#toggle" id="s<!--[$skill.typeID]-->"><!--[$skill.typeName]--> / <span style="color:gold; font-size: x-small;"><i>Rank <!--[$skill.rank]--></i> / <i>SP: <!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> / <!--[$TotalPercentage]-->%</a></i></span>
+                	<div style="color:white; text-decoration:none; cursor:help;" onclick="javascript:i(document.getElementById('<!--[$skill.typeID]-->'));" href="#toggle" id="s<!--[$skill.typeID]-->"><!--[$skill.typeName]--> / <span style="color:gold; font-size: x-small;"><i>Rank <!--[$skill.rank]--></i> / <i>SP: <!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> / <!--[$TotalPercentage]-->%</div></i></span>
                 <!--[/if]-->
                 </div>
                 <!--[if $skill.flag eq 61]-->
