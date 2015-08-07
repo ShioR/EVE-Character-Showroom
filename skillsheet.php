@@ -1130,7 +1130,7 @@ function Shipgroups()
                  '324' => 'Assault Ships',
                  '420' => 'Destroyers',
                  '541' => 'Interdictors',
-                 '1305' => 'Strategic Destroyers',
+                 '1305' => 'Tactical Destroyers',
                  '26'  => 'Cruisers',
                  '358' => 'Heavy Assault Ships',
                  '894' => 'Heavy Interdictors',
