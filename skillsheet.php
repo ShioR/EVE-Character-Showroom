@@ -253,8 +253,7 @@ function AddNew($config)
                     $corpID = $corpsID[$characterID];
                     $alliance = $alliances[$characterID];
                     $allianceID = $alliancesID[$characterID];
-                   // $cacheTime = date("Y-m-d H:00:00", strtotime('- 2 hour'));        
-                    $cacheTime = date("0000-00-00 00:00:00");        
+                    $cacheTime = date("Y-m-d 00:00:00");         
 
                     $sql = "INSERT INTO skillsheet_apis (id,
                                                          name,
@@ -282,7 +281,7 @@ function AddNew($config)
                                                          '".$eve->VarPrepForStore($characterInfo)      ."',
                                                          '".$eve->VarPrepForStore($data)      ."',
                                                          '".$eve->VarPrepForStore($training)      ."',
-                                                         '".$eve->VarPrepForStore($queue)      ."',                                                             
+                                                         '".$eve->VarPrepForStore($queue)      ."',                                                            
                                                          '".$eve->VarPrepForStore($cacheTime)    ."')";
 
 
@@ -351,7 +350,7 @@ function charlist($config)
     global $eveRender;                 
 
     $characters = GetAllCharacters();
-    array_multisort($characters, SORT_DESC);
+    array_multisort($characters, SORT_ASC);
 
     $eveRender->Assign('charlist',  $characters);
     $eveRender->Assign('charcount', count($characters));    
@@ -551,17 +550,17 @@ function index($config = array())
 		global $eveRender;
 		$eveRender->Display('errorheader.tpl');
 
-	echo '<br /><br />
+  echo '<br /><br />
   <div id="content" class="mcenter" style="float:center;width:908px;margin-top:50px;" >
     <table summary="Characters List" style="border: #666666 1px solid; margin-left: 10px; width:910px;">
     <thead>
       <tr style="background: rgb(44, 44, 56);">
-        <th colspan="<!--[$charcount]-->" class="dataTableHeader">An API error occured</th>
+        <th colspan="<!--[$charcount]-->" class="dataTableHeader">NO INFORMATION FOUND!</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>The EVE Online API has produced an error: <span class="statusmsg"><strong>'.$xml['error']. '</strong></span> Next API Update: '.$errortime.' <br /> Changed your API Key? <a href="../settings/");" style="cursor: pointer; color:gold;">Update it!</a><br />You can check the status of the API <a href="http://eve-offline.net/api/">here.</a><br /><a href="javascript:history.back()" title="Go back">Go Back</a></td>
+        <td>No information about this character was retrieved last time the API was queried.<br />This will likely resolve itself, check back in an hour to try again.<br />You can check the status of the API <a href="http://eve-offline.net/api/" target="_blank">here.</a><br /><a href="javascript:history.back()" title="Go back">Go Back</a></td>
       </tr>   
      </tbody>
     </table>  
@@ -762,25 +761,25 @@ function ships($config = array())
     $skillsearch = $assign['skillsearch'];
 
     $shipgroups = Shipgroups();
-    $races = array(500001  => 'Caldari',
-                   500002  => 'Minmatar',
-                   500003  => 'Amarr',
-                   500004  => 'Gallente',
-                   500010  => 'Guristas',
-                   500011  => 'Angel',
-                   500012  => 'BloodRaiders',
-                   500014  => 'ORE',
-                   500016  => 'SoE',
-                   500018  => 'Mordus',
-                   500019  => 'Sansha',
-                   500020  => 'Serpentis');
+    $factions = array(500001  => 'Caldari State',
+                      500002  => 'Minmatar Republic',
+                      500003  => 'Amarr Empire',
+                      500004  => 'Gallente Federation',
+                      500010  => 'Guristas Pirates',
+                      500011  => 'Angel Cartel',
+                      500012  => 'Blood Raider Covenant',
+                      500014  => 'ORE',
+                      500016  => 'Servant Sisters of EVE',
+                      500018  => 'Mordu\'s Legion Command',
+                      500019  => 'Sansha\'s Nation',
+                      500020  => 'Serpentis');
 
     $dbconn   =& DBGetConn(true);
 
     $ships = array();
 
        foreach ($shipgroups as $grouID => $group) {
-        foreach ($races as $raceNo => $shiprace) {
+        foreach ($factions as $factionNo => $shipfaction) {
             $sql = "SELECT   typeID,
                              groupID,
                              typeName,
@@ -790,7 +789,7 @@ function ships($config = array())
                              graphicFile
                     FROM     `skillsheet_ships`
                     WHERE    `skillsheet_ships`.groupID   = '".$grouID."'
-                    AND      `skillsheet_ships`.factionID    = '".$raceNo."'
+                    AND      `skillsheet_ships`.factionID    = '".$factionNo."'
                     ORDER BY `skillsheet_ships`.typeName";
 
             $result = $dbconn->Execute($sql);
@@ -800,7 +799,7 @@ function ships($config = array())
             }
 
             for (; !$result->EOF; $result->MoveNext()) {
-                list($typeID, $groupID, $typeName, $tag, $raceID, $graphicID, $graphicFile) = $result->fields;
+                list($typeID, $groupID, $typeName, $tag, $factionID, $graphicID, $graphicFile) = $result->fields;
 
                 $required  = GetRequiredSkills($typeID, $groupID, $skillsearch);
 
@@ -817,15 +816,15 @@ function ships($config = array())
                 }
 
                 if ($canfly) {
-                    $shipscanfly[$group][$shiprace][$groupID][] = array('typeID'    => $typeID,
+                    $shipscanfly[$group][$shipfaction][$groupID][] = array('typeID'  => $typeID,
                                                                     'groupID'        => $groupID,
                                                                     'group'          => $group,
                                                                     'typeName'       => $typeName,
-                                                                    'tag'			       => $tag,
+                                                                    'tag'			 => $tag,
                                                                     'graphicID'      => $graphicID,
                                                                     'graphicFile'    => $graphicFile,
-                                                                    'raceID'         => $raceID,
-                                                                    'race'           => $races[$raceID],
+                                                                    'factionID'      => $factionID,
+                                                                    'factionName'    => $factions[$factionID],
                                                                     'requiredSkill1' => $required['requiredSkill1'],
                                                                     'requiredSkill2' => ((isset($required['requiredSkill2'])) ? $required['requiredSkill2'] : ''),
                                                                     'requiredSkill3' => ((isset($required['requiredSkill3'])) ? $required['requiredSkill3'] : ''));
@@ -1173,12 +1172,12 @@ function GetTrainingData($trainfile = '')
     <table summary="Characters List" style="border: #666666 1px solid; margin-left: 10px; width:910px;">
     <thead>
       <tr style="background: rgb(44, 44, 56);">
-        <th colspan="<!--[$charcount]-->" class="dataTableHeader">NO INFORMATION FOUND!</th>
+        <th colspan="<!--[$charcount]-->" class="dataTableHeader">No training information</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>No information about this character was retrieved last time the API was queried.<br />This will likely resolve itself, check back in an hour to try again.<br />You can check the status of the API <a href="http://eve-offline.net/api/" target="_blank">here.</a><br /><a href="javascript:history.back()" title="Go back">Go Back</a></td>
+        <td>No information about this character was retrieved last time the API was queried. <br /> This will likely resolve itself, alternatively you can check back in an hour to try again.<br />You can check the status of the API <a href="http://eve-offline.net/api/">here.</a><br /><a href="javascript:history.back()" title="Go back">Go Back</a></td>
       </tr>   
      </tbody>
     </table>  
@@ -1400,17 +1399,17 @@ function GetRequiredSkills($typeid, $groupid, &$skillsearch)
         $row = $result->GetRowAssoc(2);
 
         if ($row['attributeName'] == 'requiredSkill1') {
-            $required['requiredSkill1']['race']         = $row['raceName'];
+            $required['requiredSkill1']['faction']      = $row['factionName'];
             $required['requiredSkill1']['skillName']    = ((isset($row['SkillName'])) ? $row['SkillName'] : $row['SkillName2']);
             $required['requiredSkill1']['groupid']      = $row['groupID'];
             $required['requiredSkill1']['typeid']       = $row['typeID'];
         } else if ($row['attributeName'] == 'requiredSkill2') {
-            $required['requiredSkill2']['race']         = $row['raceName'];
+            $required['requiredSkill2']['faction']      = $row['factionName'];
             $required['requiredSkill2']['skillName']    = ((isset($row['SkillName'])) ? $row['SkillName'] : $row['SkillName2']);
             $required['requiredSkill2']['groupid']      = $row['groupID'];
             $required['requiredSkill2']['typeid']       = $row['typeID'];
         } else if ($row['attributeName'] == 'requiredSkill3') {
-            $required['requiredSkill3']['race']         = $row['raceName'];
+            $required['requiredSkill3']['faction']      = $row['factionName'];
             $required['requiredSkill3']['skillName']    = ((isset($row['SkillName'])) ? $row['SkillName'] : $row['SkillName2']);
             $required['requiredSkill3']['groupid']      = $row['groupID'];
             $required['requiredSkill3']['typeid']       = $row['typeID'];
@@ -1427,8 +1426,8 @@ function GetRequiredSkills($typeid, $groupid, &$skillsearch)
                           'valueInt'      => ((isset($row['valueInt'])) ? $row['valueInt'] : $row['valueFloat']),
                           'groupID'       => $row['groupID'],
                           'typeName'      => $row['typeName'],
-                          'raceID'        => $row['raceID'],
-                          'raceName'      => $row['raceName'],
+                          'factionID'     => $row['factionID'],
+                          'factionName'   => $row['factionName'],
                           'skillName'     => ((isset($row['SkillName'])) ? $row['SkillName'] : $row['SkillName2']));
     }
 
