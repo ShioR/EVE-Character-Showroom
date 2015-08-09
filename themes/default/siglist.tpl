@@ -14,7 +14,7 @@
 <br />
   <div style="margin-top: 40px;">
         <div style="margin-top: 10px;">
-          <div style="border-top: 1px solid rgb(67, 67, 67); border-bottom: 1px solid rgb(67, 67, 67); background: rgb(44, 44, 56)  no-repeat scroll 24px 5px; margin-bottom: 10px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 21px;">
+          <div style="background: rgb(44, 44, 56)  no-repeat scroll 24px 5px; margin-bottom: 10px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 23px;">
             <font style="border: 0px none; position:relative; left: 15px; top: 4px; font-weight: bold;">Signatures for <!--[$name]--></font>
           </div>
         </div>
@@ -165,7 +165,7 @@
               </div>
         <br />
         <div style="margin-top: 10px;">
-          <div style="border-top: 1px solid rgb(67, 67, 67); border-bottom: 1px solid rgb(67, 67, 67); background: rgb(44, 44, 56)  no-repeat scroll 24px 5px; margin-bottom: 10px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 21px; text-align:center;">
+          <div style="background: rgb(44, 44, 56)  no-repeat scroll 24px 5px; margin-bottom: 10px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 23px; text-align:center;">
             <font style="border: 0px none; position:relative; left: 15px; top: 4px; font-weight: bold;">Legacy signatures</font>
           </div>
         </div>
