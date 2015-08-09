@@ -14,16 +14,17 @@
 <!--[strip]-->          
 <br />
 
-      <!--[foreach item='races' key='shipclass' from=$shipscanfly]-->
-      <div style="margin-top: 40px; margin-bottom: -24px;">
-        <div style="margin-top: 10px;">
-          <div style="background: rgb(44, 44, 56) url(/imgs/<!--[$shipclass|lower|replace:" ":"_"]-->.png) no-repeat scroll 24px 5px; margin-bottom: 10px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 23px;">
+      <!--[foreach item='races' key='shipclass' from=$shipscanfly]--><div style="margin-top: 50px; margin-bottom: -24px;">
+          <div style="margin-top: 10px;">
+            <div style="background: rgb(44, 44, 56) url(/imgs/<!--[$shipclass|lower|replace:" ":"_"]-->.png)  no-repeat scroll 74px 5px; margin-bottom: 10px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 23px;"></div>
+             <div class="sklnk" title="<!--[$shipclass]-->"><img alt="<!--[$shipclass]-->" src="/imgs/ships/<!--[$shipclass|lower|replace:" ":"_"]-->.png" style="border: 0px none ; width: 64px; height: 64px; top: -52px;" class="newsTitleImage" /></div>
+            <div style="margin-left: 82px;">
           </div>
         </div>
       </div>
         <div style="margin-top: 50px;">
       <!--[foreach item='groups' key='race' from=$races]-->
-            <div style="margin-left: 22px;">
+            <div style="margin-left: 25px;">
             <!--[foreach item='ships' key='group' from=$groups]-->
              <div>
               <table border="0" cellpadding="0" cellspacing="0" style="max-width: 768px;">
