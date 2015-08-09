@@ -63,7 +63,7 @@
         <!--[/if]-->
         <div style="margin-top: 50px; margin-bottom: -24px;">
           <div style="margin-top: 10px;">
-            <div style="border-top: 1px solid rgb(67, 67, 67); border-bottom: 1px solid rgb(67, 67, 67); background: rgb(44, 44, 56) url(/imgs/<!--[$groupid]-->.jpg)  no-repeat scroll 74px 5px; margin-bottom: 10px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 21px;"></div>
+            <div style="background: rgb(44, 44, 56) url(/imgs/<!--[$groupid]-->.jpg)  no-repeat scroll 74px 5px; margin-bottom: 10px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 23px;"></div>
              <div class="sklnk" title="<!--[$groupname]-->"><img alt="<!--[$skillgroups.$groupid]-->" src="/imgs/<!--[$groupid]-->.png" style="border: 0px none ; width: 64px; height: 64px; top: -52px;" class="newsTitleImage" /></div>
             <div style="margin-left: 82px;">
               <!--[foreach item='skill' key='skillid' from=$skillgroup]-->
