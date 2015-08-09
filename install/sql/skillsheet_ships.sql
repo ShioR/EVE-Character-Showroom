@@ -211,14 +211,14 @@ INSERT INTO `skillsheet_ships` VALUES ('22474', '540', 'Damnation', '2', '500003
 INSERT INTO `skillsheet_ships` VALUES ('22544', '543', 'Hulk', '2', '500014', '1', '2938', 'oreba3_t2:orebase:ore');
 INSERT INTO `skillsheet_ships` VALUES ('22546', '543', 'Skiff', '2', '500014', '1', '2940', 'oreba1_t2:orebase:ore');
 INSERT INTO `skillsheet_ships` VALUES ('22548', '543', 'Mackinaw', '2', '500014', '1', '2939', 'oreba2_t2:orebase:ore');
-INSERT INTO `skillsheet_ships` VALUES ('22852', '547', 'Hel', '1', '500002', '1', '2894', 'mca1_t1:minmatarbase:minmatar');
+INSERT INTO `skillsheet_ships` VALUES ('22852', '659', 'Hel', '1', '500002', '1', '2894', 'mca1_t1:minmatarbase:minmatar');
 INSERT INTO `skillsheet_ships` VALUES ('23757', '547', 'Archon', '1', '500003', '1', '2905', 'aca2_t1:amarrbase:amarr');
 INSERT INTO `skillsheet_ships` VALUES ('23773', '30', 'Ragnarok', '1', '500002', '1', '2906', 'mt1_t1:minmatarbase:minmatar');
 INSERT INTO `skillsheet_ships` VALUES ('23911', '547', 'Thanatos', '1', '500004', '1', '2932', 'gca2_t1:gallentebase:gallente');
-INSERT INTO `skillsheet_ships` VALUES ('23913', '547', 'Nyx', '1', '500004', '1', '2909', 'gca1_t1:gallentebase:gallente');
+INSERT INTO `skillsheet_ships` VALUES ('23913', '659', 'Nyx', '1', '500004', '1', '2909', 'gca1_t1:gallentebase:gallente');
 INSERT INTO `skillsheet_ships` VALUES ('23915', '547', 'Chimera', '1', '500001', '1', '2931', 'cca1_t1:caldaribase:caldari');
-INSERT INTO `skillsheet_ships` VALUES ('23917', '547', 'Wyvern', '1', '500001', '1', '2928', 'cca2_t1:caldaribase:caldari');
-INSERT INTO `skillsheet_ships` VALUES ('23919', '547', 'Aeon', '1', '500003', '1', '2911', 'aca1_t1:amarrbase:amarr');
+INSERT INTO `skillsheet_ships` VALUES ('23917', '659', 'Wyvern', '1', '500001', '1', '2928', 'cca2_t1:caldaribase:caldari');
+INSERT INTO `skillsheet_ships` VALUES ('23919', '659', 'Aeon', '1', '500003', '1', '2911', 'aca1_t1:amarrbase:amarr');
 INSERT INTO `skillsheet_ships` VALUES ('24483', '547', 'Nidhoggur', '1', '500002', '1', '2929', 'mca2_t1:minmatarbase:minmatar');
 INSERT INTO `skillsheet_ships` VALUES ('24688', '27', 'Rokh', '1', '500001', '1', '3170', 'cb3_t1:caldaribase:caldari');
 INSERT INTO `skillsheet_ships` VALUES ('24690', '27', 'Hyperion', '1', '500004', '1', '3207', 'gb3_t1:gallentebase:gallente');
@@ -258,7 +258,7 @@ INSERT INTO `skillsheet_ships` VALUES ('2834', '324', 'Utu', '2', '500004', '1',
 INSERT INTO `skillsheet_ships` VALUES ('32207', '324', 'Freki', '2', '500002', '1', '3799', 'mf4_vii:tournament-vii:minmatar');
 INSERT INTO `skillsheet_ships` VALUES ('2836', '358', 'Adrestia', '2', '500004', '1', '10006', 'gc4_viii:tournament-viii:gallente');
 INSERT INTO `skillsheet_ships` VALUES ('32209', '358', 'Mimir', '2', '500002', '1', '3800', 'mc2_vii:tournament-vii:minmatar');
-INSERT INTO `skillsheet_ships` VALUES ('3514', '547', 'Revenant', '8', '500019', '1', '10038', 'sca1_t1:sanshabase:sansha');
+INSERT INTO `skillsheet_ships` VALUES ('3514', '659', 'Revenant', '8', '500019', '1', '10038', 'sca1_t1:sanshabase:sansha');
 INSERT INTO `skillsheet_ships` VALUES ('3516', '324', 'Malice', '2', '500003', '1', '10950', 'af3_ix:tournament-ix:amarr');
 INSERT INTO `skillsheet_ships` VALUES ('3518', '358', 'Vangel', '2', '500003', '1', '10951', 'ac2_ix:tournament-ix:amarr');
 INSERT INTO `skillsheet_ships` VALUES ('4302', '419', 'Oracle', '1', '500003', '1', '11775', 'abc3_t1:amarrbase:amarr');
@@ -267,7 +267,7 @@ INSERT INTO `skillsheet_ships` VALUES ('4308', '419', 'Talos', '1', '500004', '1
 INSERT INTO `skillsheet_ships` VALUES ('4310', '419', 'Tornado', '1', '500002', '1', '11778', 'mbc3_t1:minmatarbase:minmatar');
 INSERT INTO `skillsheet_ships` VALUES ('32788', '324', 'Cambion', '2', '500001', '1', '20136', 'cf7_x:tournament-x:caldari');
 INSERT INTO `skillsheet_ships` VALUES ('32790', '832', 'Etana', '2', '500001', '1', '20137', 'cc1_x:tournament-x:caldari');
-INSERT INTO `skillsheet_ships` VALUES ('32880', '25', 'Venture', '1', '500014', '1', '20198', 'oref1_t1:orebase:ore');
+INSERT INTO `skillsheet_ships` VALUES ('32880', '1283', 'Venture', '1', '500014', '1', '20198', 'oref1_t1:orebase:ore');
 INSERT INTO `skillsheet_ships` VALUES ('32878', '420', 'Talwar', '1', '500002', '1', '20202', 'mde2_t1:minmatarbase:minmatar');
 INSERT INTO `skillsheet_ships` VALUES ('32872', '420', 'Algos', '1', '500004', '1', '20201', 'gde2_t1:gallentebase:gallente');
 INSERT INTO `skillsheet_ships` VALUES ('32876', '420', 'Corax', '1', '500001', '1', '20200', 'cde2_t1:caldaribase:caldari');
@@ -279,7 +279,7 @@ INSERT INTO `skillsheet_ships` VALUES ('33157', '419', 'Hurricane Fleet Issue', 
 INSERT INTO `skillsheet_ships` VALUES ('33468', '25', 'Astero', '4', '500016', '1', '20386', 'soef1_t1:soebase:soe');
 INSERT INTO `skillsheet_ships` VALUES ('33470', '26', 'Stratios', '4', '500016', '1', '20385', 'soec1_t1:soebase:soe');
 INSERT INTO `skillsheet_ships` VALUES ('33472', '27', 'Nestor', '4', '500016', '1', '20384', 'soeb1_t1:soebase:soe');
-INSERT INTO `skillsheet_ships` VALUES ('33697', '25', 'Prospect', '2', '500014', '1', '20600', 'oref1_t2b:development:ore');
+INSERT INTO `skillsheet_ships` VALUES ('33697', '1283', 'Prospect', '2', '500014', '1', '20600', 'oref1_t2b:development:ore');
 INSERT INTO `skillsheet_ships` VALUES ('33820', '27', 'Barghest', '4', '500018', '1', '20615', 'morb1_t1:mordubase:mordu');
 INSERT INTO `skillsheet_ships` VALUES ('33816', '25', 'Garmur', '4', '500018', '1', '20616', 'morf1_t1:mordubase:mordu');
 INSERT INTO `skillsheet_ships` VALUES ('33818', '26', 'Orthrus', '4', '500018', '1', '20614', 'morc1_t1:mordubase:mordu');
