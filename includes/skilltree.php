@@ -1193,40 +1193,40 @@ $skillsource[1220][25530]['groupID'] = '1220';
 $skillsource[1220][25530]['groupName'] = 'Neural Enhancement';
 
 ////////////////////////////////////////////////////////////////////////// PLANET MANAGEMENT
-$skillsource[1044][2403]['typeName'] = 'Advanced Planetology';
-$skillsource[1044][2403]['rank'] = '5';
-$skillsource[1044][2403]['typeID'] = '2403';
-$skillsource[1044][2403]['skillCost'] = '7500000';
-$skillsource[1044][2403]['groupID'] = '1044';
-$skillsource[1044][2403]['groupName'] = 'Planet Management';
+$skillsource[1241][2403]['typeName'] = 'Advanced Planetology';
+$skillsource[1241][2403]['rank'] = '5';
+$skillsource[1241][2403]['typeID'] = '2403';
+$skillsource[1241][2403]['skillCost'] = '7500000';
+$skillsource[1241][2403]['groupID'] = '1044';
+$skillsource[1241][2403]['groupName'] = 'Planet Management';
 
-$skillsource[1044][2505]['typeName'] = 'Command Center Upgrades';
-$skillsource[1044][2505]['rank'] = '4';
-$skillsource[1044][2505]['typeID'] = '2505';
-$skillsource[1044][2505]['skillCost'] = '500000';
-$skillsource[1044][2505]['groupID'] = '1044';
-$skillsource[1044][2505]['groupName'] = 'Planet Management';
+$skillsource[1241][2505]['typeName'] = 'Command Center Upgrades';
+$skillsource[1241][2505]['rank'] = '4';
+$skillsource[1241][2505]['typeID'] = '2505';
+$skillsource[1241][2505]['skillCost'] = '500000';
+$skillsource[1241][2505]['groupID'] = '1044';
+$skillsource[1241][2505]['groupName'] = 'Planet Management';
 
-$skillsource[1044][2495]['typeName'] = 'Interplanetary Consolidation';
-$skillsource[1044][2495]['rank'] = '4';
-$skillsource[1044][2495]['typeID'] = '2495';
-$skillsource[1044][2495]['skillCost'] = '500000';
-$skillsource[1044][2495]['groupID'] = '1044';
-$skillsource[1044][2495]['groupName'] = 'Planet Management';
+$skillsource[1241][2495]['typeName'] = 'Interplanetary Consolidation';
+$skillsource[1241][2495]['rank'] = '4';
+$skillsource[1241][2495]['typeID'] = '2495';
+$skillsource[1241][2495]['skillCost'] = '500000';
+$skillsource[1241][2495]['groupID'] = '1044';
+$skillsource[1241][2495]['groupName'] = 'Planet Management';
 
-$skillsource[1044][2406]['typeName'] = 'Planetology';
-$skillsource[1044][2406]['rank'] = '3';
-$skillsource[1044][2406]['typeID'] = '2406';
-$skillsource[1044][2406]['skillCost'] = '1000000';
-$skillsource[1044][2406]['groupID'] = '1044';
-$skillsource[1044][2406]['groupName'] = 'Planet Management';
+$skillsource[1241][2406]['typeName'] = 'Planetology';
+$skillsource[1241][2406]['rank'] = '3';
+$skillsource[1241][2406]['typeID'] = '2406';
+$skillsource[1241][2406]['skillCost'] = '1000000';
+$skillsource[1241][2406]['groupID'] = '1044';
+$skillsource[1241][2406]['groupName'] = 'Planet Management';
 
-$skillsource[1044][13279]['typeName'] = 'Remote Sensing';
-$skillsource[1044][13279]['rank'] = '1';
-$skillsource[1044][13279]['typeID'] = '13279';
-$skillsource[1044][13279]['skillCost'] = '250000';
-$skillsource[1044][13279]['groupID'] = '1044';
-$skillsource[1044][13279]['groupName'] = 'Planet Management';
+$skillsource[1241][13279]['typeName'] = 'Remote Sensing';
+$skillsource[1241][13279]['rank'] = '1';
+$skillsource[1241][13279]['typeID'] = '13279';
+$skillsource[1241][13279]['skillCost'] = '250000';
+$skillsource[1241][13279]['groupID'] = '1044';
+$skillsource[1241][13279]['groupName'] = 'Planet Management';
 
 ////////////////////////////////////////////////////////////////////////// PRODUCTION
 $skillsource[268][3396]['typeName'] = 'Advanced Industrial Ship Construction';
