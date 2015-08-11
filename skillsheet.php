@@ -253,7 +253,7 @@ function AddNew($config)
                     $corpID = $corpsID[$characterID];
                     $alliance = $alliances[$characterID];
                     $allianceID = $alliancesID[$characterID];
-                    $cacheTime = date("Y-m-d 00:00:00");         
+                    $cacheTime = date("2000-m-d 13:37:00");         
 
                     $sql = "INSERT INTO skillsheet_apis (id,
                                                          name,
