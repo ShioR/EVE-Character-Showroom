@@ -207,7 +207,7 @@ INSERT INTO `skillsheet_ships` VALUES ('22464', '541', 'Flycatcher', '2', '50000
 INSERT INTO `skillsheet_ships` VALUES ('22466', '540', 'Astarte', '2', '500004', '1', '2798', 'gbc1_t2a:duvolle:gallente');
 INSERT INTO `skillsheet_ships` VALUES ('22468', '540', 'Claymore', '2', '500002', '1', '2794', 'mbc1_t2c:sebiestor:minmatar');
 INSERT INTO `skillsheet_ships` VALUES ('22470', '540', 'Nighthawk', '2', '500001', '1', '2801', 'cbc2_t2:kaalakiota:caldari');
-INSERT INTO `skillsheet_ships` VALUES ('22474', '540', 'Damnation', '2', '500003', '1', '2804', 'ac1_t2a:khanid:amarr');
+INSERT INTO `skillsheet_ships` VALUES ('22474', '540', 'Damnation', '2', '500003', '1', '2804', 'abc1_t2a:khanid:amarr');
 INSERT INTO `skillsheet_ships` VALUES ('22544', '543', 'Hulk', '2', '500014', '1', '2938', 'oreba3_t2:orebase:ore');
 INSERT INTO `skillsheet_ships` VALUES ('22546', '543', 'Skiff', '2', '500014', '1', '2940', 'oreba1_t2:orebase:ore');
 INSERT INTO `skillsheet_ships` VALUES ('22548', '543', 'Mackinaw', '2', '500014', '1', '2939', 'oreba2_t2:orebase:ore');
