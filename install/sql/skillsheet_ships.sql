@@ -288,3 +288,9 @@ INSERT INTO `skillsheet_ships` VALUES ('34317', '1305', 'Confessor', '3', '50000
 INSERT INTO `skillsheet_ships` VALUES ('34562', '1305', 'Svipul', '3', '500002', '1', '21052', 'mde3_t3:minmatarbase:minmatar');
 INSERT INTO `skillsheet_ships` VALUES ('34828', '1305', 'Jackdaw', '3', '500001', '1', '21135', 'cde3_t3:caldaribase:caldari');
 INSERT INTO `skillsheet_ships` VALUES ('35683', '1305', 'Hecate', '3', '500004', '1', '21150', 'gde3_t3:gallentebase:gallente');
+INSERT INTO `skillsheet_ships` VALUES ('33397', '830', 'Chremoas', '4', '500011', '1', '20344', 'angf1_xi:tournament-xi:angel');
+INSERT INTO `skillsheet_ships` VALUES ('33395', '833', 'Moracha', '4', '500011', '1', '20345', 'angc1_xi:tournament-xi:angel');
+INSERT INTO `skillsheet_ships` VALUES ('33673', '831', 'Whiptail', '4', '500010', '1', '20605', 'cf2_xii:tournament-xii:caldari');
+INSERT INTO `skillsheet_ships` VALUES ('33675', '833', 'Chameleon', '4', '500010', '1', '20604', 'cc2_xii:tournament-xii:caldari');
+INSERT INTO `skillsheet_ships` VALUES ('35779', '831', 'Imp', '4', '500019', '1', '21156', 'sf2_xiii:tournament-xiii:sansha');
+INSERT INTO `skillsheet_ships` VALUES ('35781', '894', 'Fiend', '4', '500019', '1', '21155', 'sc1_xiii:tournament-xiii:sansha');
