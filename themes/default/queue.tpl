@@ -35,7 +35,7 @@
             <!--[elseif $queue.queuePosition > 0]--><td class="dataTableCell2" width="120"><!--[$queue.endTime|date_format:"%a, %b %d, %H:%M"]--></td><!--[/if]-->
 	        <!--[if $queue.queuePosition == 0]-->
                 <td style="display:none;">
-            <!--[elseif $queue.queuePosition > 0]--><td class="dataTableCell2" width="48"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$queue.level]-->_q.gif" width:48px; height:8px; /></td>
+            <!--[elseif $queue.queuePosition > 0]--><td class="dataTableCell2" width="48"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$queue.level]-->_q.gif" width:48px; height:8px; /></td>
             <!--[/if]-->
 	    </tr>
 	       <!--[else]-->   
@@ -44,7 +44,7 @@
 	           <td class="dataTableCell2" width="150" align="left"><!--[$queue.startSP|number_format]--> of <span style="color: gold;"><!--[$queue.endSP|number_format]--></span></td>
 	           <td class="dataTableCell2" width="120"><!--[$queue.startTime|date_format:"%a, %b %d, %H:%M"]--></td>
 	           <td class="dataTableCell2" width="120"><!--[$queue.endTime|date_format:"%a, %b %d, %H:%M"]--></td>
-	           <td class="dataTableCell2" width="48"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$queue.level]-->_q.gif" width:48px; height:8px; /></td>
+	           <td class="dataTableCell2" width="48"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$queue.level]-->_q.gif" width:48px; height:8px; /></td>
 	    </tr>
 	       <!--[/if]-->
 <!--[/foreach]-->

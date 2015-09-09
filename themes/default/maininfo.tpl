@@ -89,9 +89,9 @@
                             <td colspan="2" style="color:gold; font-weight:bold; text-align:left;" class="dataTableCell"><span style="color: white;text-decoration: none;">NO SKILL TRAINING</span></td>
                         <!--[/if]-->
                         <!--[if $Training]-->
-                            <td style="text-align:center;" class="dataTableCellLeftRight"><img alt="Level <!--[$ToLevel]-->" src="/imgs/level<!--[$ToLevel]-->_act.gif" width:48px; height:8px; />
+                            <td style="text-align:center;" class="dataTableCellLeftRight"><img alt="Level <!--[$ToLevel]-->" src="/imgs/sklvlicons/level<!--[$ToLevel]-->_act.gif" width:48px; height:8px; />
                         <!--[else]-->
-                            <td style="text-align:center;" class="dataTableCellLeftRight"><img alt="No Skill Training" src="/imgs/levelx.gif" /></td>
+                            <td style="text-align:center;" class="dataTableCellLeftRight"><img alt="No Skill Training" src="/imgs/sklvlicons/levelx.gif" /></td>
                         <!--[/if]-->
                   </tr>
                   <tr>
