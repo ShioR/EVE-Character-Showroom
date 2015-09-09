@@ -16,7 +16,7 @@
 
       <!--[foreach item='races' key='shipclass' from=$shipscanfly]--><div style="margin-top: 50px; margin-bottom: -24px;">
           <div style="margin-top: 10px;">
-            <div style="background: rgb(44, 44, 56) url(/imgs/<!--[$shipclass|lower|replace:" ":"_"]-->.png)  no-repeat scroll 74px 5px; margin-bottom: 10px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 23px;"></div>
+            <div style="background: rgb(44, 44, 56); background-image: url('/imgs/<!--[$shipclass|lower|replace:" ":"_"]-->.png'); background-position:15% 50%; background-repeat:no-repeat; background-size:170px 13px; margin-bottom: 10px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 23px;"></div>
              <div class="sklnk" title="<!--[$shipclass]-->"><img alt="<!--[$shipclass]-->" src="/imgs/ships/<!--[$shipclass|lower|replace:" ":"_"]-->.png" style="border: 0px none ; width: 64px; height: 64px; top: -52px;" class="newsTitleImage" /></div>
             <div style="margin-left: 82px;">
           </div>
