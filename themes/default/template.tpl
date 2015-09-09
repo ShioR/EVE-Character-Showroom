@@ -63,8 +63,8 @@
         <!--[/if]-->
         <div style="margin-top: 50px; margin-bottom: -24px;">
           <div style="margin-top: 10px;">
-            <div style="background: rgb(44, 44, 56) url(/imgs/<!--[$groupid]-->.jpg)  no-repeat scroll 74px 5px; margin-bottom: 10px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 23px;"></div>
-             <div class="sklnk" title="<!--[$groupname]-->"><img alt="<!--[$skillgroups.$groupid]-->" src="/imgs/<!--[$groupid]-->.png" style="border: 0px none ; width: 64px; height: 64px; top: -52px;" class="newsTitleImage" /></div>
+            <div style="background: rgb(44, 44, 56); background-image: url('/imgs/skillgroups/<!--[$groupname|lower|replace:" ":"_"]-->.png'); background-position:12.5% 50%; background-repeat:no-repeat; background-size:170px 13px; margin-bottom: 10px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 23px;"></div>
+             <div class="sklnk" title="<!--[$groupname]-->"><img alt="<!--[$skillgroups.$groupid]-->" src="/imgs/skgrpicons/<!--[$groupname|lower|replace:" ":"_"]-->.png" style="border: 0px none ; width: 64px; height: 64px; top: -52px;" class="newsTitleImage" /></div>
             <div style="margin-left: 82px;">
               <!--[foreach item='skill' key='skillid' from=$skillgroup]-->
 							<!--[assign var='SkillLevel' value=$skill.level scope="global"]-->
@@ -73,27 +73,27 @@
 							<!--[math equation="(x / y) * z" x=$currentSPforSkill y=$totalSPforSkill z=100 format="%.1f" assign='TotalPercentage']-->
               <div style="border-bottom: 1px dotted rgb(80, 80, 80); padding: 2.5px; <!--[if $skill.flag eq 61]-->background-color: #303030;" onmouseout="this.style.backgroundColor='#303030'"<!--[/if]-->" onmouseover="this.style.backgroundColor='#303030'; this.style.cursor='default'" onmouseout="this.style.backgroundColor='#1B1B1B'">
 					<!--[if $skill.flag eq 61]-->
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$skill.level]-->" src="/imgs/level<!--[math equation="x + y" x=$skill.level y=1]-->_act.gif" width:48px; height:8px; /></div>
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$skill.level]-->" src="/imgs/sklvlicons/level<!--[math equation="x + y" x=$skill.level y=1]-->_act.gif" width:48px; height:8px; /></div>
 					<!--[elseif $queuePos0 eq $skill.typeID]-->
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$skill.level]-->-<!--[$queueLevel1]-->_q.gif" width:48px; height:8px; /></div>
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[$queueLevel1]-->_q.gif" width:48px; height:8px; /></div>
 					<!--[elseif $queuePos1 eq $skill.typeID]-->
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$skill.level]-->-<!--[$queueLevel1]-->_q.gif" width:48px; height:8px; /></div>
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[$queueLevel1]-->_q.gif" width:48px; height:8px; /></div>
 					<!--[elseif $queuePos2 eq $skill.typeID]-->
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$skill.level]-->-<!--[$queueLevel2]-->_q.gif" width:48px; height:8px; /></div>
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[$queueLevel2]-->_q.gif" width:48px; height:8px; /></div>
 					<!--[elseif $queuePos3 eq $skill.typeID]-->
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$skill.level]-->-<!--[$queueLevel3]-->_q.gif" width:48px; height:8px; /></div>
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[$queueLevel3]-->_q.gif" width:48px; height:8px; /></div>
 					<!--[elseif $queuePos4 eq $skill.typeID]-->
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$skill.level]-->-<!--[$queueLevel4]-->_q.gif" width:48px; height:8px; /></div>
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[$queueLevel4]-->_q.gif" width:48px; height:8px; /></div>
 					<!--[elseif $queuePos5 eq $skill.typeID]-->
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$skill.level]-->-<!--[$queueLevel5]-->_q.gif" width:48px; height:8px; /></div>
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[$queueLevel5]-->_q.gif" width:48px; height:8px; /></div>
 					<!--[elseif $queuePos6 eq $skill.typeID]-->
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$skill.level]-->-<!--[$queueLevel6]-->_q.gif" width:48px; height:8px; /></div>
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[$queueLevel6]-->_q.gif" width:48px; height:8px; /></div>
 					<!--[elseif $queuePos7 eq $skill.typeID]-->
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$skill.level]-->-<!--[$queueLevel7]-->_q.gif" width:48px; height:8px; /></div>
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[$queueLevel7]-->_q.gif" width:48px; height:8px; /></div>
 					<!--[elseif $queuePos8 eq $skill.typeID]-->
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$skill.level]-->-<!--[$queueLevel8]-->_q.gif" width:48px; height:8px; /></div>
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[$queueLevel8]-->_q.gif" width:48px; height:8px; /></div>
 					<!--[elseif $queuePos9 eq $skill.typeID]-->
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/level<!--[$skill.level]-->-<!--[$queueLevel9]-->_q.gif" width:48px; height:8px; /></div>
+						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[$queueLevel9]-->_q.gif" width:48px; height:8px; /></div>
 					<!--[/if]-->
 					<!--[if $queuePos0 eq $skill.typeID]-->
 						<!--[if $skill.flag neq 61]-->
@@ -124,7 +124,7 @@
 						<!--[if $queuePos0 eq $skill.typeID]-->
 							<div style="display:none;"></div>
 						<!--[else]-->	
-							<div style="float: right;margin-top:4px;"><img alt="level<!--[$skill.level]-->" src="/imgs/level<!--[$skill.level]-->.gif" width:48px; height:8px; /></div>
+							<div style="float: right;margin-top:4px;"><img alt="level<!--[$skill.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->.gif" width:48px; height:8px; /></div>
 						<!--[/if]-->
 					<!--[/if]-->
                 <div style="line-height: 1.45em; font-size: 11px;">
