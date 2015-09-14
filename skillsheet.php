@@ -164,7 +164,10 @@ include 'includes/config.php';
             break;
         case 'newsig':
             newsig($config);exit;
-            break;            
+            break;
+        case 'sig2':
+            sig2($config);exit;
+            break; 
         case 'sigs':
             siglist($config);exit;
             break;   
@@ -1115,6 +1118,46 @@ function newsig($config)
     $eveRender->Assign('skillpointstotal',  number_format($assign['skillpointstotal'], 0, '', ','));
     
     $eveRender->Display('newsig.tpl');
+    exit;
+
+}
+
+function sig2($config)
+{
+
+    global $skillsource, $eveRender;
+
+    $training = GetTrainingData($config['training']);
+
+    $parse = ParseXMLFile($config['data']);
+
+    $char = $parse['result'];
+
+    $name            = $char['name'];
+    $skillTraining   = $training;    
+    $corporationName = $char['corporationName'];
+    $allianceName    = $char['allianceName'];
+
+    $skills          = $char['rowset'][3]['row'];
+
+    $assign = BuildSkillSet($skills, $training);
+
+    $skillsearch = $assign['skillsearch'];
+
+    if($skillTraining['skillName'] != '') {
+        $eveRender->Assign('Training',          $skillTraining['skillName']);
+        $eveRender->Assign('ToLevel',           $skillTraining['trainingToLevel']);
+        $eveRender->Assign('TrainingTimeLeft',  $skillTraining['TrainingTimeLeft']);
+    }
+    $eveRender->Assign('name',              $name);
+    $eveRender->Assign('totalsks',          $assign['count']);
+    $eveRender->Assign('totalsps',          $assign['skillpointstotal']);
+    $eveRender->Assign('totalskillpoints',  $assign['totalskillpoints']);     
+    $eveRender->Assign('corporationName',   $corporationName);
+    $eveRender->Assign('allianceName',      $allianceName);
+    $eveRender->Assign('skillpointstotal',  number_format($assign['skillpointstotal'], 0, '', ','));
+    
+    $eveRender->Display('sig2.tpl');
     exit;
 
 }
