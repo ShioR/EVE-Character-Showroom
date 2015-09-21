@@ -791,7 +791,7 @@ INSERT INTO `skillsheet_reqs` VALUES ('2836', 'requiredSkill1Level', '5', '0', '
 INSERT INTO `skillsheet_reqs` VALUES ('2836', 'requiredSkill2', '16591', '0', '358', 'Adrestia', '500004', 'Gallente', 'Heavy Assault Cruisers', null);
 INSERT INTO `skillsheet_reqs` VALUES ('2836', 'requiredSkill2Level', '1', '0', '358', 'Adrestia', '500004', 'Gallente', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('32209', 'requiredSkill1', '3333', '0', '358', 'Mimir', '500002', 'Minmatar', 'Minmatar Cruiser', null);
-INSERT INTO `skillsheet_reqs` VALUES ('32209', 'requiredSkill1Level', '3', '0', '358', 'Mimir', '500002', 'Minmatar', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('32209', 'requiredSkill1Level', '5', '0', '358', 'Mimir', '500002', 'Minmatar', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('32209', 'requiredSkill2', '16591', '0', '358', 'Mimir', '500002', 'Minmatar', 'Heavy Assault Cruisers', null);
 INSERT INTO `skillsheet_reqs` VALUES ('32209', 'requiredSkill2Level', '1', '0', '358', 'Mimir', '500002', 'Minmatar', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('2998', 'requiredSkill2', '3402', '0', '28', 'Noctis', '500014', 'ORE', 'Science', null);
