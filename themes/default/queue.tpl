@@ -11,7 +11,7 @@
 	      <td class="dataTableCell">Skill</td>
 	      <td class="dataTableCell">Skill Points</td>
 	      <td class="dataTableCell">Starts</td>
-	      <td class="dataTableCell" colspan="1">ETA</td>
+	      <td class="dataTableCell" colspan="1">Ends</td>
 	      <td class="dataTableCellEnd" colspan="1">Level</td>
 	    </tr>
 <!--[foreach item='queue' from=$SkillQueue]-->
