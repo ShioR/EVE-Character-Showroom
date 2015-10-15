@@ -118,7 +118,7 @@
                         <!--[/if]-->
                   </tr>
                   <tr>
-                    <td class="dataTableCell">ETA (EVE Time)</td>
+                    <td class="dataTableCell">Completes (EVE Time)</td>
                         <!--[if $Training]-->
                             <td colspan="3" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCellLeftRight"><!--[$trainingEndTime|date_format:"%A, %B %e %Y, %H:%M:%S"]-->
                             </td>
