@@ -2238,7 +2238,7 @@ $skillsource[257][35680]['groupID'] = '257';
 $skillsource[257][35680]['groupName'] = 'Spaceship Command';
 
 $skillsource[257][37615]['typeName'] = 'Command Destroyers';
-$skillsource[257][37615['rank'] = '6';
+$skillsource[257][37615]['rank'] = '6';
 $skillsource[257][37615]['typeID'] = '37615';
 $skillsource[257][37615]['skillCost'] = '20000000';
 $skillsource[257][37615]['groupID'] = '257';
