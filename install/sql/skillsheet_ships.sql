@@ -1,5 +1,3 @@
-SET FOREIGN_KEY_CHECKS=0;
-
 -- ----------------------------
 -- Table structure for skillsheet_ships
 -- ----------------------------
@@ -294,3 +292,16 @@ INSERT INTO `skillsheet_ships` VALUES ('33673', '831', 'Whiptail', '4', '500010'
 INSERT INTO `skillsheet_ships` VALUES ('33675', '833', 'Chameleon', '4', '500010', '1', '20604', 'cc2_xii:tournament-xii:caldari');
 INSERT INTO `skillsheet_ships` VALUES ('35779', '831', 'Imp', '4', '500019', '1', '21156', 'sf2_xiii:tournament-xiii:sansha');
 INSERT INTO `skillsheet_ships` VALUES ('35781', '894', 'Fiend', '4', '500019', '1', '21155', 'sc1_xiii:tournament-xiii:sansha');
+INSERT INTO `skillsheet_ships` VALUES ('37135', '1283', 'Endurance', '2', '500014', '1', '21210', 'oref1_t2c:frostline:ore');
+INSERT INTO `skillsheet_ships` VALUES ('37481', '1534', 'Pontifex', '2', '500003', '1', '21222', 'ade2_t2:sarum:amarr');
+INSERT INTO `skillsheet_ships` VALUES ('37482', '1534', 'Stork', '2', '500001', '1', '21221', 'cde2_t2:kallakiota:caldari');
+INSERT INTO `skillsheet_ships` VALUES ('37480', '1534', 'Bifrost', '2', '500002', '1', '21224', 'mde2_t2:sebiestor:minmatar');
+INSERT INTO `skillsheet_ships` VALUES ('37483', '1534', 'Magus', '2', '500004', '1', '21223', 'gde2_t2:creodron:gallente');
+INSERT INTO `skillsheet_ships` VALUES ('37457', '1527', 'Deacon', '2', '500003', '1', '21220', 'af5_t2b:sarum:amarr');
+INSERT INTO `skillsheet_ships` VALUES ('37458', '1527', 'Kirin', '2', '500001', '1', '21218', 'cf1_t2:laidai:caldari');
+INSERT INTO `skillsheet_ships` VALUES ('37459', '1527', 'Thalia', '2', '500004', '1', '21217', 'gf2_t2:roden:gallente');
+INSERT INTO `skillsheet_ships` VALUES ('37460', '1527', 'Scalpel', '2', '500002', '1', '21219', 'mf6_t2:thukker:minmatar');
+INSERT INTO `skillsheet_ships` VALUES ('37453', '25', 'Crucifier Navy Issue', '4', '500003', '1', '1733', 'af2_t1:amarrnavy:amarr');
+INSERT INTO `skillsheet_ships` VALUES ('37454', '25', 'Vigil Fleet Issue', '4', '500002', '1', '1976', 'mf7_t1:minmatarnavy:minmatar');
+INSERT INTO `skillsheet_ships` VALUES ('37455', '25', 'Griffin Navy Issue', '4', '500001', '1', '1789', 'cf4_t1:caldarinavy:caldari');
+INSERT INTO `skillsheet_ships` VALUES ('37456', '25', 'Maulus Navy Issue', '4', '500004', '1', '1811', 'gf7_t1:gallentenavy:gallente');
