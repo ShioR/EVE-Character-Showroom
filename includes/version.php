@@ -1,4 +1,4 @@
 <?php
-define('_SKILLSHEET_VERSION', 'v5.382');
-define('_DATA_VERSION', 'Vanguard');
+define('_SKILLSHEET_VERSION', 'v5.383');
+define('_DATA_VERSION', 'Frostline');
 ?>
