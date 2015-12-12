@@ -109,7 +109,7 @@ INSERT INTO `skillsheet_reqs` VALUES ('11940', 'requiredSkill1', '3331', '0', '2
 INSERT INTO `skillsheet_reqs` VALUES ('11940', 'requiredSkill1Level', '1', '0', '25', 'Gold Magnate', '500003', 'Amarr', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('11987', 'requiredSkill1', '3335', '0', '832', 'Guardian', '500003', 'Amarr', 'Amarr Cruiser', null);
 INSERT INTO `skillsheet_reqs` VALUES ('11987', 'requiredSkill1Level', '5', '0', '832', 'Guardian', '500003', 'Amarr', null, null);
-INSERT INTO `skillsheet_reqs` VALUES ('11987', 'requiredSkill2', '12096', '0', '832', 'Guardian', '500003', 'Amarr', 'Logistics', null);
+INSERT INTO `skillsheet_reqs` VALUES ('11987', 'requiredSkill2', '12096', '0', '832', 'Guardian', '500003', 'Amarr', 'Logistics Cruisers', null);
 INSERT INTO `skillsheet_reqs` VALUES ('11987', 'requiredSkill2Level', '1', '0', '832', 'Guardian', '500003', 'Amarr', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('24696', 'requiredSkill1', '33095', '0', '419', 'Harbinger', '500003', 'Amarr', 'Amarr Battlecruiser', null);
 INSERT INTO `skillsheet_reqs` VALUES ('24696', 'requiredSkill1Level', '1', '0', '419', 'Harbinger', '500003', 'Amarr', null, null);
@@ -217,7 +217,7 @@ INSERT INTO `skillsheet_reqs` VALUES ('582', 'requiredSkill1', '3330', '0', '25'
 INSERT INTO `skillsheet_reqs` VALUES ('582', 'requiredSkill1Level', '1', '0', '25', 'Bantam', '500001', 'Caldari', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('11985', 'requiredSkill1', '3334', '0', '832', 'Basilisk', '500001', 'Caldari', 'Caldari Cruiser', null);
 INSERT INTO `skillsheet_reqs` VALUES ('11985', 'requiredSkill1Level', '5', '0', '832', 'Basilisk', '500001', 'Caldari', null, null);
-INSERT INTO `skillsheet_reqs` VALUES ('11985', 'requiredSkill2', '12096', '0', '832', 'Basilisk', '500001', 'Caldari', 'Logistics', null);
+INSERT INTO `skillsheet_reqs` VALUES ('11985', 'requiredSkill2', '12096', '0', '832', 'Basilisk', '500001', 'Caldari', 'Logistics Cruisers', null);
 INSERT INTO `skillsheet_reqs` VALUES ('11985', 'requiredSkill2Level', '1', '0', '832', 'Basilisk', '500001', 'Caldari', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('632', 'requiredSkill1', '3334', '0', '26', 'Blackbird', '500001', 'Caldari', 'Caldari Cruiser', null);
 INSERT INTO `skillsheet_reqs` VALUES ('632', 'requiredSkill1Level', '1', '0', '26', 'Blackbird', '500001', 'Caldari', null, null);
@@ -532,7 +532,7 @@ INSERT INTO `skillsheet_reqs` VALUES ('12745', 'requiredSkill2', '19719', '0', '
 INSERT INTO `skillsheet_reqs` VALUES ('12745', 'requiredSkill2Level', '1', '0', '380', 'Occator', '500004', 'Gallente', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('11989', 'requiredSkill1', '3332', '0', '832', 'Oneiros', '500004', 'Gallente', 'Gallente Cruiser', null);
 INSERT INTO `skillsheet_reqs` VALUES ('11989', 'requiredSkill1Level', '5', '0', '832', 'Oneiros', '500004', 'Gallente', null, null);
-INSERT INTO `skillsheet_reqs` VALUES ('11989', 'requiredSkill2', '12096', '0', '832', 'Oneiros', '500004', 'Gallente', 'Logistics', null);
+INSERT INTO `skillsheet_reqs` VALUES ('11989', 'requiredSkill2', '12096', '0', '832', 'Oneiros', '500004', 'Gallente', 'Logistics Cruisers', null);
 INSERT INTO `skillsheet_reqs` VALUES ('11989', 'requiredSkill2Level', '1', '0', '832', 'Oneiros', '500004', 'Gallente', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('12021', 'requiredSkill1', '3332', '0', '894', 'Phobos', '500004', 'Gallente', 'Gallente Cruiser', null);
 INSERT INTO `skillsheet_reqs` VALUES ('12021', 'requiredSkill1Level', '5', '0', '894', 'Phobos', '500004', 'Gallente', null, null);
@@ -720,7 +720,7 @@ INSERT INTO `skillsheet_reqs` VALUES ('22456', 'requiredSkill3', '12098', '0', '
 INSERT INTO `skillsheet_reqs` VALUES ('22456', 'requiredSkill3Level', '1', '0', '541', 'Sabre', '500002', 'Minmatar', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('11978', 'requiredSkill1', '3333', '0', '832', 'Scimitar', '500002', 'Minmatar', 'Minmatar Cruiser', null);
 INSERT INTO `skillsheet_reqs` VALUES ('11978', 'requiredSkill1Level', '5', '0', '832', 'Scimitar', '500002', 'Minmatar', null, null);
-INSERT INTO `skillsheet_reqs` VALUES ('11978', 'requiredSkill2', '12096', '0', '832', 'Scimitar', '500002', 'Minmatar', 'Logistics', null);
+INSERT INTO `skillsheet_reqs` VALUES ('11978', 'requiredSkill2', '12096', '0', '832', 'Scimitar', '500002', 'Minmatar', 'Logistics Cruisers', null);
 INSERT INTO `skillsheet_reqs` VALUES ('11978', 'requiredSkill2Level', '1', '0', '832', 'Scimitar', '500002', 'Minmatar', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('631', 'requiredSkill1', '3333', '0', '26', 'Scythe', '500002', 'Minmatar', 'Minmatar Cruiser', null);
 INSERT INTO `skillsheet_reqs` VALUES ('631', 'requiredSkill1Level', '1', '0', '26', 'Scythe', '500002', 'Minmatar', null, null);
@@ -824,7 +824,7 @@ INSERT INTO `skillsheet_reqs` VALUES ('32788', 'requiredSkill2', '12095', '0', '
 INSERT INTO `skillsheet_reqs` VALUES ('32788', 'requiredSkill2Level', '1', '0', '324', 'Cambion', '500001', 'Caldari', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('32790', 'requiredSkill1', '3334', '0', '832', 'Etana', '500001', 'Caldari', 'Caldari Cruiser', null);
 INSERT INTO `skillsheet_reqs` VALUES ('32790', 'requiredSkill1Level', '5', '0', '832', 'Etana', '500001', 'Caldari', null, null);
-INSERT INTO `skillsheet_reqs` VALUES ('32790', 'requiredSkill2', '12096', '0', '832', 'Etana', '500001', 'Caldari', 'Logistics', null);
+INSERT INTO `skillsheet_reqs` VALUES ('32790', 'requiredSkill2', '12096', '0', '832', 'Etana', '500001', 'Caldari', 'Logistics Cruisers', null);
 INSERT INTO `skillsheet_reqs` VALUES ('32790', 'requiredSkill2Level', '1', '0', '832', 'Etana', '500001', 'Caldari', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('32880', 'requiredSkill1', '32918', '0', '1283', 'Venture', '500014', 'ORE', 'Mining Frigate', null);
 INSERT INTO `skillsheet_reqs` VALUES ('32880', 'requiredSkill1Level', '1', '0', '1283', 'Venture', '500014', 'ORE', '', null);
