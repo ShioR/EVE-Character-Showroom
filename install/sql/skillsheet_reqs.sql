@@ -1,5 +1,3 @@
-SET FOREIGN_KEY_CHECKS=0;
-
 -- ----------------------------
 -- Table structure for skillsheet_reqs
 -- ----------------------------
@@ -912,3 +910,47 @@ INSERT INTO `skillsheet_reqs` VALUES ('35781', 'requiredSkill2', '3335', '0', '8
 INSERT INTO `skillsheet_reqs` VALUES ('35781', 'requiredSkill2Level', '5', '0', '894', 'Fiend', '500019', 'Sanshas Nation', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('35781', 'requiredSkill3', '28609', '0', '894', 'Fiend', '500019', 'Sanshas Nation', 'Heavy Interdiction Cruisers', null);
 INSERT INTO `skillsheet_reqs` VALUES ('35781', 'requiredSkill3Level', '1', '0', '894', 'Fiend', '500019', 'Sanshas Nation', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37135', 'requiredSkill1', '33856', '0', '1283', 'Endurance', '500014', 'ORE', 'Expedition Frigates', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37135', 'requiredSkill1Level', '1', '0', '1283', 'Endurance', '500014', 'ORE', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37135', 'requiredSkill2', '32918', '0', '1283', 'Endurance', '500014', 'ORE', 'Mining Frigate', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37135', 'requiredSkill2Level', '5', '0', '1283', 'Endurance', '500014', 'ORE', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37481', 'requiredSkill1', '33091', '0', '1534', 'Pontifex', '500003', 'Amarr', 'Amarr Destroyer', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37481', 'requiredSkill1Level', '5', '0', '1534', 'Pontifex', '500003', 'Amarr', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37481', 'requiredSkill2', '37315', '0', '1534', 'Pontifex', '500003', 'Amarr', 'Command Destroyers', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37481', 'requiredSkill2Level', '1', '0', '1534', 'Pontifex', '500003', 'Amarr', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37482', 'requiredSkill1', '33092', '0', '1534', 'Stork', '500001', 'Caldari', 'Caldari Destroyer', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37482', 'requiredSkill2', '37315', '0', '1534', 'Stork', '500001', 'Caldari', 'Command Destroyers', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37482', 'requiredSkill1Level', '5', '0', '1534', 'Stork', '500001', 'Caldari', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37482', 'requiredSkill2Level', '1', '0', '1534', 'Stork', '500001', 'Caldari', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37480', 'requiredSkill1', '33094', '0', '1534', 'Bifrost', '500002', 'Minmatar', 'Minmatar Destroyer', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37480', 'requiredSkill1Level', '5', '0', '1534', 'Bifrost', '500002', 'Minmatar', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37480', 'requiredSkill2', '37315', '0', '1534', 'Bifrost', '500002', 'Minmatar', 'Command Destroyers', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37480', 'requiredSkill2Level', '1', '0', '1534', 'Bifrost', '500002', 'Minmatar', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37483', 'requiredSkill2Level', '1', '0', '1534', 'Magus', '500004', 'Gallente', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37483', 'requiredSkill2', '37315', '0', '1534', 'Magus', '500004', 'Gallente', 'Command Destroyers', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37483', 'requiredSkill1Level', '5', '0', '1534', 'Magus', '500004', 'Gallente', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37483', 'requiredSkill1', '33093', '0', '1534', 'Magus', '500004', 'Gallente', 'Gallente Destroyer', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37457', 'requiredSkill2Level', '5', '0', '1527', 'Deacon', '500003', 'Amarr', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37457', 'requiredSkill2', '3331', '0', '1527', 'Deacon', '500003', 'Amarr', 'Amarr Frigate', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37457', 'requiredSkill1Level', '1', '0', '1527', 'Deacon', '500003', 'Amarr', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37457', 'requiredSkill1', '40328', '0', '1527', 'Deacon', '500003', 'Amarr', 'Logistics Frigates', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37458', 'requiredSkill1', '40328', '0', '1527', 'Kirin', '500001', 'Caldari', 'Logistics Frigates', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37458', 'requiredSkill1Level', '1', '0', '1527', 'Kirin', '500001', 'Caldari', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37458', 'requiredSkill2', '3330', '0', '1527', 'Kirin', '500001', 'Caldari', 'Caldari Frigate', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37458', 'requiredSkill2Level', '5', '0', '1527', 'Kirin', '500001', 'Caldari', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37459', 'requiredSkill1', '40328', '0', '1527', 'Thalia', '500004', 'Gallente', 'Logistics Frigates', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37459', 'requiredSkill1Level', '1', '0', '1527', 'Thalia', '500004', 'Gallente', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37459', 'requiredSkill2', '3328', '0', '1527', 'Thalia', '500004', 'Gallente', 'Gallente Frigate', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37459', 'requiredSkill2Level', '5', '0', '1527', 'Thalia', '500004', 'Gallente', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37460', 'requiredSkill1', '40328', '0', '1527', 'Scalpel', '500002', 'Minmatar', 'Logistics Frigates', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37460', 'requiredSkill1Level', '1', '0', '1527', 'Scalpel', '500002', 'Minmatar', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37460', 'requiredSkill2', '3329', '0', '1527', 'Scalpel', '500002', 'Minmatar', 'Minmatar Frigate', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37460', 'requiredSkill2Level', '5', '0', '1527', 'Scalpel', '500002', 'Minmatar', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37453', 'requiredSkill1', '3331', '0', '25', 'Crucifier Navy Issue', '500003', 'Amarr', 'Amarr Frigate', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37453', 'requiredSkill1Level', '2', '0', '25', 'Crucifier Navy Issue', '500003', 'Amarr', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37454', 'requiredSkill1', '3329', '0', '25', 'Vigil Fleet Issue', '500002', 'Minmatar', 'Minmatar Frigate', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37454', 'requiredSkill1Level', '2', '0', '25', 'Vigil Fleet Issue', '500002', 'Minmatar', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37455', 'requiredSkill1', '3330', '0', '25', 'Griffin Navy Issue', '500001', 'Caldari', 'Caldari Frigate', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37455', 'requiredSkill1Level', '2', '0', '25', 'Griffin Navy Issue', '500001', 'Caldari', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37456', 'requiredSkill1', '3328', '0', '25', 'Maulus Navy Issue', '500004', 'Gallente', 'Gallente Frigate', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37456', 'requiredSkill1Level', '2', '0', '25', 'Maulus Navy Issue', '500004', 'Gallente', null, null);
