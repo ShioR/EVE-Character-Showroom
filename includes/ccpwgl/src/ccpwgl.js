@@ -508,7 +508,7 @@ var ccpwgl = (function (ccpwgl_int)
             /** Local to world space transform matrix @type {mat4} **/
             this.transform = mat4.identity(mat4.create());
             /** Internal boosters object @type {ccpwgl_int.EveBoosterSet} **/
-            this.boosters = null;
+            this.boosters = [null];
             /** Current siege state @type {ccpwgl.ShipSiegeState} **/
             this.siegeState = ccpwgl.ShipSiegeState.NORMAL;
             /** Internal siege state, as opposed to Ship.siegeState also includes transition states @type {number} **/
@@ -527,6 +527,7 @@ var ccpwgl = (function (ccpwgl_int)
             this.partTransforms = [];
             /** Ship SOF DNA if the ship was constructed with SOF **/
             this.dna = undefined;
+            var faction = null;
 
             var self = this;
             if (typeof resPath == 'string')
@@ -536,6 +537,7 @@ var ccpwgl = (function (ccpwgl_int)
             for (var i = 0; i < resPath.length; ++i)
             {
                 this.wrappedObjects[i] = null;
+                this.boosters[i] = null;
             }
 
             function OnShipPartLoaded(index)
@@ -550,9 +552,10 @@ var ccpwgl = (function (ccpwgl_int)
                             return;
                         }
                         self.wrappedObjects[index].transform.set(self.transform);
-                        if (self.boosters)
+                        if (self.boosters[index])
                         {
-                            self.wrappedObjects[index].boosters = self.boosters;
+                            self.wrappedObjects[index].boosters = self.boosters[index];
+                            self.wrappedObjects[index].RebuildBoosterSet();
                         }
                         self.wrappedObjects[index].boosterGain = self.boosterStrength;
                         switch (self.siegeState)
@@ -572,7 +575,7 @@ var ccpwgl = (function (ccpwgl_int)
                         {
                             if (self.turrets[i])
                             {
-                                doMountTurret(i, self.turrets[i].path, self.turrets[i].state, self.turrets[i].target);
+                                doMountTurret(i, self.turrets[i].path, self.turrets[i].state, self.turrets[i].target, index);
                             }
                         }
                         if (self.isLoaded())
@@ -726,24 +729,29 @@ var ccpwgl = (function (ccpwgl_int)
             this.loadBoosters = function (resPath, onload)
             {
                 var self = this;
-                ccpwgl_int.resMan.GetObject(
-                    resPath,
-                    function (obj)
-                    {
-                        self.boosters = obj;
-                        for (var i = 0; i < self.wrappedObjects.length; ++i)
+
+                function loaded(index) {
+                    return function (obj) {
+                        self.boosters[index] = obj;
+                        if (self.wrappedObjects[index])
                         {
-                            if (self.wrappedObjects[i])
-                            {
-                                self.wrappedObjects[i].boosters = obj;
+                            self.wrappedObjects[index].boosters = obj;
+                            self.wrappedObjects[index].RebuildBoosterSet();
+                        }
+                        for (var i = 0; i < self.boosters.length; ++i) {
+                            if (!self.boosters) {
+                                return;
                             }
                         }
-                        if (onload)
-                        {
+                        if (onload) {
                             onload.call(self);
                         }
                     }
-                );
+                }
+
+                for (var i = 0; i < self.wrappedObjects.length; ++i) {
+                    ccpwgl_int.resMan.GetObject(resPath, loaded(i));
+                }
             };
 
             /**
@@ -915,34 +923,35 @@ var ccpwgl = (function (ccpwgl_int)
                 }
             };
 
+            function hasLocatorPrefix(object, name) {
+                for (var j = 0; j < object.locators.length; ++j) {
+                    if (object.locators[j].name.substr(0, name.length) == name) {
+                        return true;
+                    }
+                }
+
+            }
+
             /** Internal helper method that mount a turret on a loaded ship **/
-            function doMountTurret(slot, resPath, state, targetPosition)
+            function doMountTurret(slot, resPath, state, targetPosition, objectIndex)
                 {
                     var name = 'locator_turret_' + slot;
-                    var objectIndex = null;
-                    for (var i = 0; i < self.wrappedObjects.length; ++i)
-                    {
-                        if (self.wrappedObjects[i])
-                        {
-                            var foundLocator = false;
-                            for (var j = 0; j < self.wrappedObjects[i].locators.length; ++j)
-                            {
-                                if (self.wrappedObjects[i].locators[j].name.substr(0, name.length) == name)
-                                {
-                                    foundLocator = true;
-                                    break;
-                                }
-                            }
-                            if (foundLocator)
-                            {
+                    if (objectIndex === undefined) {
+                        objectIndex = null;
+                        for (var i = 0; i < self.wrappedObjects.length; ++i) {
+                            if (self.wrappedObjects[i] && hasLocatorPrefix(self.wrappedObjects[i], name)) {
                                 objectIndex = i;
                                 break;
                             }
                         }
+                        if (objectIndex === null) {
+                            return;
+                        }
                     }
-                    if (objectIndex === null)
-                    {
-                        return;
+                    else {
+                        if (!hasLocatorPrefix(self.wrappedObjects[objectIndex], name)) {
+                            return;
+                        }
                     }
                     var ship = self.wrappedObjects[objectIndex];
                     for (i = 0; i < ship.turretSets.length; ++i)
@@ -961,8 +970,7 @@ var ccpwgl = (function (ccpwgl_int)
                         function (object)
                         {
                             object.locatorName = name;
-                            if (self.dna) {
-                                var faction = self.dna.split(':')[1];
+                            if (faction) {
                                 sof.SetupTurretMaterial(object, faction, faction);
                             }
                             ship.turretSets.push(object);
@@ -1103,15 +1111,38 @@ var ccpwgl = (function (ccpwgl_int)
                 return result;
             };
 
+            var factions = {amarr: 'amarrbase', caldari: 'caldaribase', gallente: 'gallentebase', minmatar: 'minmatarbase'};
+
+            resPath.sort(function (x, y) {
+                x = x.toLowerCase();
+                y = y.toLowerCase();
+                if (x < y) {
+                    return -1;
+                }
+                if (x > y) {
+                    return 1;
+                }
+                return 0;
+            });
             for (i = 0; i < resPath.length; ++i)
             {
                 if (resPath[i].match(/(\w|\d|[-_])+:(\w|\d|[-_])+:(\w|\d|[-_])+/)) {
-                    if (i == 0)
+                    if (i == 0) {
                         this.dna = resPath[0];
+                        faction = this.dna.split(':')[1];
+                    }
                     sof.BuildFromDNA(resPath[i], OnShipPartLoaded(i))
                 }
                 else {
                     ccpwgl_int.resMan.GetObject(resPath[i], OnShipPartLoaded(i));
+                    if (i == 0) {
+                        var p = resPath[0].toLowerCase();
+                        for (var f in factions) {
+                            if (p.indexOf(f) >= 0) {
+                                faction = factions[f];
+                            }
+                        }
+                    }
                 }
             }
         }
