@@ -25,8 +25,7 @@ Frostline v5.384 should be read as (Frostline Static Data) v[Version 5].{Build 3
 Static Data changes nearly every release     
 Version changes infrequently    
 Build changes frequently      
-**Special Note**    
-*'YC118-02-09' Data refers to monthly uipdate cycle builds with no distinct name, in this case, 9th February 2016. These use the EVE universe date format.*
+**Special Note** - *'YC118-02-09' Data refers to monthly update cycle builds with no distinct name, in this case, 9th February 2016. These use the EVE universe date format.*
         
 ### Support?
 -------
