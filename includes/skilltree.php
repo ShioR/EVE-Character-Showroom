@@ -254,6 +254,13 @@ $skillsource[273][24241]['skillCost'] = '50000';
 $skillsource[273][24241]['groupID'] = '273';
 $skillsource[273][24241]['groupName'] = 'Drones';
 
+$skillsource[273][40572]['typeName'] = 'Light Fighters';
+$skillsource[273][40572]['rank'] = '12';
+$skillsource[273][40572]['typeID'] = '40572';
+$skillsource[273][40572]['skillCost'] = '100000000';
+$skillsource[273][40572]['groupID'] = '273';
+$skillsource[273][40572]['groupName'] = 'Drones';
+
 $skillsource[273][33699]['typeName'] = 'Medium Drone Operation';
 $skillsource[273][33699]['rank'] = '2';
 $skillsource[273][33699]['typeID'] = '33699';
@@ -295,6 +302,13 @@ $skillsource[273][23594]['typeID'] = '23594';
 $skillsource[273][23594]['skillCost'] = '450000';
 $skillsource[273][23594]['groupID'] = '273';
 $skillsource[273][23594]['groupName'] = 'Drones';
+
+$skillsource[273][40573]['typeName'] = 'Support Fighters';
+$skillsource[273][40573]['rank'] = '12';
+$skillsource[273][40573]['typeID'] = '40573';
+$skillsource[273][40573]['skillCost'] = '100000000';
+$skillsource[273][40573]['groupID'] = '273';
+$skillsource[273][40573]['groupName'] = 'Drones';
 
 ////////////////////////////////////////////////////////////////////////// ELECTRONIC SYSTEMS
 $skillsource[272][11579]['typeName'] = 'Cloaking';
@@ -2104,6 +2118,13 @@ $skillsource[257][20525]['skillCost'] = '100000000';
 $skillsource[257][20525]['groupID'] = '257';
 $skillsource[257][20525]['groupName'] = 'Spaceship Command';
 
+$skillsource[257][40535]['typeName'] = 'Amarr Force Auxiliary';
+$skillsource[257][40535]['rank'] = '14';
+$skillsource[257][40535]['typeID'] = '40535';
+$skillsource[257][40535]['skillCost'] = '500000000';
+$skillsource[257][40535]['groupID'] = '257';
+$skillsource[257][40535]['groupName'] = 'Spaceship Command';
+
 $skillsource[257][20524]['typeName'] = 'Amarr Freighter';
 $skillsource[257][20524]['rank'] = '10';
 $skillsource[257][20524]['typeID'] = '20524';
@@ -2201,6 +2222,13 @@ $skillsource[257][20530]['typeID'] = '20530';
 $skillsource[257][20530]['skillCost'] = '100000000';
 $skillsource[257][20530]['groupID'] = '257';
 $skillsource[257][20530]['groupName'] = 'Spaceship Command';
+
+$skillsource[257][40536]['typeName'] = 'Caldari Force Auxiliary';
+$skillsource[257][40536]['rank'] = '14';
+$skillsource[257][40536]['typeID'] = '40536';
+$skillsource[257][40536]['skillCost'] = '500000000';
+$skillsource[257][40536]['groupID'] = '257';
+$skillsource[257][40536]['groupName'] = 'Spaceship Command';
 
 $skillsource[257][20526]['typeName'] = 'Caldari Freighter';
 $skillsource[257][20526]['rank'] = '10';
@@ -2341,6 +2369,13 @@ $skillsource[257][20531]['typeID'] = '20531';
 $skillsource[257][20531]['skillCost'] = '100000000';
 $skillsource[257][20531]['groupID'] = '257';
 $skillsource[257][20531]['groupName'] = 'Spaceship Command';
+
+$skillsource[257][40537]['typeName'] = 'Gallente Force Auxiliary';
+$skillsource[257][40537]['rank'] = '14';
+$skillsource[257][40537]['typeID'] = '40537';
+$skillsource[257][40537]['skillCost'] = '500000000';
+$skillsource[257][40537]['groupID'] = '257';
+$skillsource[257][40537]['groupName'] = 'Spaceship Command';
 
 $skillsource[257][20527]['typeName'] = 'Gallente Freighter';
 $skillsource[257][20527]['rank'] = '10';
@@ -2502,6 +2537,13 @@ $skillsource[257][20532]['typeID'] = '20532';
 $skillsource[257][20532]['skillCost'] = '100000000';
 $skillsource[257][20532]['groupID'] = '257';
 $skillsource[257][20532]['groupName'] = 'Spaceship Command';
+
+$skillsource[257][40538]['typeName'] = 'Minmatar Force Auxiliary';
+$skillsource[257][40538]['rank'] = '14';
+$skillsource[257][40538]['typeID'] = '40538';
+$skillsource[257][40538]['skillCost'] = '500000000';
+$skillsource[257][40538]['groupID'] = '257';
+$skillsource[257][40538]['groupName'] = 'Spaceship Command';
 
 $skillsource[257][20528]['typeName'] = 'Minmatar Freighter';
 $skillsource[257][20528]['rank'] = '10';
