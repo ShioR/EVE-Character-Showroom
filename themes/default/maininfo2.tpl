@@ -8,7 +8,7 @@
                 <a href="https://imageserver.eveonline.com/Character/<!--[$characterID]-->_1024.jpg" rel="iframe-1024-1024" class="pirobox"><table style="margin:0px 3px 3px 3px; width:256px; height:256px; cursor:zoom-in; background: url(https://imageserver.eveonline.com/Character/<!--[$characterID]-->_512.jpg); background-position:center; background-repeat:no-repeat; background-size:256px 256px;" cellpadding="0" cellspacing="0"></a>
             		<tr>
             			<td><div id="corpLogoContainer" style="border:1px solid gray;">
-            			     <div id="corpLogo"> <a href="http://evemaps.dotlan.net/corp/<!--[$corporationName|replace:" ":"_"]-->" rel="iframe-875-610" class="pirobox">
+            			     <div id="corpLogo"> <a href="https://evemaps.dotlan.net/corp/<!--[$corporationName|replace:" ":"_"]-->" rel="iframe-875-610" class="pirobox">
 	            					<img style="border: 1px solid gray; background-color: #1B1B1B;"	src="<!--[getcorplogo corporationID=$corporationID size=256]-->"
 	            						width="64" 
 	            						height="64" 
@@ -16,7 +16,7 @@
 	            						alt="<!--[$corporationName]-->" />
             					</a></div>
             					 <!--[if $allianceName neq '']-->
-            					 <div id="allianceLogo"> <a href="http://evemaps.dotlan.net/alliance/<!--[$allianceName|replace:" ":"_"]-->" rel="iframe-875-610" class="pirobox">
+            					 <div id="allianceLogo"> <a href="https://evemaps.dotlan.net/alliance/<!--[$allianceName|replace:" ":"_"]-->" rel="iframe-875-610" class="pirobox">
 	            					<img style="border: 1px solid gray; background-color: #1B1B1B;"	src="<!--[getalliancelogo allianceID=$allianceID size=128]-->"
 	            						width="64" 
 	            						height="64" 
@@ -25,10 +25,10 @@
             					 </a></div>
             					 <!--[else]-->
             					<!--[/if]-->
-	            				 <div id="raceimg"> <a href="http://wiki.eveonline.com/en/wiki/<!--[$race]-->" rel="iframe-875-610" class="pirobox">
+	            				 <div id="raceimg"> <a href="https://wiki.eveonline.com/en/wiki/<!--[$race]-->" rel="iframe-875-610" class="pirobox">
 	            				  <img style="border: 1px solid gray; background-color: #1B1B1B" src="/imgs/charraces/<!--[$race|lower]-->.png" width="64" height="64" title="<!--[$race]-->" alt="<!--[$race]-->" hspace="6" />
 	            				 </a></div>
-	            				 <div id="bloodimg"> <!--[if $bloodLine eq 'Gallente']--><a href="http://wiki.eveonline.com/en/wiki/<!--[$bloodLine]-->_Bloodline" rel="iframe-875-610" class="pirobox"><!--[elseif $bloodLine eq 'Amarr']--><a href="http://wiki.eveonline.com/en/wiki/True_<!--[$bloodLine]-->" rel="iframe-875-610" class="pirobox"><!--[else]--><a href="http://wiki.eveonline.com/en/wiki/<!--[$bloodLine]-->" rel="iframe-875-610" class="pirobox"><!--[/if]-->
+	            				 <div id="bloodimg"> <!--[if $bloodLine eq 'Gallente']--><a href="https://wiki.eveonline.com/en/wiki/<!--[$bloodLine]-->_Bloodline" rel="iframe-875-610" class="pirobox"><!--[elseif $bloodLine eq 'Amarr']--><a href="https://wiki.eveonline.com/en/wiki/True_<!--[$bloodLine]-->" rel="iframe-875-610" class="pirobox"><!--[else]--><a href="https://wiki.eveonline.com/en/wiki/<!--[$bloodLine]-->" rel="iframe-875-610" class="pirobox"><!--[/if]-->
 	            				  <img style="border: 1px solid gray; background-color: #1B1B1B" src="/imgs/charraces/blood_<!--[$bloodLine|lower]-->.png" width="64" height="64" title="<!--[$bloodLine]-->" alt="<!--[$bloodLine]-->" />
 	            				 <a/></div> 
 	            				 </div>
