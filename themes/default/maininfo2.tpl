@@ -133,7 +133,7 @@
                   </tr>
                   <tr>
                       <!--[if $freeSP >= '1']-->
-                      <td colspan="4" class="dataTableCellFreeSP">This character has <span style="text-align:right; font-size:xx-small; color:white;"><strong><!--[$freeSP|number_format]--></span></strong> skill points unspent!</td>
+                      <td colspan="4" class="dataTableCellFreeSP">This character has <span style="text-align:right; font-size:xx-small; color:white;"><strong><!--[$freeSP|number_format]--></span></strong> unspent skill points!</td>
                     <!--[else]--><!--[/if]-->
                  </tr>
                 </tbody>
