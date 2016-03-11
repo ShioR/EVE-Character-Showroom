@@ -2626,28 +2626,28 @@ $skillsource[1545][3373]['groupName'] = 'Strucutre Management';
 $skillsource[1545][37797]['typeName'] = 'Structure Defensive Systems';
 $skillsource[1545][37797]['rank'] = '7';
 $skillsource[1545][37797]['typeID'] = '37797';
-$skillsource[1545][37797]['skillCost'] = '1000000';
+$skillsource[1545][37797]['skillCost'] = '75000';
 $skillsource[1545][37797]['groupID'] = '1545';
 $skillsource[1545][37797]['groupName'] = 'Strucutre Management';
 
 $skillsource[1545][37798]['typeName'] = 'Structure Electronic Systems';
 $skillsource[1545][37798]['rank'] = '7';
 $skillsource[1545][37798]['typeID'] = '37798';
-$skillsource[1545][37798]['skillCost'] = '1000000';
+$skillsource[1545][37798]['skillCost'] = '75000';
 $skillsource[1545][37798]['groupID'] = '1545';
 $skillsource[1545][37798]['groupName'] = 'Strucutre Management';
 
 $skillsource[1545][37799]['typeName'] = 'Structure Engineering Systems';
 $skillsource[1545][37799]['rank'] = '7';
 $skillsource[1545][37799]['typeID'] = '37799';
-$skillsource[1545][37799]['skillCost'] = '1000000';
+$skillsource[1545][37799]['skillCost'] = '75000';
 $skillsource[1545][37799]['groupID'] = '1545';
 $skillsource[1545][37799]['groupName'] = 'Strucutre Management';
 
 $skillsource[1545][37796]['typeName'] = 'Structure Missile Systems';
 $skillsource[1545][37796]['rank'] = '7';
 $skillsource[1545][37796]['typeID'] = '37796';
-$skillsource[1545][37796]['skillCost'] = '1000000';
+$skillsource[1545][37796]['skillCost'] = '75000';
 $skillsource[1545][37796]['groupID'] = '1545';
 $skillsource[1545][37796]['groupName'] = 'Strucutre Management';
 
