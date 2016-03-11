@@ -99,13 +99,6 @@ $skillsource[1210][22809]['groupID'] = '1210';
 $skillsource[1210][22809]['groupName'] = 'Armor';
 
 ////////////////////////////////////////////////////////////////////////// CORPORATION MANAGEMENT
-$skillsource[266][11584]['typeName'] = 'Anchoring';
-$skillsource[266][11584]['rank'] = '3';
-$skillsource[266][11584]['typeID'] = '11584';
-$skillsource[266][11584]['skillCost'] = '75000';
-$skillsource[266][11584]['groupID'] = '266';
-$skillsource[266][11584]['groupName'] = 'Corporation Management';
-
 $skillsource[266][3363]['typeName'] = 'Corporation Management';
 $skillsource[266][3363]['rank'] = '1';
 $skillsource[266][3363]['typeID'] = '3363';
@@ -140,13 +133,6 @@ $skillsource[266][12241]['typeID'] = '12241';
 $skillsource[266][12241]['skillCost'] = '500000000';
 $skillsource[266][12241]['groupID'] = '266';
 $skillsource[266][12241]['groupName'] = 'Corporation Management';
-
-$skillsource[266][3373]['typeName'] = 'Starbase Defense Management';
-$skillsource[266][3373]['rank'] = '7';
-$skillsource[266][3373]['typeID'] = '3373';
-$skillsource[266][3373]['skillCost'] = '1000000';
-$skillsource[266][3373]['groupID'] = '266';
-$skillsource[266][3373]['groupName'] = 'Corporation Management';
 
 ////////////////////////////////////////////////////////////////////////// DRONES
 $skillsource[273][23566]['typeName'] = 'Advanced Drone Avionics';
@@ -903,20 +889,6 @@ $skillsource[256][28073]['skillCost'] = '8000000';
 $skillsource[256][28073]['groupID'] = '256';
 $skillsource[256][28073]['groupName'] = 'Missiles';
 
-$skillsource[256][32435]['typeName'] = 'Citadel Cruise Missiles';
-$skillsource[256][32435]['rank'] = '7';
-$skillsource[256][32435]['typeID'] = '32435';
-$skillsource[256][32435]['skillCost'] = '15000000';
-$skillsource[256][32435]['groupID'] = '256';
-$skillsource[256][32435]['groupName'] = 'Missiles';
-
-$skillsource[256][21668]['typeName'] = 'Citadel Torpedoes';
-$skillsource[256][21668]['rank'] = '7';
-$skillsource[256][21668]['typeID'] = '21668';
-$skillsource[256][21668]['skillCost'] = '15000000';
-$skillsource[256][21668]['groupID'] = '256';
-$skillsource[256][21668]['groupName'] = 'Missiles';
-
 $skillsource[256][20212]['typeName'] = 'Cruise Missile Specialization';
 $skillsource[256][20212]['rank'] = '8';
 $skillsource[256][20212]['typeID'] = '20212';
@@ -1056,6 +1028,20 @@ $skillsource[256][20315]['typeID'] = '20315';
 $skillsource[256][20315]['skillCost'] = '1000000';
 $skillsource[256][20315]['groupID'] = '256';
 $skillsource[256][20315]['groupName'] = 'Missiles';
+
+$skillsource[256][32435]['typeName'] = 'XL Cruise Missiles';
+$skillsource[256][32435]['rank'] = '7';
+$skillsource[256][32435]['typeID'] = '32435';
+$skillsource[256][32435]['skillCost'] = '15000000';
+$skillsource[256][32435]['groupID'] = '256';
+$skillsource[256][32435]['groupName'] = 'Missiles';
+
+$skillsource[256][21668]['typeName'] = 'XL Torpedoes';
+$skillsource[256][21668]['rank'] = '7';
+$skillsource[256][21668]['typeID'] = '21668';
+$skillsource[256][21668]['skillCost'] = '15000000';
+$skillsource[256][21668]['groupID'] = '256';
+$skillsource[256][21668]['groupName'] = 'Missiles';
 
 ////////////////////////////////////////////////////////////////////////// NAVIGATION
 $skillsource[275][3452]['typeName'] = 'Acceleration Control';
@@ -2621,6 +2607,49 @@ $skillsource[257][19719]['typeID'] = '19719';
 $skillsource[257][19719]['skillCost'] = '30000000';
 $skillsource[257][19719]['groupID'] = '257';
 $skillsource[257][19719]['groupName'] = 'Spaceship Command';
+
+////////////////////////////////////////////////////////////////////////// STRUCTURE MANAGEMENT
+$skillsource[1545][11584]['typeName'] = 'Anchoring';
+$skillsource[1545][11584]['rank'] = '3';
+$skillsource[1545][11584]['typeID'] = '11584';
+$skillsource[1545][11584]['skillCost'] = '75000';
+$skillsource[1545][11584]['groupID'] = '1545';
+$skillsource[1545][11584]['groupName'] = 'Strucutre Management';
+
+$skillsource[1545][3373]['typeName'] = 'Starbase Defense Management';
+$skillsource[1545][3373]['rank'] = '7';
+$skillsource[1545][3373]['typeID'] = '3373';
+$skillsource[1545][3373]['skillCost'] = '1000000';
+$skillsource[1545][3373]['groupID'] = '1545';
+$skillsource[1545][3373]['groupName'] = 'Strucutre Management';
+
+$skillsource[1545][37797]['typeName'] = 'Structure Defensive Systems';
+$skillsource[1545][37797]['rank'] = '7';
+$skillsource[1545][37797]['typeID'] = '37797';
+$skillsource[1545][37797]['skillCost'] = '1000000';
+$skillsource[1545][37797]['groupID'] = '1545';
+$skillsource[1545][37797]['groupName'] = 'Strucutre Management';
+
+$skillsource[1545][37798]['typeName'] = 'Structure Electronic Systems';
+$skillsource[1545][37798]['rank'] = '7';
+$skillsource[1545][37798]['typeID'] = '37798';
+$skillsource[1545][37798]['skillCost'] = '1000000';
+$skillsource[1545][37798]['groupID'] = '1545';
+$skillsource[1545][37798]['groupName'] = 'Strucutre Management';
+
+$skillsource[1545][37799]['typeName'] = 'Structure Engineering Systems';
+$skillsource[1545][37799]['rank'] = '7';
+$skillsource[1545][37799]['typeID'] = '37799';
+$skillsource[1545][37799]['skillCost'] = '1000000';
+$skillsource[1545][37799]['groupID'] = '1545';
+$skillsource[1545][37799]['groupName'] = 'Strucutre Management';
+
+$skillsource[1545][37796]['typeName'] = 'Structure Missile Systems';
+$skillsource[1545][37796]['rank'] = '7';
+$skillsource[1545][37796]['typeID'] = '37796';
+$skillsource[1545][37796]['skillCost'] = '1000000';
+$skillsource[1545][37796]['groupID'] = '1545';
+$skillsource[1545][37796]['groupName'] = 'Strucutre Management';
 
 ////////////////////////////////////////////////////////////////////////// SUBSYTEMS
 $skillsource[1240][30532]['typeName'] = 'Amarr Defensive Systems';
