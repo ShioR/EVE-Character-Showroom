@@ -9,7 +9,7 @@ echo'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.
   <meta name="resource-type" content="document" />
   <meta http-equiv="expires" content="0" />
   <meta name="author" content="Eve Online" />
-  <meta name="copyright" content="Copyright (c) 2012 The Xenodus Initiative." />
+  <meta name="copyright" content="Copyright (c) 2016 The Xenodus Initiative." />
   <meta name="revisit-after" content="1 days" />
   <meta name="distribution" content="Global" />
   <meta name="generator" content="Eve Online" />
@@ -55,7 +55,7 @@ a,a:visited{color:gold;}
 		</td>
         <td>
         <form method="link" action="implants.php"><input type="submit" value="Show/Hide Implants" style="width:140px;"></form>
-		<form method="link" action="display.php"><input type="submit" value="Show/Hide Character" style="width:140px;"></form>
+		<form method="link" action="#"><input type="submit" value="Trololololol" style="width:140px;"></form>
 		</td>
       </tr>   
      </tbody>
@@ -71,7 +71,7 @@ a,a:visited{color:gold;}
       <td style="text-align: center;color:grey;">All images and logos are Copyright &copy; <a style="text-decoration: none;color:grey;" title="Copyright CCP" href="http://www.ccpgames.com/">CCP</a></td>
     </tr>
     <tr>
-      <td style="text-align: center; font-size: x-small;"><a style="text-decoration: none;color:grey;" href="#top" title="Strap in baby, we\'re going express to the top!">Top</a> / <a style="text-decoration: none;color:grey;" target="_blank" href="https://github.com/ShioR/EVE-Character-Showroom/commits/master/" title="Github">';echo _DATA_VERSION; echo '&nbsp;'; echo _SKILLSHEET_VERSION; echo'</a> / <a style="text-decoration: none;color:grey;" target="_blank" href="https://github.com/ShioR/EVE-Character-Showroom/issues/new" title="Bugs">Submit Bug</a>
+      <td style="text-align: center; font-size: x-small;"><a style="text-decoration: none;color:grey;" href="https://txsi.co.uk" title="The Xenodus Initiative.">The Xenodus Initiative.</a> / <a style="text-decoration: none;color:grey;" target="_blank" href="https://github.com/ShioR/EVE-Character-Showroom/commits/master/" title="Github">';echo _DATA_VERSION; echo '&nbsp;'; echo _SKILLSHEET_VERSION; echo'</a> / <a style="text-decoration: none;color:grey;" target="_blank" href="https://github.com/ShioR/EVE-Character-Showroom/" title="Github">GitHub</a>
 </td>
 </tr>
 <tr>
