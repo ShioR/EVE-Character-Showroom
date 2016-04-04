@@ -20,7 +20,7 @@
             <!--[if $queue.queuePosition == 0]-->
                 <td style="display:none;">
             <!--[elseif $queue.queuePosition > 0]-->
-                <td class="dataTableCell13"  onclick="javascript:i(document.getElementById('<!--[$queue.typeID]-->'));" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"><a style="color: white; text-decoration: none; padding-left: 3px;"  href="/<!--[$name|replace:' ':'_']-->/#s<!--[$queue.typeID]-->" id="q<!--[$queue.typeID]-->"><!--[$queue.typeName]--> <span style="font-size: 9px;font-weight:normal;"><i> / Rank <!--[$queue.rank]--></i></span></a></td>
+                <td class="dataTableCell13"  onclick="javascript:i(document.getElementById('<!--[$queue.typeID]-->'));" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"><a style="color: white; text-decoration: none; padding-left: 3px;"  href="/<!--[$name|replace:' ':'_']-->#s<!--[$queue.typeID]-->" id="q<!--[$queue.typeID]-->"><!--[$queue.typeName]--> <span style="font-size: 9px;font-weight:normal;"><i> / Rank <!--[$queue.rank]--></i></span></a></td>
             <!--[/if]-->
 	        <!--[if $queue.queuePosition == 0]-->
                 <td style="display:none;">
