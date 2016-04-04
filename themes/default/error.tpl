@@ -7,7 +7,7 @@
   <meta name="resource-type" content="document" />
   <meta http-equiv="expires" content="0" />
   <meta name="author" content="Eve Online" />
-  <meta name="copyright" content="Copyright (c) 2011 The Xenodus Initiative." />
+  <meta name="copyright" content="Copyright (c) 2016 The Xenodus Initiative." />
   <meta name="revisit-after" content="1 days" />
   <meta name="distribution" content="Global" />
   <meta name="generator" content="Eve Online" />
@@ -37,8 +37,8 @@ a,a:visited{color:gold;}
 </head>
 <body bgcolor="#1B1B1B" style="height: 100%">
   <div class="headerribbon">
-    <span class="headerleft"><a href="http://evesp.it/" title="Skills Shrowroom">Showroom: Characters List</a></span>
-    <span class="headerright" style="color:gold;"><a href="http://evesp.it/pilot/add" title="Add Character">Add your character!</a></span>
+    <span class="headerleft"><a href="/" title="Skills Shrowroom">Showroom: Characters List</a></span>
+    <span class="headerright" style="color:gold;"><a href="/add" title="Add Character">Add your character!</a></span>
   </div>
 
 
@@ -52,7 +52,7 @@ a,a:visited{color:gold;}
     </thead>
     <tbody>
       <tr>
-        <td>The EVE Online API has produced an error: <span class="statusmsg"><strong>'.$xml['error']. '</strong></span> Next API Update: '.$errortime.' <br />You can check the status of the API <a href="http://eve-offline.net/api/">here.</a><br /><a href="http://evesp.it/" title="Go back to list">Go Back</a></td>
+        <td>The EVE Online API has produced an error: <span class="statusmsg"><strong>'.$xml['error']. '</strong></span> Next API Update: '.$errortime.' <br />You can check the status of the API <a href="http://eve-offline.net/api/">here.</a><br /><a href="/" title="Go back to list">Go Back</a></td>
       </tr>   
      </tbody>
     </table>  
@@ -63,15 +63,9 @@ a,a:visited{color:gold;}
       <td style="text-align: center;color:grey;">All images and logos are Copyright &copy; <a style="text-decoration: none;color:grey;" title="Copyright CCP" href="http://www.ccpgames.com/">CCP</a></td>
     </tr>
     <tr>
-      <td style="text-align: center; font-size: x-small;"><a style="text-decoration: none;color:grey;" href="http://evesp.it/stats" title="Character Stats">Top SP</a> / <a style="text-decoration: none;color:grey;" target="_blank" href="http://txsi.co.uk/trac/changeset/latest/" title="Changelog">Changelog</a> / <a style="text-decoration: none;color:grey;" target="_blank" href="http://txsi.co.uk/trac/newticket/" title="Feedback">Feedback</a>
+      <td style="text-align: center; font-size: x-small;"><a style="text-decoration: none;color:grey;" href="https://txsi.co.uk" title="The Xenodus Initiative.">The Xenodus Initiative.</a> / <a style="text-decoration: none;color:grey;" target="_blank" href="https://github.com/ShioR/EVE-Character-Showroom/commits/master/" title="Github"><!--[$dVersion]--> <!--[$version]--></a> / <a style="text-decoration: none;color:grey;" target="_blank" href="https://github.com/ShioR/EVE-Character-Showroom/" title="Github">GitHub</a>
 </td>
 </tr>
-<tr>
-<td>
-<center><a style="font-size:xx-small; text-decoration:none; color:grey;" href="https://www.deepspacesupply.com/product_info.php?ref=189&products_id=47&affiliate_banner_id=8" target="_blank">Support the site, buy a GTC!</a></center>
-</td>
-</tr>
-    </tr>
     <tr>
     <td>
     <center><a style="text-decoration: none;color:grey; font-size: xx-small;">"Yo dawg"</a><br></center>
