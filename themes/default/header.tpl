@@ -7,7 +7,7 @@
   <meta name="resource-type" content="document" />
   <meta http-equiv="expires" content="0" />
   <meta name="author" content="Eve Online" />
-  <meta name="copyright" content="Copyright (c) 2015 The Xenodus Initiative." />
+  <meta name="copyright" content="Copyright (c) 2016 The Xenodus Initiative." />
   <meta name="revisit-after" content="1 days" />
   <meta name="distribution" content="Global" />
   <meta name="generator" content="Eve Online" />
@@ -23,12 +23,31 @@
   <title><!--[$name]--> / Signatures</title>    
   <!--[else]-->
   <title>Skills Showroom</title>
-  <!--[/if]-->
+  <!--[/if]-->  
+  <link rel="shortcut icon" href="/imgs/favicon.png">
+  <link rel="apple-touch-icon" href="/imgs/favicon.png" sizes="114x114">
   <link rel="stylesheet" type="text/css" href="/themes/<!--[$theme]-->/style/<!--[$theme]-->.css" />
   <link rel="stylesheet" type="text/css" href="/themes/<!--[$theme]-->/style/piro.css" />
 <script type="text/javascript" src="/themes/<!--[$theme]-->/js/jquery.min.js"></script>
 <script type="text/javascript" src="/themes/<!--[$theme]-->/js/jquery-ui-1.8.2.custom.min.js"></script>
 <script type="text/javascript" src="/themes/<!--[$theme]-->/js/pirobox_extended.js"></script>
+<script type="text/javascript">
+// Smooth scroll to anchors
+$(function() {
+  $('a[href*="#"]:not([href="#"])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html, body').animate({
+          scrollTop: target.offset().top -400
+        }, 1000);
+        return false;
+      }
+    }
+  });
+});
+</script>
 <script type="text/javascript">
 $(document).ready(function() {
     $().piroBox_ext({
@@ -46,6 +65,7 @@ which.style.display="none"
 else
 which.style.display="block"}</script>
 </head>
+<body>
 <!-- HEADER -->
   <div class="headerribbon"<!--[if not $page]--> style="height: 26px;"<!--[/if]-->>
   <!--[if $page]-->
