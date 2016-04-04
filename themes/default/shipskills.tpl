@@ -25,10 +25,11 @@
                     $('a.back-to-top').click(function() {
 	                $('html, body').animate({
 		          scrollTop: 0
-	           }, 700);
+	           }, 1000);
 	       return false;
            });
         </script>
+</div>
 <!--[strip]-->          
 <br />
 
