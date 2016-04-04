@@ -9,6 +9,24 @@
           <!--[include file='queue.tpl']-->
           
 <!-- SKILLS -->
+<div>
+    <a href="#top" class="back-to-top"></a>
+        <script type="application/javascript">
+            var amountScrolled = 300;
+                $(window).scroll(function() {
+	               if ( $(window).scrollTop() > amountScrolled ) {
+		          $('a.back-to-top').fadeIn('slow');
+                       } else {
+		          $('a.back-to-top').fadeOut('slow');
+	                   }
+                });
+                    $('a.back-to-top').click(function() {
+	                $('html, body').animate({
+		          scrollTop: 0
+	           }, 700);
+	       return false;
+           });
+        </script>
 <!--[strip]-->
       <!--[assign var='totalCost' value=0]-->   
       <!--[assign var='totalSkills' value=0]-->
@@ -61,6 +79,7 @@
         <!--[if $groupid eq 256]-->
           <!--[assign var='groupname' value='Missiles']-->
         <!--[/if]-->
+</div>
         <div style="margin-top: 50px; margin-bottom: -24px;">
           <div style="margin-top: 10px;">
             <div style="background: rgb(44, 44, 56); background-image: url('/imgs/skillgroups/<!--[$groupname|lower|replace:" ":"_"]-->.png'); background-position:12.5% 50%; background-repeat:no-repeat; background-size:170px 13px; margin-bottom: 10px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 23px;"></div>
