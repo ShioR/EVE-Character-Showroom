@@ -31,11 +31,13 @@
 <!--[strip]-->
       <!--[assign var='totalCost' value=0]-->   
       <!--[assign var='totalSkills' value=0]-->
+      <!--[assign var='lvl0total' value=0]-->
       <!--[assign var='lvl1total' value=0]-->
       <!--[assign var='lvl2total' value=0]-->
       <!--[assign var='lvl3total' value=0]-->
       <!--[assign var='lvl4total' value=0]-->
       <!--[assign var='lvl5total' value=0]-->
+      <!--[assign var='lvl0sptotal' value=0]-->       
       <!--[assign var='lvl1sptotal' value=0]-->       
       <!--[assign var='lvl2sptotal' value=0]-->       
       <!--[assign var='lvl3sptotal' value=0]-->       
@@ -66,6 +68,7 @@
       <!--[foreach item='skillgroup' key='groupid' from=$skilltree]-->
           <!--[assign var='totalsp' value=0]-->
           <!--[assign var='countsk' value=0]-->
+          <!--[assign var='lvl0' value=0]-->
           <!--[assign var='lvl1' value=0]-->
           <!--[assign var='lvl2' value=0]-->
           <!--[assign var='lvl3' value=0]-->
@@ -199,8 +202,10 @@
               <!--[math equation="x + y" x=$totalCost y=$skill.skillCost assign='totalCost']-->
               <!--[math equation="x + y" x=$countsk y=1 assign='countsk']-->
               <!--[math equation="(x / y) * z" x=$totalsp y=$totalskillpoints z=100 format="%.1f" assign='GroupPercentSP']--> 
-              <!--[math equation="(x / y) * z" x=$countsk y=$totalsks z=100 format="%.1f" assign='GroupPercentSkills']--> 
-              <!--[if $skill.level == '1']-->
+              <!--[math equation="(x / y) * z" x=$countsk y=$totalsks z=100 format="%.1f" assign='GroupPercentSkills']-->
+              <!--[if $skill.level == '0']-->           
+              	<!--[math equation="x + y" x=$lvl0 y=1 assign='lvl0']-->    
+              <!--[elseif $skill.level == '1']-->
               	<!--[math equation="x + y" x=$skill.skillpoints y=$lvl1sp assign='lvl1sp']-->              
               	<!--[math equation="x + y" x=$lvl1 y=1 assign='lvl1']-->       
               <!--[elseif $skill.level == '2']-->
@@ -215,13 +220,13 @@
               <!--[elseif $skill.level == '5']-->             	
               	<!--[math equation="x + y" x=$skill.skillpoints y=$lvl5sp assign='lvl5sp']-->
               	<!--[math equation="x + y" x=$lvl5 y=1 assign='lvl5']-->
-              <!--[/if]-->	       
+              <!--[/if]-->	      
             <!--[/foreach]-->
             </div>
             <div style="line-height: 1.45em; margin-left: 82px; font-size: 11px;">
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><!--[$countsk]-->/<!--[if $groupname == "Armor"]--><!--[getskillgroup groupID='1210']--><!--[elseif $groupname == "Corporation Management"]--><!--[getskillgroup groupID='266']--><!--[elseif $groupname == "Drones"]--><!--[getskillgroup groupID='273']--><!--[elseif $groupname == "Electronic Systems"]--><!--[getskillgroup groupID='272']--><!--[elseif $groupname == "Engineering"]--><!--[getskillgroup groupID='1216']--><!--[elseif $groupname == "Gunnery"]--><!--[getskillgroup groupID='255']--><!--[elseif $groupname == "Leadership"]--><!--[getskillgroup groupID='258']--><!--[elseif $groupname == "Missiles"]--><!--[getskillgroup groupID='256']--><!--[elseif $groupname == "Navigation"]--><!--[getskillgroup groupID='275']--><!--[elseif $groupname == "Neural Enhancement"]--><!--[getskillgroup groupID='1220']--><!--[elseif $groupname == "Planet Management"]--><!--[getskillgroup groupID='1241']--><!--[elseif $groupname == "Production"]--><!--[getskillgroup groupID='268']--><!--[elseif $groupname == "Resource Processing"]--><!--[getskillgroup groupID='1218']--><!--[elseif $groupname == "Rigging"]--><!--[getskillgroup groupID='269']--><!--[elseif $groupname == "Scanning"]--><!--[getskillgroup groupID='1217']--><!--[elseif $groupname == "Science"]--><!--[getskillgroup groupID='270']--><!--[elseif $groupname == "Shields"]--><!--[getskillgroup groupID='1209']--><!--[elseif $groupname == "Social"]--><!--[getskillgroup groupID='278']--><!--[elseif $groupname == "Spaceship Command"]--><!--[getskillgroup groupID='257']--><!--[elseif $groupname == "Structure Management"]--><!--[getskillgroup groupID='1545']--><!--[elseif $groupname == "Subsystems"]--><!--[getskillgroup groupID='1240']--><!--[elseif $groupname == "Targeting"]--><!--[getskillgroup groupID='1213']--><!--[elseif $groupname == "Trade"]--><!--[getskillgroup groupID='274']--><!--[/if]--> <!--[$skill.groupName]--> 
-<!--[if $countsk == 1]--> skill<!--[elseif $countsk neq 1]--> skills<!--[/if]--> trained for a total of <strong><!--[$totalsp|number_format]--></strong> SP. <span style="font-size:x-small;">(<strong><!--[$GroupPercentSkills]-->%</strong> of total skills / <strong><!--[$GroupPercentSP]-->%</strong> of total SP)</span></span>
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><!--[$lvl5]-->/<!--[$countsk]--> <!--[if $lvl5 eq 1]-->skill<!--[elseif $lvl5 neq 1]-->skills<!--[/if]--> trained to level 5 for a total of <strong><!--[$lvl5sp|number_format]--></strong> SP.</span>
+                <br /><span style="color:#777;"><span class="navdot">&bull;</span><!--[$countsk]-->/<!--[if $groupname == "Armor"]--><!--[getskillgroup groupID='1210']--><!--[elseif $groupname == "Corporation Management"]--><!--[getskillgroup groupID='266']--><!--[elseif $groupname == "Drones"]--><!--[getskillgroup groupID='273']--><!--[elseif $groupname == "Electronic Systems"]--><!--[getskillgroup groupID='272']--><!--[elseif $groupname == "Engineering"]--><!--[getskillgroup groupID='1216']--><!--[elseif $groupname == "Gunnery"]--><!--[getskillgroup groupID='255']--><!--[elseif $groupname == "Leadership"]--><!--[getskillgroup groupID='258']--><!--[elseif $groupname == "Missiles"]--><!--[getskillgroup groupID='256']--><!--[elseif $groupname == "Navigation"]--><!--[getskillgroup groupID='275']--><!--[elseif $groupname == "Neural Enhancement"]--><!--[getskillgroup groupID='1220']--><!--[elseif $groupname == "Planet Management"]--><!--[getskillgroup groupID='1241']--><!--[elseif $groupname == "Production"]--><!--[getskillgroup groupID='268']--><!--[elseif $groupname == "Resource Processing"]--><!--[getskillgroup groupID='1218']--><!--[elseif $groupname == "Rigging"]--><!--[getskillgroup groupID='269']--><!--[elseif $groupname == "Scanning"]--><!--[getskillgroup groupID='1217']--><!--[elseif $groupname == "Science"]--><!--[getskillgroup groupID='270']--><!--[elseif $groupname == "Shields"]--><!--[getskillgroup groupID='1209']--><!--[elseif $groupname == "Social"]--><!--[getskillgroup groupID='278']--><!--[elseif $groupname == "Spaceship Command"]--><!--[getskillgroup groupID='257']--><!--[elseif $groupname == "Structure Management"]--><!--[getskillgroup groupID='1545']--><!--[elseif $groupname == "Subsystems"]--><!--[getskillgroup groupID='1240']--><!--[elseif $groupname == "Targeting"]--><!--[getskillgroup groupID='1213']--><!--[elseif $groupname == "Trade"]--><!--[getskillgroup groupID='274']--><!--[/if]--> <!--[$skill.groupName]--> 
+                <!--[if $countsk == 1]--> skill<!--[elseif $countsk neq 1]--> skills<!--[/if]--> trained for a total of <!--[$totalsp|number_format]--> skillpoints. <span style="font-size:x-small;">(<strong><!--[$GroupPercentSkills]-->%</strong> of total skills / <strong><!--[$GroupPercentSP]-->%</strong> of total SP)</span></span>
+                <br /><span style="color:#777;"><span class="navdot">&bull;</span><!--[$lvl5]--> <!--[if $lvl5 eq 1]-->skill<!--[elseif $lvl5 neq 1]-->skills<!--[/if]--> trained to level 5 for a total of <!--[$lvl5sp|number_format]--> skillpoionts.</span>
             </div>
           </div>
         </div>
@@ -230,6 +235,7 @@
 			    	<!--[math equation="x + y" x=$lvl3sp y=$lvl3sptotal assign='lvl3sptotal']-->
 			    	<!--[math equation="x + y" x=$lvl4sp y=$lvl4sptotal assign='lvl4sptotal']-->
 			    	<!--[math equation="x + y" x=$lvl5sp y=$lvl5sptotal assign='lvl5sptotal']-->
+			    	<!--[math equation="x + y" x=$lvl0 y=$lvl0total assign='lvl0total']-->	
 			    	<!--[math equation="x + y" x=$lvl1 y=$lvl1total assign='lvl1total']-->	
 			    	<!--[math equation="x + y" x=$lvl2 y=$lvl2total assign='lvl2total']-->	
 			    	<!--[math equation="x + y" x=$lvl3 y=$lvl3total assign='lvl3total']-->	
@@ -238,6 +244,7 @@
 			    	<!--[math equation="x + y" x=$countsk y=$totalSkills assign='totalSkills']-->	    	
       <!--[/foreach]-->
       <!--[math equation="(x / y) * z" x=$totalSkills y=$getskillstotal z=100 format="%.1f" assign='GroupTotalPercentage']-->       
+      <!--[math equation="(x / y) * z" x=$lvl0total y=$totalSkills z=100 format="%.1f" assign='TotalPercentageSkills0']-->      
       <!--[math equation="(x / y) * z" x=$lvl1total y=$totalSkills z=100 format="%.1f" assign='TotalPercentageSkills1']-->      
       <!--[math equation="(x / y) * z" x=$lvl2total y=$totalSkills z=100 format="%.1f" assign='TotalPercentageSkills2']-->      
       <!--[math equation="(x / y) * z" x=$lvl3total y=$totalSkills z=100 format="%.1f" assign='TotalPercentageSkills3']-->      
@@ -250,14 +257,15 @@
       <!--[math equation="(x / y) * z" x=$lvl5sptotal y=$totalskillpoints z=100 format="%.1f" assign='TotalPercentageSkillPoints5']-->      
         <br /><br />
             <div style="line-height: 1.45em; margin-left: 82px; font-size: 11px;">
-             <br /><strong>Totals:</strong>
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong>~ <!--[$totalCost|number_format]--></strong> ISK spent on skills.</span>
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$totalSkills]--></strong>/<!--[$getskillstotal]--> (<!--[$GroupTotalPercentage]-->%) <!--[if $totalSkills == 1]-->skill<!--[elseif $totalSkills != 1]-->skills<!--[/if]--> trained for a total of <strong><!--[$skillpointstotal]--></strong> skillpoints.</span>
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl1total]--></strong> (<!--[$TotalPercentageSkills1]-->%) <!--[if $lvl1total == 1]-->skill<!--[elseif $lvl1total != 1]-->skills<!--[/if]--> trained to <strong>level 1</strong><!--[if $lvl1total == 0]-->. <!--[elseif $lvl1total > 0]--> for a total of <strong><!--[$lvl1sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints1]-->%</strong> of your total skillpoints.</span><!--[/if]-->
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl2total]--></strong> (<!--[$TotalPercentageSkills2]-->%) <!--[if $lvl2total == 1]-->skill<!--[elseif $lvl2total != 1]-->skills<!--[/if]--> trained to <strong>level 2</strong><!--[if $lvl2total == 0]-->. <!--[elseif $lvl2total > 0]--> for a total of <strong><!--[$lvl2sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints2]-->%</strong> of your total skillpoints.</span><!--[/if]-->
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl3total]--></strong> (<!--[$TotalPercentageSkills3]-->%) <!--[if $lvl3total == 1]-->skill<!--[elseif $lvl3total != 1]-->skills<!--[/if]--> trained to <strong>level 3</strong><!--[if $lvl3total == 0]-->. <!--[elseif $lvl3total > 0]--> for a total of <strong><!--[$lvl3sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints3]-->%</strong> of your total skillpoints.</span><!--[/if]-->
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl4total]--></strong> (<!--[$TotalPercentageSkills4]-->%) <!--[if $lvl4total == 1]-->skill<!--[elseif $lvl4total != 1]-->skills<!--[/if]--> trained to <strong>level 4</strong><!--[if $lvl4total == 0]-->. <!--[elseif $lvl4total > 0]--> for a total of <strong><!--[$lvl4sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints4]-->%</strong> of your total skillpoints.</span><!--[/if]-->
-              <br /><span style="color:gold;"><span class="navdot">&bull;</span><strong><!--[$lvl5total]--></strong> (<!--[$TotalPercentageSkills5]-->%) <!--[if $lvl5total == 1]-->skill<!--[elseif $lvl5total != 1]-->skills<!--[/if]--> trained to <strong>level 5</strong><!--[if $lvl5total == 0]-->. <!--[elseif $lvl5total > 0]--> for a total of <strong><!--[$lvl5sptotal|number_format]--></strong> skillpoints which makes up <strong><!--[$TotalPercentageSkillPoints5]-->%</strong> of your total skillpoints.</span><!--[/if]-->
+             <br /><strong>Stats:</strong>
+              <br /><span style="color:#777;"><span class="navdot">&bull;</span><strong>~<span style="color:gold;"><!--[$totalCost|number_format]--></span></strong> ISK spent on skills.</span>
+                <br /><span style="color:#777;"><span class="navdot">&bull;</span><span style="color:gold;"><strong><!--[$totalSkills]--></strong>/<!--[$getskillstotal]--></span> (<!--[$GroupTotalPercentage]-->%) <!--[if $totalSkills == 1]-->skill<!--[elseif $totalSkills != 1]-->skills<!--[/if]--> trained for a total of <span style="color:gold;"><strong><!--[$skillpointstotal]--></span></strong> skillpoints.</span>
+                <br /><span style="color:#777;"><span class="navdot">&bull;</span><span style="color:gold;"><strong><!--[$lvl0total]--></strong></span> (<!--[$TotalPercentageSkills0]-->%)  <!--[if $lvl0total == 1]-->skill<!--[elseif $lvl0total != 1]-->skills<!--[/if]--> injected awaiting training.</span>
+                <br /><span style="color:#777;"><span class="navdot">&bull;</span><span style="color:gold;"><strong><!--[$lvl1total]--></strong></span> (<!--[$TotalPercentageSkills1]-->%) <!--[if $lvl1total == 1]-->skill<!--[elseif $lvl1total != 1]-->skills<!--[/if]--> trained to <span style="color:gold;"><strong>level 1</strong></span><!--[if $lvl1total == 0]-->. <!--[elseif $lvl1total > 0]--> for a total of <span style="color:gold;"><strong><!--[$lvl1sptotal|number_format]--></strong></span> skillpoints which makes up <span style="color:gold;"><strong><!--[$TotalPercentageSkillPoints1]-->%</span></strong> of your total skillpoints.</span><!--[/if]-->
+                <br /><span style="color:#777;"><span class="navdot">&bull;</span><span style="color:gold;"><strong><!--[$lvl2total]--></strong></span> (<!--[$TotalPercentageSkills2]-->%) <!--[if $lvl2total == 1]-->skill<!--[elseif $lvl2total != 1]-->skills<!--[/if]--> trained to <span style="color:gold;"><strong>level 2</strong></span><!--[if $lvl2total == 0]-->. <!--[elseif $lvl2total > 0]--> for a total of <span style="color:gold;"><strong><!--[$lvl2sptotal|number_format]--></strong></span> skillpoints which makes up <span style="color:gold;"><strong><!--[$TotalPercentageSkillPoints2]-->%</span></strong> of your total skillpoints.</span><!--[/if]-->
+                <br /><span style="color:#777;"><span class="navdot">&bull;</span><span style="color:gold;"><strong><!--[$lvl3total]--></strong></span> (<!--[$TotalPercentageSkills3]-->%) <!--[if $lvl3total == 1]-->skill<!--[elseif $lvl3total != 1]-->skills<!--[/if]--> trained to <span style="color:gold;"><strong>level 3</strong></span><!--[if $lvl3total == 0]-->. <!--[elseif $lvl3total > 0]--> for a total of <span style="color:gold;"><strong><!--[$lvl3sptotal|number_format]--></strong></span> skillpoints which makes up <span style="color:gold;"><strong><!--[$TotalPercentageSkillPoints3]-->%</span></strong> of your total skillpoints.</span><!--[/if]-->
+                <br /><span style="color:#777;"><span class="navdot">&bull;</span><span style="color:gold;"><strong><!--[$lvl4total]--></strong></span> (<!--[$TotalPercentageSkills4]-->%) <!--[if $lvl4total == 1]-->skill<!--[elseif $lvl4total != 1]-->skills<!--[/if]--> trained to <span style="color:gold;"><strong>level 4</strong></span><!--[if $lvl4total == 0]-->. <!--[elseif $lvl4total > 0]--> for a total of <span style="color:gold;"><strong><!--[$lvl4sptotal|number_format]--></strong></span> skillpoints which makes up <span style="color:gold;"><strong><!--[$TotalPercentageSkillPoints4]-->%</span></strong> of your total skillpoints.</span><!--[/if]-->
+                <br /><span style="color:#777;"><span class="navdot">&bull;</span><span style="color:gold;"><strong><!--[$lvl5total]--></strong></span> (<!--[$TotalPercentageSkills5]-->%) <!--[if $lvl5total == 1]-->skill<!--[elseif $lvl5total != 1]-->skills<!--[/if]--> trained to <span style="color:gold;"><strong>level 5</strong></span><!--[if $lvl5total == 0]-->. <!--[elseif $lvl5total > 0]--> for a total of <span style="color:gold;"><strong><!--[$lvl5sptotal|number_format]--></strong></span> skillpoints which makes up <span style="color:gold;"><strong><!--[$TotalPercentageSkillPoints5]-->%</span></strong> of your total skillpoints.</span><!--[/if]-->
             </div>
         <br /><br />
       </td>
