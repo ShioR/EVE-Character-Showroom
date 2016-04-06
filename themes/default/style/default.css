@@ -46,6 +46,6 @@ td.dataTableCell3{padding-right:4px;padding-left:4px;font-size:10px;padding-bott
 td.dataTableCellEnd{padding-right:4px;padding-left:4px;font-size:10px;padding-bottom:4px;border-left:#666 1px solid;border-right:#666 1px solid;padding-top:4px;border-bottom:#666 1px solid;}
 td.dataTableCellFreeSP{padding-bottom:4px;padding-top:4px;text-align:center;font-size:x-small;background-color:maroon;padding-right:2px;}
 a img {border: none; }
-a.back-to-top {display:none;width:50px;height:50px;text-indent:-9999px;position:fixed;margin-left:830px;bottom:100px;z-index:999;background:#2c2c38 url("../../../imgs/top.png") no-repeat center;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
+a.back-to-top {display:none;width:50px;height:50px;text-indent:-9999px;position:fixed;margin-left:830px;bottom:15px;z-index:999;background:#2c2c38 url("../../../imgs/top.png") no-repeat center;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;}
 ::-moz-selection { color:#FF8C00; text-shadow: none; }
 ::selection { color:#FF8C00; text-shadow: none; }
