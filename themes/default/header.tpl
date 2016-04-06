@@ -14,13 +14,11 @@
   <meta name="rating" content="General" />
   <meta name="KEYWORDS" content="eveonline, skills" />
   <!--[if $page eq 'skills']-->
-  <title><!--[$name]--> / Skills</title>
+  <title><!--[$name]--> » Skills</title>
   <!--[elseif $page eq 'ships']-->
-  <title><!--[$name]--> / Ships</title>
-  <!--[elseif $page eq 'certs']-->
-  <title><!--[$name]--> / Certificates</title>
+  <title><!--[$name]--> » Ships</title>
   <!--[elseif $page eq 'siglist']-->
-  <title><!--[$name]--> / Signatures</title>    
+  <title><!--[$name]--> » Signatures</title>    
   <!--[else]-->
   <title>Skills Showroom</title>
   <!--[/if]-->  
