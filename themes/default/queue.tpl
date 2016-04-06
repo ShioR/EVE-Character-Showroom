@@ -20,7 +20,7 @@
             <!--[if $queue.queuePosition == 0]-->
                 <td style="display:none;">
             <!--[elseif $queue.queuePosition > 0]-->
-                <td class="dataTableCell13"  onclick="javascript:i(document.getElementById('<!--[$queue.typeID]-->'));" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"><a style="color: white; text-decoration: none; padding-left: 3px;"  href="/<!--[$name|replace:' ':'_']-->#s<!--[$queue.typeID]-->" id="q<!--[$queue.typeID]-->"><!--[$queue.typeName]--> <span style="font-size: 9px;font-weight:normal;"><i> / Rank <!--[$queue.rank]--></i></span></a></td>
+                <td class="dataTableCell13"  onclick="javascript:i(document.getElementById('<!--[$queue.typeID]-->'));" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"><a style="color: white; text-decoration: none; padding-left: 3px;"  href="/<!--[$name|replace:' ':'_']-->#s<!--[$queue.typeID]-->" id="q<!--[$queue.typeID]-->"><!--[$queue.typeName]--> <span style="font-size: 9px;font-weight:normal;"><span style="color:#777; font-size: x-small;"><span style="color:#c1c1c1;"> » </span><i>Rank <!--[$queue.rank]--></i></span></span></a></td>
             <!--[/if]-->
 	        <!--[if $queue.queuePosition == 0]-->
                 <td style="display:none;">
@@ -40,7 +40,7 @@
 	    </tr>
 	       <!--[else]-->   
         <tr>
-	           <td class="dataTableCell13"  onclick="javascript:i(document.getElementById('<!--[$queue.typeID]-->'));" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"><a style="color: white; text-decoration: none; padding-left: 3px;"  href="#s<!--[$queue.typeID]-->" id="q<!--[$queue.typeID]-->"><!--[$queue.typeName]--> <span style="font-size: 9px;font-weight:normal;"><i> / Rank <!--[$queue.rank]--></i></span></a></td>
+            <td class="dataTableCell13"  onclick="javascript:i(document.getElementById('<!--[$queue.typeID]-->'));" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"><a style="color: white; text-decoration: none; padding-left: 3px;"  href="#s<!--[$queue.typeID]-->" id="q<!--[$queue.typeID]-->"><!--[$queue.typeName]--> <span style="font-size: 9px;font-weight:normal;"><span style="color:#777; font-size: x-small;"><span style="color:#c1c1c1;"> » </span><i>Rank <!--[$queue.rank]--></i></span></span></a></td>
 	           <td class="dataTableCell2" width="150" align="left"><!--[$queue.startSP|number_format]--> of <span style="color: gold;"><!--[$queue.endSP|number_format]--></span></td>
 	           <td class="dataTableCell2" width="120"><!--[$queue.startTime|date_format:"%a, %b %d, %H:%M"]--></td>
 	           <td class="dataTableCell2" width="120"><!--[$queue.endTime|date_format:"%a, %b %d, %H:%M"]--></td>
