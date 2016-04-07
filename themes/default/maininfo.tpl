@@ -57,13 +57,13 @@
                   </tr>
                   <tr>
                     <td class="dataTableCell">Corporation</td>
-                    <td class="dataTableCell"><!--[$corporationName]--></td>
+                    <td class="dataTableCell"><strong><!--[$corporationName]--></strong></td>
                     <td class="dataTableCell">Memory</td>
                     <td class="dataTableCellLeftRight" align="center"><!--[$attributes.memory]--><!--[if $memoryImp >= 1]--> [+<!--[$memoryImp]-->]<!--[else]--><!--[/if]--></td>
                   </tr>
                   <tr>
-                    <td class="dataTableCell">Race / <i>Bloodline</i></td>
-                    <td class="dataTableCell"><!--[$race]--> / <i><!--[$bloodLine]--></i></td>
+                    <td class="dataTableCell">Race / <span style="color:#c1c1c1;"><i>Bloodline</i></span></td>
+                    <td class="dataTableCell"><!--[$race]--> / <span style="color:#c1c1c1;"><i><!--[$bloodLine]--></i></span></td>
                     <td class="dataTableCell">Willpower</td>
                     <td class="dataTableCellLeftRight" align="center"><!--[$attributes.willpower]--><!--[if $willpowerImp >= 1]--> [+<!--[$willpowerImp]-->]<!--[else]--><!--[/if]--></td>
                   </tr>
@@ -82,7 +82,7 @@
                   <tr>               
                     <td class="dataTableCell">Date of Birth</td>
                     <td colspan="2" class="dataTableCell" align="left"><!--[$DoB|date_format:"%A, %B %d, %Y"]--></td>
-                    <td colspan="1" class="dataTableCellLeftRight" align="center" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"> <a style="text-decoration:none;color:#777;" href="/settings/" rel="iframe-500-300" class="pirobox">Settings</a></td>
+                    <td colspan="1" class="dataTableCellLeftRight" align="center" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"> <a style="text-decoration:none;color:#c1c1c1;" href="/settings/" rel="iframe-500-300" class="pirobox">Settings</a></td>
                   </tr>
                   <tr>
                     <td colspan="4" class="dataTableHeaderRight">Training</td>
