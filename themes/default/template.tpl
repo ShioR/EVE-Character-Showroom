@@ -42,29 +42,7 @@
       <!--[assign var='lvl2sptotal' value=0]-->       
       <!--[assign var='lvl3sptotal' value=0]-->       
       <!--[assign var='lvl4sptotal' value=0]-->       
-      <!--[assign var='lvl5sptotal' value=0]-->  
-      <!--[foreach item='queue' from=$SkillQueue]--> 
-          <!--[assign var='queuePos0' value=$SkillQueue.0.typeID]-->  
-          <!--[assign var='queuePos1' value=$SkillQueue.1.typeID]-->  
-          <!--[assign var='queuePos2' value=$SkillQueue.2.typeID]-->  
-          <!--[assign var='queuePos3' value=$SkillQueue.3.typeID]-->  
-          <!--[assign var='queuePos4' value=$SkillQueue.4.typeID]-->  
-          <!--[assign var='queuePos5' value=$SkillQueue.5.typeID]-->  
-          <!--[assign var='queuePos6' value=$SkillQueue.6.typeID]-->  
-          <!--[assign var='queuePos7' value=$SkillQueue.7.typeID]-->  
-          <!--[assign var='queuePos8' value=$SkillQueue.8.typeID]-->  
-          <!--[assign var='queuePos9' value=$SkillQueue.9.typeID]-->  
-          <!--[assign var='queueLevel0' value=$SkillQueue.0.level]-->  
-          <!--[assign var='queueLevel1' value=$SkillQueue.1.level]-->  
-          <!--[assign var='queueLevel2' value=$SkillQueue.2.level]-->  
-          <!--[assign var='queueLevel3' value=$SkillQueue.3.level]-->  
-          <!--[assign var='queueLevel4' value=$SkillQueue.4.level]-->  
-          <!--[assign var='queueLevel5' value=$SkillQueue.5.level]-->  
-          <!--[assign var='queueLevel6' value=$SkillQueue.6.level]-->  
-          <!--[assign var='queueLevel7' value=$SkillQueue.7.level]-->  
-          <!--[assign var='queueLevel8' value=$SkillQueue.8.level]-->  
-          <!--[assign var='queueLevel9' value=$SkillQueue.9.level]-->
-      <!--[/foreach]-->
+      <!--[assign var='lvl5sptotal' value=0]-->
       <!--[foreach item='skillgroup' key='groupid' from=$skilltree]-->
           <!--[assign var='totalsp' value=0]-->
           <!--[assign var='countsk' value=0]-->
@@ -98,36 +76,9 @@
 					<!--[if $skill.flag eq 61]-->	
 				        <div style="float: left;margin-right:4px;"><img alt="" src="/imgs/sklvlicons/levelPartiallyTrained.png" width="16" height="16" /></div>
 						<div style="float: right;margin-top:4px;"><img alt="level<!--[$skill.level]-->" src="/imgs/sklvlicons/level<!--[math equation="x + y" x=$skill.level y=1]-->_act.gif" width="48" height="8" /></div>
-					<!--[elseif $queuePos0 eq $skill.typeID]-->
+					<!--[elseif $SkillQueue.0.typeID eq $skill.typeID || $SkillQueue.1.typeID eq $skill.typeID || $SkillQueue.2.typeID eq $skill.typeID || $SkillQueue.3.typeID eq $skill.typeID || $SkillQueue.4.typeID eq $skill.typeID || $SkillQueue.5.typeID eq $skill.typeID || $SkillQueue.6.typeID eq $skill.typeID || $SkillQueue.7.typeID eq $skill.typeID || $SkillQueue.8.typeID eq $skill.typeID || $SkillQueue.9.typeID eq $skill.typeID || $SkillQueue.10.typeID eq $skill.typeID || $SkillQueue.11.typeID eq $skill.typeID || $SkillQueue.12.typeID eq $skill.typeID || $SkillQueue.13.typeID eq $skill.typeID || $SkillQueue.14.typeID eq $skill.typeID || $SkillQueue.15.typeID eq $skill.typeID || $SkillQueue.16.typeID eq $skill.typeID || $SkillQueue.17.typeID eq $skill.typeID || $SkillQueue.18.typeID eq $skill.typeID || $SkillQueue.19.typeID eq $skill.typeID || $SkillQueue.20.typeID eq $skill.typeID || $SkillQueue.21.typeID eq $skill.typeID || $SkillQueue.22.typeID eq $skill.typeID || $SkillQueue.23.typeID eq $skill.typeID || $SkillQueue.24.typeID eq $skill.typeID || $SkillQueue.25.typeID eq $skill.typeID || $SkillQueue.26.typeID eq $skill.typeID || $SkillQueue.27.typeID eq $skill.typeID || $SkillQueue.28.typeID eq $skill.typeID || $SkillQueue.29.typeID eq $skill.typeID || $SkillQueue.30.typeID eq $skill.typeID || $SkillQueue.31.typeID eq $skill.typeID || $SkillQueue.32.typeID eq $skill.typeID || $SkillQueue.33.typeID eq $skill.typeID || $SkillQueue.34.typeID eq $skill.typeID || $SkillQueue.35.typeID eq $skill.typeID || $SkillQueue.36.typeID eq $skill.typeID || $SkillQueue.37.typeID eq $skill.typeID || $SkillQueue.38.typeID eq $skill.typeID || $SkillQueue.39.typeID eq $skill.typeID || $SkillQueue.40.typeID eq $skill.typeID || $SkillQueue.41.typeID eq $skill.typeID || $SkillQueue.42.typeID eq $skill.typeID || $SkillQueue.43.typeID eq $skill.typeID || $SkillQueue.44.typeID eq $skill.typeID || $SkillQueue.45.typeID eq $skill.typeID || $SkillQueue.46.typeID eq $skill.typeID || $SkillQueue.47.typeID eq $skill.typeID || $SkillQueue.48.typeID eq $skill.typeID || $SkillQueue.49.typeID eq $skill.typeID || $SkillQueue.50.typeID eq $skill.typeID]-->
 							<div style="float: left;margin-right:4px;"><img alt="" src="/imgs/sklvlicons/levelTrainedQueue.png" width="16" height="16" /></div>
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[$queueLevel1]-->_q.gif" width="48" height="8" /></div>
-					<!--[elseif $queuePos1 eq $skill.typeID]-->
-							<div style="float: left;margin-right:4px;"><img alt="" src="/imgs/sklvlicons/levelTrainedQueue.png" width="16" height="16" /></div>
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[$queueLevel1]-->_q.gif" width="48" height="8" /></div>
-					<!--[elseif $queuePos2 eq $skill.typeID]-->
-							<div style="float: left;margin-right:4px;"><img alt="" src="/imgs/sklvlicons/levelTrainedQueue.png" width="16" height="16" /></div>
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[$queueLevel2]-->_q.gif" width="48" height="8" /></div>
-					<!--[elseif $queuePos3 eq $skill.typeID]-->
-							<div style="float: left;margin-right:4px;"><img alt="" src="/imgs/sklvlicons/levelTrainedQueue.png" width="16" height="16" /></div>
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[$queueLevel3]-->_q.gif" width="48" height="8" /></div>
-					<!--[elseif $queuePos4 eq $skill.typeID]-->
-							<div style="float: left;margin-right:4px;"><img alt="" src="/imgs/sklvlicons/levelTrainedQueue.png" width="16" height="16" /></div>
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[$queueLevel4]-->_q.gif" width="48" height="8" /></div>
-					<!--[elseif $queuePos5 eq $skill.typeID]-->
-							<div style="float: left;margin-right:4px;"><img alt="" src="/imgs/sklvlicons/levelTrainedQueue.png" width="16" height="16" /></div>
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[$queueLevel5]-->_q.gif" width="48" height="8" /></div>
-					<!--[elseif $queuePos6 eq $skill.typeID]-->
-							<div style="float: left;margin-right:4px;"><img alt="" src="/imgs/sklvlicons/levelTrainedQueue.png" width="16" height="16" /></div>
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[$queueLevel6]-->_q.gif" width="48" height="8" /></div>
-					<!--[elseif $queuePos7 eq $skill.typeID]-->
-							<div style="float: left;margin-right:4px;"><img alt="" src="/imgs/sklvlicons/levelTrainedQueue.png" width="16" height="16" /></div>
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[$queueLevel7]-->_q.gif" width="48" height="8" /></div>
-					<!--[elseif $queuePos8 eq $skill.typeID]-->
-							<div style="float: left;margin-right:4px;"><img alt="" src="/imgs/sklvlicons/levelTrainedQueue.png" width="16" height="16" /></div>
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[$queueLevel8]-->_q.gif" width="48" height="8" /></div>
-					<!--[elseif $queuePos9 eq $skill.typeID]-->
-							<div style="float: left;margin-right:4px;"><img alt="" src="/imgs/sklvlicons/levelTrainedQueue.png" width="16" height="16" /></div>
-						<div style="float: right;margin-top:4px;"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[$queueLevel9]-->_q.gif" width="48" height="8"  /></div>
+						<div style="float: right;margin-top:4px;"><img alt="Skill in queue" src="/imgs/sklvlicons/level<!--[$skill.level]-->-<!--[if $SkillQueue.1.typeID eq $skill.typeID]--><!--[$SkillQueue.1.level]--><!--[elseif $SkillQueue.2.typeID eq $skill.typeID]--><!--[$SkillQueue.2.level]--><!--[elseif $SkillQueue.3.typeID eq $skill.typeID]--><!--[$SkillQueue.3.level]--><!--[elseif $SkillQueue.4.typeID eq $skill.typeID]--><!--[$SkillQueue.4.level]--><!--[elseif $SkillQueue.5.typeID eq $skill.typeID]--><!--[$SkillQueue.5.level]--><!--[elseif $SkillQueue.6.typeID eq $skill.typeID]--><!--[$SkillQueue.6.level]--><!--[elseif $SkillQueue.7.typeID eq $skill.typeID]--><!--[$SkillQueue.7.level]--><!--[elseif $SkillQueue.8.typeID eq $skill.typeID]--><!--[$SkillQueue.8.level]--><!--[elseif $SkillQueue.9.typeID eq $skill.typeID]--><!--[$SkillQueue.9.level]--><!--[elseif $SkillQueue.10.typeID eq $skill.typeID]--><!--[$SkillQueue.10.level]--><!--[elseif $SkillQueue.11.typeID eq $skill.typeID]--><!--[$SkillQueue.11.level]--><!--[elseif $SkillQueue.12.typeID eq $skill.typeID]--><!--[$SkillQueue.12.level]--><!--[elseif $SkillQueue.13.typeID eq $skill.typeID]--><!--[$SkillQueue.13.level]--><!--[elseif $SkillQueue.14.typeID eq $skill.typeID]--><!--[$SkillQueue.14.level]--><!--[elseif $SkillQueue.15.typeID eq $skill.typeID]--><!--[$SkillQueue.15.level]--><!--[elseif $SkillQueue.16.typeID eq $skill.typeID]--><!--[$SkillQueue.16.level]--><!--[elseif $SkillQueue.17.typeID eq $skill.typeID]--><!--[$SkillQueue.17.level]--><!--[elseif $SkillQueue.18.typeID eq $skill.typeID]--><!--[$SkillQueue.18.level]--><!--[elseif $SkillQueue.19.typeID eq $skill.typeID]--><!--[$SkillQueue.19.level]--><!--[elseif $SkillQueue.20.typeID eq $skill.typeID]--><!--[$SkillQueue.20.level]--><!--[elseif $SkillQueue.21.typeID eq $skill.typeID]--><!--[$SkillQueue.21.level]--><!--[elseif $SkillQueue.22.typeID eq $skill.typeID]--><!--[$SkillQueue.22.level]--><!--[elseif $SkillQueue.23.typeID eq $skill.typeID]--><!--[$SkillQueue.23.level]--><!--[elseif $SkillQueue.24.typeID eq $skill.typeID]--><!--[$SkillQueue.24.level]--><!--[elseif $SkillQueue.25.typeID eq $skill.typeID]--><!--[$SkillQueue.25.level]--><!--[elseif $SkillQueue.26.typeID eq $skill.typeID]--><!--[$SkillQueue.26.level]--><!--[elseif $SkillQueue.27.typeID eq $skill.typeID]--><!--[$SkillQueue.27.level]--><!--[elseif $SkillQueue.28.typeID eq $skill.typeID]--><!--[$SkillQueue.28.level]--><!--[elseif $SkillQueue.29.typeID eq $skill.typeID]--><!--[$SkillQueue.29.level]--><!--[elseif $SkillQueue.30.typeID eq $skill.typeID]--><!--[$SkillQueue.30.level]--><!--[elseif $SkillQueue.31.typeID eq $skill.typeID]--><!--[$SkillQueue.31.level]--><!--[elseif $SkillQueue.32.typeID eq $skill.typeID]--><!--[$SkillQueue.32.level]--><!--[elseif $SkillQueue.33.typeID eq $skill.typeID]--><!--[$SkillQueue.33.level]--><!--[elseif $SkillQueue.34.typeID eq $skill.typeID]--><!--[$SkillQueue.34.level]--><!--[elseif $SkillQueue.35.typeID eq $skill.typeID]--><!--[$SkillQueue.35.level]--><!--[elseif $SkillQueue.36.typeID eq $skill.typeID]--><!--[$SkillQueue.36.level]--><!--[elseif $SkillQueue.37.typeID eq $skill.typeID]--><!--[$SkillQueue.37.level]--><!--[elseif $SkillQueue.38.typeID eq $skill.typeID]--><!--[$SkillQueue.38.level]--><!--[elseif $SkillQueue.39.typeID eq $skill.typeID]--><!--[$SkillQueue.39.level]--><!--[elseif $SkillQueue.40.typeID eq $skill.typeID]--><!--[$SkillQueue.40.level]--><!--[elseif $SkillQueue.41.typeID eq $skill.typeID]--><!--[$SkillQueue.41.level]--><!--[elseif $SkillQueue.42.typeID eq $skill.typeID]--><!--[$SkillQueue.42.level]--><!--[elseif $SkillQueue.43.typeID eq $skill.typeID]--><!--[$SkillQueue.43.level]--><!--[elseif $SkillQueue.44.typeID eq $skill.typeID]--><!--[$SkillQueue.44.level]--><!--[elseif $SkillQueue.45.typeID eq $skill.typeID]--><!--[$SkillQueue.45.level]--><!--[elseif $SkillQueue.46.typeID eq $skill.typeID]--><!--[$SkillQueue.46.level]--><!--[elseif $SkillQueue.47.typeID eq $skill.typeID]--><!--[$SkillQueue.47.level]--><!--[elseif $SkillQueue.48.typeID eq $skill.typeID]--><!--[$SkillQueue.48.level]--><!--[elseif $SkillQueue.49.typeID eq $skill.typeID]--><!--[$SkillQueue.49.level]--><!--[elseif $SkillQueue.50.typeID eq $skill.typeID]--><!--[$SkillQueue.50.level]--><!--[/if]-->_q.gif" width="48" height="8" /></div>
 					<!--[/if]-->
 					<!--[if $queuePos0 eq $skill.typeID]-->
 						<!--[if $skill.flag neq 61]-->
@@ -136,23 +87,7 @@
 							<div style="display:none;"></div>
 						<!--[/if]-->	
 					<!--[/if]-->	
-					<!--[if $queuePos1 eq $skill.typeID]-->
-						<div style="display:none;"></div>
-					<!--[elseif $queuePos2 eq $skill.typeID]-->
-						<div style="display:none;"></div>
-					<!--[elseif $queuePos3 eq $skill.typeID]-->
-						<div style="display:none;"></div>
-					<!--[elseif $queuePos4 eq $skill.typeID]-->
-						<div style="display:none;"></div>
-					<!--[elseif $queuePos5 eq $skill.typeID]-->
-						<div style="display:none;"></div>
-					<!--[elseif $queuePos6 eq $skill.typeID]-->
-						<div style="display:none;"></div>
-					<!--[elseif $queuePos7 eq $skill.typeID]-->
-						<div style="display:none;"></div>
-					<!--[elseif $queuePos8 eq $skill.typeID]-->
-						<div style="display:none;"></div>
-					<!--[elseif $queuePos9 eq $skill.typeID]-->
+					<!--[if $SkillQueue.1.typeID eq $skill.typeID || $SkillQueue.2.typeID eq $skill.typeID || $SkillQueue.3.typeID eq $skill.typeID || $SkillQueue.4.typeID eq $skill.typeID || $SkillQueue.5.typeID eq $skill.typeID || $SkillQueue.6.typeID eq $skill.typeID || $SkillQueue.7.typeID eq $skill.typeID || $SkillQueue.8.typeID eq $skill.typeID || $SkillQueue.9.typeID eq $skill.typeID || $SkillQueue.10.typeID eq $skill.typeID || $SkillQueue.11.typeID eq $skill.typeID || $SkillQueue.12.typeID eq $skill.typeID || $SkillQueue.13.typeID eq $skill.typeID || $SkillQueue.14.typeID eq $skill.typeID || $SkillQueue.15.typeID eq $skill.typeID || $SkillQueue.16.typeID eq $skill.typeID || $SkillQueue.17.typeID eq $skill.typeID || $SkillQueue.18.typeID eq $skill.typeID || $SkillQueue.19.typeID eq $skill.typeID || $SkillQueue.20.typeID eq $skill.typeID || $SkillQueue.21.typeID eq $skill.typeID || $SkillQueue.22.typeID eq $skill.typeID || $SkillQueue.23.typeID eq $skill.typeID || $SkillQueue.24.typeID eq $skill.typeID || $SkillQueue.25.typeID eq $skill.typeID || $SkillQueue.26.typeID eq $skill.typeID || $SkillQueue.27.typeID eq $skill.typeID || $SkillQueue.28.typeID eq $skill.typeID || $SkillQueue.29.typeID eq $skill.typeID || $SkillQueue.30.typeID eq $skill.typeID || $SkillQueue.31.typeID eq $skill.typeID || $SkillQueue.32.typeID eq $skill.typeID || $SkillQueue.33.typeID eq $skill.typeID || $SkillQueue.34.typeID eq $skill.typeID || $SkillQueue.35.typeID eq $skill.typeID || $SkillQueue.36.typeID eq $skill.typeID || $SkillQueue.37.typeID eq $skill.typeID || $SkillQueue.38.typeID eq $skill.typeID || $SkillQueue.39.typeID eq $skill.typeID || $SkillQueue.40.typeID eq $skill.typeID || $SkillQueue.41.typeID eq $skill.typeID || $SkillQueue.42.typeID eq $skill.typeID || $SkillQueue.43.typeID eq $skill.typeID || $SkillQueue.44.typeID eq $skill.typeID || $SkillQueue.45.typeID eq $skill.typeID || $SkillQueue.46.typeID eq $skill.typeID || $SkillQueue.47.typeID eq $skill.typeID || $SkillQueue.48.typeID eq $skill.typeID || $SkillQueue.49.typeID eq $skill.typeID || $SkillQueue.50.typeID eq $skill.typeID]-->
 						<div style="display:none;"></div>
 					<!--[elseif $skill.flag neq 61]-->	
 						<!--[if $queuePos0 eq $skill.typeID]-->
