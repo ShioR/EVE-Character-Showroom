@@ -79,10 +79,10 @@
                     <td class="dataTableCell">Charisma</td>
                     <td class="dataTableCellLeftRight" align="center"><!--[$attributes.charisma]--></td>
                   </tr>                  
-                  <tr>                
+                  <tr>               
                     <td class="dataTableCell">Date of Birth</td>
                     <td colspan="2" class="dataTableCell" align="left"><!--[$DoB|date_format:"%A, %B %d, %Y"]--></td>
-                    <td colspan="1" class="dataTableCellLeftRight" align="center" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"> <a style="text-decoration:none;" href="/settings/" rel="iframe-500-300" class="pirobox">Settings</a></td>
+                    <td colspan="1" class="dataTableCellLeftRight" align="center" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"> <a style="text-decoration:none;color:#777;" href="/settings/" rel="iframe-500-300" class="pirobox">Settings</a></td>
                   </tr>
                   <tr>
                     <td colspan="4" class="dataTableHeaderRight">Training</td>
@@ -124,7 +124,7 @@
                         <!--[/if]-->
                   </tr>
                   <tr>
-                    <td class="dataTableCell">Completes (EVE Time)</td>
+                    <td class="dataTableCell">Training Completes</td>
                         <!--[if $Training]-->
                             <td colspan="3" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCellLeftRight"><!--[$trainingEndTime|date_format:"%A, %B %e %Y, %H:%M:%S"]-->
                             </td>
@@ -133,8 +133,8 @@
                         <!--[/if]-->
                   </tr>
                   <tr>
-                  <td class="dataTableCell">Data Cache</td>
-                  <td colspan="3" style="color: gold; font-weight: bold;" class="dataTableCellLeftRight">Data is cached for <!--[if $pageupdateminutes eq 0 and $pageupdateseconds eq 0]-->60<!--[else]--><!--[$pageupdateminutes]--><!--[/if]--> minutes and <!--[$pageupdateseconds]--> seconds
+                  <td class="dataTableCell" style="color:#777;">Data Cache</td>
+                  <td colspan="3" style="color:#777;" class="dataTableCellLeftRight">Data is cached for <!--[if $pageupdateminutes eq 0 and $pageupdateseconds eq 0]-->60<!--[else]--><!--[$pageupdateminutes]--><!--[/if]--> minutes and <!--[$pageupdateseconds]--> seconds
                   </td>
                   </tr>
                   <tr>
