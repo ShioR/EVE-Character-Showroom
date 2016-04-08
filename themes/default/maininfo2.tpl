@@ -44,7 +44,7 @@
         </tr>
         </table>
               <td valign="top"><table class="dataTable" border="0" cellpadding="2" cellspacing="0" width="460" summary="Character Info">
-                <tbody>
+                <tbody style="line-height:1.2em;">
                   <tr>
                     <td colspan="2" class="dataTableHeader">Info</td>
                     <td colspan="2" class="dataTableHeaderRight">Attributes</td>
@@ -133,8 +133,8 @@
                         <!--[/if]-->
                   </tr>
                   <tr>
-                  <td class="dataTableCell" style="color:#777;">Data Cache</td>
-                  <td colspan="3" style="color:#777;" class="dataTableCellLeftRight">Data is cached for <!--[if $pageupdateminutes eq 0 and $pageupdateseconds eq 0]-->60<!--[else]--><!--[$pageupdateminutes]--><!--[/if]--> minutes and <!--[$pageupdateseconds]--> seconds
+                  <td class="dataTableCell" style="color:#777;font-size:10px;">Data Cache</td>
+                  <td colspan="3" style="color:#777;font-size:10px;" class="dataTableCellLeftRight">Data is cached for <!--[if $pageupdateminutes eq 0 and $pageupdateseconds eq 0]-->60<!--[else]--><!--[$pageupdateminutes]--><!--[/if]--> minutes and <!--[$pageupdateseconds]--> seconds
                   </td>
                   </tr>
                   <tr>
