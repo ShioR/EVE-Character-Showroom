@@ -46,7 +46,7 @@
             <div style="margin-left: 25px;">
             <!--[foreach item='ships' key='group' from=$groups]-->
              <div>
-              <table border="0" cellpadding="0" cellspacing="0" style="max-width: 768px;">
+              <table border="0" cellpadding="0" cellspacing="0">
                 <tr>
 <td width="72" align="center"><img alt="<!--[$race]-->" title="<!--[$race]-->" src="/imgs/factions/<!--[$race|lower]-->.png" width="64" height="64" hspace="10" /></td>
                                <!--[foreach item='ship' from=$ships]-->
