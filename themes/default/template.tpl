@@ -1,10 +1,10 @@
-
 <!--[include file='header.tpl' page='skills']-->
   <table class="main" summary="Main">
   <tbody>
     <tr>
-      <td><br />  
+      <td><br />
           <!--[include file='mainheader.tpl']-->
+          
           <!--[if $implants == 1]--><!--[include file='maininfo.tpl']--><!--[else]--><!--[include file='maininfo2.tpl']--><!--[/if]-->
           <!--[include file='queue.tpl']-->
           
@@ -102,16 +102,16 @@
 						<!--[/if]-->
 						<!--[/if]-->
 					<!--[/if]-->
-                <div style="line-height: 1.45em; font-size: 11px;">
+                <div style="line-height: 1.4em; font-size: 12px;">
                 <!--[if $TotalPercentage neq 100.0]-->
-                    <div style="color:white; text-decoration:none; cursor:help;" onclick="javascript:i(document.getElementById('<!--[$skill.typeID]-->'));" href="#toggle" id="s<!--[$skill.typeID]-->"><!--[$skill.typeName]--><span style="color:#777; font-size: x-small;"><span style="color:#c1c1c1;"> » </span><i>Rank <!--[$skill.rank]--></i> / <i>SP: <!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> / <!--[$TotalPercentage]-->%</div></i></span>         
+                    <div style="color:white; text-decoration:none; cursor:help;" onclick="javascript:i(document.getElementById('<!--[$skill.typeID]-->'));" href="#toggle" id="s<!--[$skill.typeID]-->"><!--[$skill.typeName]--><span style="color:#777; font-size:11px;"><span style="color:#c1c1c1;"> » </span><i>Rank <!--[$skill.rank]--></i> / <i>SP: <!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> / <!--[$TotalPercentage]-->%</div></i></span>         
                 <!--[else]-->
-                    <div style="color:white; text-decoration:none; cursor:help;" onclick="javascript:i(document.getElementById('<!--[$skill.typeID]-->'));" href="#toggle" id="s<!--[$skill.typeID]-->"><!--[$skill.typeName]--><span style="color:#777; font-size: x-small;"><span style="color:#c1c1c1;"> » </span><i>Rank <!--[$skill.rank]--></i> / <i>SP: <!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> / <!--[$TotalPercentage]-->%</div></i></span>
+                    <div style="color:white; text-decoration:none; cursor:help;" onclick="javascript:i(document.getElementById('<!--[$skill.typeID]-->'));" href="#toggle" id="s<!--[$skill.typeID]-->"><!--[$skill.typeName]--><span style="color:#777; font-size:11px;"><span style="color:#c1c1c1;"> » </span><i>Rank <!--[$skill.rank]--></i> / <i>SP: <!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> / <!--[$TotalPercentage]-->%</div></i></span>
                 <!--[/if]-->
                 </div>
                 <!--[if $skill.flag eq 61]-->
                 <div>
-                  <div style="line-height: 1.5em;margin-left:13px;font-size:11px">
+                  <div style="line-height: 1.4em;margin-left:13px;font-size:11px">
                     <div>
                       <span class="navdot">&#xB7;</span><span style="color:gold;">Training to: </span>
                       <strong>Level <!--[math equation="x + y" x=$skill.level y=1]--></strong>
@@ -144,7 +144,7 @@
                 </div>
                 <!--[/if]-->
 			  <!--[if $skill.flag neq 61]-->	
-              <div id="<!--[$skill.typeID]-->" style="text-align: left; font-size: x-small; color: #777; display:none;";>	
+              <div id="<!--[$skill.typeID]-->" style="text-align: left; font-size:12px; color: #777; display:none;";>	
 							<span style="color:#c8c8c8;margin-left:20px;">Description: </span><!--[getskillinfo typeID=$skill.typeID]-->
 							<span style="color:#c8c8c8;margin-left:20px;">Cost: </span><!--[$skill.skillCost|number_format]--> ISK	
 			  </div>
@@ -175,10 +175,10 @@
               <!--[/if]-->	      
             <!--[/foreach]-->
             </div>
-            <div style="line-height: 1.45em; margin-left: 82px; font-size: 11px;">
+            <div style="line-height: 1.4em; margin-left: 82px; font-size: 11px;">
                 <br /><span style="color:#777;"><span class="navdot">&bull;</span><!--[$countsk]-->/<!--[if $groupname == "Armor"]--><!--[getskillgroup groupID='1210']--><!--[elseif $groupname == "Corporation Management"]--><!--[getskillgroup groupID='266']--><!--[elseif $groupname == "Drones"]--><!--[getskillgroup groupID='273']--><!--[elseif $groupname == "Electronic Systems"]--><!--[getskillgroup groupID='272']--><!--[elseif $groupname == "Engineering"]--><!--[getskillgroup groupID='1216']--><!--[elseif $groupname == "Gunnery"]--><!--[getskillgroup groupID='255']--><!--[elseif $groupname == "Leadership"]--><!--[getskillgroup groupID='258']--><!--[elseif $groupname == "Missiles"]--><!--[getskillgroup groupID='256']--><!--[elseif $groupname == "Navigation"]--><!--[getskillgroup groupID='275']--><!--[elseif $groupname == "Neural Enhancement"]--><!--[getskillgroup groupID='1220']--><!--[elseif $groupname == "Planet Management"]--><!--[getskillgroup groupID='1241']--><!--[elseif $groupname == "Production"]--><!--[getskillgroup groupID='268']--><!--[elseif $groupname == "Resource Processing"]--><!--[getskillgroup groupID='1218']--><!--[elseif $groupname == "Rigging"]--><!--[getskillgroup groupID='269']--><!--[elseif $groupname == "Scanning"]--><!--[getskillgroup groupID='1217']--><!--[elseif $groupname == "Science"]--><!--[getskillgroup groupID='270']--><!--[elseif $groupname == "Shields"]--><!--[getskillgroup groupID='1209']--><!--[elseif $groupname == "Social"]--><!--[getskillgroup groupID='278']--><!--[elseif $groupname == "Spaceship Command"]--><!--[getskillgroup groupID='257']--><!--[elseif $groupname == "Structure Management"]--><!--[getskillgroup groupID='1545']--><!--[elseif $groupname == "Subsystems"]--><!--[getskillgroup groupID='1240']--><!--[elseif $groupname == "Targeting"]--><!--[getskillgroup groupID='1213']--><!--[elseif $groupname == "Trade"]--><!--[getskillgroup groupID='274']--><!--[/if]--> <!--[$skill.groupName]--> 
-                <!--[if $countsk == 1]--> skill<!--[elseif $countsk neq 1]--> skills<!--[/if]--> trained for a total of <!--[$totalsp|number_format]--> skillpoints. <span style="font-size:x-small;">(<strong><!--[$GroupPercentSkills]-->%</strong> of total skills / <strong><!--[$GroupPercentSP]-->%</strong> of total SP)</span></span>
-                <br /><span style="color:#777;"><span class="navdot">&bull;</span><strong><!--[$lvl5]--></strong> <!--[if $lvl5 eq 1]-->skill<!--[elseif $lvl5 neq 1]-->skills<!--[/if]--> trained to <strong>level 5</strong> for a total of <strong><!--[$lvl5sp|number_format]--></strong> skillpoionts.</span>
+                <!--[if $countsk == 1]--> skill<!--[elseif $countsk neq 1]--> skills<!--[/if]--> trained for a total of <!--[$totalsp|number_format]--> skillpoints. <span style="font-size:10px;">(<strong><!--[$GroupPercentSkills]-->%</strong> of total skills / <strong><!--[$GroupPercentSP]-->%</strong> of total SP)</span></span><!--[if $lvl5 >= 1]-->
+                <br /><span style="color:#777;"><span class="navdot">&bull;</span><strong><!--[$lvl5]--></strong> <!--[if $lvl5 eq 1]-->skill<!--[elseif $lvl5 neq 1]-->skills<!--[/if]--> trained to <strong>level 5</strong> for a total of <strong><!--[$lvl5sp|number_format]--></strong> skillpoionts.</span><!--[else]--><!--[/if]-->
             </div>
           </div>
         </div>
@@ -208,7 +208,7 @@
       <!--[math equation="(x / y) * z" x=$lvl4sptotal y=$totalskillpoints z=100 format="%.1f" assign='TotalPercentageSkillPoints4']-->      
       <!--[math equation="(x / y) * z" x=$lvl5sptotal y=$totalskillpoints z=100 format="%.1f" assign='TotalPercentageSkillPoints5']-->      
         <br /><br />
-            <div style="line-height: 1.45em; margin-left: 82px; font-size: 11px;">
+            <div style="line-height: 1.4em; margin-left: 82px; font-size: 11px;">
              <br /><strong>Stats:</strong>
               <br /><span style="color:#777;"><span class="navdot">&bull;</span><strong>~<span style="color:gold;"><!--[$totalCost|number_format]--></span></strong> ISK spent on skills.</span>
                 <br /><span style="color:#777;"><span class="navdot">&bull;</span><span style="color:gold;"><strong><!--[$totalSkills]--></strong>/<!--[$getskillstotal]--></span> (<!--[$GroupTotalPercentage]-->%) <!--[if $totalSkills == 1]-->skill<!--[elseif $totalSkills != 1]-->skills<!--[/if]--> trained for a total of <span style="color:gold;"><strong><!--[$skillpointstotal]--></span></strong> skillpoints.</span>
