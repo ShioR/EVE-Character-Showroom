@@ -24,6 +24,7 @@
   <!--[/if]-->  
   <link rel="shortcut icon" href="/imgs/favicon.png">
   <link rel="apple-touch-icon" href="/imgs/favicon.png" sizes="114x114">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,600italic' rel='stylesheet' type='text/css'>  
   <link rel="stylesheet" type="text/css" href="/themes/<!--[$theme]-->/style/<!--[$theme]-->.css" />
   <link rel="stylesheet" type="text/css" href="/themes/<!--[$theme]-->/style/piro.css" />
 <script type="text/javascript" src="/themes/<!--[$theme]-->/js/jquery.min.js"></script>
@@ -73,17 +74,19 @@ which.style.display="block"}</script>
       [ SKILLS ]
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/ships" title="Ships <!--[$name]--> can fly">SHIPS</a> ]
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/sigs" title="Signatures for <!--[$name]-->">SIGNATURES</a> ]
+      [ <a href="/<!--[$name|replace:' ':'_']-->/chart" rel="iframe-718-448" class="pirobox" style="text-decoration:none;">GRAPH</a> ]
     <!--[elseif $page eq 'ships']-->
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->" title="Skillsheet for <!--[$name]-->">SKILLS</a> ]
       [ SHIPS ]
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/sigs" title="Signatures for <!--[$name]-->">SIGNATURES</a> ]
+      [ <a href="/<!--[$name|replace:' ':'_']-->/chart" rel="iframe-718-448" class="pirobox" style="text-decoration:none;">GRAPH</a> ]
     <!--[else]-->
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->" title="Skillsheet for <!--[$name]-->">SKILLS</a> ]
       [ <a class="golden" href="/<!--[$name|replace:' ':'_']-->/ships" title="Ships <!--[$name]--> can fly">SHIPS</a> ]
       [ SIGNATURES ]
+      [ <a href="/<!--[$name|replace:' ':'_']-->/chart" rel="iframe-718-448" class="pirobox" style="text-decoration:none;">GRAPH</a> ]
     <!--[/if]-->
-	<span style="color:gold;"><a href="/<!--[$name|replace:' ':'_']-->/chart" rel="iframe-718-448" class="pirobox"><img src="/imgs/chart_bar.png" align="absmiddle" width="16" height="16" border="0" title="Toggle Skills Barchart" alt="Toggle Skills Barchart" hspace="4" /></a></span>
-   <br /> <span class="gold"><!--[$totalsks]--></span> skills for a total of <span class="gold"><!--[$skillpointstotal]--></span> SP's. </span>
+   <br /> <span class="gold"><!--[$totalsks]--></span> skills for a total of <span class="gold"><!--[$skillpointstotal]--></span> skillpoints </span>
   <!--[else]-->
   <span class="headerleft"><a href="/" title="Skills Shrowroom">Showroom: Characters List</a></span>
   <span class="headerright"  style="color:gold;"><a href="/add" title="Add your characters now">Add your character!</a></span>
