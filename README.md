@@ -29,5 +29,10 @@ Build changes frequently
 -------    
 ### Support
 Yeah, you're hoping...    
-Contact 'Shionoya Risa' in-game, message me on Github or email and I'll _try_ and help.
+Contact 'Shionoya Risa' in-game, message me on Github or email and I'll _try_ and help.   
    
+      
+      
+-------
+### Notes    
+You'll probably want to set us to *'Not watching'* rather *'Watching'* if you value your inbox. Sorry. If this isn't your cup of tea, give us a :star: instead!
