@@ -7,9 +7,10 @@ For more information on the features, please see the [features](https://github.c
 
 -------------------
 ### Server Requirements
-Apache 2.2+  *[Apache 2.4 Compatibility Warning!](https://github.com/ShioR/EVE-Character-Showroom/issues/66)*   
+Apache 2.2+  
 MySQL 5.5+   
-PHP 5.4+ with cURL and GD    
+PHP 5.4+ with cURL and GD     
+:warning: *[Apache 2.4 Compatibility Warning!](https://github.com/ShioR/EVE-Character-Showroom/issues/66)* :warning:
      
 
 ------------         
@@ -35,4 +36,5 @@ Contact 'Shionoya Risa' in-game, message me on Github or email and I'll _try_ an
       
 -------
 ### Notes    
-You'll probably want to set us to *'Not watching'* rather *'Watching'* if you value your inbox. Sorry. If this isn't your cup of tea, give us a :star: instead!
+You'll probably want to set us to *'Not watching'* rather *'Watching'* if you value your inbox. Sorry.    
+If this isn't your cup of tea, give us a :star: instead!
