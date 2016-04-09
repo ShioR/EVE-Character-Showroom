@@ -6,6 +6,7 @@ $domain = _DOMAIN;
 // Set the content-type
 header('Content-type: image/png');
 
+
 // Get the signature text from the URL
 $name = stripslashes($_GET['n']);
 $text = file_get_contents ($domain.$name.'/sig');
@@ -31,9 +32,8 @@ $green = imagecolorallocate($image, 25, 145, 70);
 $white = imagecolorallocate($image, 255, 255, 255);
 $black = imagecolorallocate($image, 0, 0, 0);
 
-
 // Add the text
-imagettftext($image, 9, 0, 5, 16, $pink, $font, $text);
+imagettftext($image, 9, 0, 5, 16, $black, $font, $text);
 imagesavealpha($image, true);
 imagepng($image);
 imagedestroy($image);

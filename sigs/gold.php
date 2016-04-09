@@ -1,32 +1,4 @@
 <?php
-/**********************************************************/
-/*           EVE Character Showroom - Version 5           */
-/*       'Improved' and maintained by Shionoya Risa       */
-/*          Originally created by DeTox MinRohim          */
-/*            Copyright (C) 2015 Shionoya Risa            */
-/**********************************************************/
-/* This program is free software: you can redistribute it */
-/*   and/or modify it under the terms of the GNU General  */
-/*     Public License as published by the Free Software   */
-/*     Foundation, either version 3 of the License, or    */
-/*           (at your option) any later version.          */
-/*  This program is distributed in the hope that it will  */
-/*  be useful, but WITHOUT ANY WARRANTY; without even the */
-/*   implied warranty of MERCHANTABILITY or FITNESS FOR   */
-/*                  A PARTICULAR PURPOSE.                 */
-/*  See the GNU General Public License for more details.  */
-/*         You should have received a copy of the         */
-/*   GNU General Public License along with this program.  */
-/*        If not, see http://www.gnu.org/licenses/        */
-/**********************************************************/
-/*   Lots of code snippets have been found in my travels  */
-/*    if you think one of those snippets is yours, tell   */
-/*         me. I will give all appropriate credits.       */
-/**********************************************************/
-/*  All EVE Online logos, images, trademarks and related  */
-/* materials are copyright (C) CCP hf http://ccpgames.com */
-/**********************************************************/
-
 // Fetch the domain from the config
 require_once "../includes/config.php";
 $domain = _DOMAIN;
@@ -34,32 +6,35 @@ $domain = _DOMAIN;
 // Set the content-type
 header('Content-type: image/png');
 
-// Create the image out of thin air!
-$im = imagecreatetruecolor(630, 25);
-
-// Create some colors
-$darkgrey = imagecolorallocatealpha($im, 27, 27, 27, 0);
-$whitebg = imagecolorallocatealpha($im, 255, 255, 255, 25);
-$grey = imagecolorallocatealpha($im, 150, 150, 150, 0);
-$gold = imagecolorallocatealpha($im, 255, 215, 0, 0);
-imagefilledrectangle($im, 0, 0, 630, 25, $darkgrey);
-
 // Get the signature text from the URL
 $name = stripslashes($_GET['n']);
 $text = file_get_contents ($domain.$name.'/sig');
 // Location of the font to use
-$font = 'arial.ttf';
+$font = 'OpenSans-Regular.ttf';
 
-// Add a shadow to the text if the user wants it
-if (isset($_GET["s"]) == "y") {
-imagettftext($im, 9, 0, 6, 17, $darkgrey, $font, $text);
-imagefilter($im, IMG_FILTER_GAUSSIAN_BLUR);
-imagettftext($im, 9, 0, 5, 16, $gold, $font, $text);
-} else {
-imagettftext($im, 9, 0, 5, 16, $gold, $font, $text);
+// Create the image
+function imageCreateTransparent($x, $y) {
+    $imageOut = imagecreatetruecolor($x, $y);
+    $backgroundColor = imagecolorallocatealpha($imageOut, 0, 0, 0, 127);
+    imagefill($imageOut, 0, 0, $backgroundColor);
+    return $imageOut;
 }
 
-// Using imagepng() results in clearer text compared with imagejpeg()
-imagepng($im);
-imagedestroy($im);
+$image = imageCreateTransparent(630, 25);
+
+// Create some colors
+$pink = imagecolorallocate($image, 255, 51, 102);
+$blue = imagecolorallocate($image, 0, 191, 255);
+$gold = imagecolorallocate($image, 255, 215, 0);
+$red = imagecolorallocate($image, 211, 25, 25);
+$green = imagecolorallocate($image, 25, 145, 70);
+$white = imagecolorallocate($image, 255, 255, 255);
+$black = imagecolorallocate($image, 0, 0, 0);
+
+
+// Add the text
+imagettftext($image, 9, 0, 5, 16, $gold, $font, $text);
+imagesavealpha($image, true);
+imagepng($image);
+imagedestroy($image);
 ?>

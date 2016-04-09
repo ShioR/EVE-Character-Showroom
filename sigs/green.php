@@ -33,7 +33,7 @@ $black = imagecolorallocate($image, 0, 0, 0);
 
 
 // Add the text
-imagettftext($image, 9, 0, 5, 16, $pink, $font, $text);
+imagettftext($image, 9, 0, 5, 16, $green, $font, $text);
 imagesavealpha($image, true);
 imagepng($image);
 imagedestroy($image);
