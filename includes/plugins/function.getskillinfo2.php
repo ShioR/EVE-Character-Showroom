@@ -39,10 +39,11 @@ function smarty_function_getskillinfo2($params, &$smarty)
             $query = "SELECT description FROM skillsheet_skills WHERE typeID = '$typeID'";
             $result = mysqli_query($connect, $query);
             $output = mysqli_fetch_row($result);
-            echo wordwrap($output[0], 108, "<br />&nbsp;&nbsp;");
+        // Strip line breaks and bold from the description
+            $strip = str_replace(array('\r','\n', '<br>', '<br />', '<b>', '<BR>'), '', $output[0]);
+            echo wordwrap($strip, 106, '<br /><span style="margin-left:7px;">');
         // Free result & close connection
             mysqli_free_result($result);
             mysqli_close($connect);
-
 }
 ?>

@@ -39,7 +39,7 @@ function smarty_function_getskillinfo($params, &$smarty)
             $query = "SELECT description FROM skillsheet_skills WHERE typeID = '$typeID'";
             $result = mysqli_query($connect, $query);
             $output = mysqli_fetch_row($result);
-            $description = wordwrap($output[0], 110, "<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+            $description = wordwrap($output[0], 108, '<br /><span style="margin-left:20px;">');
         // Strip the <b> tag from the description
             $description = str_replace(array('<b>'), '', $description);
             echo nl2br($description);

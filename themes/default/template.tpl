@@ -134,7 +134,7 @@
                     </div>
 					<div>
 					  <span class="navdot">&#xB7;</span><span style="color:gold;">Description: </span>
-					  <!--[getskillinfo2 typeID=$skill.typeID]-->
+                     <!--[getskillinfo2 typeID=$skill.typeID]--></span>
 					</div>
 					<div>
 					  <span class="navdot">&#xB7;</span><span style="color:gold;">Cost: </span>
@@ -145,7 +145,7 @@
                 <!--[/if]-->
 			  <!--[if $skill.flag neq 61]-->	
               <div id="<!--[$skill.typeID]-->" style="text-align: left; font-size:12px; color: #777; display:none;";>	
-							<span style="color:#c8c8c8;margin-left:20px;">Description: </span><!--[getskillinfo typeID=$skill.typeID]-->
+							<span style="color:#c8c8c8;margin-left:20px;">Description: </span><!--[getskillinfo typeID=$skill.typeID]--></span>
 							<span style="color:#c8c8c8;margin-left:20px;">Cost: </span><!--[$skill.skillCost|number_format]--> ISK	
 			  </div>
               <!--[/if]-->  
