@@ -206,6 +206,7 @@ Inherit(Tw2LoadingObject, Tw2Resource);
 
 /**
  * Resource Manager
+ * @property {boolean} systemMirror - Toggles whether {@link GeometryResource} Index and Buffer data arrays are visible
  * @property {Object.<string, string>} resourcePaths
  * @property {Object} resourcePaths.res - Default resource path for current ccpwgl version
  * @property {Object.<string, Function>} _extensions - an object of registered extensions and their constructors
@@ -225,18 +226,10 @@ Inherit(Tw2LoadingObject, Tw2Resource);
  */
 function Tw2ResMan()
 {
+    this.systemMirror = false;
     this.resourcePaths = {};
 
-    this.resourcePaths['res'] = '//developers.eveonline.com/ccpwgl/assetpath/1005132/';
-
-    if (window.location.protocol == "https:")
-    {
-        this.resourcePaths['res'] = 'https:' + this.resourcePaths['res'];
-    }
-    else
-    {
-        this.resourcePaths['res'] = 'http:' + this.resourcePaths['res'];
-    }
+    this.resourcePaths['res'] = 'https://developers.eveonline.com/ccpwgl/assetpath/1005132/';
 
     this._extensions = {};
     this.motherLode = new Tw2MotherLode();
