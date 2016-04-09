@@ -94,10 +94,10 @@ $typeName = ucwords(strtolower($name));
     }   
 
 ?>   
-        <script type="text/javascript" src="/includes/ccpwgl/src/external/glMatrix-0.9.5.min.js"></script>
-        <script type="text/javascript" src="/includes/ccpwgl/src/ccpwgl_int.js"></script>
-        <script type="text/javascript" src="/includes/ccpwgl/src/test/TestCamera2.js"></script>
-        <script type="text/javascript" src="/includes/ccpwgl/src/ccpwgl.js"></script>
+        <script type="text/javascript" src="/includes/ccpwgl/external/glMatrix-0.9.5.min.js"></script>
+        <script type="text/javascript" src="/includes/ccpwgl/ccpwgl_int.js"></script>
+        <script type="text/javascript" src="/includes/ccpwgl/test/TestCamera2.js"></script>
+        <script type="text/javascript" src="/includes/ccpwgl/ccpwgl.js"></script>
         <script type="text/javascript">       
             
             function onDocumentLoad()
