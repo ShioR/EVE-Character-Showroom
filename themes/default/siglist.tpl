@@ -184,34 +184,34 @@
               </div>
         <br />
         <div style="margin-top: 10px;">
-          <div style="background: rgb(44, 44, 56)  no-repeat scroll 24px 5px; margin-bottom: 10px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 23px; text-align:center;">
+          <div style="background: rgb(44, 44, 56)  no-repeat scroll 24px 5px; margin-bottom: 10px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 23px; text-align:left;">
             <font style="border: 0px none; position:relative; left: 15px; top: 4px; font-weight: bold;">Legacy signatures</font>
           </div>
         </div>
         <br />
           <div align="center">
-          <table style="width:630px; background-color:#434343; padding:2px;">  
+           <table style="width:630px; background-color:#434343; padding:2px;">  
             <tr>
-                <td><div style="text-align:center; margin-bottom:2px;">Pink</div>
-                    <img alt="Pink" src="/sigs/pink?n=<!--[$name|replace:' ':'_']-->&s=y" />
+                <td><div style="text-align:center; margin-bottom:2px;">Red</div>
+                    <img alt="Gray" src="/sigs/red?n=<!--[$name|replace:' ':'_']-->" />
                 </td>
             </tr>
             <tr>
                 <td align="center">
-                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/pink?n=<!--[$name|replace:' ':'_']-->&s=y" onclick="this.focus();this.select();" readonly/>
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/red?n=<!--[$name|replace:' ':'_']-->" onclick="this.focus();this.select();" readonly/>
                 </td> 
             </tr>    
           </table>
-        <br />
-          <table style="width:630px; background-color:#434343; padding:2px;">  
+        <br /> 
+           <table style="width:630px; background-color:#434343; padding:2px;">  
             <tr>
-                <td><div style="text-align:center; margin-bottom:2px;">Gray</div>
-                    <img alt="Gray" src="/sigs/gray?n=<!--[$name|replace:' ':'_']-->&s=y" />
+                <td><div style="text-align:center; margin-bottom:2px;">Blue</div>
+                    <img alt="Gray" src="/sigs/blue?n=<!--[$name|replace:' ':'_']-->" />
                 </td>
             </tr>
             <tr>
                 <td align="center">
-                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/gray?n=<!--[$name|replace:' ':'_']-->&s=y" onclick="this.focus();this.select();" readonly/>
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/blue?n=<!--[$name|replace:' ':'_']-->" onclick="this.focus();this.select();" readonly/>
                 </td> 
             </tr>    
           </table>
@@ -219,38 +219,51 @@
           <table style="width:630px; background-color:#434343; padding:2px;">  
             <tr>
                 <td><div style="text-align:center; margin-bottom:2px;">Gold</div>
-                    <img alt="Gold" src="/sigs/gold?n=<!--[$name|replace:' ':'_']-->&s=y" />
+                    <img alt="Gold" src="/sigs/gold?n=<!--[$name|replace:' ':'_']-->" />
                 </td>
             </tr>
             <tr>
                 <td align="center">
-                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/gold?n=<!--[$name|replace:' ':'_']-->&s=y" onclick="this.focus();this.select();" readonly/>
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/gold?n=<!--[$name|replace:' ':'_']-->" onclick="this.focus();this.select();" readonly/>
+                </td> 
+            </tr>    
+          </table>
+        <br />
+         <table style="width:630px; background-color:#434343; padding:2px;">  
+            <tr>
+                <td><div style="text-align:center; margin-bottom:2px;">Green</div>
+                    <img alt="Pink" src="/sigs/green?n=<!--[$name|replace:' ':'_']-->" />
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/green?n=<!--[$name|replace:' ':'_']-->" onclick="this.focus();this.select();" readonly/>
+                </td> 
+            </tr>    
+          </table>
+        <br />
+          <table style="width:630px; background-color:#434343; padding:2px;">  
+            <tr>
+                <td><div style="text-align:center; margin-bottom:2px;">White (Dark Background)</div>
+                    <img alt="White (Dark Background)" src="/sigs/white?n=<!--[$name|replace:' ':'_']-->" />
+                </td>
+            </tr>
+            <tr>
+                <td align="center">
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/white?n=<!--[$name|replace:' ':'_']-->" onclick="this.focus();this.select();" readonly/>
                 </td> 
             </tr>    
           </table>
         <br /> 
           <table style="width:630px; background-color:#434343; padding:2px;">  
             <tr>
-                <td><div style="text-align:center; margin-bottom:2px;">Transparent (Dark Background)</div>
-                    <img alt="Transparent (Dark BG)" src="/sigs/transd?n=<!--[$name|replace:' ':'_']-->" />
+                <td><div style="text-align:center; margin-bottom:2px;">Black (Light Background)</div>
+                    <img alt="Black (Light Background)" src="/sigs/black?n=<!--[$name|replace:' ':'_']-->" />
                 </td>
             </tr>
             <tr>
                 <td align="center">
-                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/transd?n=<!--[$name|replace:' ':'_']-->" onclick="this.focus();this.select();" readonly/>
-                </td> 
-            </tr>    
-          </table>
-        <br /> 
-          <table style="width:630px; background-color:#eaf8fc; padding:2px;">  
-            <tr>
-                <td><div style="text-align:center; margin-bottom:2px;color:#1b1b1b;">Transparent (Light Background)</div>
-                    <img alt="Transparent (Light BG)" src="/sigs/trans?n=<!--[$name|replace:' ':'_']-->" />
-                </td>
-            </tr>
-            <tr>
-                <td align="center">
-                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/trans?n=<!--[$name|replace:' ':'_']-->" onclick="this.focus();this.select();" readonly/>
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/black?n=<!--[$name|replace:' ':'_']-->" onclick="this.focus();this.select();" readonly/>
                 </td> 
             </tr>    
           </table>
