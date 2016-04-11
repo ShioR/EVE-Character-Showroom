@@ -11,7 +11,7 @@
 <!-- SKILLS -->
 <div>
     <a href="#top" class="back-to-top"></a>
-        <script type="application/javascript">
+        <script type="text/javascript">
             var amountScrolled = 300;
                 $(window).scroll(function() {
 	               if ( $(window).scrollTop() > amountScrolled ) {
@@ -129,8 +129,8 @@
                       <!--[$trainingEndTime|date_format:"%A, %B %d, %H:%M"]-->
                     </div>
                     <div>
-                      <span class="navdot">&#xB7;</span><span style="color:gold;">Time left: </span>
-                      <!--[$TrainingTimeLeft]-->
+                      <span class="navdot">&#xB7;</span><span style="color:gold;">Time Remaining: </span>
+                        <span id="counter2" data-countdown="<!--[$trainingEndFormat]-->"></span>
                     </div>
 					<div>
 					  <span class="navdot">&#xB7;</span><span style="color:gold;">Description: </span>

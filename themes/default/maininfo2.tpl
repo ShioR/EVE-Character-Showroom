@@ -2,7 +2,7 @@
 <!-- CHARACTER INFO -->
 <!--[strip]-->
 <table style="margin-left: 80px;" align="center" border="0" cellpadding="2" cellspacing="0" summary="Character Info">
- <tbody>
+ <tbody>222
         <tr>
             <td valign="top" align="center">
                 <a href="https://imageserver.eveonline.com/Character/<!--[$characterID]-->_1024.jpg" rel="iframe-1024-1024" class="pirobox">
@@ -104,19 +104,18 @@
                     <td class="dataTableCell">Time Remaining</td>
                         <!--[if $Training]-->
                             <td colspan="3" style="color:gold; font-weight:bold; text-align:left;" class="dataTableCellLeftRight">
+                                <div id="counter1" data-countdown="<!--[$trainingEndFormat]-->"></div>
                                 <script type="text/javascript">
-                                    /*<![CDATA[*/
-                                    TargetDate = "<!--[$trainingEndFormat]-->";
-                                    BackColor = "none";
-                                    ForeColor = "none";
-                                    CountActive = true;
-                                    CountStepper = -1;
-                                    LeadingZero = false;
-                                    DisplayFormat = "%%D%% Days, %%H%% Hours, %%M%% Minutes and %%S%% Seconds";
-                                    FinishMessage = "Finished!";
-                                    /*]]>*/
+                                    $(function(){
+                                        $('[data-countdown]').each(function() {
+                                            var $this = $(this), finalDate = $(this).data('countdown');
+                                            $this.countdown(finalDate, function(event) {
+                                                $this.html(event.strftime('%-D day%!D, %-H hour%!H, %-M minute%!M and %-S second%!S'))}).on('finish.countdown', function() {
+                                                $this.html("Completed!"); 
+                                            });
+                                        });
+                                    });
                                 </script>
-                                <script src="/themes/default/js/countdown.js" type="text/javascript"></script>
                             </td>
                         <!--[else]-->
                             <td colspan="3" style="color:gold; font-weight:bold; text-align:left;" class="dataTableCellLeftRight">

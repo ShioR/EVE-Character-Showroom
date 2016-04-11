@@ -30,6 +30,7 @@
 <script type="text/javascript" src="/themes/<!--[$theme]-->/js/jquery.min.js"></script>
 <script type="text/javascript" src="/themes/<!--[$theme]-->/js/jquery-ui-1.8.2.custom.min.js"></script>
 <script type="text/javascript" src="/themes/<!--[$theme]-->/js/pirobox_extended.js"></script>
+<script type="text/javascript" src="/themes/<!--[$theme]-->/js/countdown.js"></script>    
 <script type="text/javascript">
 // Smooth scroll to anchors
 $(function() {
