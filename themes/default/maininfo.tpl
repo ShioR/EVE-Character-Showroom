@@ -2,7 +2,7 @@
 <!-- CHARACTER INFO -->
 <!--[strip]-->
 <table style="margin-left: 80px;" align="center" border="0" cellpadding="2" cellspacing="0" summary="Character Info">
- <tbody>111
+ <tbody>
         <tr>
             <td valign="top" align="center">
                 <a href="https://imageserver.eveonline.com/Character/<!--[$characterID]-->_1024.jpg" rel="iframe-1024-1024" class="pirobox">
