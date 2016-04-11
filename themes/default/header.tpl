@@ -30,44 +30,20 @@
 <script type="text/javascript" src="/themes/<!--[$theme]-->/js/jquery.min.js"></script>
 <script type="text/javascript" src="/themes/<!--[$theme]-->/js/jquery-ui-1.8.2.custom.min.js"></script>
 <script type="text/javascript" src="/themes/<!--[$theme]-->/js/pirobox_extended.js"></script>
-<script type="text/javascript" src="/themes/<!--[$theme]-->/js/countdown.js"></script>    
+<script type="text/javascript" src="/themes/<!--[$theme]-->/js/countdown.js"></script>
+<script type="text/javascript" src="/themes/<!--[$theme]-->/js/js.js"></script>    
 <script type="text/javascript">
 // Smooth scroll to anchors
-$(function() {
-  $('a[href*="#"]:not([href="#"])').click(function() {
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-      if (target.length) {
-        $('html, body').animate({
-          scrollTop: target.offset().top -400
-        }, 1000);
-        return false;
-      }
-    }
-  });
-});
-</script>
-<script type="text/javascript">
-$(document).ready(function() {
-    $().piroBox_ext({
-        piro_speed : 900,
-        bg_alpha : 0.5,
-        piro_scroll : true // Center the box
-    });
-});
-</script>
-  <script src="/themes/<!--[$theme]-->/js/js.js" type="text/javascript"></script>
-  <script>function i(which){if(!document.getElementById)
-return
-if(which.style.display=="block")
-which.style.display="none"
-else
-which.style.display="block"}</script>
+$(function(){$('a[href*="#"]:not([href="#"])').click(function(){if(location.pathname.replace(/^\//,"")==this.pathname.replace(/^\//,"")&&location.hostname==this.hostname){var t=$(this.hash);if(t=t.length?t:$("[name="+this.hash.slice(1)+"]"),t.length)return $("html, body").animate({scrollTop:t.offset().top-400},1e3),!1}})});</script>
+<script type="text/javascript">$(document).ready(function(){$().piroBox_ext({piro_speed:900,bg_alpha:.5,piro_scroll:!0})});</script>
+<script type="text/javascript">function i(l){document.getElementById&&("block"==l.style.display?l.style.display="none":l.style.display="block")}</script>
+<script type="text/javascript">$(document).ready(function(){$(window).on("scroll",function(){var d=$("#header");$(this).scrollTop()>100?d.data("faded")||d.data("faded",1).stop(!0).fadeTo(400,0):d.data("faded")&&d.data("faded",0).stop(!0).fadeTo(400,1)})});</script>
 </head>
 <body>
 <!-- HEADER -->
-  <div class="headerribbon"<!--[if not $page]--> style="height: 26px;"<!--[/if]-->>
+<div id="header" class="headerribbon">
+</div>
+  <div id="invisiHeader" class="fauxribbon"<!--[if not $page]--> style="height: 26px;"<!--[/if]-->>
   <!--[if $page]-->
 <span class="headerleft"><img align="left" style="border: 1px solid gray; margin:3px;" src="<!--[getportrait characterID=$characterID size=64]-->" width="32" height="32" title="" alt="<!--[$name]-->" /></a>Skillsheet for <span style="color:gold;"><!--[$name]--></span><span style="color:gold;"> <a style="text-decoration:none;" href="https://gate.eveonline.com/Mail/Compose/<!--[$name]-->" rel="iframe-875-610" class="pirobox"> [Send EVEMail]</a></span><br />Member of <span style="color:gold;"><a style="text-decoration:none;" href="https://gate.eveonline.com/Corporation/<!--[$corporationName|replace:" ":"%20"]-->" rel="iframe-875-610" class="pirobox"><!--[$corporationName]--></a></span><!--[if $allianceName neq '']--> <span style="color:gold;"><a style="text-decoration:none;" href="https://gate.eveonline.com/Alliance/<!--[$allianceName|replace:" ":"%20"]-->" rel="iframe-875-610" class="pirobox"> [<!--[$allianceName]-->]</a></span><!--[else]--><!--[/if]--></span>
     <span class="headerright2">
