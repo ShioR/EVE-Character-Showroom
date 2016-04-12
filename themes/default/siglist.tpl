@@ -6,28 +6,13 @@
 
 
           <!--[include file='mainheader.tpl']-->
-          <!--[if $implants == 1]--><!--[include file='maininfo.tpl']--><!--[else]--><!--[include file='maininfo2.tpl']--><!--[/if]-->
+          <!--[include file='maininfo.tpl']-->
           <!--[include file='queue.tpl']-->
           
 <!-- SIGNATURES -->
 <div>
     <a href="#top" class="back-to-top"></a>
-        <script type="application/javascript">
-            var amountScrolled = 300;
-                $(window).scroll(function() {
-	               if ( $(window).scrollTop() > amountScrolled ) {
-		          $('a.back-to-top').fadeIn('slow');
-                       } else {
-		          $('a.back-to-top').fadeOut('slow');
-	                   }
-                });
-                    $('a.back-to-top').click(function() {
-	                $('html, body').animate({
-		          scrollTop: 0
-	           }, 1000);
-	       return false;
-           });
-        </script>
+        <script type="text/javascript">var amountScrolled=300;$(window).scroll(function(){$(window).scrollTop()>amountScrolled?$("a.back-to-top").fadeIn("slow"):$("a.back-to-top").fadeOut("slow")}),$("a.back-to-top").click(function(){return $("html, body").animate({scrollTop:0},1e3),!1});</script>
 </div>    
 <!--[strip]-->
 <br />
