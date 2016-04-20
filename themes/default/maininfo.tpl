@@ -82,7 +82,7 @@
                   <tr>               
                     <td class="dataTableCell">Date of Birth</td>
                     <td colspan="2" class="dataTableCell" align="left"><!--[$DoB|date_format:"%A, %B %d, %Y"]--></td>
-                    <td colspan="1" class="dataTableCellLeftRight" align="center" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"> <a style="text-decoration:none;color:#c1c1c1;" href="/settings/" rel="iframe-500-300" class="pirobox">Settings</a></td>
+                    <td colspan="1" class="dataTableCellLeftRight" align="center" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"> <!--<a style="text-decoration:none;color:#c1c1c1;" href="/settings/" rel="iframe-500-300" class="pirobox">Settings</a>--></td>
                   </tr>
                   <tr>
                     <td colspan="4" class="dataTableHeaderRight">Training</td>
@@ -105,17 +105,7 @@
                         <!--[if $Training]-->
                             <td colspan="3" style="color:gold; font-weight:bold; text-align:left;" class="dataTableCellLeftRight">
                                 <div id="counter1" data-countdown="<!--[$trainingEndFormat]-->"></div>
-                                <script type="text/javascript">
-                                    $(function(){
-                                        $('[data-countdown]').each(function() {
-                                            var $this = $(this), finalDate = $(this).data('countdown');
-                                            $this.countdown(finalDate, function(event) {
-                                                $this.html(event.strftime('%-D day%!D, %-H hour%!H, %-M minute%!M and %-S second%!S'))}).on('finish.countdown', function() {
-                                                $this.html("Completed!"); 
-                                            });
-                                        });
-                                    });
-                                </script>
+                                <script type="text/javascript">$(function(){$("[data-countdown]").each(function(){var n=$(this),t=$(this).data("countdown");n.countdown(t,function(t){n.html(t.strftime("%-D day%!D, %-H hour%!H, %-M minute%!M and %-S second%!S"))}).on("finish.countdown",function(){n.html("Completed!")})})});</script>
                             </td>
                         <!--[else]-->
                             <td colspan="3" style="color:gold; font-weight:bold; text-align:left;" class="dataTableCellLeftRight">
@@ -125,16 +115,16 @@
                   <tr>
                     <td class="dataTableCell">Training Completes</td>
                         <!--[if $Training]-->
-                            <td colspan="3" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCellLeftRight"><!--[$trainingEndTime|date_format:"%A, %B %e %Y, %H:%M:%S"]-->
+                            <td colspan="3" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCellLeftRight"><!--[$trainingEndTime|date_format:"%A, %B %e, %Y, %H:%M:%S"]-->
                             </td>
                         <!--[else]-->
                             <td colspan="3" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCellLeftRight"></td>
                         <!--[/if]-->
                   </tr>
                   <tr>
-                  <td class="dataTableCell" style="color:#777;font-size:10px;">Data Cache</td>
-                  <td colspan="3" style="color:#777;font-size:10px;" class="dataTableCellLeftRight">Data is cached for <!--[if $pageupdateminutes eq 0 and $pageupdateseconds eq 0]-->60<!--[else]--><!--[$pageupdateminutes]--><!--[/if]--> minutes and <!--[$pageupdateseconds]--> seconds
-                  </td>
+                  <td class="dataTableCell" style="color:#777;font-size:10px;">Cache Expires</td>
+                  <td colspan="3" style="color:#777;font-size:10px;" class="dataTableCellLeftRight">
+                      <span id="counter3" data-countdown="<!--[$cachetimeleft]-->"></span>
                   </tr>
                   <tr>
                       <!--[if $freeSP >= '1']-->
