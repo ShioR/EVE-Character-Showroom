@@ -7,7 +7,7 @@
   <meta name="resource-type" content="document" />
   <meta http-equiv="expires" content="0" />
   <meta name="author" content="Eve Online" />
-  <meta name="copyright" content="Copyright (c) 2015 The Xenodus Initiative." />
+  <meta name="copyright" content="Copyright (c) 2016 The Xenodus Initiative." />
   <meta name="revisit-after" content="1 days" />
   <meta name="distribution" content="Global" />
   <meta name="generator" content="Eve Online" />
@@ -111,7 +111,7 @@ a,a:visited{color:#ffd700}
 											<td bgcolor='#222' align='center'><input type='submit' name="submit" value='Get Characters'></td>
 										</tr>
 										<tr>
-											<td colspan='2'></br></br><span class="newsmalltext"><strong><a target="_blank" href="https://support.eveonline.com/api/Key/CreatePredefined/8781832">Create a new API Key for use on this site</a></strong><br />Your API keys can be found <a target="_blank" href="https://support.eveonline.com/api">here</a></span>.<br /></td>
+											<td colspan='2'></br></br><span class="newsmalltext"><strong><a target="_blank" href="https://community.eveonline.com/support/api-key/CreatePredefined?accessMask=8781832">Create a new API Key for use on this site</a></strong><br />Your API keys can be found <a target="_blank" href="https://community.eveonline.com/support/api-key/">here</a></span>.<br /></td>
 										</tr>
 						</table>
 					</form>
@@ -128,14 +128,13 @@ a,a:visited{color:#ffd700}
 						<br />
               <p><span style="color:orange;"><i><strong>Please be aware that in order to use this site you need to give your new API Key the correct permissions!</strong></i></span><br />We need access to;</p>
 				  <ul>
-					<li><i>'/char/CharacterSheet.xml.aspx'<span style="font-size:x-small;"><sup>2</sup></span></i></li>
-					<li><i>'/char/SkillInTraining.xml.aspx'<span style="font-size:x-small;"><sup>1</sup></span></i></li>
-					<li><i>'/char/SkillQueue.xml.aspx'<span style="font-size:x-small;"><sup>1</sup></span></i></li>
-					<li><i>'/eve/CharacterInfo.xml.aspx'<span style="font-size:x-small;"><sup>2</sup></span></i></li>
+					<li><i>'/char/CharacterSheet.xml.aspx'</i></li>
+					<li><i>'/char/SkillInTraining.xml.aspx'</i></li>
+					<li><i>'/char/SkillQueue.xml.aspx'</i></li>
+					<li><i>'/eve/CharacterInfo.xml.aspx'</i></li>
 				  </ul>
-				  <p>An easy way to make sure you have the correct permissions is to <a target="_blank" href="https://support.eveonline.com/api/Key/CreatePredefined/8781832">create a pre-defined key!</a></p>  
-				  <p style="color:red;">Please note that if you don't tick 'No Expiry' you key will expire and access to the API key you provided us will be revoked. Either tick 'No Expiry' or <a href="/settings/api" rel="iframe-500-300" class="pirobox">update your key.</a></p>
-                  <p style="font-size:xx-small;"><i><sup>1</sup> = Every 30 minutes, <sup>2</sup> = Once per hour</i> </p></strong></i></p>
+				  <p>An easy way to make sure you have the correct permissions is to <a target="_blank" href="https://community.eveonline.com/support/api-key/CreatePredefined?accessMask=8781832">create a pre-defined key!</a></p>  
+				  <p style="color:red;">Please note that if you don't tick 'No Expiry' you key will expire and access to the API key you provided us will be revoked. Either tick 'No Expiry' or <a href="/settings/api" rel="iframe-500-300" class="pirobox">update your key.</a>
                   <p style="clear:both" /> 
                 </div> 
               </div>  
