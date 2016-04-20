@@ -51,11 +51,9 @@ a,a:visited{color:gold;}
       <tr colspan="2" align="center">
         <td bgcolor="#1B1B1B" align="center">
         <form method="link" action="api.php"><input type="submit" value="Update API Key" style="width:140px;"></form>
-		<form method="link" action="delete.php"><input type="submit" value="Delete Character" style="width:140px;"></form>
 		</td>
         <td>
-        <form method="link" action="implants.php"><input type="submit" value="Show/Hide Implants" style="width:140px;"></form>
-		<form method="link" action="#"><input type="submit" value="Trololololol" style="width:140px;"></form>
+		<form method="link" action="delete.php"><input type="submit" value="Delete Character" style="width:140px;"></form>
 		</td>
       </tr>   
      </tbody>
