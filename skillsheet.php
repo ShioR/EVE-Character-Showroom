@@ -878,6 +878,7 @@ function ships($config = array())
     $minutes  = floor($diffDate/60);
     $diffDate = $diffDate - ($minutes*60);
     $seconds  = floor($diffDate);
+    $eveRender->Assign('cachetimeleft',     date("m/d/Y G:i:s", strtotime($config['cachedUntil']." GMT")));
     $eveRender->Assign('skilltree',         $assign['skilltree']);
     $eveRender->Assign('skillgroups',       $assign['skillgroups']);
     $eveRender->Assign('characterID',       $characterID);
@@ -995,6 +996,7 @@ function siglist($config)
     $minutes  = floor($diffDate/60);
     $diffDate = $diffDate - ($minutes*60);
     $seconds  = floor($diffDate);
+    $eveRender->Assign('cachetimeleft',     date("m/d/Y G:i:s", strtotime($config['cachedUntil']." GMT")));
     $eveRender->Assign('skilltree',         $assign['skilltree']);
     $eveRender->Assign('skillgroups',       $assign['skillgroups']);
     $eveRender->Assign('characterID',       $characterID);
