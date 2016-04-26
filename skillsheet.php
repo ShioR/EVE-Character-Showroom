@@ -1198,6 +1198,7 @@ function Shipgroups()
                  '902'  => 'Jump Freighters',
                  '485'  => 'Dreadnoughts',
                  '547'  => 'Carriers',
+                 '1538' => 'Force Auxiliaries',
                  '659'  => 'Supercarriers',
                  '30'   => 'Titans');
 }
