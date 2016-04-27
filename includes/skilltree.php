@@ -503,28 +503,28 @@ $skillsource[1216][3318]['groupName'] = 'Engineering';
 
 ////////////////////////////////////////////////////////////////////////// GUNNERY
 $skillsource[255][41404]['typeName'] = 'Capital Artillery Specialization';
-$skillsource[255][41404]['rank'] = '7';
+$skillsource[255][41404]['rank'] = '10';
 $skillsource[255][41404]['typeID'] = '41404';
 $skillsource[255][41404]['skillCost'] = '27000000';
 $skillsource[255][41404]['groupID'] = '255';
 $skillsource[255][41404]['groupName'] = 'Gunnery';
 
 $skillsource[255][41403]['typeName'] = 'Capital Autocannon Specialization';
-$skillsource[255][41403]['rank'] = '7';
+$skillsource[255][41403]['rank'] = '10';
 $skillsource[255][41403]['typeID'] = '41403';
 $skillsource[255][41403]['skillCost'] = '27000000';
 $skillsource[255][41403]['groupID'] = '255';
 $skillsource[255][41403]['groupName'] = 'Gunnery';
 
 $skillsource[255][41408]['typeName'] = 'Capital Beam Laser Specialization';
-$skillsource[255][41408]['rank'] = '7';
+$skillsource[255][41408]['rank'] = '10';
 $skillsource[255][41408]['typeID'] = '41408';
 $skillsource[255][41408]['skillCost'] = '27000000';
 $skillsource[255][41408]['groupID'] = '255';
 $skillsource[255][41408]['groupName'] = 'Gunnery';
 
 $skillsource[255][41405]['typeName'] = 'Capital Blaster Specialization';
-$skillsource[255][41405]['rank'] = '7';
+$skillsource[255][41405]['rank'] = '10';
 $skillsource[255][41405]['typeID'] = '41405';
 $skillsource[255][41405]['skillCost'] = '27000000';
 $skillsource[255][41405]['groupID'] = '255';
@@ -552,14 +552,14 @@ $skillsource[255][21667]['groupID'] = '255';
 $skillsource[255][21667]['groupName'] = 'Gunnery';
 
 $skillsource[255][41407]['typeName'] = 'Capital Pulse Laser Specialization';
-$skillsource[255][41407]['rank'] = '7';
+$skillsource[255][41407]['rank'] = '10';
 $skillsource[255][41407]['typeID'] = '41407';
 $skillsource[255][41407]['skillCost'] = '27000000';
 $skillsource[255][41407]['groupID'] = '255';
 $skillsource[255][41407]['groupName'] = 'Gunnery';
 
 $skillsource[255][41406]['typeName'] = 'Capital Railgun Specialization';
-$skillsource[255][41406]['rank'] = '7';
+$skillsource[255][41406]['rank'] = '10';
 $skillsource[255][41406]['typeID'] = '41406';
 $skillsource[255][41406]['skillCost'] = '27000000';
 $skillsource[255][41406]['groupID'] = '255';
@@ -578,6 +578,13 @@ $skillsource[255][24563]['typeID'] = '24563';
 $skillsource[255][24563]['skillCost'] = '250000000';
 $skillsource[255][24563]['groupID'] = '255';
 $skillsource[255][24563]['groupName'] = 'Gunnery';
+
+$skillsource[255][41537]['typeName'] = 'Doomsday Rapid Firing';
+$skillsource[255][41537]['rank'] = '14';
+$skillsource[255][41537]['typeID'] = '41537';
+$skillsource[255][41537]['skillCost'] = '250000000';
+$skillsource[255][41537]['groupID'] = '255';
+$skillsource[255][41537]['groupName'] = 'Gunnery';
 
 $skillsource[255][3300]['typeName'] = 'Gunnery';
 $skillsource[255][3300]['rank'] = '1';
@@ -1072,7 +1079,7 @@ $skillsource[256][20315]['groupID'] = '256';
 $skillsource[256][20315]['groupName'] = 'Missiles';
 
 $skillsource[256][41410]['typeName'] = 'XL Cruise Missile Specialization';
-$skillsource[256][41410]['rank'] = '7';
+$skillsource[256][41410]['rank'] = '10';
 $skillsource[256][41410]['typeID'] = '41410';
 $skillsource[256][41410]['skillCost'] = '27000000';
 $skillsource[256][41410]['groupID'] = '256';
@@ -1086,7 +1093,7 @@ $skillsource[256][32435]['groupID'] = '256';
 $skillsource[256][32435]['groupName'] = 'Missiles';
 
 $skillsource[256][41409]['typeName'] = 'XL Torpedo Specialization';
-$skillsource[256][41409]['rank'] = '7';
+$skillsource[256][41409]['rank'] = '10';
 $skillsource[256][41409]['typeID'] = '41409';
 $skillsource[256][41409]['skillCost'] = '27000000';
 $skillsource[256][41409]['groupID'] = '256';
