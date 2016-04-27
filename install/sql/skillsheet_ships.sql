@@ -305,3 +305,7 @@ INSERT INTO `skillsheet_ships` VALUES ('37453', '25', 'Crucifier Navy Issue', '4
 INSERT INTO `skillsheet_ships` VALUES ('37454', '25', 'Vigil Fleet Issue', '4', '500002', '1', '1976', 'mf7_t1:minmatarnavy:minmatar');
 INSERT INTO `skillsheet_ships` VALUES ('37455', '25', 'Griffin Navy Issue', '4', '500001', '1', '1789', 'cf4_t1:caldarinavy:caldari');
 INSERT INTO `skillsheet_ships` VALUES ('37456', '25', 'Maulus Navy Issue', '4', '500004', '1', '1811', 'gf7_t1:gallentenavy:gallente');
+INSERT INTO `skillsheet_ships` VALUES ('37604', '1538', 'Apostle', '1', '500003', '1', '21252', 'afaux1_t1:amarrbase:amarr');
+INSERT INTO `skillsheet_ships` VALUES ('37605', '1538', 'Minokawa', '1', '500001', '1', '21254', 'cfaux1_t1:caldaribase:caldari');
+INSERT INTO `skillsheet_ships` VALUES ('37606', '1538', 'Lif', '1', '500002', '1', '21256', 'mfaux1_t1:minmatarbase:minmatar');
+INSERT INTO `skillsheet_ships` VALUES ('37607', '1538', 'Ninazu', '1', '500004', '1', '21255', 'gfaux1_t1:gallentebase:gallente');
