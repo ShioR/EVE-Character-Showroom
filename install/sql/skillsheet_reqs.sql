@@ -1,3 +1,20 @@
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : Sol
+Source Server Version : 50630
+Source Host           : 176.9.41.14:3306
+Source Database       : evesp_skills
+
+Target Server Type    : MYSQL
+Target Server Version : 50630
+File Encoding         : 65001
+
+Date: 2016-04-27 15:49:53
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
 -- ----------------------------
 -- Table structure for skillsheet_reqs
 -- ----------------------------
@@ -954,11 +971,19 @@ INSERT INTO `skillsheet_reqs` VALUES ('37455', 'requiredSkill1', '3330', '0', '2
 INSERT INTO `skillsheet_reqs` VALUES ('37455', 'requiredSkill1Level', '2', '0', '25', 'Griffin Navy Issue', '500001', 'Caldari', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('37456', 'requiredSkill1', '3328', '0', '25', 'Maulus Navy Issue', '500004', 'Gallente', 'Gallente Frigate', null);
 INSERT INTO `skillsheet_reqs` VALUES ('37456', 'requiredSkill1Level', '2', '0', '25', 'Maulus Navy Issue', '500004', 'Gallente', null, null);
-INSERT INTO `skillsheet_reqs` VALUES ('37604', 'requiredSkill1', '40535', '0', '1538', 'Apostle', '500003', 'Amarr', 'Amarr Force Auxiliary', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37604', 'requiredSkill1', '20533', '0', '1538', 'Apostle', '500003', 'Amarr', 'Capital Ships', null);
 INSERT INTO `skillsheet_reqs` VALUES ('37604', 'requiredSkill1Level', '1', '0', '1538', 'Apostle', '500003', 'Amarr', null, null);
-INSERT INTO `skillsheet_reqs` VALUES ('37605', 'requiredSkill1', '40536', '0', '1538', 'Minokawa', '500001', 'Caldari', 'Caldari Force Auxiliary', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37604', 'requiredSkill2', '24311', '0', '1538', 'Apostle', '500003', 'Amarr', 'Amarr Carrier', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37604', 'requiredSkill2Level', '1', '0', '1538', 'Apostle', '500003', 'Amarr', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37605', 'requiredSkill1', '20533', '0', '1538', 'Minokawa', '500001', 'Caldari', 'Capital Ships', null);
 INSERT INTO `skillsheet_reqs` VALUES ('37605', 'requiredSkill1Level', '1', '0', '1538', 'Minokawa', '500001', 'Caldari', null, null);
-INSERT INTO `skillsheet_reqs` VALUES ('37606', 'requiredSkill1', '40538', '0', '1538', 'Lif', '500002', 'Minmatar', 'Minmatar Force Auxiliary', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37605', 'requiredSkill2', '24312', '0', '1538', 'Minokawa', '500001', 'Caldari', 'Caldari Carrier', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37605', 'requiredSkill2Level', '1', '0', '1538', 'Minokawa', '500001', 'Caldari', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37606', 'requiredSkill1', '20533', '0', '1538', 'Lif', '500002', 'Minmatar', 'Capital Ships', null);
 INSERT INTO `skillsheet_reqs` VALUES ('37606', 'requiredSkill1Level', '1', '0', '1538', 'Lif', '500002', 'Minmatar', null, null);
-INSERT INTO `skillsheet_reqs` VALUES ('37607', 'requiredSkill1', '40537', '0', '1538', 'Ninazu', '500004', 'Gallente', 'Gallente Force Auxiliary', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37606', 'requiredSkill2', '24314', '0', '1538', 'Lif', '500002', 'Minmatar', 'Minmatar Carrier', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37606', 'requiredSkill2Level', '1', '0', '1538', 'Lif', '500002', 'Minmatar', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37607', 'requiredSkill1', '20533', '0', '1538', 'Ninazu', '500004', 'Gallente', 'Capital Ships', null);
 INSERT INTO `skillsheet_reqs` VALUES ('37607', 'requiredSkill1Level', '1', '0', '1538', 'Ninazu', '500004', 'Gallente', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37607', 'requiredSkill2', '24313', '0', '1538', 'Ninazu', '500004', 'Gallente', 'Gallente Carrier', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37607', 'requiredSkill2Level', '1', '0', '1538', 'Ninazu', '500004', 'Gallente', null, null);
