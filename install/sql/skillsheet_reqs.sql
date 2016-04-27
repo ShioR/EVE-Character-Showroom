@@ -954,3 +954,11 @@ INSERT INTO `skillsheet_reqs` VALUES ('37455', 'requiredSkill1', '3330', '0', '2
 INSERT INTO `skillsheet_reqs` VALUES ('37455', 'requiredSkill1Level', '2', '0', '25', 'Griffin Navy Issue', '500001', 'Caldari', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('37456', 'requiredSkill1', '3328', '0', '25', 'Maulus Navy Issue', '500004', 'Gallente', 'Gallente Frigate', null);
 INSERT INTO `skillsheet_reqs` VALUES ('37456', 'requiredSkill1Level', '2', '0', '25', 'Maulus Navy Issue', '500004', 'Gallente', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37604', 'requiredSkill1', '40535', '0', '1538', 'Apostle', '500003', 'Amarr', 'Amarr Force Auxiliary', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37604', 'requiredSkill1Level', '1', '0', '1538', 'Apostle', '500003', 'Amarr', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37605', 'requiredSkill1', '40536', '0', '1538', 'Minokawa', '500001', 'Caldari', 'Caldari Force Auxiliary', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37605', 'requiredSkill1Level', '1', '0', '1538', 'Minokawa', '500001', 'Caldari', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37606', 'requiredSkill1', '40538', '0', '1538', 'Lif', '500002', 'Minmatar', 'Minmatar Force Auxiliary', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37606', 'requiredSkill1Level', '1', '0', '1538', 'Lif', '500002', 'Minmatar', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('37607', 'requiredSkill1', '40537', '0', '1538', 'Ninazu', '500004', 'Gallente', 'Gallente Force Auxiliary', null);
+INSERT INTO `skillsheet_reqs` VALUES ('37607', 'requiredSkill1Level', '1', '0', '1538', 'Ninazu', '500004', 'Gallente', null, null);
