@@ -1,3 +1,5 @@
+SET FOREIGN_KEY_CHECKS=0;
+
 -- ----------------------------
 -- Table structure for skillsheet_skills
 -- ----------------------------
@@ -151,7 +153,7 @@ INSERT INTO `skillsheet_skills` VALUES ('3450', '275', 'Afterburner', 'Skill at 
 INSERT INTO `skillsheet_skills` VALUES ('3451', '275', 'Fuel Conservation', 'Skill at improved control over afterburner energy consumption. 10% reduction in afterburner capacitor needs per skill level.', '0', '0.01', '0', '1', null, '30000.0000', '1', '374', '33', null, '0');
 INSERT INTO `skillsheet_skills` VALUES ('3452', '275', 'Acceleration Control', 'Skill at efficiently using Afterburners and MicroWarpdrives. 5% Bonus to Afterburner and MicroWarpdrive speed boost per skill level.', '0', '0.01', '0', '1', null, '40000.0000', '1', '374', '33', null, '0');
 INSERT INTO `skillsheet_skills` VALUES ('3453', '275', 'Evasive Maneuvering', 'Improved skill at efficiently turning and accelerating a spaceship. 5% improved ship agility for all ships per skill level.', '0', '0.01', '0', '1', null, '25000.0000', '1', '374', '33', null, '0');
-INSERT INTO `skillsheet_skills` VALUES ('3454', '275', 'High Speed Maneuvering', 'Skill at using MicroWarpdrives. 5% reduction in MicroWarpdrive capacitor usage per skill level.', '0', '0.01', '0', '1', null, '340000.0000', '1', '374', '33', null, '0');
+INSERT INTO `skillsheet_skills` VALUES ('3454', '275', 'High Speed Maneuvering', 'Skill at using Microwarpdrives. 5% reduction in Microwarpdrive capacitor usage per skill level.', '0', '0.01', '0', '1', null, '340000.0000', '1', '374', '33', null, '0');
 INSERT INTO `skillsheet_skills` VALUES ('3455', '275', 'Warp Drive Operation', 'Skill at managing warp drive efficiency. 10% reduction in capacitor need of initiating warp per skill level.', '0', '0.01', '0', '1', null, '30000.0000', '1', '374', '33', null, '0');
 INSERT INTO `skillsheet_skills` VALUES ('3456', '275', 'Jump Drive Operation', 'Skill at using Jump Drives. 5% reduction in capacitor need of initiating a jump per skill level. This skill cannot be trained on Trial Accounts.', '0', '0.01', '0', '1', '4', '10000000.0000', '1', '374', '33', null, '0');
 INSERT INTO `skillsheet_skills` VALUES ('3551', '1217', 'Survey', 'Skill at operating ship, cargo and survey scanners. 5% improvement per level in the scan speeds of those module types.', '0', '0.01', '0', '1', null, '36000.0000', '1', '1110', '33', null, '0');
