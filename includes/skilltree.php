@@ -7,13 +7,6 @@ $skillsource[1210][33078]['skillCost'] = '1000000';
 $skillsource[1210][33078]['groupID'] = '1210';
 $skillsource[1210][33078]['groupName'] = 'Armor';
 
-$skillsource[1210][32797]['typeName'] = 'Armor Resistance Phasing';
-$skillsource[1210][32797]['rank'] = '3';
-$skillsource[1210][32797]['typeID'] = '32797';
-$skillsource[1210][32797]['skillCost'] = '500000';
-$skillsource[1210][32797]['groupID'] = '1210';
-$skillsource[1210][32797]['groupName'] = 'Armor';
-
 $skillsource[1210][24568]['typeName'] = 'Capital Remote Armor Repair Systems';
 $skillsource[1210][24568]['rank'] = '10';
 $skillsource[1210][24568]['typeID'] = '24568';
@@ -479,6 +472,13 @@ $skillsource[1216][28879]['typeID'] = '28879';
 $skillsource[1216][28879]['skillCost'] = '1000000';
 $skillsource[1216][28879]['groupID'] = '1216';
 $skillsource[1216][28879]['groupName'] = 'Engineering';
+
+$skillsource[1216][32797]['typeName'] = 'Resistance Phasing';
+$skillsource[1216][32797]['rank'] = '3';
+$skillsource[1216][32797]['typeID'] = '32797';
+$skillsource[1216][32797]['skillCost'] = '500000';
+$skillsource[1216][32797]['groupID'] = '1216';
+$skillsource[1216][32797]['groupName'] = 'Armor';
 
 $skillsource[1216][3413]['typeName'] = 'Power Grid Management';
 $skillsource[1216][3413]['rank'] = '1';
