@@ -1,10 +1,10 @@
 
       <div class="charlist">
       <!--[charlist assign='charlist']-->
-      <!--[if $charlist.count > 5]-->
+      <!--[if $charlist.count > 1]-->
         <!--[literal]-->
           <!--[if !IE]>--><br /><!--<![endif]-->
-        <!--[/literal]--><a style="color: gold; font-weight: bold;" href="/" title="List of Characters">All Pilots...</a>&nbsp;
+        <!--[/literal]--><a style="color:gold;font-weight:bold;text-decoration:none;padding-right:10px;" href="/" title="List of Characters">All Pilots</a>
       <!--[else]-->
         <!--[foreach item=char from=$charlist.chars]-->
           &nbsp;&nbsp;<span onclick="location.href='/<!--[$char.charname|replace:' ':'_']-->'" onmouseover="this.style.cursor='pointer';" title="<!--[$char.charname]-->"><img src="https://imageserver.eveonline.com/Character/<!--[$char.charid]-->_32.jpg" class="mbAvatar" style="border:1px solid gray;" alt="<!--[$char.charname]-->" /></span>

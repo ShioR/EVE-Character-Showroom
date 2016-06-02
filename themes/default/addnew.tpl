@@ -94,9 +94,10 @@ a img{border:none;}
 										<!--[*<p><!--[if $stoppage]--><a href="skillsheet.php?show=addnew" title="Retry">Retry<!--[else]--><a href="install.php?step=<!--[$nextstep]-->">Next Step<!--[/if]--></a></p>*]-->
 										<!--[else]-->
 						<div class="counter"></div>
-              <p><span style="color:orange;"><i><strong>Please be aware that in order to use this site you need to give your new API Key the correct permissions!</strong></i></span><br />
+              <p style="text-align:center;"><span style="color:orange;"><i><strong>Please be aware that in order to use this site you need to give your new API Key the correct permissions!</strong></i></span><br />
 				  An easy way to make sure you have the correct permissions is to <a target="_blank" href="https://community.eveonline.com/support/api-key/CreatePredefined?accessMask=8781832">create a pre-defined key!</a></p>
                 <br />
+            <div style="margin-left:38%;">
                 We need access to;
 				  <ul>
 					<li><i>'/char/CharacterSheet.xml.aspx'</i></li>
@@ -104,7 +105,8 @@ a img{border:none;}
 					<li><i>'/char/SkillQueue.xml.aspx'</i></li>
 					<li><i>'/eve/CharacterInfo.xml.aspx'</i></li>
 				  </ul>
-                    <p>Note: If the 'No Expiry' box is not ticked, your key will expire and access to the API key you provided us will be revoked.
+                </div>
+                    <p style="text-align:center;">Note: If the 'No Expiry' box is not ticked, your key will expire and access to the API key you provided us will be revoked.
                     Confirm it is ticked or <a href="/settings/api" rel="iframe-500-300" class="pirobox">update your key</a> when it expires to allow us to maintain access to your character.</p>
 						<br /><br /> 
 						<br /><br /> 
