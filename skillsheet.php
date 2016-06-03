@@ -172,7 +172,7 @@ include 'includes/config.php';
             chart($config);
             break;      
         case 'error':
-            $eveRender->display('error.tpl');exit;
+            $eveRender->display('error_generalapi.tpl');exit;
             break;        
         default:
             if ($characterID) {
@@ -548,30 +548,8 @@ function index($config = array())
     if (isset($xml['error'])) {
 	       
 		global $eveRender;
-		$eveRender->Display('errorheader.tpl');
-
-  echo '<br /><br />
-  <div id="content" class="mcenter" style="float:center;width:908px;margin-top:50px;" >
-    <table summary="Characters List" style="border: #666666 1px solid; margin-left: 10px; width:910px;">
-    <thead>
-      <tr style="background: rgb(44, 44, 56);">
-        <th colspan="<!--[$charcount]-->" class="dataTableHeader">NO INFORMATION FOUND!</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>No information about this character was retrieved last time the API was queried.<br />This will likely resolve itself, check back in an hour to try again.<br />You can check the status of the API <a href="http://eve-offline.net/api/" target="_blank">here.</a><br /><a href="javascript:history.back()" title="Go back">Go Back</a></td>
-      </tr>   
-     </tbody>
-    </table>  
-<br />
-<br />
-<br />
-<br />
-<br />';
-	$eveRender->Display('footer.tpl');
-echo '</body>
-</html>';exit;
+		$eveRender->Display('error_noinfo.tpl');
+        exit;
 	    }
     
 
@@ -1208,30 +1186,7 @@ function GetTrainingData($trainfile = '')
     if (empty($trainfile)) {
 	       
 		global $eveRender;
-		$eveRender->Display('errorheader.tpl');
-
-  echo '<br /><br />
-  <div id="content" class="mcenter" style="float:center;width:908px;margin-top:50px;" >
-    <table summary="Characters List" style="border: #666666 1px solid; margin-left: 10px; width:910px;">
-    <thead>
-      <tr style="background: rgb(44, 44, 56);">
-        <th colspan="<!--[$charcount]-->" class="dataTableHeader">No training information</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>No information about this character was retrieved last time the API was queried. <br /> This will likely resolve itself, alternatively you can check back in an hour to try again.<br />You can check the status of the API <a href="http://eve-offline.net/api/">here.</a><br /><a href="javascript:history.back()" title="Go back">Go Back</a></td>
-      </tr>   
-     </tbody>
-    </table>  
-<br />
-<br />
-<br />
-<br />
-<br />';
-	$eveRender->Display('footer.tpl');
-echo '</body>
-</html>';
+		$eveRender->Display('error_noinfo.tpl');
         exit;
     }
 

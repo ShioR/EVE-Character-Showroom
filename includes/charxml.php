@@ -254,23 +254,7 @@ function GetXML($config = array())
     if (!$config) {
   
 		global $eveRender;
-		$eveRender->Display('errorheader.tpl');
-
-  echo '<br /><br />
-  <div id="content" class="mcenter" style="float:center;width:970px;margin-top:100px;" >
-    <div style="margin-left:auto;margin-right:auto;background:maroon;width:70%;height:30px;text-align:center;font-size:30px;font-variant:small-caps;line-height:26px;border:1px solid grey;">
-        <strong>error</strong>
-    </div>
-    <div style="margin-left:auto;margin-right:auto;width:70%;padding-top:10px;text-align:center;font-size:12px;">
-        A character has not been found with that name, please check your spelling and try again. <br />If you think a character should have been found, try adding the character again.<br />You can add your character <a style="color:gold;" href="/add">here.</a>
-    </div>
-   </div>
-<br /><br /><br /><br /><br />
-<br /><br /><br /><br /><br />
-';
-		$eveRender->Display('footer.tpl');
-	echo '</body>
-</html>';
+		$eveRender->Display('error_notfound.tpl');
         exit;
     }
 
