@@ -257,24 +257,17 @@ function GetXML($config = array())
 		$eveRender->Display('errorheader.tpl');
 
   echo '<br /><br />
-  <div id="content" class="mcenter" style="float:center;width:908px;margin-top:50px;" >
-    <table summary="Characters List" style="border: #666666 1px solid; margin-left: 10px; width:910px;">
-    <thead>
-      <tr style="background: rgb(44, 44, 56);">
-        <th colspan="<!--[$charcount]-->" class="dataTableHeader">Error</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>A character has not been found with that name, please check your spelling and try again. <br />This character may have been removed from the database due to an in-active account. <br />You can add your character <a href="/add">here.</a></td>
-      </tr>   
-     </tbody>
-    </table>  
-<br />
-<br />
-<br />
-<br />
-<br />';
+  <div id="content" class="mcenter" style="float:center;width:970px;margin-top:100px;" >
+    <div style="margin-left:auto;margin-right:auto;background:maroon;width:70%;height:30px;text-align:center;font-size:30px;font-variant:small-caps;line-height:26px;border:1px solid grey;">
+        <strong>error</strong>
+    </div>
+    <div style="margin-left:auto;margin-right:auto;width:70%;padding-top:10px;text-align:center;font-size:12px;">
+        A character has not been found with that name, please check your spelling and try again. <br />If you think a character should have been found, try adding the character again.<br />You can add your character <a style="color:gold;" href="/add">here.</a>
+    </div>
+   </div>
+<br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br />
+';
 		$eveRender->Display('footer.tpl');
 	echo '</body>
 </html>';
