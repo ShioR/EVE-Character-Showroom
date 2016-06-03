@@ -1,16 +1,16 @@
 ### I'm confused   
-EVE Character Showroom (ECS) is an EVE Online API based web app. Once it has been installed on a server, or a local
+EVE Character Showroom is an EVE Online API based web app. Once it has been installed on a server or a local
 stack and a character has been added you can quickly view the skills of a character along with the ships that they
-can currently fly. There is also a main section detailing the character in more detail.  
+can currently fly.
   
-For more information on the features, please see the [features](https://github.com/ShioR/EVE-Character-Showroom/wiki/Features) on our wiki.  
+For more information on the features, look at the  [features](https://github.com/ShioR/EVE-Character-Showroom/wiki/Features) on our wiki. Alternatively, check out the demo installation [here](https://evecs.evesp.com).  
 
 -------------------
 ### Server Requirements
 Apache 2.2+  
 MySQL 5.5+   
 PHP 5.4+ with cURL and GD     
-:warning: *[Apache 2.4 Compatibility Warning!](https://github.com/ShioR/EVE-Character-Showroom/issues/66)* :warning:
+*[Apache 2.4 Compatibility Warning!](https://github.com/ShioR/EVE-Character-Showroom/issues/66)*
      
 
 ------------         
