@@ -67,7 +67,7 @@ a img{border:none;}
           <!--[math equation="x+1" x=$counter assign='counter']-->
         <!--[/if]-->
         <td class="txtcenter">
-          <a href=/<!--[$char.name|replace:' ':'_']--> title="<!--[$char.name]-->"><img src="https://imageserver.eveonline.com/Character/<!--[$char.characterID]-->_128.jpg" width="128" height="128" style="padding: 2px; "onmouseover="this.style.backgroundColor='#303030'; this.style.cursor='pointer'" onmouseout="this.style.backgroundColor='#1B1B1B'"</a>
+          <a href=/<!--[$char.name|replace:' ':'_']--> title="<!--[$char.name]-->"><img src="https://imageserver.eveonline.com/Character/<!--[$char.characterID]-->_256.jpg" width="128" height="128" style="padding: 2px; "onmouseover="this.style.backgroundColor='#303030'; this.style.cursor='pointer'" onmouseout="this.style.backgroundColor='#1B1B1B'"</a>
           <br /><!--[$char.name]-->
         </td>
       <!--[/foreach]-->
