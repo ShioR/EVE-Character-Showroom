@@ -156,9 +156,6 @@ include 'includes/config.php';
         case 'addnew':
             AddNew($config);
             break;
-        case 'stats':
-            $eveRender->display('stats.tpl');exit;
-            break;
         case 'sig':
             sig($config);exit;
             break;
