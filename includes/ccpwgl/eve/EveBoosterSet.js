@@ -1,4 +1,9 @@
 /**
+ * EveObjectSet
+ * @typedef {EveBoosterSet|EvePlaneSet|EveSpotlightSet|EveTurretSet|EveSpaceObjectDecal} EveObjectSet
+ */
+
+/**
  * EveBoosterSet
  * @property {boolean} display
  * @property {Tw2Effect} effect
@@ -70,6 +75,31 @@ EveBoosterSet.prototype.Initialize = function()
 {
     this.rebuildPending = true;
 };
+
+/**
+ * Gets booster set res objects
+ * @param {Array} [out=[]] - Optional receiving array
+ * @returns {Array.<Tw2EffectRes|Tw2TextureRes>} [out]
+ */
+EveBoosterSet.prototype.GetResources = function(out)
+{
+    if (out === undefined)
+    {
+        out = [];
+    }
+
+    if (this.effect !== null)
+    {
+        this.effect.GetResources(out);
+    }
+
+    if (this.glows !== null && this.glows.effect !== null)
+    {
+        this.glows.effect.GetResources(out);
+    }
+
+    return out;
+}
 
 /**
  * Clears the booster set
