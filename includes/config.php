@@ -59,6 +59,8 @@ $evedebug['debug']          = 0;
 $evedebug['debug_sql']      = 0;
 $evedebug['pagerendertime'] = 0;
 
+$default = '';
+$eveconnect = false;
 $eveconfig['default']    = $default;
 $eveconfig['filepath']   = $eve_filepath;
 $eveconfig['eveconnect'] = $eveconnect;
