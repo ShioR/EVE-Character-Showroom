@@ -164,7 +164,7 @@ function ADODBInit()
     // debugger if required
     if ($GLOBALS['evedebug']['debug']) {
         include_once 'includes/classes/lensdebug/lensdebug.class.php';
-        $GLOBALS['dbg'] =& new LensDebug();
+        $GLOBALS['dbg'] = new LensDebug();
         $GLOBALS['debug_sqlcalls'] = 0;
     }
 
