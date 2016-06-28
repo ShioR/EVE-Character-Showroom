@@ -144,7 +144,7 @@
             </tr>
             <tr>
                 <td>
-                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/sansha?n=<!--[$name|replace:' ':'_']-->" onclick="this.focus();this.select();" readonly/>
+                    <input style="margin-top:2px; width:400px; border:0px; text-align:center;" id="BBCode" name="BBCode" type="text" value="<!--[getdomain]-->sigs/sanshas?n=<!--[$name|replace:' ':'_']-->" onclick="this.focus();this.select();" readonly/>
                 </td> 
             </tr>    
           </table>
