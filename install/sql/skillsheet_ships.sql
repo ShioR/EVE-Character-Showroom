@@ -1,3 +1,5 @@
+SET FOREIGN_KEY_CHECKS=0;
+
 -- ----------------------------
 -- Table structure for skillsheet_ships
 -- ----------------------------
@@ -309,3 +311,6 @@ INSERT INTO `skillsheet_ships` VALUES ('37604', '1538', 'Apostle', '1', '500003'
 INSERT INTO `skillsheet_ships` VALUES ('37605', '1538', 'Minokawa', '1', '500001', '1', '21254', 'cfaux1_t1:caldaribase:caldari');
 INSERT INTO `skillsheet_ships` VALUES ('37606', '1538', 'Lif', '1', '500002', '1', '21256', 'mfaux1_t1:minmatarbase:minmatar');
 INSERT INTO `skillsheet_ships` VALUES ('37607', '1538', 'Ninazu', '1', '500004', '1', '21255', 'gfaux1_t1:gallentebase:gallente');
+INSERT INTO `skillsheet_ships` VALUES ('42124', '485', 'Vehement', '4', '500020', '1', '2744', 'gdn1_t1:serpentis:gallente');
+INSERT INTO `skillsheet_ships` VALUES ('42125', '659', 'Vendetta', '4', '500020', '1', '2909', 'gca1_t1:serpentis:gallente');
+INSERT INTO `skillsheet_ships` VALUES ('42126', '30', 'Vanquisher', '4', '500020', '1', '2942', 'gt1_t1:serpentis:gallente');

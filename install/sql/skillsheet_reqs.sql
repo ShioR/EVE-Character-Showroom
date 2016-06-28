@@ -1,18 +1,3 @@
-/*
-Navicat MySQL Data Transfer
-
-Source Server         : Sol
-Source Server Version : 50630
-Source Host           : 176.9.41.14:3306
-Source Database       : evesp_skills
-
-Target Server Type    : MYSQL
-Target Server Version : 50630
-File Encoding         : 65001
-
-Date: 2016-04-27 15:49:53
-*/
-
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
@@ -987,3 +972,23 @@ INSERT INTO `skillsheet_reqs` VALUES ('37607', 'requiredSkill1', '20533', '0', '
 INSERT INTO `skillsheet_reqs` VALUES ('37607', 'requiredSkill1Level', '1', '0', '1538', 'Ninazu', '500004', 'Gallente', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('37607', 'requiredSkill2', '24313', '0', '1538', 'Ninazu', '500004', 'Gallente', 'Gallente Carrier', null);
 INSERT INTO `skillsheet_reqs` VALUES ('37607', 'requiredSkill2Level', '1', '0', '1538', 'Ninazu', '500004', 'Gallente', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('42124', 'requiredSkill1', '3456', '0', '485', 'Vehement', '500020', 'Serpentis', 'Jump Drive Operation', null);
+INSERT INTO `skillsheet_reqs` VALUES ('42124', 'requiredSkill1Level', '1', '0', '485', 'Vehement', '500020', 'Serpentis', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('42124', 'requiredSkill2', '20531', '0', '485', 'Vehement', '500020', 'Serpentis', 'Gallente Dreadnought', null);
+INSERT INTO `skillsheet_reqs` VALUES ('42124', 'requiredSkill2Level', '1', '0', '485', 'Vehement', '500020', 'Serpentis', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('42124', 'requiredSkill3', '20532', '0', '485', 'Vehement', '500020', 'Serpentis', 'Minmatar Dreadnought', null);
+INSERT INTO `skillsheet_reqs` VALUES ('42124', 'requiredSkill3Level', '1', '0', '485', 'Vehement', '500020', 'Serpentis', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('42124', 'requiredSkill4', '20533', '0', '485', 'Vehement', '500020', 'Serpentis', 'Capital Ships', null);
+INSERT INTO `skillsheet_reqs` VALUES ('42124', 'requiredSkill4Level', '1', '0', '485', 'Vehement', '500020', 'Serpentis', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('42125', 'requiredSkill1', '24313', '0', '659', 'Vendetta', '500020', 'Serpentis', 'Gallente Carrier', null);
+INSERT INTO `skillsheet_reqs` VALUES ('42125', 'requiredSkill1Level', '1', '0', '659', 'Vendetta', '500020', 'Serpentis', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('42125', 'requiredSkill2', '24314', '0', '659', 'Vendetta', '500020', 'Serpentis', 'Minmatar Carrier', null);
+INSERT INTO `skillsheet_reqs` VALUES ('42125', 'requiredSkill2Level', '1', '0', '659', 'Vendetta', '500020', 'Serpentis', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('42125', 'requiredSkill3', '20533', '0', '659', 'Vendetta', '500020', 'Serpentis', 'Capital Ships', null);
+INSERT INTO `skillsheet_reqs` VALUES ('42125', 'requiredSkill3Level', '1', '0', '659', 'Vendetta', '500020', 'Serpentis', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('42126', 'requiredSkill1', '3344', '0', '30', 'Vanquisher', '500020', 'Serpentis', 'Gallente Titan', null);
+INSERT INTO `skillsheet_reqs` VALUES ('42126', 'requiredSkill1Level', '1', '0', '30', 'Vanquisher', '500020', 'Serpentis', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('42126', 'requiredSkill2', '3345', '0', '30', 'Vanquisher', '500020', 'Serpentis', 'Minmatar Titan', null);
+INSERT INTO `skillsheet_reqs` VALUES ('42126', 'requiredSkill2Level', '1', '0', '30', 'Vanquisher', '500020', 'Serpentis', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('42126', 'requiredSkill3', '20533', '0', '30', 'Vanquisher', '500020', 'Serpentis', 'Capital Ships', null);
+INSERT INTO `skillsheet_reqs` VALUES ('42126', 'requiredSkill3Level', '5', '0', '30', 'Vanquisher', '500020', 'Serpentis', null, null);
