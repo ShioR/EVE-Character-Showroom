@@ -126,7 +126,7 @@ a img{border:none;}
 								</tr>
                         </table>
 								</br></br>
-                  <p class="newsmalltext" style="text-align:center;">Create a pre-defined key with the correct permissions we require by clicking<a target="_blank" href="https://community.eveonline.com/support/api-key/CreatePredefined?accessMask=8781832"> here.</a><br />Want to use an existing API Key? They can be found <a target="_blank" href="hhttps://community.eveonline.com/support/api-key/">here</a>.</p>
+                  <p class="newsmalltext" style="text-align:center;">Create a pre-defined key with the correct permissions we require by clicking<a target="_blank" href="https://community.eveonline.com/support/api-key/CreatePredefined?accessMask=8781832"> here.</a><br />Want to use an existing API Key? They can be found <a target="_blank" href="https://community.eveonline.com/support/api-key/">here</a>.</p>
 						<!--[/if]-->
 					</form>
           </div>
