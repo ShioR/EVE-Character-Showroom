@@ -115,16 +115,22 @@
                   <tr>
                     <td class="dataTableCell">Training Completes</td>
                         <!--[if $Training]-->
-                            <td colspan="3" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCellLeftRight"><!--[$trainingEndTime|date_format:"%A, %B %e, %Y, %H:%M:%S"]-->
+                            <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell"><!--[$trainingEndTime|date_format:"%A, %B %e, %Y, %H:%M:%S"]-->
                             </td>
                         <!--[else]-->
-                            <td colspan="3" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCellLeftRight"></td>
+                            <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell"></td>
                         <!--[/if]-->
+                      <!--[math equation="x - y" x=$SkillQueue.0.endSP y=$SkillQueue.0.startSP assign='spToGo']-->
+                      <!--[math equation="x - y" x=$trainingEndstamp y=$trainingStartstamp assign='secondsRemaining']-->
+                      <!--[math equation="x / y" x=$secondsRemaining y=3600 assign='hours']-->
+                      <!--[math equation="x / y" x=$spToGo y=$hours assign='spHour']-->
+                            <td colspan="1" style="text-align:center;border-bottom:none;" class="dataTableCellLeftRight"><!--[$spHour|round:0]--></td>
                   </tr>
                   <tr>
                   <td class="dataTableCell" style="color:#777;font-size:10px;">Cache Expires</td>
-                  <td colspan="3" style="color:#777;font-size:10px;" class="dataTableCellLeftRight">
-                      <span id="counter3" data-countdown="<!--[$cachetimeleft]-->"></span>
+                            <td colspan="2" style="color:#777;font-size:10px;" class="dataTableCell">
+                                <span id="counter3" data-countdown="<!--[$cachetimeleft]-->"></span></td>
+                            <td colspan="1" style="text-align:center;" class="dataTableCellLeftRight">SP/Hour</td>
                   </tr>
                   <tr>
                       <!--[if $freeSP >= '1']-->
