@@ -624,8 +624,10 @@ function index($config = array())
         $eveRender->Assign('trainingStartTime', $skillTraining['trainingStartTime']);
         $eveRender->Assign('trainingEndTime',   $skillTraining['trainingEndTime']);
         $eveRender->Assign('TrainingTimeLeft',  $skillTraining['TrainingTimeLeft']);
+        $eveRender->Assign('trainingStartSP',   $skillTraining['trainingStartSP']);
+        $eveRender->Assign('trainingEndSP',     $skillTraining['trainingDestinationSP']);
         $eveRender->Assign('trainingStartstamp',  strtotime($skillTraining['trainingStartTime']));
-        $eveRender->Assign('trainingEndstamp',  strtotime($skillTraining['trainingEndTime']));
+        $eveRender->Assign('trainingEndstamp',  strtotime($skillTraining['trainingEndTime'])); 
         $eveRender->Assign('trainingStartFormat', date("m/d/Y G:i:s", strtotime($skillTraining['trainingStartTime']." GMT")));
         $eveRender->Assign('trainingEndFormat', date("m/d/Y G:i:s", strtotime($skillTraining['trainingEndTime']." GMT")));
     }
@@ -839,6 +841,9 @@ function ships($config = array())
         $eveRender->Assign('trainingStartTime', $skillTraining['trainingStartTime']);
         $eveRender->Assign('trainingEndTime',   $skillTraining['trainingEndTime']);
         $eveRender->Assign('TrainingTimeLeft',  $skillTraining['TrainingTimeLeft']);
+        $eveRender->Assign('trainingStartSP',   $skillTraining['trainingStartSP']);
+        $eveRender->Assign('trainingEndSP',     $skillTraining['trainingDestinationSP']);
+        $eveRender->Assign('trainingStartstamp',  strtotime($skillTraining['trainingStartTime']));
         $eveRender->Assign('trainingEndstamp',  strtotime($skillTraining['trainingEndTime']));
         $eveRender->Assign('trainingEndFormat', date("m/d/Y G:i:s", strtotime($skillTraining['trainingEndTime']." GMT")));
     }
@@ -957,6 +962,9 @@ function siglist($config)
         $eveRender->Assign('trainingStartTime', $skillTraining['trainingStartTime']);
         $eveRender->Assign('trainingEndTime',   $skillTraining['trainingEndTime']);
         $eveRender->Assign('TrainingTimeLeft',  $skillTraining['TrainingTimeLeft']);
+        $eveRender->Assign('trainingStartSP',   $skillTraining['trainingStartSP']);
+        $eveRender->Assign('trainingEndSP',     $skillTraining['trainingDestinationSP']);
+        $eveRender->Assign('trainingStartstamp',  strtotime($skillTraining['trainingStartTime']));
         $eveRender->Assign('trainingEndstamp',  strtotime($skillTraining['trainingEndTime']));
         $eveRender->Assign('trainingEndFormat', date("m/d/Y G:i:s", strtotime($skillTraining['trainingEndTime']." GMT")));
     }

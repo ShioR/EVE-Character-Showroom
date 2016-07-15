@@ -114,16 +114,17 @@
                   </tr>
                   <tr>
                     <td class="dataTableCell">Training Completes</td>
-                        <!--[if $Training]-->
+                      <!-- Skillpoints per hour calculations -->          
+                        <!--[math equation="x - y" x=$trainingEndSP y=$trainingStartSP assign='spToGo']-->
+                        <!--[math equation="x - y" x=$trainingEndstamp y=$trainingStartstamp assign='secondsRemaining']-->
+                        <!--[math equation="x / y" x=$secondsRemaining y=3600 assign='hours']-->
+                        <!--[math equation="x / y" x=$spToGo y=$hours assign='spHour']-->
+                          <!--[if $Training]-->
                             <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell"><!--[$trainingEndTime|date_format:"%A, %B %e, %Y, %H:%M:%S"]-->
                             </td>
                         <!--[else]-->
                             <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell"></td>
                         <!--[/if]-->
-                      <!--[math equation="x - y" x=$SkillQueue.0.endSP y=$SkillQueue.0.startSP assign='spToGo']-->
-                      <!--[math equation="x - y" x=$trainingEndstamp y=$trainingStartstamp assign='secondsRemaining']-->
-                      <!--[math equation="x / y" x=$secondsRemaining y=3600 assign='hours']-->
-                      <!--[math equation="x / y" x=$spToGo y=$hours assign='spHour']-->
                             <td colspan="1" style="text-align:center;border-bottom:none;" class="dataTableCellLeftRight"><!--[$spHour|round:0]--></td>
                   </tr>
                   <tr>
