@@ -207,7 +207,7 @@
       </td>
     </tr>
     <tr>
-      <td><div style="margin: auto; width: 100%; text-align: center;"><br /><br /></div></td>
+      <td><div style="margin:auto;width:100%;text-align:center;color:#777;font-size:10px;"><br /><br />API Data for this character is cached for a further <!--[if $pageupdateminutes eq 0 and $pageupdateseconds eq 0]-->60<!--[else]--><!--[$pageupdateminutes]--><!--[/if]--> minutes and <!--[$pageupdateseconds]--> seconds</div></td>
     </tr>
   </tbody>
   </table>
