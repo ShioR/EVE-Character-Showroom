@@ -7,7 +7,6 @@
 
           <!--[include file='mainheader.tpl']-->
           <!--[include file='maininfo.tpl']-->
-          <!--[include file='queue.tpl']-->
           
 <!-- SIGNATURES -->
 <div>
