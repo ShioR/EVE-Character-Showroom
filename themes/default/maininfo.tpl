@@ -108,29 +108,39 @@
                                 <script type="text/javascript">$(function(){$("[data-countdown]").each(function(){var n=$(this),t=$(this).data("countdown");n.countdown(t,function(t){n.html(t.strftime("%-D day%!D, %-H hour%!H, %-M minute%!M and %-S second%!S"))}).on("finish.countdown",function(){n.html("Completed!")})})});</script>
                             </td>
                         <!--[else]-->
-                            <td colspan="3" style="color:gold; font-weight:bold; text-align:left;" class="dataTableCellLeftRight">
-                            </td>
+                            <td colspan="3" style="color:gold; font-weight:bold; text-align:left;" class="dataTableCellLeftRight"></td>
                         <!--[/if]-->
                   </tr>
                   <tr>
-                    <td class="dataTableCell">Training Completes</td>
-                    <!--[if $Training]-->
-                      <!-- Skillpoints per hour calculations -->          
-                        <!--[math equation="x - y" x=$trainingEndSP y=$trainingStartSP assign='spToGo']-->
-                        <!--[math equation="x - y" x=$trainingEndstamp y=$trainingStartstamp assign='secondsRemaining']-->
-                        <!--[math equation="x / y" x=$secondsRemaining y=3600 assign='hours']-->
-                        <!--[math equation="x / y" x=$spToGo y=$hours assign='spHour']-->
-                            <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell"><!--[$trainingEndTime|date_format:"%A, %B %e, %Y, %H:%M:%S"]-->
-                            </td>
+                  <td class="dataTableCell">Progress</td>
+                        <!--[if $Training]-->
+                            <!-- Skillpoints per hour calculations -->          
+                                <!--[math equation="x - y" x=$trainingEndSP y=$trainingStartSP assign='spToGo']-->
+                                <!--[math equation="x - y" x=$trainingEndstamp y=$trainingStartstamp assign='secondsRemaining']-->
+                                <!--[math equation="x / y" x=$secondsRemaining y=3600 assign='hours']-->
+                                <!--[math equation="x / y" x=$spToGo y=$hours assign='spHour']-->
+                            <!-- Skillpoints progress calculations -->
+                                <!--[math equation="x - y" x=$smarty.now y=3600 assign='secondsTrainedEVE']-->
+                                <!--[math equation="x - y" x=$secondsTrainedEVE y=$trainingStartstamp assign='secondsTrained']-->
+                                <!--[math equation="x / y" x=$secondsTrained y=3600 assign='hoursTrained']-->
+                                <!--[math equation="x * y" x=$hoursTrained y=$spHour assign='spTrained']-->
+                                <!--[math equation="x + y" x=$spTrained y=$trainingStartSP assign='spProgress']-->
+                                <!--[math equation="x - y" x=$trainingEndSP y=$spProgress assign='progressToGo']-->
+                            <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell">    
+                                <!--[$spProgress|round:0|number_format]--> of <!--[$trainingEndSP|number_format]--> SP | <!--[$progressToGo|number_format]--> SP Remaining</td>
                         <!--[else]-->
                             <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell"></td>
                         <!--[/if]-->
                             <td colspan="1" style="text-align:center;border-bottom:none;" class="dataTableCellLeftRight"><!--[$spHour|round:0]--></td>
                   </tr>
                   <tr>
-                  <td class="dataTableCell" style="color:#777;font-size:10px;">Cache Expires</td>
-                            <td colspan="2" style="color:#777;font-size:10px;" class="dataTableCell">
-                                <span id="counter3" data-countdown="<!--[$cachetimeleft]-->"></span></td>
+                    <td class="dataTableCell">Training Completes</td>
+                    <!--[if $Training]-->
+                            <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell"><!--[$trainingEndTime|date_format:"%A, %B %e, %Y, %H:%M:%S"]-->
+                            </td>
+                        <!--[else]-->
+                            <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell"></td>
+                        <!--[/if]-->
                             <td colspan="1" style="text-align:center;" class="dataTableCellLeftRight">SP/Hour</td>
                   </tr>
                   <tr>
