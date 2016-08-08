@@ -1,4 +1,4 @@
-/* ccpwgl 2016-06-01 */
+/* ccpwgl 2016-06-19 */
 
 var ccpwgl_int = (function()
 {
@@ -708,7 +708,7 @@ var ccpwgl_int = (function()
      * @returns {number}
      * @function
      */
-    function CompareDeclarationElements(a, b, usageOffset)
+    Tw2VertexDeclaration.CompareDeclarationElements = function(a, b, usageOffset)
     {
         usageOffset = usageOffset || 0;
         if (a.usage < b.usage) return -1;
@@ -716,7 +716,7 @@ var ccpwgl_int = (function()
         if (a.usageIndex + usageOffset < b.usageIndex) return -1;
         if (a.usageIndex + usageOffset > b.usageIndex) return 1;
         return 0;
-    }
+    };
 
     /**
      * Re-sorts elements
@@ -729,7 +729,7 @@ var ccpwgl_int = (function()
         {
             this._elementsSorted[i] = this.elements[i];
         }
-        this._elementsSorted.sort(CompareDeclarationElements);
+        this._elementsSorted.sort(Tw2VertexDeclaration.CompareDeclarationElements);
     };
 
     /**
@@ -789,7 +789,7 @@ var ccpwgl_int = (function()
                     break;
                 }
                 var input = this._elementsSorted[index];
-                var cmp = CompareDeclarationElements(input, el);
+                var cmp = Tw2VertexDeclaration.CompareDeclarationElements(input, el);
                 if (cmp > 0)
                 {
                     device.gl.disableVertexAttribArray(el.location);
@@ -845,7 +845,7 @@ var ccpwgl_int = (function()
             while (true)
             {
                 var input = this._elementsSorted[index];
-                var cmp = CompareDeclarationElements(input, el, usageOffset);
+                var cmp = Tw2VertexDeclaration.CompareDeclarationElements(input, el, usageOffset);
                 if (cmp == 0)
                 {
                     if (input.customSetter)
@@ -3522,6 +3522,7 @@ var ccpwgl_int = (function()
         this.RM_ADDITIVE = 3;
         this.RM_DEPTH = 4;
         this.RM_FULLSCREEN = 5;
+        this.RM_PICKABLE = 6;
 
         this.RS_ZENABLE = 7; /* D3DZBUFFERTYPE (or TRUE/FALSE for legacy) */
         this.RS_FILLMODE = 8; /* D3DFILLMODE */
@@ -4294,6 +4295,7 @@ var ccpwgl_int = (function()
             switch (renderMode)
             {
                 case this.RM_OPAQUE:
+                case this.RM_PICKABLE:
                     this.SetRenderState(this.RS_ZENABLE, true);
                     this.SetRenderState(this.RS_ZWRITEENABLE, true);
                     this.SetRenderState(this.RS_ZFUNC, this.CMP_LEQUAL);
@@ -6926,7 +6928,7 @@ var ccpwgl_int = (function()
     /**
      * GetPassInput
      * @param {number} pass
-     * @returns {?}
+     * @returns {*}
      * @prototype
      */
     Tw2Effect.prototype.GetPassInput = function(pass)
@@ -7221,32 +7223,14 @@ var ccpwgl_int = (function()
             {
                 this._GetAreaBatches(this.additiveAreas, mode, accumulator, perObjectData);
             }
+            else if (this.displayPickable && mode == device.RM_PICKABLE)
+            {
+                this._GetAreaBatches(this.pickableAreas, mode, accumulator, perObjectData);
+            }
         }
 
         return true;
     };
-
-    /**
-     * Gets pickable render batches
-     * @param {Tw2BatchAccumulator} accumulator
-     * @param {Tw2PerObjectData} perObjectData
-     * @returns {boolean}
-     * @constructor
-     */
-    Tw2Mesh.prototype.GetPickableBatches = function(accumulator, perObjectData)
-    {
-        if (this.geometryResource == null)
-        {
-            return false;
-        }
-
-        if (this.display && this.displayPickable)
-        {
-            this._GetAreaBatches(this.pickableAreas, device.RM_OPAQUE, accumulator, perObjectData);
-        }
-
-        return true;
-    }
 
     /**
      * Tw2Track
@@ -7311,7 +7295,6 @@ var ccpwgl_int = (function()
 
     /**
      * Tw2Bone
-     * TODO: Identify when/ where the property bindingArrays is defined
      * @property {Tw2GeometryBone} boneRes
      * @property {mat4} localTransform
      * @property {mat4} worldTransform
@@ -7827,7 +7810,7 @@ var ccpwgl_int = (function()
 
     /**
      * Gets an array of all the currently playing animations by name
-     * @returns {[]}
+     * @returns {Array}
      * @constructor
      */
     Tw2AnimationController.prototype.GetPlayingAnimations = function()
@@ -7847,7 +7830,7 @@ var ccpwgl_int = (function()
 
     /**
      * Stops an animation or an array of animations from playing
-     * @param {String, Array.<string>} names - Animation Name, or Array of Animation Names
+     * @param {String| Array.<string>} names - Animation Name, or Array of Animation Names
      * @prototype
      */
     Tw2AnimationController.prototype.StopAnimation = function(names)
@@ -8239,14 +8222,13 @@ var ccpwgl_int = (function()
     };
 
     /**
-     * GetBoneMatrixes
-     * TODO: Matrixes is spelt wrong (should be Matrices), multiple refactors required
+     * GetBoneMatrices
      * @param {number} meshIndex
      * @param {Tw2GeometryRes} [geometryResource=this.geometryResources[0]]
      * @returns {Float32Array}
      * @prototype
      */
-    Tw2AnimationController.prototype.GetBoneMatrixes = function(meshIndex, geometryResource)
+    Tw2AnimationController.prototype.GetBoneMatrices = function(meshIndex, geometryResource)
     {
         if (this.geometryResources.length == 0)
         {
@@ -12646,7 +12628,7 @@ var ccpwgl_int = (function()
      * @param segments
      * @param firstSegment
      * @param time
-     * @returns {?}
+     * @returns {*}
      * @private
      */
     Tw2MayaAnimationEngine.prototype._EvaluateImpl = function(animCurve, segments, firstSegment, time)
@@ -12780,7 +12762,7 @@ var ccpwgl_int = (function()
      * _EvaluateHermite
      * @param segment
      * @param time
-     * @returns {?}
+     * @returns {*}
      * @private
      */
     Tw2MayaAnimationEngine.prototype._EvaluateHermite = function(segment, time)
@@ -12796,7 +12778,7 @@ var ccpwgl_int = (function()
      * @param segment
      * @param time
      * @param nextKeyTime
-     * @returns {?}
+     * @returns {*}
      * @private
      */
     Tw2MayaAnimationEngine.prototype._EvaluateBezier = function(segment, time, nextKeyTime)
@@ -12835,7 +12817,7 @@ var ccpwgl_int = (function()
      * @param time
      * @param segments
      * @param firstSegment
-     * @returns {?}
+     * @returns {*}
      * @private
      */
     Tw2MayaAnimationEngine.prototype._Find = function(animCurve, time, segments, firstSegment)
@@ -12922,7 +12904,7 @@ var ccpwgl_int = (function()
      * @param P
      * @param deg
      * @param s
-     * @returns {?}
+     * @returns {*}
      */
     function ag_horner1(P, deg, s)
     {
@@ -12939,7 +12921,7 @@ var ccpwgl_int = (function()
      * @param fb
      * @param tol
      * @param pars
-     * @returns {?}
+     * @returns {*}
      */
     function ag_zeroin2(a, b, fa, fb, tol, pars)
     {
@@ -13042,7 +13024,7 @@ var ccpwgl_int = (function()
      * @param b
      * @param tol
      * @param pars
-     * @returns {?}
+     * @returns {*}
      */
     function ag_zeroin(a, b, tol, pars)
     {
@@ -13066,7 +13048,7 @@ var ccpwgl_int = (function()
      * @param b
      * @param b_closed
      * @param Roots
-     * @returns {?}
+     * @returns {*}
      */
     function polyZeroes(Poly, deg, a, a_closed, b, b_closed, Roots)
     {
@@ -13832,7 +13814,7 @@ var ccpwgl_int = (function()
 
         /**
          * _TracksReady
-         * @returns {?}
+         * @returns {*}
          * @private
          */
         this._TracksReady = function()
@@ -14252,12 +14234,16 @@ var ccpwgl_int = (function()
      * @property {Tw2Effect} effect
      * @property {boolean} display
      * @property {number} _time
+     * @property {boolean} useQuads Use quad rendering (CPU transform)
+     * @property {boolean} isSkinned Use bone transforms (when useQuads is true)
      * @property {WebGlBuffer} _vertexBuffer
      * @property {WebGlBuffer} _indexBuffer
      * @property {Tw2VertexDeclaration} _decl
+     * @param {boolean} useQuads Use quad rendering (CPU transform)
+     * @param {boolean} isSkinned Use bone transforms (when useQuads is true)
      * @constructor
      */
-    function EveSpriteSet(useQuads)
+    function EveSpriteSet(useQuads, isSkinned)
     {
         this.name = '';
         this.sprites = [];
@@ -14265,6 +14251,7 @@ var ccpwgl_int = (function()
         this.display = true;
         this._time = 0;
         this.useQuads = useQuads;
+        this.isSkinned = isSkinned;
 
         this._vertexBuffer = null;
         this._indexBuffer = null;
@@ -14304,13 +14291,19 @@ var ccpwgl_int = (function()
         this.RebuildBuffers();
     };
 
-    EveSpriteSet.prototype.UseQuads = function(useQuads)
+    /**
+     * Use instanced rendering or "quad" rendering
+     * @param {boolean} useQuads Use quad rendering (CPU transform)
+     * @param {boolean} isSkinned Use bone transforms (when useQuads is true)
+     */
+    EveSpriteSet.prototype.UseQuads = function(useQuads, isSkinned)
     {
         if (this.useQuads == useQuads)
         {
             return;
         }
         this.useQuads = useQuads;
+        this.isSkinned = isSkinned;
 
         this._decl.elements.splice(0, this._decl.elements.length);
         if (!useQuads)
@@ -14456,7 +14449,7 @@ var ccpwgl_int = (function()
         }
         else
         {
-            this.spriteSet.Render(overrideEffect, this.world);
+            this.spriteSet.Render(overrideEffect, this.world, this.perObjectData);
         }
     };
 
@@ -14512,12 +14505,13 @@ var ccpwgl_int = (function()
      * Renders the sprite set
      * @param {Tw2Effect} overrideEffect
      * @param {mat4} world
+     * @param {Tw2PerObjectData} perObjectData
      */
-    EveSpriteSet.prototype.Render = function(overrideEffect, world)
+    EveSpriteSet.prototype.Render = function(overrideEffect, world, perObjectData)
     {
         if (this.useQuads)
         {
-            return this.RenderQuads(overrideEffect, world);
+            return this.RenderQuads(overrideEffect, world, perObjectData);
         }
         var effect = typeof(overrideEffect) == 'undefined' ? this.effect : overrideEffect;
         if (!effect || !this._vertexBuffer)
@@ -14613,8 +14607,9 @@ var ccpwgl_int = (function()
      * Renders the sprite set with pre-transformed quads
      * @param {Tw2Effect} overrideEffect
      * @param {mat4} world
+     * @param {Tw2PerObjectData} perObjectData
      */
-    EveSpriteSet.prototype.RenderQuads = function(overrideEffect, world)
+    EveSpriteSet.prototype.RenderQuads = function(overrideEffect, world, perObjectData)
     {
         var effect = typeof(overrideEffect) == 'undefined' ? this.effect : overrideEffect;
         if (!effect || !this._vertexBuffer)
@@ -14631,25 +14626,39 @@ var ccpwgl_int = (function()
         var array = new Float32Array(17 * this.sprites.length);
         var index = 0;
         var pos = vec3.create();
+        var bones = perObjectData.perObjectVSData.Get('JointMat');
+        var sprite;
         for (var i = 0; i < this.sprites.length; ++i)
         {
-            mat4.multiplyVec3(world, this.sprites[i].position, pos);
+            sprite = this.sprites[i];
+            if (this.isSkinned)
+            {
+                var offset = sprite.boneIndex * 12;
+                pos[0] = bones[offset] * sprite.position[0] + bones[offset + 1] * sprite.position[1] + bones[offset + 2] * sprite.position[2] + bones[offset + 3];
+                pos[1] = bones[offset + 4] * sprite.position[0] + bones[offset + 5] * sprite.position[1] + bones[offset + 6] * sprite.position[2] + bones[offset + 7];
+                pos[2] = bones[offset + 8] * sprite.position[0] + bones[offset + 9] * sprite.position[1] + bones[offset + 10] * sprite.position[2] + bones[offset + 11];
+                mat4.multiplyVec3(world, pos);
+            }
+            else
+            {
+                mat4.multiplyVec3(world, sprite.position, pos);
+            }
             array[index++] = pos[0];
             array[index++] = pos[1];
             array[index++] = pos[2];
             array[index++] = 1;
-            array[index++] = this.sprites[i].blinkPhase;
-            array[index++] = this.sprites[i].blinkRate;
-            array[index++] = this.sprites[i].minScale;
-            array[index++] = this.sprites[i].maxScale;
-            array[index++] = this.sprites[i].falloff;
-            array[index++] = this.sprites[i].color[0];
-            array[index++] = this.sprites[i].color[1];
-            array[index++] = this.sprites[i].color[2];
+            array[index++] = sprite.blinkPhase;
+            array[index++] = sprite.blinkRate;
+            array[index++] = sprite.minScale;
+            array[index++] = sprite.maxScale;
+            array[index++] = sprite.falloff;
+            array[index++] = sprite.color[0];
+            array[index++] = sprite.color[1];
+            array[index++] = sprite.color[2];
             array[index++] = 1;
-            array[index++] = this.sprites[i].warpColor[0];
-            array[index++] = this.sprites[i].warpColor[1];
-            array[index++] = this.sprites[i].warpColor[2];
+            array[index++] = sprite.warpColor[0];
+            array[index++] = sprite.warpColor[1];
+            array[index++] = sprite.warpColor[2];
             array[index++] = 1;
         }
         device.gl.bindBuffer(device.gl.ARRAY_BUFFER, this._instanceBuffer);
@@ -15429,7 +15438,7 @@ var ccpwgl_int = (function()
      * @property {Boolean} useDistanceBasedScale
      * @property {Array.<Tw2ParticleSystem>} particleSystems
      * @property {Array.<Tw2ParticleEmitter>} particleEmitters
-     * @property {Array.<Tw2CurveSet} curveSets
+     * @property {Array.<Tw2CurveSet>} curveSets
      * @property {Array} children
      * @property {Boolean} display
      * @property {Boolean} displayMesh
@@ -16190,7 +16199,7 @@ var ccpwgl_int = (function()
         }
         if (mode == device.RM_OPAQUE)
         {
-            var transforms = this.inactiveAnimation.GetBoneMatrixes(0);
+            var transforms = this.inactiveAnimation.GetBoneMatrices(0);
             if (transforms.length == 0)
             {
                 return true;
@@ -16207,7 +16216,7 @@ var ccpwgl_int = (function()
 
             if (this.state == this.STATE_FIRING)
             {
-                transforms = this.activeAnimation.GetBoneMatrixes(0);
+                transforms = this.activeAnimation.GetBoneMatrices(0);
                 if (transforms.length == 0)
                 {
                     return true;
@@ -16772,25 +16781,12 @@ var ccpwgl_int = (function()
 
         if (this.animation.animations.length)
         {
-            this._perObjectData.perObjectVSData.Set('JointMat', this.animation.GetBoneMatrixes(0));
+            this._perObjectData.perObjectVSData.Set('JointMat', this.animation.GetBoneMatrices(0));
         }
 
         for (var s = 0; s < this.lineSets.length; ++s)
         {
             this.lineSets[s].UpdateViewDependentData(this.transform);
-        }
-    }
-
-    /**
-     * Gets line render batches
-     * @param {RenderMode} mode
-     * @param {Tw2BatchAccumulator} accumulator
-     */
-    EveSpaceObject.prototype.GetLineBatches = function(mode, accumulator)
-    {
-        for (var i = 0; i < this.lineSets.length; ++i)
-        {
-            this.lineSets[i].GetBatches(mode, accumulator);
         }
     }
 
@@ -16846,7 +16842,10 @@ var ccpwgl_int = (function()
 
                 if (this.displayLines)
                 {
-                    this.GetLineBatches(mode, accumulator);
+                    for (var i = 0; i < this.lineSets.length; ++i)
+                    {
+                        this.lineSets[i].GetBatches(mode, accumulator);
+                    }
                 }
             }
 
@@ -16989,7 +16988,7 @@ var ccpwgl_int = (function()
      * EveStation inherits from EveSpaceObject
      * @type {EveSpaceObject}
      */
-    EveStation = EveSpaceObject;
+    var EveStation = EveSpaceObject;
 
     /**
      * EveShip
@@ -17222,8 +17221,10 @@ var ccpwgl_int = (function()
      * EveSpaceObjectDecal
      * @property {boolean} display
      * @property {Tw2Effect} decalEffect
+     * @property {Tw2Effect} pickEffect
      * @property {String} name=''
      * @property {number} groupIndex
+     * @property {boolean} pickable
      * @property {vec3} position
      * @property {quat4} rotation
      * @property {vec3} scaling
@@ -17240,8 +17241,11 @@ var ccpwgl_int = (function()
     {
         this.display = true;
         this.decalEffect = null;
+        this.pickEffect = null;
         this.name = '';
         this.groupIndex = -1;
+
+        this.pickable = true;
 
         this.position = vec3.create();
         this.rotation = quat4.create();
@@ -17337,12 +17341,21 @@ var ccpwgl_int = (function()
      */
     EveSpaceObjectDecal.prototype.GetBatches = function(mode, accumulator, perObjectData, counter)
     {
-        if (mode != device.RM_DECAL)
+        switch (mode)
         {
-            return;
+            case device.RM_DECAL:
+                if (!this.decalEffect) return;
+                break;
+
+            case device.RM_PICKABLE:
+                if (!this.pickEffect || !this.pickable) return;
+                break;
+
+            default:
+                return;
         }
 
-        if (this.display && this.indexBuffer.length && this.decalEffect && this.parentGeometry && this.parentGeometry.IsGood())
+        if (this.display && this.indexBuffer.length && this.parentGeometry && this.parentGeometry.IsGood())
         {
             var batch = new Tw2ForwardingRenderBatch();
             this._perObjectData.perObjectVSData.Set('worldMatrix', perObjectData.perObjectVSData.Get('WorldMat'));
@@ -17381,7 +17394,7 @@ var ccpwgl_int = (function()
 
             batch.perObjectData = this._perObjectData;
             batch.geometryProvider = this;
-            batch.renderMode = device.RM_DECAL;
+            batch.renderMode = mode;
             accumulator.Commit(batch);
         }
     };
@@ -17404,7 +17417,7 @@ var ccpwgl_int = (function()
         this.parentGeometry.meshes[0].areas[0].count = this.indexBuffer.length;
         this.parentGeometry.meshes[0].indexType = device.gl.UNSIGNED_SHORT;
 
-        this.parentGeometry.RenderAreas(0, 0, 1, overrideEffect ? overrideEffect : this.decalEffect);
+        this.parentGeometry.RenderAreas(0, 0, 1, overrideEffect ? overrideEffect : (batch.renderMode === device.RM_DECAL) ? this.decalEffect : this.pickEffect);
         this.parentGeometry.meshes[0].indexes = bkIB;
         this.parentGeometry.meshes[0].areas[0].start = bkStart;
         this.parentGeometry.meshes[0].areas[0].count = bkCount;
@@ -18487,13 +18500,13 @@ var ccpwgl_int = (function()
     };
 
     /**
-     * GetResources
+     * GetPlanetResources
      * @param obj
      * @param visited
      * @param result
      * @constructor
      */
-    EvePlanet.prototype.GetResources = function(obj, visited, result)
+    EvePlanet.prototype.GetPlanetResources = function(obj, visited, result)
     {
         if (visited.indexOf(obj) != -1)
         {
@@ -18511,7 +18524,7 @@ var ccpwgl_int = (function()
             {
                 if (typeof(obj[prop]) == "object")
                 {
-                    this.GetResources(obj[prop], visited, result);
+                    this.GetPlanetResources(obj[prop], visited, result);
                 }
             }
         }
@@ -18524,7 +18537,7 @@ var ccpwgl_int = (function()
     EvePlanet.prototype._MeshLoaded = function()
     {
         this.lockedResources = [];
-        this.GetResources(this.highDetail, [], this.lockedResources);
+        this.GetPlanetResources(this.highDetail, [], this.lockedResources);
 
         var mainMesh = this.highDetail.children[0].mesh;
         var originalEffect = null;
@@ -19357,7 +19370,6 @@ var ccpwgl_int = (function()
     function EveSOF()
     {
         var data = null;
-        var spriteEffectSkinned = null;
         var spriteEffect = null;
 
         function _get(obj, property, defaultValue)
@@ -19651,9 +19663,9 @@ var ccpwgl_int = (function()
             {});
             for (var i = 0; i < hullSets.length; ++i)
             {
-                var spriteSet = new EveSpriteSet();
+                var spriteSet = new EveSpriteSet(true, hull['isSkinned'] && hullSets[i]['skinned']);
                 spriteSet.name = _get(hullSets[i], 'name', '');
-                spriteSet.effect = (hull['isSkinned'] && hullSets[i]['skinned']) ? spriteEffectSkinned : spriteEffect;
+                spriteSet.effect = spriteEffect;
                 var hullData = _get(hullSets[i], 'items', []);
                 for (var j = 0; j < hullData.length; ++j)
                 {
@@ -20049,16 +20061,10 @@ var ccpwgl_int = (function()
                 if (!dataLoading)
                 {
                     spriteEffect = new Tw2Effect();
-                    spriteEffect.effectFilePath = 'res:/graphics/effect/managed/space/spaceobject/fx/blinkinglights.fx';
+                    spriteEffect.effectFilePath = 'res:/graphics/effect/managed/space/spaceobject/fx/blinkinglightspool.fx';
                     spriteEffect.parameters['MainIntensity'] = new Tw2FloatParameter('MainIntensity', 1);
                     spriteEffect.parameters['GradientMap'] = new Tw2TextureParameter('GradientMap', 'res:/texture/particle/whitesharp_gradient.dds.0.png');
                     spriteEffect.Initialize();
-
-                    spriteEffectSkinned = new Tw2Effect();
-                    spriteEffectSkinned.effectFilePath = 'res:/graphics/effect/managed/space/spaceobject/fx/skinned_blinkinglights.fx';
-                    spriteEffectSkinned.parameters['MainIntensity'] = new Tw2FloatParameter('MainIntensity', 1);
-                    spriteEffectSkinned.parameters['GradientMap'] = new Tw2TextureParameter('GradientMap', 'res:/texture/particle/whitesharp_gradient.dds.0.png');
-                    spriteEffectSkinned.Initialize();
 
                     resMan.GetObject('res:/dx9/model/spaceobjectfactory/data.red', function(obj)
                     {
@@ -20333,7 +20339,9 @@ var ccpwgl_int = (function()
         this.lineEffect.parameters['OverlayTexMap'] = new Tw2TextureParameter('OverlayTexMap', 'res:/texture/global/white.dds.0.png');
         this.lineEffect.Initialize();
         this.pickEffect = null;
+
         this.additive = false;
+        this.pickable = true;
 
         this.perObjectData = new Tw2PerObjectData();
         this.perObjectData.perObjectVSData = new Tw2RawData();
@@ -20418,7 +20426,7 @@ var ccpwgl_int = (function()
     };
 
     /**
-     * AddCurvedLineCrt
+     * Adds a curved line using cartesian co-ordinates
      * @param {vec3} startPosition
      * @param {quat4} startColor
      * @param {vec3} endPosition
@@ -20448,7 +20456,7 @@ var ccpwgl_int = (function()
     };
 
     /**
-     * AddCurvedLineSph
+     * Adds a curved line using spherical co-ordinates
      * @param {vec3} startPosition
      * @param {quat4} startColor
      * @param {vec3} endPosition
@@ -20482,7 +20490,7 @@ var ccpwgl_int = (function()
     };
 
     /**
-     * AddSpheredLineCrt
+     * Adds a sphered line using cartesian co-ordinates
      * @param {vec3} startPosition
      * @param {quat4} startColor
      * @param {vec3} endPosition
@@ -20512,7 +20520,7 @@ var ccpwgl_int = (function()
     };
 
     /**
-     * AddSpheredLineSph
+     * Adds a sphered line using spherical co-ordinates
      * @param {vec3} startPosition
      * @param {quat4} startColor
      * @param {vec3} endPosition
@@ -20562,7 +20570,7 @@ var ccpwgl_int = (function()
     };
 
     /**
-     * Changes a lines start and end positions
+     * Changes a lines start and end positions using Cartesian co-ordinates
      * @param {Number} lineID
      * @param {vec3} startPosition
      * @param {vec3} endPosition
@@ -20574,7 +20582,7 @@ var ccpwgl_int = (function()
     };
 
     /**
-     * Changes a lines start, end and center positions
+     * Changes a lines start, end and center positions using Spherical co-orindates
      * @param {Number} lineID
      * @param {vec3} startPosition
      * @param {vec3} endPosition
@@ -20997,16 +21005,32 @@ var ccpwgl_int = (function()
             return;
         }
 
-        if (mode == device.RM_TRANSPARENT && !this.additive || mode == device.RM_ADDITIVE && this.additive)
+        switch (mode)
         {
-            var batch = new Tw2ForwardingRenderBatch();
-            mat4.transpose(this.transform, this.perObjectData.perObjectVSData.Get('WorldMat'));
-            mat4.transpose(this.transform, this.perObjectData.perObjectPSData.Get('WorldMat'));
-            batch.perObjectData = this.perObjectData;
-            batch.geometryProvider = this;
-            batch.renderMode = mode;
-            accumulator.Commit(batch);
+            case device.RM_TRANSPARENT:
+                if (!this.lineEffect || this.additive) return;
+                break;
+
+            case device.RM_ADDITIVE:
+                if (!this.lineEffect || !this.additive) return;
+                break;
+
+            case device.RM_PICKABLE:
+                if (!this.pickEffect || !this.pickable) return;
+                break;
+
+            default:
+                return;
         }
+
+        var batch = new Tw2ForwardingRenderBatch();
+        mat4.transpose(this.transform, this.perObjectData.perObjectVSData.Get('WorldMat'));
+        mat4.transpose(this.transform, this.perObjectData.perObjectPSData.Get('WorldMat'));
+        batch.perObjectData = this.perObjectData;
+        batch.geometryProvider = this;
+        batch.renderMode = mode;
+        accumulator.Commit(batch);
+
     };
 
     /**
@@ -21029,7 +21053,7 @@ var ccpwgl_int = (function()
      */
     EveCurveLineSet.prototype.Render = function(batch, overrideEffect)
     {
-        var effect = overrideEffect || this.lineEffect;
+        var effect = overrideEffect || (batch.renderMode === device.RM_PICKABLE) ? this.pickEffect : this.lineEffect;
         var effectRes = effect.GetEffectRes();
         if (!effectRes._isGood)
         {
@@ -22025,7 +22049,7 @@ var ccpwgl_int = (function()
     /**
      * GetElement
      * @param {ParticleElementType} type
-     * @returns {?}
+     * @returns {*}
      * @prototype
      */
     Tw2ParticleSystem.prototype.GetElement = function(type)
@@ -23466,6 +23490,8 @@ var ccpwgl_int = (function()
     exports.EveMeshOverlayEffect = EveMeshOverlayEffect;
     exports.EveChildMesh = EveChildMesh;
     exports.EveChildExplosion = EveChildExplosion;
+    exports.EveMissile = EveMissile;
+    exports.EveMissileWarhead = EveMissileWarhead;
     exports.Tw2ParticleElementDeclaration = Tw2ParticleElementDeclaration;
     exports.Tr2ParticleElement = Tr2ParticleElement;
     exports.Tw2ParticleSystem = Tw2ParticleSystem;
