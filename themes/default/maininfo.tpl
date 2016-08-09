@@ -126,8 +126,10 @@
                                 <!--[math equation="x * y" x=$hoursTrained y=$spHour assign='spTrained']-->
                                 <!--[math equation="x + y" x=$spTrained y=$trainingStartSP assign='spProgress']-->
                                 <!--[math equation="x - y" x=$trainingEndSP y=$spProgress assign='progressToGo']-->
+                                    <!-- SP Rate (SP gain per second) -->
+                                        <!--[math equation="x / y" x=$spHour y=3600 assign='spRate']-->
                             <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell">    
-                                <!--[$spProgress|round:0|number_format]--> of <!--[$trainingEndSP|number_format]--> SP | <!--[$progressToGo|number_format]--> SP Remaining</td>
+                                <!--[$spProgress|round:0|number_format]--> of <!--[$trainingEndSP|number_format]--> SP <span style="color:#666;">/</span> <!--[$progressToGo|number_format]--> SP Remaining</td>
                         <!--[else]-->
                             <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell"></td>
                         <!--[/if]-->
