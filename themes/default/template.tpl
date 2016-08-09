@@ -46,6 +46,23 @@
           <!--[assign var='groupname' value='Missiles']-->
         <!--[/if]-->
 </div>
+      
+      <!-- Skillpoints per hour calculations -->          
+        <!--[math equation="x - y" x=$trainingEndSP y=$trainingStartSP assign='spToGo']-->
+        <!--[math equation="x - y" x=$trainingEndstamp y=$trainingStartstamp assign='secondsRemaining']-->
+        <!--[math equation="x / y" x=$secondsRemaining y=3600 assign='hours']-->
+        <!--[math equation="x / y" x=$spToGo y=$hours assign='spHour']-->
+            <!-- Skillpoints progress calculations -->
+                <!--[math equation="x - y" x=$smarty.now y=3600 assign='secondsTrainedEVE']-->
+                <!--[math equation="x - y" x=$secondsTrainedEVE y=$trainingStartstamp assign='secondsTrained']-->
+                <!--[math equation="x / y" x=$secondsTrained y=3600 assign='hoursTrained']-->
+                <!--[math equation="x * y" x=$hoursTrained y=$spHour assign='spTrained']-->
+                <!--[math equation="x + y" x=$spTrained y=$trainingStartSP assign='spProgress']-->
+                <!--[math equation="x - y" x=$trainingEndSP y=$spProgress assign='progressToGo']-->
+                <!--[math equation="(x / y) * z" x=$spProgress y=$trainingEndSP z=100 assign='progressPercentage']-->
+                    <!-- SP Rate (SP gain per second) -->
+                        <!--[math equation="x / y" x=$spHour y=3600 assign='spRate']-->
+      
         <div style="margin-top: 50px; margin-bottom: -24px;">
           <div style="margin-top: 10px;">
             <div style="background: rgb(44, 44, 56); background-image: url('/imgs/skillgroups/<!--[$groupname|lower|replace:" ":"_"]-->.png'); background-position:12.5% 50%; background-repeat:no-repeat; background-size:170px 13px; margin-bottom: 10px; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 23px;"></div>
@@ -86,9 +103,11 @@
 						<!--[/if]-->
 						<!--[/if]-->
 					<!--[/if]-->
-                <div style="line-height: 1.4em; font-size: 12px;">
-                <!--[if $TotalPercentage neq 100.0]-->
-                    <div style="color:white; text-decoration:none; cursor:help;" onclick="javascript:i(document.getElementById('<!--[$skill.typeID]-->'));" href="#toggle" id="s<!--[$skill.typeID]-->"><!--[$skill.typeName]--><span style="color:#777; font-size:11px;"><span style="color:#c1c1c1;"> » </span><i>Rank <!--[$skill.rank]--></i> / <i>SP: <!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> / <!--[$TotalPercentage]-->%</div></i></span>         
+                <div style="line-height: 1.4em; font-size: 12px;">         
+                <!--[if $skill.flag eq 61]-->
+                    <div style="color:white; text-decoration:none;" id="s<!--[$skill.typeID]-->"><!--[$skill.typeName]--><span style="color:#777; font-size:11px;"><span style="color:#c1c1c1;"> » </span><i>Rank <!--[$skill.rank]--></i> / <i>SP: <!--[$spProgress|number_format]--> of <!--[$skill.skilllevel5|number_format]--> / <!--[$progressPercentage|round:1]-->%</div></i></span>
+                <!--[elseif $TotalPercentage neq 100.0]-->
+                    <div style="color:white; text-decoration:none; cursor:help;" onclick="javascript:i(document.getElementById('<!--[$skill.typeID]-->'));" href="#toggle" id="s<!--[$skill.typeID]-->"><!--[$skill.typeName]--><span style="color:#777; font-size:11px;"><span style="color:#c1c1c1;"> » </span><i>Rank <!--[$skill.rank]--></i> / <i>SP: <!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> / <!--[$TotalPercentage]-->%</div></i></span>
                 <!--[else]-->
                     <div style="color:white; text-decoration:none; cursor:help;" onclick="javascript:i(document.getElementById('<!--[$skill.typeID]-->'));" href="#toggle" id="s<!--[$skill.typeID]-->"><!--[$skill.typeName]--><span style="color:#777; font-size:11px;"><span style="color:#c1c1c1;"> » </span><i>Rank <!--[$skill.rank]--></i> / <i>SP: <!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> / <!--[$TotalPercentage]-->%</div></i></span>
                 <!--[/if]-->
@@ -102,7 +121,7 @@
                     </div>
                     <div>
                      <span class="navdot">&#xB7;</span><span style="color:gold;">Progress: </span>
-                      <strong><!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> <span style="color:gold;font-size: 10px;">(<!--[$TotalPercentage]-->%)</span></strong>
+                      <strong><!--[$spProgress|number_format]--> of <!--[$skill.skilllevel5|number_format]--> <span style="color:gold;font-size: 10px;">(<!--[$progressPercentage|round:1]-->%)</span></strong>
                     </div>
                     <div>
                       <span class="navdot">&#xB7;</span><span style="color:gold;">Started: </span>
