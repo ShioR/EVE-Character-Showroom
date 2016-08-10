@@ -101,17 +101,6 @@
                         <!--[/if]-->
                   </tr>
                   <tr>
-                    <td class="dataTableCell">Time Remaining</td>
-                        <!--[if $Training]-->
-                            <td colspan="3" style="color:gold; font-weight:bold; text-align:left;" class="dataTableCellLeftRight">
-                                <div id="counter1" data-countdown="<!--[$trainingEndFormat]-->"></div>
-                                <script type="text/javascript">$(function(){$("[data-countdown]").each(function(){var n=$(this),t=$(this).data("countdown");n.countdown(t,function(t){n.html(t.strftime("%-D day%!D, %-H hour%!H, %-M minute%!M and %-S second%!S"))}).on("finish.countdown",function(){n.html("Completed!")})})});</script>
-                            </td>
-                        <!--[else]-->
-                            <td colspan="3" style="color:gold; font-weight:bold; text-align:left;" class="dataTableCellLeftRight"></td>
-                        <!--[/if]-->
-                  </tr>
-                  <tr>
                   <td class="dataTableCell">Progress</td>
                         <!--[if $Training]-->
                             <!-- Skillpoints per hour calculations -->          
@@ -126,10 +115,42 @@
                                 <!--[math equation="x * y" x=$hoursTrained y=$spHour assign='spTrained']-->
                                 <!--[math equation="x + y" x=$spTrained y=$trainingStartSP assign='spProgress']-->
                                 <!--[math equation="x - y" x=$trainingEndSP y=$spProgress assign='progressToGo']-->
+                                <!--[math equation="(x / y) * z" x=$spProgress y=$trainingEndSP z=100 assign='progressPercentage']-->
                                     <!-- SP Rate (SP gain per second) -->
                                         <!--[math equation="x / y" x=$spHour y=3600 assign='spRate']-->
-                            <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell">    
-                                <!--[$spProgress|round:0|number_format]--> of <!--[$trainingEndSP|number_format]--> SP <span style="color:#666;">/</span> <!--[$progressToGo|number_format]--> SP Remaining</td>
+                            <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell">
+                                <script type="text/javascript">
+                                    var spProgress = <!--[$spProgress]-->;
+                                        window.setInterval(
+                                            function () {
+                                        spProgress = spProgress + <!--[$spRate]-->;
+                                        document.getElementById("spProgression").innerHTML = spProgress.toLocaleString(undefined, {minimumFractionDigits:0, maximumFractionDigits:0}) + " of " + "<!--[$trainingEndSP|number_format]--> SP <span style='color:#666;'>/</span>";
+                                            }, 1000);</script>
+                                <script type="text/javascript">
+                                    var progressToGo = <!--[$progressToGo]-->;
+                                        window.setInterval(
+                                            function () {
+                                        progressToGo = progressToGo - <!--[$spRate]-->;
+                                        document.getElementById("progressToGo").innerHTML = " " + progressToGo.toLocaleString(undefined, {minimumFractionDigits:0, maximumFractionDigits:0}) + " SP Remaining";
+                                            }, 1000);</script>
+                                <span id="spProgression"><!--[$spProgress|number_format]--> of <!--[$trainingEndSP|number_format]--> SP <span style="color:#666;">/</span></span><span id="progressToGo"> <!--[$progressToGo|number_format]--> SP Remaining</span>
+                               </td>
+                        <!--[else]-->
+                            <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell"></td>
+                        <!--[/if]-->
+                            <!--[if $Training]-->
+                                <td colspan="1" style="text-align:center;font-size:10px;" class="dataTableCellLeftRight">(<!--[$progressPercentage|round:1]-->%)</td>
+                            <!--[else]-->
+                                <td colspan="1" class="dataTableCellLeftRight"></td>
+                            <!--[/if]-->
+                  </tr>
+                  <tr>
+                    <td class="dataTableCell">Time Remaining</td>
+                        <!--[if $Training]-->
+                            <td colspan="2" style="color:gold; font-weight:bold; text-align:left;" class="dataTableCell">
+                                <script type="text/javascript">$(function(){$("[data-countdown]").each(function(){var n=$(this),t=$(this).data("countdown");n.countdown(t,function(t){n.html(t.strftime("%-D day%!D, %-H hour%!H, %-M minute%!M and %-S second%!S"))}).on("finish.countdown",function(){n.html("Completed!")})})});</script>
+                                <div id="counter1" data-countdown="<!--[$trainingEndFormat]-->"></div>
+                            </td>
                         <!--[else]-->
                             <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell"></td>
                         <!--[/if]-->

@@ -105,7 +105,7 @@
 					<!--[/if]-->
                 <div style="line-height: 1.4em; font-size: 12px;">         
                 <!--[if $skill.flag eq 61]-->
-                    <div style="color:white; text-decoration:none;" id="s<!--[$skill.typeID]-->"><!--[$skill.typeName]--><span style="color:#777; font-size:11px;"><span style="color:#c1c1c1;"> » </span><i>Rank <!--[$skill.rank]--></i> / <i>SP: <!--[$spProgress|number_format]--> of <!--[$skill.skilllevel5|number_format]--> / <!--[$progressPercentage|round:1]-->%</div></i></span>
+                    <div style="color:white; text-decoration:none;" id="s<!--[$skill.typeID]-->"><!--[$skill.typeName]--><span style="color:#777; font-size:11px;"><span style="color:#c1c1c1;"> » </span><i>Rank <!--[$skill.rank]--></i> / <i>SP: <span id="spProgression2"><!--[$spProgress|number_format]--></span> of <!--[$skill.skilllevel5|number_format]--> / <!--[$progressPercentage|round:1]-->%</div></i></span>
                 <!--[elseif $TotalPercentage neq 100.0]-->
                     <div style="color:white; text-decoration:none; cursor:help;" onclick="javascript:i(document.getElementById('<!--[$skill.typeID]-->'));" href="#toggle" id="s<!--[$skill.typeID]-->"><!--[$skill.typeName]--><span style="color:#777; font-size:11px;"><span style="color:#c1c1c1;"> » </span><i>Rank <!--[$skill.rank]--></i> / <i>SP: <!--[$skill.skillpoints|number_format]--> of <!--[$skill.skilllevel5|number_format]--> / <!--[$TotalPercentage]-->%</div></i></span>
                 <!--[else]-->
@@ -113,6 +113,20 @@
                 <!--[/if]-->
                 </div>
                 <!--[if $skill.flag eq 61]-->
+                    <script type="text/javascript">
+                         var spProgress2 = <!--[$spProgress]-->;
+                             window.setInterval(
+                                function () {
+                                spProgress2 = spProgress2 + <!--[$spRate]-->;
+                                document.getElementById("spProgression2").innerHTML = spProgress2.toLocaleString(undefined, {minimumFractionDigits:0, maximumFractionDigits:0});
+                                }, 1000);</script>
+                <script type="text/javascript">
+                         var spProgress3 = <!--[$spProgress]-->;
+                             window.setInterval(
+                                function () {
+                                spProgress3 = spProgress3 + <!--[$spRate]-->;
+                                document.getElementById("spProgression3").innerHTML = spProgress3.toLocaleString(undefined, {minimumFractionDigits:0, maximumFractionDigits:0});
+                                }, 1000);</script>
                 <div>
                   <div style="line-height: 1.4em;margin-left:13px;font-size:11px">
                     <div>
@@ -121,7 +135,7 @@
                     </div>
                     <div>
                      <span class="navdot">&#xB7;</span><span style="color:gold;">Progress: </span>
-                      <strong><!--[$spProgress|number_format]--> of <!--[$skill.skilllevel5|number_format]--> <span style="color:gold;font-size: 10px;">(<!--[$progressPercentage|round:1]-->%)</span></strong>
+                      <strong><span id="spProgression3"><!--[$spProgress|number_format]--></span> of <!--[$skill.skilllevel5|number_format]--> <span style="color:gold;font-size: 10px;">(<!--[$progressPercentage|round:1]-->%)</span></strong>
                     </div>
                     <div>
                       <span class="navdot">&#xB7;</span><span style="color:gold;">Started: </span>
