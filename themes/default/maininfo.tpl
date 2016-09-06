@@ -75,49 +75,37 @@
                   </tr>
                   <tr>
                     <td class="dataTableCell">Total Skill Points</td>
-                    <td class="dataTableCell"><!--[$skillpointstotal]--></td>
+                      <!--[if $Training]-->
+                        <script type="text/javascript">
+                          var totalSP2 = <!--[$inProgressTotalSP]-->;
+                            window.setInterval(
+                            function () {
+                            totalSP2 = totalSP2 + <!--[$spRate]-->;
+                            document.getElementById("inProgressTotalSP2").innerHTML = totalSP2.toLocaleString(undefined, {minimumFractionDigits:0, maximumFractionDigits:0});
+                            }, 1000);</script>
+                    <td class="dataTableCell" id="inProgressTotalSP2"><!--[$inProgressTotalSP|round:0|number_format]--></td>
+                      <!--[else]-->
+                    <td class="dataTableCell" id="inProgressTotalSP2"><!--[$totalskillpoints|number_format]--></td>
+                      <!--[/if]-->
                     <td class="dataTableCell">Charisma</td>
                     <td class="dataTableCellLeftRight" align="center"><!--[$attributes.charisma]--><!--[if $charismaImp >= 1]--> [+<!--[$charismaImp]-->]<!--[else]--><!--[/if]--></td>
                   </tr>                  
                   <tr>               
                     <td class="dataTableCell">Date of Birth</td>
-                    <td colspan="2" class="dataTableCell" align="left"><!--[$DoB|date_format:"%A, %B %d, %Y"]--></td>
+                    <td colspan="2" class="dataTableCell" align="left"><!--[$DoB]--></td>
                     <td colspan="1" class="dataTableCellLeftRight" align="center" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"> <a style="text-decoration:none;color:#c1c1c1;" href="/settings/" rel="iframe-500-300" class="pirobox">Settings</a></td>
                   </tr>
+                <!--[if $Training]-->
                   <tr>
                     <td colspan="4" class="dataTableHeaderRight">Training</td>
                   </tr>
                   <tr>
                     <td class="dataTableCell">Currently Training</td>
-                        <!--[if $Training]-->
-                            <td colspan="2" style="color:gold; font-weight:bold; text-align:left;" class="dataTableCell" onmouseover="this.style.backgroundColor='#303030'; this.style.cursor='pointer';" onmouseout="this.style.backgroundColor='#1B1B1B'"><a style="color:gold; font-weight:bold; text-decoration:none;" href="/<!--[$name|replace:' ':'_']-->#s<!--[$TrainingID]-->"><!--[$Training]--></a></td>
-                        <!--[else]-->
-                            <td colspan="2" style="color:gold; font-weight:bold; text-align:left;" class="dataTableCell"><span style="color: white;text-decoration: none;">NO SKILL TRAINING</span></td>
-                        <!--[/if]-->
-                        <!--[if $Training]-->
+                        <td colspan="2" style="color:gold; font-weight:bold; text-align:left;" class="dataTableCell" onmouseover="this.style.backgroundColor='#303030'; this.style.cursor='pointer';" onmouseout="this.style.backgroundColor='#1B1B1B'"><a style="color:gold; font-weight:bold; text-decoration:none;" href="/<!--[$name|replace:' ':'_']-->#s<!--[$TrainingID]-->"><!--[$Training]--></a></td>
                             <td style="text-align:center;" class="dataTableCellLeftRight"><img alt="Level <!--[$ToLevel]-->" src="/imgs/sklvlicons/level<!--[$ToLevel]-->_act.gif" width="48" height="8" />
-                        <!--[else]-->
-                            <td style="text-align:center;" class="dataTableCellLeftRight"><img alt="No Skill Training" src="/imgs/sklvlicons/levelx.gif" width="48" height="8"  /></td>
-                        <!--[/if]-->
                   </tr>
                   <tr>
                   <td class="dataTableCell">Progress</td>
-                        <!--[if $Training]-->
-                            <!-- Skillpoints per hour calculations -->          
-                                <!--[math equation="x - y" x=$trainingEndSP y=$trainingStartSP assign='spToGo']-->
-                                <!--[math equation="x - y" x=$trainingEndstamp y=$trainingStartstamp assign='secondsRemaining']-->
-                                <!--[math equation="x / y" x=$secondsRemaining y=3600 assign='hours']-->
-                                <!--[math equation="x / y" x=$spToGo y=$hours assign='spHour']-->
-                            <!-- Skillpoints progress calculations -->
-                                <!--[math equation="x - y" x=$smarty.now y=3600 assign='secondsTrainedEVE']-->
-                                <!--[math equation="x - y" x=$secondsTrainedEVE y=$trainingStartstamp assign='secondsTrained']-->
-                                <!--[math equation="x / y" x=$secondsTrained y=3600 assign='hoursTrained']-->
-                                <!--[math equation="x * y" x=$hoursTrained y=$spHour assign='spTrained']-->
-                                <!--[math equation="x + y" x=$spTrained y=$trainingStartSP assign='spProgress']-->
-                                <!--[math equation="x - y" x=$trainingEndSP y=$spProgress assign='progressToGo']-->
-                                <!--[math equation="(x / y) * z" x=$spProgress y=$trainingEndSP z=100 assign='progressPercentage']-->
-                                    <!-- SP Rate (SP gain per second) -->
-                                        <!--[math equation="x / y" x=$spHour y=3600 assign='spRate']-->
                             <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell">
                                 <script type="text/javascript">
                                     var spProgress = <!--[$spProgress]-->;
@@ -135,37 +123,47 @@
                                             }, 1000);</script>
                                 <span id="spProgression"><!--[$spProgress|number_format]--> of <!--[$trainingEndSP|number_format]--> SP <span style="color:#666;">/</span></span><span id="progressToGo"> <!--[$progressToGo|number_format]--> SP Remaining</span>
                                </td>
-                        <!--[else]-->
-                            <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell"></td>
-                        <!--[/if]-->
-                            <!--[if $Training]-->
-                                <td colspan="1" style="text-align:center;font-size:10px;" class="dataTableCellLeftRight">(<!--[$progressPercentage|round:1]-->%)</td>
-                            <!--[else]-->
-                                <td colspan="1" class="dataTableCellLeftRight"></td>
-                            <!--[/if]-->
+                                <td colspan="1" style="text-align:center;" class="dataTableCellLeftRight"><!--[$progressPercent|round:1]-->%</td>
                   </tr>
                   <tr>
                     <td class="dataTableCell">Time Remaining</td>
-                        <!--[if $Training]-->
                             <td colspan="2" style="color:gold; font-weight:bold; text-align:left;" class="dataTableCell">
                                 <script type="text/javascript">$(function(){$("[data-countdown]").each(function(){var n=$(this),t=$(this).data("countdown");n.countdown(t,function(t){n.html(t.strftime("%-D day%!D, %-H hour%!H, %-M minute%!M and %-S second%!S"))}).on("finish.countdown",function(){n.html("Completed!")})})});</script>
-                                <div id="counter1" data-countdown="<!--[$trainingEndFormat]-->"></div>
+                                <div id="counter1" data-countdown="<!--[$trainingEndFormat]-->"><!--[$TrainingTimeLeft]--></div>
                             </td>
-                        <!--[else]-->
-                            <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell"></td>
-                        <!--[/if]-->
                             <td colspan="1" style="text-align:center;border-bottom:none;" class="dataTableCellLeftRight"><!--[$spHour|round:0]--></td>
                   </tr>
                   <tr>
                     <td class="dataTableCell">Training Completes</td>
-                    <!--[if $Training]-->
-                            <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell"><!--[$trainingEndTime|date_format:"%A, %B %e, %Y, %H:%M:%S"]-->
+                            <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell"><!--[$trainingEndTime]-->
                             </td>
-                        <!--[else]-->
-                            <td colspan="2" style="color:gold; font-weight:bold;text-align:left;" class="dataTableCell"></td>
-                        <!--[/if]-->
                             <td colspan="1" style="text-align:center;" class="dataTableCellLeftRight">SP/Hour</td>
                   </tr>
+                <!--[else]-->
+                  <tr>
+                    <td style="opacity:0.3;" colspan="4" class="dataTableHeaderRight">Training</td>
+                  </tr>
+                    <tr style="opacity:0.3;">
+                        <td class="dataTableCell">Currently Training</td>
+                            <td colspan="2" class="dataTableCell"></td>
+                            <td class="dataTableCellLeftRight"></td>
+                    </tr>
+                    <tr style="opacity:0.3;" style="opacity:0.1;">
+                        <td class="dataTableCell">Progress</td>
+                            <td colspan="2" class="dataTableCell"></td>
+                            <td colspan="1" class="dataTableCellLeftRight"></td>
+                    </tr>
+                    <tr style="opacity:0.3;">
+                        <td class="dataTableCell">Time Remaining</td>
+                            <td colspan="2" class="dataTableCell"></td>
+                            <td colspan="1" style="border-bottom:none;" class="dataTableCellLeftRight"></td>
+                    </tr>
+                    <tr style="opacity:0.3;">
+                        <td class="dataTableCell">Training Completes</td>
+                        <td colspan="2" class="dataTableCell"></td>
+                        <td colspan="1" class="dataTableCellLeftRight"></td>
+                    </tr>
+                <!--[/if]-->
                   <tr>
                       <!--[if $freeSP >= '1']-->
                       <td colspan="4" class="dataTableCellFreeSP">This character has <span style="text-align:right; font-size:xx-small; color:white;"><strong><!--[$freeSP|number_format]--></span></strong> unallocated skill points!</td>
