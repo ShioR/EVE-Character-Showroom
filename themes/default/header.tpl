@@ -59,7 +59,19 @@ $(function(){$('a[href*="#"]:not([href="#"])').click(function(){if(location.path
       [ SIGNATURES ]
       [ <a href="/<!--[$name|replace:' ':'_']-->/chart" rel="iframe-718-448" class="pirobox" style="text-decoration:none;">GRAPH</a> ]
     <!--[/if]-->
-   <br /> <span class="gold"><!--[$totalsks]--></span> skills for a total of <span class="gold"><!--[$skillpointstotal]--></span> skillpoints </span>
+   <br />
+    <!--[if $Training]-->
+                        <script type="text/javascript">
+                          var totalSP = <!--[$inProgressTotalSP]-->;
+                            window.setInterval(
+                            function () {
+                            totalSP = totalSP + <!--[$spRate]-->;
+                            document.getElementById("inProgressTotalSP").innerHTML = totalSP.toLocaleString(undefined, {minimumFractionDigits:0, maximumFractionDigits:0});
+                            }, 1000);</script>
+        <span class="gold"><!--[$totalsks]--></span> skills for a total of <span id="inProgressTotalSP" class="gold"><!--[$inProgressTotalSP|round:0|number_format]--></span> skillpoints </span>
+    <!--[else]-->
+        <span class="gold"><!--[$totalsks]--></span> skills for a total of <span class="gold"><!--[$skillpointstotal]--></span> skillpoints </span>
+    <!--[/if]-->
   <!--[else]-->
   <span class="headerleft"><a href="/" title="Skills Shrowroom">Showroom: Characters List</a></span>
   <span class="headerright"  style="color:gold;"><a href="/add" title="Add your characters now">Add your character!</a></span>
