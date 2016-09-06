@@ -28,11 +28,11 @@
             <!--[/if]-->
 	        <!--[if $queue.queuePosition == 0]-->
                 <td style="display:none;">
-            <!--[elseif $queue.queuePosition > 0]--><td style="font-size:10px;" class="dataTableCell2" width="120"><!--[$queue.startTime|date_format:"%a, %b %d, %H:%M"]--></td>
+            <!--[elseif $queue.queuePosition > 0]--><td style="font-size:10px;" class="dataTableCell2" width="120"><!--[$queue.startTime|date_format:"%a %d %b, %H:%M"]--></td>
             <!--[/if]-->
 	        <!--[if $queue.queuePosition == 0]-->
                 <td style="display:none;">
-            <!--[elseif $queue.queuePosition > 0]--><td style="font-size:10px;" class="dataTableCell2" width="120"><!--[$queue.endTime|date_format:"%a, %b %d, %H:%M"]--></td><!--[/if]-->
+            <!--[elseif $queue.queuePosition > 0]--><td style="font-size:10px;" class="dataTableCell2" width="120"><!--[$queue.endTime|date_format:"%a %d %b, %H:%M"]--></td><!--[/if]-->
 	        <!--[if $queue.queuePosition == 0]-->
                 <td style="display:none;">
             <!--[elseif $queue.queuePosition > 0]--><td style="font-size:10px;" class="dataTableCell2" width="48"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$queue.level]-->_q.gif" width="48" height="8" /></td>
@@ -42,8 +42,8 @@
         <tr>
             <td class="dataTableCell13"  onclick="javascript:i(document.getElementById('<!--[$queue.typeID]-->'));" onmouseover="this.style.backgroundColor='#303030';" onmouseout="this.style.backgroundColor='#1B1B1B'"><a style="color:white;text-decoration:none;padding-left:3px;font-size:12px;"  href="#s<!--[$queue.typeID]-->" id="q<!--[$queue.typeID]-->"><!--[$queue.typeName]--> <span style="font-size:11px;"><span style="color:#777; font-size:11px;"><span style="color:#c1c1c1;"> » </span><i>Rank <!--[$queue.rank]--></i></span></span></a></td>
 	           <td class="dataTableCell2" width="150" align="left"><!--[$queue.startSP|number_format]--> of <span style="color: gold;"><!--[$queue.endSP|number_format]--></span></td>
-	           <td class="dataTableCell2" width="120"><!--[$queue.startTime|date_format:"%a, %b %d, %H:%M"]--></td>
-	           <td class="dataTableCell2" width="120"><!--[$queue.endTime|date_format:"%a, %b %d, %H:%M"]--></td>
+	           <td class="dataTableCell2" width="120"><!--[$queue.startTime|date_format:"%a %d %b, %H:%M"]--></td>
+	           <td class="dataTableCell2" width="120"><!--[$queue.endTime|date_format:"%a %d %b, %H:%M"]--></td>
 	           <td class="dataTableCell2" width="48"><img alt="level<!--[$queue.level]-->" src="/imgs/sklvlicons/level<!--[$queue.level]-->_q.gif" width="48" height="8" /></td>
 	    </tr>
 	       <!--[/if]-->
