@@ -2,11 +2,6 @@ Options +FollowSymLinks
 Options +MultiViews
 Options -Indexes
 
-# Set timezone to Reykjavik (GMT) for EVE Time
-<IfModule php5_module>
-    php_value date.timezone "Atlantic/Reykjavik"
-</IfModule>
-
 RewriteEngine On
 RewriteBase /
 
