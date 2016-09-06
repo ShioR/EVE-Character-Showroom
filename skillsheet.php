@@ -1,9 +1,9 @@
 <?php
 /**********************************************************/
-/*           EVE Character Showroom - Version 5           */
+/*           EVE Character Showroom - Version 6           */
 /*       'Improved' and maintained by Shionoya Risa       */
 /*          Originally created by DeTox MinRohim          */
-/*            Copyright (C) 2015 Shionoya Risa            */
+/*            Copyright (C) 2016 Shionoya Risa            */
 /**********************************************************/
 /* This program is free software: you can redistribute it */
 /*   and/or modify it under the terms of the GNU General  */
@@ -26,6 +26,9 @@
 /*  All EVE Online logos, images, trademarks and related  */
 /* materials are copyright (C) CCP hf http://ccpgames.com */
 /**********************************************************/
+
+// Set timezone to UTC
+    date_default_timezone_set("UTC");
 
 include_once 'includes/version.php';
 include_once 'includes/dbfunctions.php';
@@ -465,7 +468,7 @@ function BuildSkillSet($skills, $training)
                                               'skilllevel4' => $skilllevel4,
                                               'skilllevel5' => $skilllevel5);
 
-        $skillsearch["$typeName"] = array('level' => $level, 'trained' => 0);
+        $skillsearch["$typeName"] = array('level' => $level, 'trained' => 0, 'rank' => $rank);
 
         $alltotal++;
         switch ($level) {
@@ -523,10 +526,14 @@ function BuildSkillSet($skills, $training)
                     'l5sps' => $l5sps,
                     'l5total' => $l5total,
                     'count'   => $count,
+                    'rank'   => $rank,
                     'skilltreeX' => $skilltreeX,
                     'skillsearch' => $skillsearch,
                     'totalskillpoints' => $totalskillpoints,
                     'skillpointstotal' => $skillpointstotal);
+    
+        // Another temp fix... Get skill in training rank and make it global.. -_-
+        $GLOBALS['rank'] = $skillsearch[$training['skillName']]['rank'];
 
     return $return;
 }
@@ -603,7 +610,7 @@ function index($config = array())
     $eveRender->Assign('race',              $race);
     $eveRender->Assign('bloodLine',         $bloodLine);
     $eveRender->Assign('gender',            $gender);
-    $eveRender->Assign('DoB',               $dob);
+    $eveRender->Assign('DoB',               date("jS F Y", strtotime($dob)));
     $eveRender->Assign('securityStatus',    $secStatus);
     $eveRender->Assign('ancestry',          $ancestry);     
     $eveRender->Assign('corporationName',   $corporationName);
@@ -622,14 +629,52 @@ function index($config = array())
         $eveRender->Assign('ToLevel',           $skillTraining['trainingToLevel']);
         $eveRender->Assign('TrainingID',        $skillTraining['trainingTypeID']);
         $eveRender->Assign('trainingStartTime', $skillTraining['trainingStartTime']);
-        $eveRender->Assign('trainingEndTime',   $skillTraining['trainingEndTime']);
+        $eveRender->Assign('trainingEndTime',   date("l jS F Y, H:i:s", strtotime($skillTraining['trainingEndTime'])));
         $eveRender->Assign('TrainingTimeLeft',  $skillTraining['TrainingTimeLeft']);
         $eveRender->Assign('trainingStartSP',   $skillTraining['trainingStartSP']);
         $eveRender->Assign('trainingEndSP',     $skillTraining['trainingDestinationSP']);
         $eveRender->Assign('trainingStartstamp',  strtotime($skillTraining['trainingStartTime']));
-        $eveRender->Assign('trainingEndstamp',  strtotime($skillTraining['trainingEndTime'])); 
+        $eveRender->Assign('trainingEndstamp',  strtotime($skillTraining['trainingEndTime']));
         $eveRender->Assign('trainingStartFormat', date("m/d/Y G:i:s", strtotime($skillTraining['trainingStartTime']." GMT")));
         $eveRender->Assign('trainingEndFormat', date("m/d/Y G:i:s", strtotime($skillTraining['trainingEndTime']." GMT")));
+            
+    // Calculations for SP/Hour, skillpoint progression and SP Rate
+      // SP/Hour
+        $spToGo = $skillTraining['trainingDestinationSP'] - $skillTraining['trainingStartSP']; // SP when finished - SP when started.
+        $hoursRemaining = (strtotime($skillTraining['trainingEndTime']) - strtotime($skillTraining['trainingStartTime'])) / 3600; // (End time Epoch - start time epoch) / 3600
+        $spHour = $spToGo / $hoursRemaining; // SP until finished / hours left until finished.
+      // SP/Second (For the counters)
+        $spRate = $spHour / 3600; // How many SP/hour / 3600 = SP/second.
+      // SP progression & percentage complete
+        $hoursTrained = (gmmktime() - strtotime($skillTraining['trainingStartTime'])) / 3600; // (gmt epoch - start time epoch) / 3600 for hours trained.
+        $spTrained = $hoursTrained * $spHour; // hours trained so far * SP/Hour.
+        $spProgress = $spTrained + $skillTraining['trainingStartSP']; // SP trained so far + starting SP.
+        $progressToGo = $skillTraining['trainingDestinationSP'] - $spProgress; // End of training SP - SP progress so far.
+        $inProgressTotalSP = $assign['totalskillpoints'] + $spTrained; // Total skill points of character + progress of current skill.
+        // Work out what the previous level in the skill * the rank so we know how much progress has been made.
+        $previousLevel = $skillTraining['trainingToLevel'] - 1;
+            if ($previousLevel == '4') {
+                $previousLevelSP = 45255 * $GLOBALS['rank']; // Reads from includes/skilltree.php
+            } elseif ($previousLevel == '3') {
+                $previousLevelSP = 8000 * $GLOBALS['rank'];                
+            } elseif ($previousLevel == '2') {
+                $previousLevelSP = 1414 * $GLOBALS['rank']; 
+            } elseif ($previousLevel == '1') {
+                $previousLevelSP = 250 * $GLOBALS['rank']; 
+            } else {
+                $previousLevelSP = 0; // Level 0, no maths needed.
+            }
+        $allLevelsPercent = ($spProgress / $skillTraining['trainingDestinationSP']) * 100;
+        $progressPercent = ($spProgress - $previousLevelSP) / ($skillTraining['trainingDestinationSP'] - $previousLevelSP) * 100;
+      // Assign the variables to smarty    
+        $eveRender->Assign('spHour',            $spHour);
+        $eveRender->Assign('spRate',            $spRate);
+        $eveRender->Assign('spTrained',         $spTrained);
+        $eveRender->Assign('spProgress',        $spProgress);
+        $eveRender->Assign('progressToGo',      $progressToGo);
+        $eveRender->Assign('inProgressTotalSP', $inProgressTotalSP);
+        $eveRender->Assign('allLevelsPercent',  $allLevelsPercent);
+        $eveRender->Assign('progressPercent',   $progressPercent);   
     }
     $time     = time();
     $filetime = strtotime($config['cachedUntil']);//filemtime($config['filename']);
@@ -671,7 +716,7 @@ function index($config = array())
     $eveRender->Assign('totalskillpoints',  $assign['totalskillpoints']);
     $eveRender->Assign('skillpointstotal',  number_format($assign['skillpointstotal'], 0, '', ','));
     $eveRender->Assign('SkillQueue',        $SkillQueue);
-
+    
 
     // Version
     $eveRender->Assign('version',           _SKILLSHEET_VERSION);
@@ -734,9 +779,6 @@ function ships($config = array())
     $skills          = $char['rowset'][3]['row'];
 
     $assign = BuildSkillSet($skills, $training);
-    
-    // APOCRYPHA Queue
-    $SkillQueue   = GetQueueData($config['queue']);
 
     $skillsearch = $assign['skillsearch'];
 
@@ -808,7 +850,7 @@ function ships($config = array())
                                                                     'requiredSkill1' => $required['requiredSkill1'],
                                                                     'requiredSkill2' => ((isset($required['requiredSkill2'])) ? $required['requiredSkill2'] : ''),
                                                                     'requiredSkill3' => ((isset($required['requiredSkill3'])) ? $required['requiredSkill3'] : ''));
-                                                                    //ksort($typeName, SORT_REGULAR); 
+                                                                    //ksort($typeID, SORT_NUMERIC); 
                 }
             }
 
@@ -820,7 +862,7 @@ function ships($config = array())
     $eveRender->Assign('race',              $race);
     $eveRender->Assign('bloodLine',         $bloodLine);
     $eveRender->Assign('gender',            $gender);
-    $eveRender->Assign('DoB',               $dob);
+    $eveRender->Assign('DoB',               date("jS F Y", strtotime($dob)));
     $eveRender->Assign('securityStatus',    $secStatus);
     $eveRender->Assign('ancestry',          $ancestry);     
     $eveRender->Assign('corporationName',   $corporationName);
@@ -839,13 +881,52 @@ function ships($config = array())
         $eveRender->Assign('ToLevel',           $skillTraining['trainingToLevel']);
         $eveRender->Assign('TrainingID',        $skillTraining['trainingTypeID']);
         $eveRender->Assign('trainingStartTime', $skillTraining['trainingStartTime']);
-        $eveRender->Assign('trainingEndTime',   $skillTraining['trainingEndTime']);
+        $eveRender->Assign('trainingEndTime',   date("l jS F Y, H:i:s", strtotime($skillTraining['trainingEndTime'])));
         $eveRender->Assign('TrainingTimeLeft',  $skillTraining['TrainingTimeLeft']);
         $eveRender->Assign('trainingStartSP',   $skillTraining['trainingStartSP']);
         $eveRender->Assign('trainingEndSP',     $skillTraining['trainingDestinationSP']);
         $eveRender->Assign('trainingStartstamp',  strtotime($skillTraining['trainingStartTime']));
         $eveRender->Assign('trainingEndstamp',  strtotime($skillTraining['trainingEndTime']));
+        $eveRender->Assign('trainingStartFormat', date("m/d/Y G:i:s", strtotime($skillTraining['trainingStartTime']." GMT")));
         $eveRender->Assign('trainingEndFormat', date("m/d/Y G:i:s", strtotime($skillTraining['trainingEndTime']." GMT")));
+            
+    // Calculations for SP/Hour, skillpoint progression and SP Rate
+      // SP/Hour
+        $spToGo = $skillTraining['trainingDestinationSP'] - $skillTraining['trainingStartSP']; // SP when finished - SP when started.
+        $hoursRemaining = (strtotime($skillTraining['trainingEndTime']) - strtotime($skillTraining['trainingStartTime'])) / 3600; // (End time Epoch - start time epoch) / 3600
+        $spHour = $spToGo / $hoursRemaining; // SP until finished / hours left until finished.
+      // SP/Second (For the counters)
+        $spRate = $spHour / 3600; // How many SP/hour / 3600 = SP/second.
+      // SP progression & percentage complete
+        $hoursTrained = (gmmktime() - strtotime($skillTraining['trainingStartTime'])) / 3600; // (gmt epoch - start time epoch) / 3600 for hours trained.
+        $spTrained = $hoursTrained * $spHour; // hours trained so far * SP/Hour.
+        $spProgress = $spTrained + $skillTraining['trainingStartSP']; // SP trained so far + starting SP.
+        $progressToGo = $skillTraining['trainingDestinationSP'] - $spProgress; // End of training SP - SP progress so far.
+        $inProgressTotalSP = $assign['totalskillpoints'] + $spTrained; // Total skill points of character + progress of current skill.
+        // Work out what the previous level in the skill * the rank so we know how much progress has been made.
+        $previousLevel = $skillTraining['trainingToLevel'] - 1;
+            if ($previousLevel == '4') {
+                $previousLevelSP = 45255 * $GLOBALS['rank']; // Reads from includes/skilltree.php
+            } elseif ($previousLevel == '3') {
+                $previousLevelSP = 8000 * $GLOBALS['rank'];                
+            } elseif ($previousLevel == '2') {
+                $previousLevelSP = 1414 * $GLOBALS['rank']; 
+            } elseif ($previousLevel == '1') {
+                $previousLevelSP = 250 * $GLOBALS['rank']; 
+            } else {
+                $previousLevelSP = 0; // Level 0, no maths needed.
+            }
+        $allLevelsPercent = ($spProgress / $skillTraining['trainingDestinationSP']) * 100;
+        $progressPercent = ($spProgress - $previousLevelSP) / ($skillTraining['trainingDestinationSP'] - $previousLevelSP) * 100;
+      // Assign the variables to smarty    
+        $eveRender->Assign('spHour',            $spHour);
+        $eveRender->Assign('spRate',            $spRate);
+        $eveRender->Assign('spTrained',         $spTrained);
+        $eveRender->Assign('spProgress',        $spProgress);
+        $eveRender->Assign('progressToGo',      $progressToGo);
+        $eveRender->Assign('inProgressTotalSP', $inProgressTotalSP);
+        $eveRender->Assign('allLevelsPercent',  $allLevelsPercent);
+        $eveRender->Assign('progressPercent',   $progressPercent);   
     }
     $time     = time();
     $filetime = strtotime($config['cachedUntil']);//filemtime($config['filename']);
@@ -930,9 +1011,6 @@ function siglist($config)
     $skills          = $char['rowset'][3]['row'];
 
     $assign = BuildSkillSet($skills, $training);
-    
-    // APOCRYPHA Queue
-    $SkillQueue   = GetQueueData($config['queue']);
 
     $skillsearch = $assign['skillsearch'];
 
@@ -941,7 +1019,7 @@ function siglist($config)
     $eveRender->Assign('race',              $race);
     $eveRender->Assign('bloodLine',         $bloodLine);
     $eveRender->Assign('gender',            $gender);
-    $eveRender->Assign('DoB',               $dob);
+    $eveRender->Assign('DoB',               date("jS F Y", strtotime($dob)));
     $eveRender->Assign('securityStatus',    $secStatus);
     $eveRender->Assign('ancestry',          $ancestry);     
     $eveRender->Assign('corporationName',   $corporationName);
@@ -960,13 +1038,52 @@ function siglist($config)
         $eveRender->Assign('ToLevel',           $skillTraining['trainingToLevel']);
         $eveRender->Assign('TrainingID',        $skillTraining['trainingTypeID']);
         $eveRender->Assign('trainingStartTime', $skillTraining['trainingStartTime']);
-        $eveRender->Assign('trainingEndTime',   $skillTraining['trainingEndTime']);
+        $eveRender->Assign('trainingEndTime',   date("l jS F Y, H:i:s", strtotime($skillTraining['trainingEndTime'])));
         $eveRender->Assign('TrainingTimeLeft',  $skillTraining['TrainingTimeLeft']);
         $eveRender->Assign('trainingStartSP',   $skillTraining['trainingStartSP']);
         $eveRender->Assign('trainingEndSP',     $skillTraining['trainingDestinationSP']);
         $eveRender->Assign('trainingStartstamp',  strtotime($skillTraining['trainingStartTime']));
         $eveRender->Assign('trainingEndstamp',  strtotime($skillTraining['trainingEndTime']));
+        $eveRender->Assign('trainingStartFormat', date("m/d/Y G:i:s", strtotime($skillTraining['trainingStartTime']." GMT")));
         $eveRender->Assign('trainingEndFormat', date("m/d/Y G:i:s", strtotime($skillTraining['trainingEndTime']." GMT")));
+            
+    // Calculations for SP/Hour, skillpoint progression and SP Rate
+      // SP/Hour
+        $spToGo = $skillTraining['trainingDestinationSP'] - $skillTraining['trainingStartSP']; // SP when finished - SP when started.
+        $hoursRemaining = (strtotime($skillTraining['trainingEndTime']) - strtotime($skillTraining['trainingStartTime'])) / 3600; // (End time Epoch - start time epoch) / 3600
+        $spHour = $spToGo / $hoursRemaining; // SP until finished / hours left until finished.
+      // SP/Second (For the counters)
+        $spRate = $spHour / 3600; // How many SP/hour / 3600 = SP/second.
+      // SP progression & percentage complete
+        $hoursTrained = (gmmktime() - strtotime($skillTraining['trainingStartTime'])) / 3600; // (gmt epoch - start time epoch) / 3600 for hours trained.
+        $spTrained = $hoursTrained * $spHour; // hours trained so far * SP/Hour.
+        $spProgress = $spTrained + $skillTraining['trainingStartSP']; // SP trained so far + starting SP.
+        $progressToGo = $skillTraining['trainingDestinationSP'] - $spProgress; // End of training SP - SP progress so far.
+        $inProgressTotalSP = $assign['totalskillpoints'] + $spTrained; // Total skill points of character + progress of current skill.
+        // Work out what the previous level in the skill * the rank so we know how much progress has been made.
+        $previousLevel = $skillTraining['trainingToLevel'] - 1;
+            if ($previousLevel == '4') {
+                $previousLevelSP = 45255 * $GLOBALS['rank']; // Reads from includes/skilltree.php
+            } elseif ($previousLevel == '3') {
+                $previousLevelSP = 8000 * $GLOBALS['rank'];                
+            } elseif ($previousLevel == '2') {
+                $previousLevelSP = 1414 * $GLOBALS['rank']; 
+            } elseif ($previousLevel == '1') {
+                $previousLevelSP = 250 * $GLOBALS['rank']; 
+            } else {
+                $previousLevelSP = 0; // Level 0, no maths needed.
+            }
+        $allLevelsPercent = ($spProgress / $skillTraining['trainingDestinationSP']) * 100;
+        $progressPercent = ($spProgress - $previousLevelSP) / ($skillTraining['trainingDestinationSP'] - $previousLevelSP) * 100;
+      // Assign the variables to smarty    
+        $eveRender->Assign('spHour',            $spHour);
+        $eveRender->Assign('spRate',            $spRate);
+        $eveRender->Assign('spTrained',         $spTrained);
+        $eveRender->Assign('spProgress',        $spProgress);
+        $eveRender->Assign('progressToGo',      $progressToGo);
+        $eveRender->Assign('inProgressTotalSP', $inProgressTotalSP);
+        $eveRender->Assign('allLevelsPercent',  $allLevelsPercent);
+        $eveRender->Assign('progressPercent',   $progressPercent);   
     }
     $time     = time();
     $filetime = strtotime($config['cachedUntil']);//filemtime($config['filename']);
@@ -985,7 +1102,7 @@ function siglist($config)
     $eveRender->Assign('characterID',       $characterID);
     $eveRender->Assign('attributes',        $attributes);
     $eveRender->Assign('pageupdateminutes', $minutes);
-    $eveRender->Assign('pageupdateseconds', $seconds);  
+    $eveRender->Assign('pageupdateseconds', $seconds);
     $eveRender->Assign('l5total',           $assign['l5total']);
     $eveRender->Assign('l5spsformat',       number_format($assign['l5sps'], 0, '', ' '));
     $eveRender->Assign('l5sps',             $assign['l5sps']);
@@ -1236,9 +1353,9 @@ function GetTrainingData($trainfile = '')
         $minutes = floor($difference/60);
         $difference = $difference - ($minutes*60);
         $seconds = $difference;
-        $output = "$days Days, $hours Hours, $minutes Minutes and $seconds Seconds.";
+        $output = "$days days, $hours hours, $minutes minutes and $seconds seconds";
     } else {
-        $output = "Done!";
+        $output = "Completed!";
     }
     $parse['result']['TrainingTimeLeft'] = $output;
 
