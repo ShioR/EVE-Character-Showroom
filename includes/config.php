@@ -1,9 +1,9 @@
 <?php
 /**********************************************************/
-/*           EVE Character Showroom - Version 5           */
+/*           EVE Character Showroom - Version 6           */
 /*       'Improved' and maintained by Shionoya Risa       */
 /*          Originally created by DeTox MinRohim          */
-/*            Copyright (C) 2015 Shionoya Risa            */
+/*            Copyright (C) 2016 Shionoya Risa            */
 /**********************************************************/
 /* This program is free software: you can redistribute it */
 /*   and/or modify it under the terms of the GNU General  */
@@ -64,5 +64,4 @@ $eveconnect = false;
 $eveconfig['default']    = $default;
 $eveconfig['filepath']   = $eve_filepath;
 $eveconfig['eveconnect'] = $eveconnect;
-
 ?>

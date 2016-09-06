@@ -1,6 +1,6 @@
-<?php
+<?php 
 /**********************************************************/
-/*           EVE Character Showroom - Version 5           */
+/*           EVE Character Showroom - Version 6           */
 /*       'Improved' and maintained by Shionoya Risa       */
 /*          Originally created by DeTox MinRohim          */
 /*            Copyright (C) 2016 Shionoya Risa            */
