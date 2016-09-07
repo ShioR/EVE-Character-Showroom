@@ -628,7 +628,7 @@ function index($config = array())
         $eveRender->Assign('Training',          $skillTraining['skillName']);
         $eveRender->Assign('ToLevel',           $skillTraining['trainingToLevel']);
         $eveRender->Assign('TrainingID',        $skillTraining['trainingTypeID']);
-        $eveRender->Assign('trainingStartTime', $skillTraining['trainingStartTime']);
+        $eveRender->Assign('trainingStartTime', date("l jS F Y, H:i:s", strtotime($skillTraining['trainingStartTime'])));
         $eveRender->Assign('trainingEndTime',   date("l jS F Y, H:i:s", strtotime($skillTraining['trainingEndTime'])));
         $eveRender->Assign('TrainingTimeLeft',  $skillTraining['TrainingTimeLeft']);
         $eveRender->Assign('trainingStartSP',   $skillTraining['trainingStartSP']);
