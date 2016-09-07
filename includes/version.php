@@ -27,6 +27,6 @@
 /* materials are copyright (C) CCP hf http://ccpgames.com */
 /**********************************************************/
 
-define('_SKILLSHEET_VERSION', 'v6.421');
+define('_SKILLSHEET_VERSION', 'v6.422');
 define('_DATA_VERSION', 'YC118-05-31');
 ?>
