@@ -122,11 +122,11 @@
                     </div>
                     <div>
                       <span class="navdot">&#xB7;</span><span style="color:gold;">Started: </span>
-                      <!--[$trainingStartTime|date_format:"%A, %B %d, %H:%M"]-->
+                      <!--[$trainingStartTime]-->
                     </div>
                     <div>
                       <span class="navdot">&#xB7;</span><span style="color:gold;">Ends: </span>
-                      <!--[$trainingEndTime|date_format:"%A, %B %d, %H:%M"]-->
+                      <!--[$trainingEndTime]-->
                     </div>
                     <div>
                       <span class="navdot">&#xB7;</span><span style="color:gold;">Time Remaining: </span>
