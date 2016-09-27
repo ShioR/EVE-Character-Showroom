@@ -1,5 +1,3 @@
-SET FOREIGN_KEY_CHECKS=0;
-
 -- ----------------------------
 -- Table structure for skillsheet_skills
 -- ----------------------------
@@ -439,10 +437,6 @@ INSERT INTO `skillsheet_skills` VALUES ('37797', '1545', 'Structure Doomsday Ope
 INSERT INTO `skillsheet_skills` VALUES ('37798', '1545', 'Structure Electronic Systems', 'Basic operation of structure electronic modules. 3% reduction in capacitor consumption of all structure electronic warfare and tackle modules per level.', '0', '0.01', '0', '1', null, '5000000.0000', '1', '2152', '33', null, '0');
 INSERT INTO `skillsheet_skills` VALUES ('37799', '1545', 'Structure Engineering Systems', 'Basic operation of structure engineering modules. 2% reduction in capacitor consumption of all structure energy neutralizers and point defense batteries per level.', '0', '0.01', '0', '1', null, '5000000.0000', '1', '2152', '33', null, '0');
 INSERT INTO `skillsheet_skills` VALUES ('40328', '257', 'Logistics Frigates', 'Skill for operation of Logistics Frigates. This skill cannot be trained on Trial Accounts.', '0', '0.01', '0', '1', null, '4000000.0000', '1', '377', '33', null, '0');
-INSERT INTO `skillsheet_skills` VALUES ('40535', '257', 'Amarr Force Auxiliary', 'Skill at operating Amarr force auxiliaries.  This skill cannot be trained on Trial Accounts.', '0', '0.01', '0', '1', '4', '500000000.0000', '1', '377', '33', null, '0');
-INSERT INTO `skillsheet_skills` VALUES ('40536', '257', 'Caldari Force Auxiliary', 'Skill at operating Caldari force auxiliaries.  This skill cannot be trained on Trial Accounts.', '0', '0.01', '0', '1', '1', '500000000.0000', '1', '377', '33', null, '0');
-INSERT INTO `skillsheet_skills` VALUES ('40537', '257', 'Gallente Force Auxiliary', 'Skill at operating Gallente force auxiliaries.  This skill cannot be trained on Trial Accounts.', '0', '0.01', '0', '1', '8', '500000000.0000', '1', '377', '33', null, '0');
-INSERT INTO `skillsheet_skills` VALUES ('40538', '257', 'Minmatar Force Auxiliary', 'Skill at operating Minmatar force auxiliaries.  This skill cannot be trained on Trial Accounts.', '0', '0.01', '0', '1', '2', '500000000.0000', '1', '377', '33', null, '0');
 INSERT INTO `skillsheet_skills` VALUES ('40572', '273', 'Light Fighters', 'Allows operation of light fighter craft. 5% increase in light fighter velocity per level. This skill cannot be trained on Trial Accounts.', '0', '0.01', '0', '1', null, '100000000.0000', '1', '366', '33', null, '0');
 INSERT INTO `skillsheet_skills` VALUES ('40573', '273', 'Support Fighters', 'Allows operation of support fighter craft. 5% increase in support fighter hit-points per level.  This skill cannot be trained on Trial Accounts.', '0', '0.01', '0', '1', null, '100000000.0000', '1', '366', '33', null, '0');
 INSERT INTO `skillsheet_skills` VALUES ('41403', '255', 'Capital Autocannon Specialization', 'Specialist training in the operation of advanced capital autocannons. 2% Bonus per skill level to the damage of capital turrets requiring Capital Autocannon Specialization.  This skill cannot be trained on Trial Accounts.', '0', '0.01', '0', '1', null, '27000000.0000', '1', '364', '33', null, '0');
