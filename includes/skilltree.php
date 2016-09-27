@@ -2314,13 +2314,6 @@ $skillsource[257][35680]['skillCost'] = '1000000';
 $skillsource[257][35680]['groupID'] = '257';
 $skillsource[257][35680]['groupName'] = 'Spaceship Command';
 
-$skillsource[257][37615]['typeName'] = 'Command Destroyers';
-$skillsource[257][37615]['rank'] = '6';
-$skillsource[257][37615]['typeID'] = '37615';
-$skillsource[257][37615]['skillCost'] = '20000000';
-$skillsource[257][37615]['groupID'] = '257';
-$skillsource[257][37615]['groupName'] = 'Spaceship Command';
-
 $skillsource[257][3346]['typeName'] = 'Caldari Titan';
 $skillsource[257][3346]['rank'] = '16';
 $skillsource[257][3346]['typeID'] = '3346';
@@ -2341,6 +2334,13 @@ $skillsource[257][20533]['typeID'] = '20533';
 $skillsource[257][20533]['skillCost'] = '400000000';
 $skillsource[257][20533]['groupID'] = '257';
 $skillsource[257][20533]['groupName'] = 'Spaceship Command';
+
+$skillsource[257][37615]['typeName'] = 'Command Destroyers';
+$skillsource[257][37615]['rank'] = '6';
+$skillsource[257][37615]['typeID'] = '37615';
+$skillsource[257][37615]['skillCost'] = '20000000';
+$skillsource[257][37615]['groupID'] = '257';
+$skillsource[257][37615]['groupName'] = 'Spaceship Command';
 
 $skillsource[257][23950]['typeName'] = 'Command Ships';
 $skillsource[257][23950]['rank'] = '8';
