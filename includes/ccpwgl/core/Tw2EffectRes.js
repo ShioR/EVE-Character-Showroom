@@ -69,14 +69,15 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
         }
         else
         {
-            var source = prefix + String.fromCharCode.apply(null, shaderCode);
+
+            var source = prefix + (typeof shaderCode == 'string' ? shaderCode : String.fromCharCode.apply(null, shaderCode));
             source = source.substr(0, source.length - 1);
             device.gl.shaderSource(shader, source);
             device.gl.compileShader(shader);
         }
         if (!device.gl.getShaderParameter(shader, device.gl.COMPILE_STATUS))
         {
-            emitter.log('ResMan',
+            emitter.log('res.error',
             {
                 log: 'error',
                 src: ['Tw2EffectRes', 'CompileShader'],
@@ -111,7 +112,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
 
         if (!device.gl.getProgramParameter(program.program, device.gl.LINK_STATUS))
         {
-            emitter.log('ResMan',
+            emitter.log('res.error',
             {
                 log: 'error',
                 src: ['Tw2EffectRes', 'CreateProgram'],
@@ -120,6 +121,7 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
                 type: 'shader.linkstatus',
                 data: device.gl.getProgramInfoLog(program.program)
             });
+            return null;
         }
 
         device.gl.useProgram(program.program);
@@ -170,9 +172,9 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
     }
 
     var version = reader.ReadUInt32();
-    if (version < 2 || version > 4)
+    if (version < 2 || version > 5)
     {
-        emitter.log('ResMan',
+        emitter.log('res.error',
         {
             log: 'error',
             src: ['Tw2EffectRes', 'CreateProgram'],
@@ -186,31 +188,73 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
         return;
     }
 
-    var headerSize = reader.ReadUInt32();
-    if (headerSize == 0)
+    var headerSize, stringTableSize;
+    var stringTableOffset = 0;
+
+    if (version < 5)
     {
-        emitter.log('ResMan',
+        headerSize = reader.ReadUInt32();
+        if (headerSize == 0)
         {
-            log: 'error',
-            src: ['Tw2EffectRes', 'CreateProgram'],
-            msg: 'File contains no compiled effects',
-            path: this.path,
-            type: 'shader.effectheadersize',
-            value: 0
-        });
+            emitter.log('res.error',
+            {
+                log: 'error',
+                src: ['Tw2EffectRes', 'CreateProgram'],
+                msg: 'File contains no compiled effects',
+                path: this.path,
+                type: 'shader.effectheadersize',
+                value: 0
+            });
 
-        this.PrepareFinished(false);
-        return;
+            this.PrepareFinished(false);
+            return;
+        }
+        /* var permutation = */
+        reader.ReadUInt32();
+        var offset = reader.ReadUInt32();
+        reader.cursor = 2 * 4 + headerSize * 3 * 4;
+        stringTableSize = reader.ReadUInt32();
+        stringTable = String.fromCharCode.apply(null, reader.data.subarray(reader.cursor, reader.cursor + stringTableSize));
+
+        reader.cursor = offset;
     }
+    else
+    {
+        stringTableSize = reader.ReadUInt32();
+        stringTableOffset = reader.cursor;
+        stringTable = String.fromCharCode.apply(null, reader.data.subarray(reader.cursor, reader.cursor + stringTableSize));
+        reader.cursor += stringTableSize;
+        var permutationCount = reader.ReadUInt8();
+        for (var perm = 0; perm < permutationCount; ++perm)
+        {
+            reader.ReadUInt32();
+            reader.ReadUInt8();
+            reader.ReadUInt32();
+            var cnt = reader.ReadUInt8();
+            for (var j = 0; j < cnt; ++j)
+            {
+                reader.ReadUInt32();
+            }
+        }
+        headerSize = reader.ReadUInt32();
+        if (headerSize == 0)
+        {
+            emitter.log('res.error',
+            {
+                log: 'error',
+                src: ['Tw2EffectRes', 'CreateProgram'],
+                msg: 'File contains no compiled effects',
+                path: this.path,
+                type: 'shader.effectheadersize',
+                value: 0
+            });
 
-    /* var permutation = */
-    reader.ReadUInt32();
-    var offset = reader.ReadUInt32();
-    reader.cursor = 2 * 4 + headerSize * 3 * 4;
-    var stringTableSize = reader.ReadUInt32();
-    stringTable = String.fromCharCode.apply(null, reader.data.subarray(reader.cursor, reader.cursor + stringTableSize));
-
-    reader.cursor = offset;
+            this.PrepareFinished(false);
+            return;
+        }
+        reader.ReadUInt32();
+        reader.cursor = reader.ReadUInt32();
+    }
 
     var passCount = reader.ReadUInt8();
     for (var passIx = 0; passIx < passCount; ++passIx)
@@ -242,13 +286,27 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
             }
             stage.inputDefinition.RebuildHash();
 
-            var shaderSize = reader.ReadUInt32();
-            var shaderCode = reader.data.subarray(reader.cursor, reader.cursor + shaderSize);
-            reader.cursor += shaderSize;
+            var shaderSize, shaderCode, shadowShaderSize, shadowShaderCode;
 
-            var shadowShaderSize = reader.ReadUInt32();
-            var shadowShaderCode = reader.data.subarray(reader.cursor, reader.cursor + shadowShaderSize);
-            reader.cursor += shadowShaderSize;
+            if (version < 5)
+            {
+                shaderSize = reader.ReadUInt32();
+                shaderCode = reader.data.subarray(reader.cursor, reader.cursor + shaderSize);
+                reader.cursor += shaderSize;
+
+                shadowShaderSize = reader.ReadUInt32();
+                shadowShaderCode = reader.data.subarray(reader.cursor, reader.cursor + shadowShaderSize);
+                reader.cursor += shadowShaderSize;
+            }
+            else
+            {
+                shaderSize = reader.ReadUInt32();
+                var so = reader.ReadUInt32();
+                shaderCode = stringTable.substr(so, shaderSize);
+                shadowShaderSize = reader.ReadUInt32();
+                so = reader.ReadUInt32();
+                shadowShaderCode = stringTable.substr(so, shadowShaderSize);
+            }
 
             stage.shader = CompileShader(stageType, "", shaderCode, this.path);
             if (stage.shader == null)
@@ -316,11 +374,24 @@ Tw2EffectRes.prototype.Prepare = function(data, xml)
 
             var constantValueSize = reader.ReadUInt32() / 4;
             stage.constantValues = new Float32Array(constantValueSize);
-            for (var i = 0; i < constantValueSize; ++i)
+            if (version < 5)
             {
-                stage.constantValues[i] = reader.ReadFloat32();
+                for (var i = 0; i < constantValueSize; ++i)
+                {
+                    stage.constantValues[i] = reader.ReadFloat32();
+                }
             }
-
+            else
+            {
+                var co = reader.ReadUInt32();
+                var bo = reader.cursor;
+                reader.cursor = stringTableOffset + co;
+                for (var i = 0; i < constantValueSize; ++i)
+                {
+                    stage.constantValues[i] = reader.ReadFloat32();
+                }
+                reader.cursor = bo;
+            }
             stage.constantSize = Math.max(stage.constantSize, constantValueSize);
 
             var textureCount = reader.ReadUInt8();

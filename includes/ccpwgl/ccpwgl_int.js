@@ -1,310 +1,364 @@
-/* ccpwgl 2016-06-19 */
+/* ccpwgl 2016-11-17 */
 
 var ccpwgl_int = (function()
 {
     /**
      * Event Emitter
-     * @param {String} [name='']
-     * @property {String} [name=''] - The name of the emitter
-     * @property {{}} events
+     *
+     * @property {{}} _events
      * @returns {Tw2EventEmitter}
      */
-    var Tw2EventEmitter = function(name)
+    var Tw2EventEmitter = function()
     {
-        this.name = name || '';
-        this.events = {};
-        return this;
-    };
-
-    /**
-     * Gets public only emitter methods (`on`, `off`, `once`, `del`)
-     * @param {{}} [out={}] An optional receiving object
-     * @returns {{}}
-     *
-     * @example var public = emitter.GetPublic()
-     * // The public object now has the emitter's public functions
-     */
-    Tw2EventEmitter.prototype.GetPublic = function(out)
-    {
-        out || (out = {});
-        this.inherit(out, false);
-        return out;
-    };
-
-    /**
-     * Checks if an event has any listeners
-     * @param {String} eventName - The event to check
-     * @returns {Boolean}
-     *
-     * @example emitter.HasListeners('myEvent');
-     * // Returns true or false
-     */
-    Tw2EventEmitter.prototype.HasListeners = function(eventName)
-    {
-        if (!(eventName in this.events)) return false;
-        return (this.events[eventName].size !== 0)
-    };
-
-    /**
-     * Registers an Event
-     * - Event names are case insensitive
-     * - Emits an `EventAdded` event with the event's name as an argument
-     * - When using the `on` and `once` methods an event is automatically registered
-     * @param  {String} eventName - The event to register
-     * @returns {Tw2EventEmitter}
-     *
-     * @example emitter.register('myEvent');
-     * // creates the myEvent event
-     * // emits a `EventAdded` event
-     */
-    Tw2EventEmitter.prototype.register = function(eventName)
-    {
-        eventName = eventName.toLowerCase();
-
-        if (!(eventName in this.events))
-        {
-            this.events[eventName] = new Set();
-            this.emit('EventAdded', eventName);
-        }
-        return this;
-    };
-
-    /**
-     * Deregisters an event and removes all listeners
-     * - Emits an `EventRemoved` event with the event's name as an argument
-     * @param {String} eventName - The event to deregister
-     * @returns {Tw2EventEmitter}
-     *
-     * @example emitter.deregister('myEvent');
-     * // Removes all listeners from the event, and then deletes the event
-     * // Emits an `EventRemoved` event
-     */
-    Tw2EventEmitter.prototype.deregister = function(eventName)
-    {
-        eventName = eventName.toLowerCase();
-
-        if (eventName in this.events)
-        {
-            this.emit('EventRemoved', eventName);
-            delete this.events[eventName];
-        }
-        return this;
-    };
-
-    /**
-     * Emits an event
-     * @param {String} eventName - The event to emit
-     * @param {*} ...args - Any arguments to be passed to the event's listeners
-     * @returns {Tw2EventEmitter}
-     *
-     * @example emitter.emit('myEvent', arg1, arg2, arg3);
-     * // Emits the 'myEvent' event and calls all of it's listeners with the supplied arguments
-     */
-    Tw2EventEmitter.prototype.emit = function(eventName)
-    {
-        eventName = eventName.toLowerCase();
-
-        if (!(eventName in this.events))
-        {
-            return this.register(eventName);
-        }
-
-        var args = Array.prototype.slice.call(arguments);
-        args.splice(0, 1);
-
-        this.events[eventName].forEach(
-            function(listener)
-            {
-                listener.apply(undefined, args);
-            }
-        );
-
-        return this;
+        Tw2EventEmitter.Define(this);
     };
 
     /**
      * Adds a listener to an event
-     * - A listener can only exist on an Event once unless using the `once` method, self removing listeners are preferred
-     * @param {String} eventName - The target event
-     * @param {Function} listener - The listener function to add
-     * @returns {Tw2EventEmitter}
+     * - The first argument of a called listener is always the event name
+     * - Event names are forced to lowercase
+     * - Listeners can only be on an event once, unless using the 'once' method
      *
-     * @example emitter.on('myEvent', myListener);
-     * // Adds `myListener` to the `myEvent` event
+     * @param {String} eventName  - the event to fire the listener on
+     * @param {Function} listener - the listener
+     * @returns {*} emitter       - the emitter object
+     *
+     * @example
+     * var myListener1 = function(eventName, arg1, arg2, arg3){ .... };
+     * myEmitter.on('someEvent', myListener1);
+     * // myListener1 will be called whenever 'someEvent' is emitted
      */
     Tw2EventEmitter.prototype.on = function(eventName, listener)
     {
-        eventName = eventName.toLowerCase();
-
-        this.register(eventName);
-        this.events[eventName].add(listener);
+        eventName = Tw2EventEmitter.Register(this, eventName);
+        if (this._events[eventName].indexOf(listener) == -1)
+        {
+            this._events[eventName].push(listener);
+        }
         return this;
     };
 
     /**
      * Adds a listener to an event and removes it after it's first emit
-     * @param {String} eventName - The target event
-     * @param {Function} listener - The listener function to add for one emit only
-     * @returns {Tw2EventEmitter}
+     * - Creates a temporary version of the listener which removes itself after one emit
+     * - Caveat: It is possible to have the same listener on the same event multiple times when using `once`
      *
-     * @example emitter.once('myEvent', myListener);
-     * // Adds `myListener` to the `myEvent` event
-     * // After the first `myEvent` emit the listener is removed
+     * @param {String} eventName  - the target event
+     * @param {Function} listener - the listener to add for one emit only
+     * @returns {*} emitter       - the emitter object
+     *
+     * @example
+     * myEmitter.once('someEvent', myListener1);
+     * // myListener will be fired one time only before being removed from the event
      */
     Tw2EventEmitter.prototype.once = function(eventName, listener)
     {
+        eventName = Tw2EventEmitter.Register(this, eventName);
         var self = this;
-        eventName = eventName.toLowerCase();
-
         var once = function once()
         {
             listener.apply(undefined, arguments);
             self.off(eventName, once);
         };
-
         this.on(eventName, once);
         return this;
     };
 
-    /**
-     * Removes a listener from an event
-     * @param {String} eventName - The target event
-     * @param {Function} listener - The listener to remove from an event
-     * @returns {Tw2EventEmitter}
-     *
-     * @example emitter.off('myEvent', myListener);
-     * // Removes `myListener` from the `myEvent` event
-     */
-    Tw2EventEmitter.prototype.off = function(eventName, listener)
-    {
-        eventName = eventName.toLowerCase();
 
-        if (eventName in this.events)
+    /**
+     * Emits an event and calls any of it's listeners
+     * - An event's listeners are called with the event name, and then any other supplied arguments
+     *
+     * @param {String} eventName - the event to emit
+     * @param {*} [arguments]    - any arguments to be passed to the event's listeners
+     * @returns {*} emitter      - the emitter object
+     *
+     * @example
+     * var myListener1 = function(eventName, arg1, arg2, arg3){ .... };
+     * var myListener2 = function(eventName, arg1){ .... };
+     * myEmitter.on('someEvent', myListener);
+     * myEmitter.emit('someEvent', arg1, arg2, arg3)
+     * // myListener1 called with ('someEvent', arg1, arg2, arg3)
+     * // myListener2 called with ('someEvent', arg1);
+     */
+    Tw2EventEmitter.prototype.emit = function(eventName)
+    {
+        eventName = Tw2EventEmitter.Register(this, eventName);
+        var args = Array.prototype.slice.call(arguments);
+        for (var i = 0; i < this._events[eventName].length; i++)
         {
-            this.events[eventName].delete(listener)
+            this._events[eventName][i].apply(undefined, args);
         }
         return this;
     };
 
     /**
-     * Deletes a listener from all of the emitter's events
-     * @param {Function} listener - The listener to delete
-     * @returns {Tw2EventEmitter}
+     * Removes a listener from a specific event
      *
-     * @example emitter.del(myListener);
-     * // Removes `myListener` from every emitter event
+     * @param {String} eventName  - the target event
+     * @param {Function} listener - the listener to remove
+     * @returns {*} emitter       - the emitter object
      */
-    Tw2EventEmitter.prototype.del = function(listener)
+    Tw2EventEmitter.prototype.off = function(eventName, listener)
     {
-        const self = this;
-        for (var eventName in this.events)
+        eventName = eventName.toLowerCase();
+        if ('_events' in this && eventName in this._events)
         {
-            if (this.events.hasOwnProperty(eventName))
+            var index = this._events[eventName].indexOf(listener);
+            if (index !== -1) this._events[eventName].splice(index, 1);
+        }
+        return this;
+    };
+
+    /**
+     * Removes the supplied listener(s) from any of the emitter's events
+     *
+     * @param {*} [arguments] - the listener(s) to remove
+     * @returns {*} emitter   - the emitter object
+     *
+     * @example
+     * myEmitter.del(myListener1, myListener2)
+     * // myListener1 and myListener2 are removed from any of the emitter's events
+     */
+    Tw2EventEmitter.prototype.remove = function()
+    {
+        var args = Array.prototype.slice.call(arguments);
+        if (this._events)
+        {
+            for (var i = 0; i < args.length; i++)
             {
-                self.off(eventName, listener);
+                Tw2EventEmitter.RemoveListener(this, args[i]);
             }
         }
         return this;
     };
 
     /**
-     * Adds bound emitter functions to a target object
-     * - No checks are made to see if these methods or property names already exist
-     * @param {{}} target - The object inheriting the emitter's functions
-     * @param {Boolean} [excludeEmit=false] - Optional control for excluding the `emit` method
-     * @return {Tw2EventEmitter}
+     * Internal helper that defines an event emitter's un-writable properties
      *
-     * @example emitter.inherit(myObject, true);
-     * // `myObject` now has `on`, `off`, `del` and `log` emitter methods
-     * @example emitter.inherit(myObject);
-     * // `myObject` now has `on`, `off`, `del`, `log` and `emit` emitter methods
+     * @param {*} emitter - target emitter
      */
-    Tw2EventEmitter.prototype.inherit = function(target, excludeEmit)
+    Tw2EventEmitter.Define = function(emitter)
     {
-        target['on'] = this.on.bind(this);
-        target['off'] = this.off.bind(this);
-        target['del'] = this.del.bind(this);
-        target['log'] = this.log.bind(this);
-
-        if (!excludeEmit)
+        Object.defineProperty(emitter, '_events',
         {
-            target['emit'] = this.emit.bind(this);
-        }
-
-        return this;
+            value:
+            {},
+            writable: false
+        });
     };
 
     /**
-     * An Emit wrapper that emits an event and also creates a console output from a supplied event data object
-     * - The console output replicates the existing ccpwgl console logging
-     * - Console output can be toggled globally with { @link<Tw2EventEmitter.consoleErrors> and @link<Tw2EventEmitter.consoleLogs> }
-     * @param {String}  eventName               - The event to emit
-     * @param {{}}      eventData               - event data
-     * @param {String} [eventData.msg='']       - event message
-     * @param {String} [eventData.log=log]      - desired console output type (log, info, debug, warn, error, throw)
-     * @param {String} [eventData.path]         - the unmodified path for the file related to the event
-     * @param {Number} [eventData.time]         - the time it took to process the event path (rounds to 3 decimal places)
-     * @param {String} [eventData.type]         - a string representing the unique event type
-     * @param {Object} [eventData.data]         - data relevant to the event type
-     * @param {Number|String} [eventData.value] - a single value relevant to the event type
-     * @param {Array.<String>} [eventData.src]  - an array of the functions involved in the event
+     * Internal helper that registers an event on an emitter
+     * - Adds the `_event` property to objects that don't already have it (allows for usage of Object.assign)
+     * - Ensures that eventName is lower case
+     * - Adds the event if it doesn't already exist
+     *
+     * @param {*} emitter          - target emitter
+     * @param {String} eventName   - event to register
+     * @returns {String} eventName - the event name, in lower case
      */
-    Tw2EventEmitter.prototype.log = function(eventName, eventData)
+    Tw2EventEmitter.Register = function(emitter, eventName)
     {
-        var d = eventData;
-        if (!d.log) d.log = 'log';
-        this.emit(eventName, d);
-        var log = d.log;
+        if (!('_events' in emitter)) Tw2EventEmitter.Define(emitter);
+        eventName = eventName.toLowerCase();
+        if (!(eventName in emitter._events)) emitter._events[eventName] = [];
+        return eventName;
+    };
 
-        switch (d.log)
+    /**
+     * Checks if an emitter's event has any listeners on it
+     *
+     * @param {*} emitter        - target emitter
+     * @param {String} eventName - event to check
+     * @returns {boolean}
+     */
+    Tw2EventEmitter.HasListeners = function(emitter, eventName)
+    {
+        if (!('_events' in emitter) || !(eventName in emitter._events)) return false;
+        return (emitter._events[eventName].length)
+    };
+
+    /**
+     * Gets an array of an emitter's events that a listener is on
+     *
+     * @param {*} emitter         - target emitter
+     * @param {Function} listener - listener to check
+     * @returns {Array.<String>}  - an array of event names the listener is on
+     */
+    Tw2EventEmitter.HasListener = function(emitter, listener)
+    {
+        var result = [];
+        if ('_events' in emitter)
+        {
+            for (var eventName in emitter._events)
+            {
+                if (emitter._events.hasOwnProperty(eventName))
+                {
+                    var index = emitter._events[eventName].indexOf(listener);
+                    if (index !== -1) result.push(eventName);
+                }
+            }
+        }
+        return result;
+    };
+
+    /**
+     * Removes a listener completely from an emitter
+     *
+     * @param {*} emitter         - target emitter
+     * @param {Function} listener - listener to remove
+     */
+    Tw2EventEmitter.RemoveListener = function(emitter, listener)
+    {
+        if ('_events' in emitter)
+        {
+            for (var eventName in emitter._events)
+            {
+                if (emitter._events.hasOwnProperty(eventName))
+                {
+                    var index = emitter._events[eventName].indexOf(listener);
+                    if (index !== -1)
+                    {
+                        emitter._events[eventName].splice(index, 1);
+                    }
+                }
+            }
+        }
+    };
+
+    /**
+     * Removes an event from an emitter, and all of it's listeners
+     *
+     * @param {*} emitter        - target emitter
+     * @param {String} eventName - the event to purge
+     */
+    Tw2EventEmitter.RemoveEvent = function(emitter, eventName)
+    {
+        if ('_events' in emitter)
+        {
+            eventName = eventName.toLowerCase();
+            if (eventName in emitter._events) delete emitter._events[eventName];
+        }
+    };
+
+    /**
+     * Adds bound emitter functions to a target object
+     * - No checks are made to see if these methods or property names already exist in the target object
+     *
+     * @param {*} emitter                   - source emitter
+     * @param {{}} target                   - target object
+     * @param {boolean} [excludeEmit=false] - Optional control for excluding the `emit` method
+     * @return {*}
+     */
+    Tw2EventEmitter.Inherit = function(emitter, target, excludeEmit)
+    {
+        target['on'] = emitter.on.bind(emitter);
+        target['off'] = emitter.off.bind(emitter);
+        target['once'] = emitter.once.bind(emitter);
+        if (!excludeEmit) target['emit'] = emitter.emit.bind(emitter);
+        return target;
+    };
+
+    /**
+     * Global emitter
+     *
+     * @emit (res.event, eventData) - Resource events (prepare, load, unload, request)
+     * @emit (res.error, eventData) - Resource errors (any resource error)
+     *
+     * @example:
+     * var myResErrorHandler = function(eventName, eventData){ .... };
+     * ccpwgl_int.emitter.on('res.error', myErrorHandler);
+     *
+     * @example:
+     * var myResEventHandler = function(eventName, eventData){ .... };
+     * ccpwgl_int.emitter.on('res.event', myResEventHandler);
+     *
+     * @property {string}  consolePrefix
+     * @property {boolean} consoleErrors
+     * @property {boolean} consoleLogs
+     * @property {boolean} consoleDefault
+     * @inherits {Tw2EventEmitter}
+     */
+    var emitter = new Tw2EventEmitter();
+    emitter.consolePrefix = 'CCPWGL';
+    emitter.consoleErrors = true;
+    emitter.consoleLogs = true;
+    emitter.consoleDefault = 'log';
+
+    /**
+     * Creates a console output from an event name and event object, then re-emits the event.
+     * - The console outputs can be disabled by setting the `consoleErrors` and `consoleLogs` properties to false
+     * - The event is re-emitted after any console output
+     *
+     * @param {String}  eventName              - The event to emit
+     * @param {{}}      eventData              - event data
+     * @param {String} [eventData.msg=]        - event message
+     * @param {String} [eventData.log=]        - desired console output type (log, info, debug, warn, error, throw)
+     * @param {String} [eventData.path=]       - the unmodified path for the file related to the event
+     * @param {number} [eventData.time=]       - the time it took to process the event path (rounds to 3 decimal places)
+     * @param {String} [eventData.type=]       - a string representing the unique event type
+     * @param {Object} [eventData.data=]       - data relevant to the event type
+     * @param {*}      [eventData.value=]      - a single value relevant to the event type
+     * @param {Error}  [eventData.err=]        - Error Event object, if supplied the stack trace will be displayed
+     * @param {Array.<String>} [eventData.src] - an array of the functions involved in the event
+     */
+    emitter.log = function(eventName, eventData)
+    {
+        var output = true;
+        var logType = eventData.log;
+
+        switch (logType)
         {
             case ('throw'):
-                log = 'error';
-                if (!Tw2EventEmitter.consoleErrors) return;
+                logType = 'error'; // throws use 'console.error'
+                if (!this.consoleErrors) output = false;
                 break;
 
             case ('error'):
             case ('warn'):
-                if (!Tw2EventEmitter.consoleErrors) return;
+                if (!this.consoleErrors) output = false;
+                break;
+
+            case ('debug'):
+            case ('log'):
+            case ('info'):
+                if (!this.consoleLogs) output = false;
                 break;
 
             default:
-                if (!Tw2EventEmitter.consoleLogs) return;
+                logType = this.consoleDefault; // default log type
+                if (!this.consoleLogs) output = false;
         }
 
-        var header = this.name.concat(': {', eventName, '}');
-        var body = d.msg || '';
-        if (d.path) body = body.concat(' \'', d.path, '\'', ('time' in d) ? ' in ' + d.time.toFixed(3) + 'secs' : '');
-        if (d.type && (log === 'error' || log === 'warn')) body = body.concat(' (', d.type, (d.value !== undefined) ? ':' + d.value : '', ')');
+        if (output)
+        {
+            var d = eventData;
+            var header = this.consolePrefix.concat(': {', eventName, '}');
+            var body = d.msg || '';
+            if (d.path) body = body.concat(' \'', d.path, '\'', ('time' in d) ? ' in ' + d.time.toFixed(3) + 'secs' : '');
+            if (d.type && (logType === 'error' || logType === 'warn'))
+            {
+                body = body.concat(' (', d.type, (d.value !== undefined) ? ':' + d.value : '', ')');
+            }
 
-        if ('data' in d)
-        {
-            console.group(header);
-            console[log](body);
-            console.dir(d.data);
-            console.groupEnd();
+            if ('data' in d || 'err' in d)
+            {
+                console.group(header);
+                console[logType](body);
+                if ('data' in d) console.dir(d.data);
+                // Correctly output error stacks
+                if ('err' in d) console.debug(d.err.stack || d.err.toString());
+                console.groupEnd();
+            }
+            else
+            {
+                console[logType](header, body);
+            }
         }
-        else
-        {
-            console[log](header, body);
-        }
+
+        this.emit(eventName, eventData);
     };
-
-    /**
-     * Global toggle to disable `warn`, `error` and `throw` console logging from Emitter `log` calls
-     * @type {Boolean}
-     */
-    Tw2EventEmitter.consoleErrors = true;
-
-    /**
-     * Global toggle to disable `log`, `info` and `debug` console logging from Emitter `log` calls
-     * @type {Boolean}
-     */
-    Tw2EventEmitter.consoleLogs = true;
-
-
-    var emitter = new Tw2EventEmitter('CCPWGL');
-
     /**
      * Tw2Frustum
      * @property {Array.<quat4>} planes
@@ -487,7 +541,6 @@ var ccpwgl_int = (function()
 
     /**
      * Gets an element's array value
-     * TODO: Modifying the returned value will modify the raw data, is this intentional?
      * @param {string} name
      * @return {Float32Array}
      * @prototype
@@ -499,7 +552,6 @@ var ccpwgl_int = (function()
 
     /**
      * Gets an element's array value from the share data array
-     * TODO: Modifying the returned value will modify the raw data, is this intentional?
      * @param {string} name
      * @return {Float32Array}
      * @prototype
@@ -924,15 +976,281 @@ var ccpwgl_int = (function()
         this.xmlNode = xmlNode;
         this._inputStack = null;
         this._initializeObjects = null;
-        this._ids = null;
+        this._ids = {};
+        this._reader = null;
+
+        if (String.fromCharCode.apply(null, (new Uint8Array(xmlNode)).subarray(0, 6)) != 'binred')
+        {
+            emitter.log('res.error',
+            {
+                log: 'error',
+                src: ['Tw2ObjectReader', 'constructor'],
+                msg: 'Invalid Binary',
+                path: this.path,
+                type: 'redbin.invalid',
+                data: xmlNode
+            });
+            return;
+        }
+        this._reader = new Tw2BinaryReader(new Uint8Array(xmlNode));
+        this._reader.cursor += 6;
+
+        this._stringTable = [];
+        var count = this._reader.ReadUInt32();
+        for (var i = 0; i < count; ++i)
+        {
+            var len = this._reader.ReadUInt16();
+            this._stringTable.push(String.fromCharCode.apply(null, this._reader.data.subarray(this._reader.cursor, this._reader.cursor + len)));
+            this._reader.cursor += len;
+        }
+
+        this._start = this._reader.cursor;
     }
+
+    Tw2ObjectReader.ElementRawType = {
+        NULL: 0,
+        BOOL: 1,
+        INT: 2,
+        UINT: 3,
+        FLOAT: 4,
+        STRING: 5,
+        ARRAY: 6,
+        MAPPING: 7,
+        OBJECT: 8,
+        TYPED_ARRAY: 9,
+        TYPED_MAPPING: 10
+    };
+
+    Tw2ObjectReader.ElementSize = {
+        SMALL: 0,
+        MEDIUM: 1 << 4,
+        LARGE: 2 << 4
+    };
+
+    Tw2ObjectReader.ID_BIT = 1 << 6;
+    Tw2ObjectReader.REFERENCE_BIT = 1 << 7;
+
+    Tw2ObjectReader.ElementTypes = {
+        NULL: Tw2ObjectReader.ElementRawType.NULL | Tw2ObjectReader.ElementSize.SMALL,
+
+        BOOL: Tw2ObjectReader.ElementRawType.BOOL | Tw2ObjectReader.ElementSize.SMALL,
+        FALSE: Tw2ObjectReader.ElementRawType.BOOL | Tw2ObjectReader.ElementSize.MEDIUM,
+        TRUE: Tw2ObjectReader.ElementRawType.BOOL | Tw2ObjectReader.ElementSize.LARGE,
+
+        INT8: Tw2ObjectReader.ElementRawType.INT | Tw2ObjectReader.ElementSize.SMALL,
+        UINT8: Tw2ObjectReader.ElementRawType.UINT | Tw2ObjectReader.ElementSize.SMALL,
+        INT16: Tw2ObjectReader.ElementRawType.INT | Tw2ObjectReader.ElementSize.MEDIUM,
+        UINT16: Tw2ObjectReader.ElementRawType.UINT | Tw2ObjectReader.ElementSize.MEDIUM,
+        INT32: Tw2ObjectReader.ElementRawType.INT | Tw2ObjectReader.ElementSize.LARGE,
+        UINT32: Tw2ObjectReader.ElementRawType.UINT | Tw2ObjectReader.ElementSize.LARGE,
+
+        FLOAT16: Tw2ObjectReader.ElementRawType.FLOAT | Tw2ObjectReader.ElementSize.SMALL,
+        FLOAT32: Tw2ObjectReader.ElementRawType.FLOAT | Tw2ObjectReader.ElementSize.MEDIUM,
+        FLOAT64: Tw2ObjectReader.ElementRawType.FLOAT | Tw2ObjectReader.ElementSize.LARGE,
+
+        SHORT_STRING: Tw2ObjectReader.ElementRawType.STRING | Tw2ObjectReader.ElementSize.SMALL,
+        MEDIUM_STRING: Tw2ObjectReader.ElementRawType.STRING | Tw2ObjectReader.ElementSize.MEDIUM,
+        LARGE_STRING: Tw2ObjectReader.ElementRawType.STRING | Tw2ObjectReader.ElementSize.LARGE,
+
+        SHORT_ARRAY: Tw2ObjectReader.ElementRawType.ARRAY | Tw2ObjectReader.ElementSize.SMALL,
+        MEDIUM_ARRAY: Tw2ObjectReader.ElementRawType.ARRAY | Tw2ObjectReader.ElementSize.MEDIUM,
+        LARGE_ARRAY: Tw2ObjectReader.ElementRawType.ARRAY | Tw2ObjectReader.ElementSize.LARGE,
+
+        SHORT_MAPPING: Tw2ObjectReader.ElementRawType.MAPPING | Tw2ObjectReader.ElementSize.SMALL,
+        MEDIUM_MAPPING: Tw2ObjectReader.ElementRawType.MAPPING | Tw2ObjectReader.ElementSize.MEDIUM,
+        LARGE_MAPPING: Tw2ObjectReader.ElementRawType.MAPPING | Tw2ObjectReader.ElementSize.LARGE,
+
+        SHORT_OBJECT: Tw2ObjectReader.ElementRawType.OBJECT | Tw2ObjectReader.ElementSize.SMALL,
+        MEDIUM_OBJECT: Tw2ObjectReader.ElementRawType.OBJECT | Tw2ObjectReader.ElementSize.MEDIUM,
+        LARGE_OBJECT: Tw2ObjectReader.ElementRawType.OBJECT | Tw2ObjectReader.ElementSize.LARGE,
+
+        SHORT_TYPED_ARRAY: Tw2ObjectReader.ElementRawType.TYPED_ARRAY | Tw2ObjectReader.ElementSize.SMALL,
+        MEDIUM_TYPED_ARRAY: Tw2ObjectReader.ElementRawType.TYPED_ARRAY | Tw2ObjectReader.ElementSize.MEDIUM,
+        LARGE_TYPED_ARRAY: Tw2ObjectReader.ElementRawType.TYPED_ARRAY | Tw2ObjectReader.ElementSize.LARGE,
+
+        SHORT_TYPED_MAPPING: Tw2ObjectReader.ElementRawType.TYPED_MAPPING | Tw2ObjectReader.ElementSize.SMALL,
+        MEDIUM_TYPED_MAPPING: Tw2ObjectReader.ElementRawType.TYPED_MAPPING | Tw2ObjectReader.ElementSize.MEDIUM,
+        LARGE_TYPED_MAPPING: Tw2ObjectReader.ElementRawType.TYPED_MAPPING | Tw2ObjectReader.ElementSize.LARGE
+    };
+
+    Tw2ObjectReader.TypedArrays = {
+        2: Int8Array,
+        3: Uint8Array,
+        18: Int16Array,
+        19: Uint16Array,
+        34: Int32Array,
+        35: Uint32Array,
+        4: Float32Array,
+        20: Float32Array,
+        36: Float64Array
+    };
+
+
+    Tw2ObjectReader.prototype._ConstructObject = function(data)
+    {
+        if (data.type == 'json')
+        {
+            return data;
+        }
+        try
+        {
+            var object = eval("new " + data.type + "()");
+        }
+        catch (e)
+        {
+            emitter.log('res.error',
+            {
+                log: 'throw',
+                src: ['Tw2ObjectReader', 'ConstructFromNode'],
+                msg: 'Object with undefined type',
+                type: 'xml.type',
+                value: data.type
+            });
+
+            throw new Error('YAML: object with undefined type \"' + data.type + '\"');
+        }
+        for (var k in data)
+        {
+            if (data.hasOwnProperty(k) && k != 'type')
+            {
+                object[k] = data[k];
+            }
+        }
+        if ('Initialize' in object)
+        {
+            object.Initialize();
+        }
+        return object;
+    };
+
+
+    Tw2ObjectReader.prototype._ReadUint = function(type)
+    {
+        switch (type & 0x30)
+        {
+            case Tw2ObjectReader.ElementSize.SMALL:
+                return this._reader.ReadUInt8();
+            case Tw2ObjectReader.ElementSize.MEDIUM:
+                return this._reader.ReadUInt16();
+            default:
+                return this._reader.ReadUInt32();
+        }
+    };
+
+    Tw2ObjectReader.prototype._ReadElementData = function(type)
+    {
+        var offset, i, result, count, elementType;
+        switch (type & 0xf)
+        {
+            case Tw2ObjectReader.ElementRawType.NULL:
+                return null;
+            case Tw2ObjectReader.ElementRawType.BOOL:
+                switch (type & 0x30)
+                {
+                    case Tw2ObjectReader.ElementSize.SMALL:
+                        return this._reader.ReadUInt8() != 0;
+                    case Tw2ObjectReader.ElementSize.MEDIUM:
+                        return false;
+                    default:
+                        return true;
+                }
+            case Tw2ObjectReader.ElementRawType.INT:
+                switch (type & 0x30)
+                {
+                    case Tw2ObjectReader.ElementSize.SMALL:
+                        return this._reader.ReadInt8();
+                    case Tw2ObjectReader.ElementSize.MEDIUM:
+                        return this._reader.ReadInt16();
+                    default:
+                        return this._reader.ReadInt32();
+                }
+            case Tw2ObjectReader.ElementRawType.UINT:
+                return this._ReadUint(type);
+            case Tw2ObjectReader.ElementRawType.FLOAT:
+                switch (type & 0x30)
+                {
+                    case Tw2ObjectReader.ElementSize.SMALL:
+                        return this._reader.ReadFloat16();
+                    case Tw2ObjectReader.ElementSize.MEDIUM:
+                        return this._reader.ReadFloat32();
+                    default:
+                        throw Error('float64 values are not yet supported');
+                }
+            case Tw2ObjectReader.ElementRawType.STRING:
+                offset = this._ReadUint(type);
+                return this._stringTable[offset];
+            case Tw2ObjectReader.ElementRawType.ARRAY:
+                count = this._ReadUint(type);
+                result = [];
+                for (i = 0; i < count; ++i)
+                    result.push(this._ReadElement());
+                return result;
+            case Tw2ObjectReader.ElementRawType.MAPPING:
+                count = this._ReadUint(type);
+                result = {};
+                for (i = 0; i < count; ++i)
+                    result[this._stringTable[this._ReadUint(type)]] = this._ReadElement();
+                return result;
+            case Tw2ObjectReader.ElementRawType.OBJECT:
+                count = this._ReadUint(type);
+                result = {};
+                for (i = 0; i < count; ++i)
+                    result[this._stringTable[this._ReadUint(type)]] = this._ReadElement();
+                return this._ConstructObject(result);
+            case Tw2ObjectReader.ElementRawType.TYPED_ARRAY:
+                count = this._ReadUint(type);
+                elementType = this._reader.ReadUInt8();
+                result = [];
+                for (i = 0; i < count; ++i)
+                    result.push(this._ReadElementData(elementType));
+                if (elementType in Tw2ObjectReader.TypedArrays)
+                {
+                    result = new Tw2ObjectReader.TypedArrays[elementType](result);
+                }
+                return result;
+            case Tw2ObjectReader.ElementRawType.TYPED_MAPPING:
+                count = this._ReadUint(type);
+                elementType = this._reader.ReadUInt8();
+                result = {};
+                for (i = 0; i < count; ++i)
+                    result[this._stringTable[this._ReadUint(type)]] = this._ReadElementData(elementType);
+                return result;
+        }
+    };
+
+    Tw2ObjectReader.prototype._ReadElement = function()
+    {
+        var type = this._reader.ReadUInt8();
+        if (type == Tw2ObjectReader.REFERENCE_BIT)
+        {
+            return this._ids[this._reader.ReadUInt16()];
+        }
+        var id;
+        if ((type & Tw2ObjectReader.ID_BIT) != 0)
+        {
+            id = this._reader.ReadUInt16();
+        }
+        var result = this._ReadElementData(type & 0x3F);
+        if ((type & Tw2ObjectReader.ID_BIT) != 0)
+        {
+            this._ids[id] = result;
+        }
+        return result;
+    };
+
+    Tw2ObjectReader.prototype.Construct = function()
+    {
+        this._reader.cursor = this._start;
+        return this._ReadElement();
+    };
+
 
     /**
      * Construct
      * @param initialize
      * @returns {Function}
      */
-    Tw2ObjectReader.prototype.Construct = function(initialize)
+    /*Tw2ObjectReader.prototype.Construct = function(initialize)
     {
         this._inputStack = [];
         this._inputStack.push([this.xmlNode.documentElement, this, 'result']);
@@ -944,6 +1262,8 @@ var ccpwgl_int = (function()
             return self.ConstructFromNode(initialize, true);
         };
     };
+    */
+
 
     /**
      * ConstructFromNode
@@ -999,7 +1319,7 @@ var ccpwgl_int = (function()
                     }
                     catch (e)
                     {
-                        emitter.log('ResMan',
+                        emitter.log('res.error',
                         {
                             log: 'throw',
                             src: ['Tw2ObjectReader', 'ConstructFromNode'],
@@ -1023,7 +1343,7 @@ var ccpwgl_int = (function()
                     {
                         if (typeof(object[child.nodeName]) == 'undefined')
                         {
-                            emitter.log('ResMan',
+                            emitter.log('res.error',
                             {
                                 log: 'warn',
                                 src: ['Tw2ObjectReader', 'ConstructFromNode'],
@@ -1099,7 +1419,7 @@ var ccpwgl_int = (function()
                 }
                 catch (e)
                 {
-                    emitter.log('ResMan',
+                    emitter.log('res.error',
                     {
                         log: 'throw',
                         src: ['Tw2ObjectReader', 'ConstructFromNode'],
@@ -1381,7 +1701,6 @@ var ccpwgl_int = (function()
      * Inherit
      * @param derived
      * @param base
-     * @constructor
      */
     function Inherit(derived, base)
     {
@@ -1569,11 +1888,11 @@ var ccpwgl_int = (function()
                     {
                         if (obj._isPurged)
                         {
-                            emitter.log('ResMan',
+                            emitter.log('res.event',
                             {
-                                msg: 'Purged    ',
+                                msg: 'Unloaded  ',
                                 path: obj.path,
-                                type: 'res.purged'
+                                type: 'purged'
                             });
 
                             delete this._loadedObjects[path];
@@ -1582,11 +1901,11 @@ var ccpwgl_int = (function()
                         {
                             if (obj.Unload())
                             {
-                                emitter.log('ResMan',
+                                emitter.log('res.event',
                                 {
                                     msg: 'Unloaded  ',
                                     path: obj.path,
-                                    type: 'res.unused'
+                                    type: 'unused'
                                 });
                                 delete this._loadedObjects[path];
                             }
@@ -1641,16 +1960,16 @@ var ccpwgl_int = (function()
      */
     Tw2LoadingObject.prototype.Prepare = function(text, xml)
     {
-        if (xml == null)
+        if (text == null)
         {
-            emitter.log('ResMan',
+            emitter.log('res.error',
             {
                 log: 'error',
                 src: ['Tw2LoadingObject', 'Prepare'],
                 msg: 'Invalid XML',
                 path: this.path,
                 type: 'xml.invalid',
-                data: xml
+                data: text
             });
             this.PrepareFinished(false);
             return;
@@ -1658,7 +1977,7 @@ var ccpwgl_int = (function()
 
         if (this._inPrepare === null)
         {
-            this._redContents = xml;
+            this._redContents = text;
             this._constructor = new Tw2ObjectReader(this._redContents);
             this._constructorFunction = null;
             this._inPrepare = 0;
@@ -1666,32 +1985,19 @@ var ccpwgl_int = (function()
 
         while (this._inPrepare < this._objects.length)
         {
-            if (!this._constructorFunction)
-            {
-                var initialize = this._objects[this._inPrepare]._initialize;
-                this._constructorFunction = this._constructor.Construct(initialize);
-            }
-
-            if (!this._constructorFunction())
-            {
-                return true;
-            }
-
-            this._constructorFunction = null;
-
             try
             {
-                this._objects[this._inPrepare]._loadCallback(this._constructor.result);
+                this._objects[this._inPrepare]._loadCallback(this._constructor.Construct());
             }
             catch (e)
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2LoadingObject', 'Prepare'],
-                    msg: 'Prepare error',
+                    msg: 'Error preparing resource',
                     path: this.path,
-                    type: 'res.prepare',
+                    type: 'prepare',
                     data: e
                 })
             }
@@ -1701,11 +2007,11 @@ var ccpwgl_int = (function()
 
         resMan.motherLode.Remove(this.path);
 
-        emitter.log('ResMan',
+        emitter.log('res.event',
         {
             msg: 'Prepared  ',
             path: this.path,
-            type: 'res.prepare'
+            type: 'prepared'
         });
 
         this.PrepareFinished(true);
@@ -1738,7 +2044,7 @@ var ccpwgl_int = (function()
         this.systemMirror = false;
         this.resourcePaths = {};
 
-        this.resourcePaths['res'] = 'https://developers.eveonline.com/ccpwgl/assetpath/1035524/';
+        this.resourcePaths['res'] = 'https://developers.eveonline.com/ccpwgl/assetpath/1097993/';
 
         this._extensions = {};
         this.motherLode = new Tw2MotherLode();
@@ -1808,7 +2114,7 @@ var ccpwgl_int = (function()
 
             if (!httpRequest)
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2LoadingObject', 'Prepare'],
@@ -1918,12 +2224,12 @@ var ccpwgl_int = (function()
                 {
                     now = new Date();
 
-                    emitter.log('ResMan',
+                    emitter.log('res.event',
                     {
                         msg: 'Prepared  ',
                         path: resMan._prepareQueue[0][0].path,
                         time: (now.getTime() - startTime) * 0.001,
-                        type: 'res.prepared'
+                        type: 'prepared'
                     });
 
                     resMan._prepareQueue.shift();
@@ -1976,7 +2282,7 @@ var ccpwgl_int = (function()
                 }
                 catch (e)
                 {
-                    emitter.log('ResMan',
+                    emitter.log('res.error',
                     {
                         log: 'error',
                         src: ['Tw2ResMan', '_DoLoadResource'],
@@ -2013,7 +2319,7 @@ var ccpwgl_int = (function()
                     }
                     else
                     {
-                        emitter.log('ResMan',
+                        emitter.log('res.error',
                         {
                             log: 'error',
                             src: ['Tw2ResMan', '_DoLoadResource'],
@@ -2040,7 +2346,7 @@ var ccpwgl_int = (function()
             var prefixIndex = resPath.indexOf(':/');
             if (prefixIndex == -1)
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'warn',
                     src: ['Tw2ResMan', 'BuildUrl'],
@@ -2048,7 +2354,6 @@ var ccpwgl_int = (function()
                     type: 'prefix.undefined',
                     path: resPath
                 });
-
                 return resPath;
             }
 
@@ -2056,13 +2361,13 @@ var ccpwgl_int = (function()
 
             if (!(prefix in this.resourcePaths))
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'warn',
                     src: ['Tw2ResMan', 'BuildUrl'],
-                    msg: 'Invalid path',
+                    msg: 'Unregistered path',
                     path: resPath,
-                    type: 'prefix.invalid',
+                    type: 'prefix.unregistered',
                     value: prefix
                 });
                 return resPath;
@@ -2091,11 +2396,11 @@ var ccpwgl_int = (function()
             var httpRequest = this._CreateHttpRequest();
             httpRequest.onreadystatechange = _DoLoadResource(obj);
 
-            emitter.log('ResMan',
+            emitter.log('res.event',
             {
                 msg: 'Requesting',
                 path: path,
-                type: 'res.requesting'
+                type: 'request'
             });
 
             httpRequest.open('GET', this.BuildUrl(path));
@@ -2114,14 +2419,14 @@ var ccpwgl_int = (function()
             }
             catch (e)
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2ResMan', '_LoadResource'],
                     msg: 'Error requesting',
                     path: path,
                     type: 'http.request',
-                    value: e.toString()
+                    err: e
                 })
             }
         };
@@ -2135,11 +2440,11 @@ var ccpwgl_int = (function()
         {
             var path = resource.path;
 
-            emitter.log('ResMan',
+            emitter.log('res.event',
             {
                 msg: 'Reloading ',
                 path: path,
-                type: 'res.reload'
+                type: 'reload'
             });
 
             var obj = this.motherLode.Find(path);
@@ -2178,12 +2483,12 @@ var ccpwgl_int = (function()
 
             if (ext == null)
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2ResMan', 'ReloadResource'],
-                    msg: 'Unknown extension',
-                    type: 'extension.unknown',
+                    msg: 'Undefined extension',
+                    type: 'extension.undefined',
                     path: this.LogPathString(path)
                 });
                 return null;
@@ -2191,7 +2496,7 @@ var ccpwgl_int = (function()
 
             if (!(ext in this._extensions))
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2ResMan', 'ReloadResource'],
@@ -2258,15 +2563,16 @@ var ccpwgl_int = (function()
             var httpRequest = this._CreateHttpRequest();
             httpRequest.onreadystatechange = _DoLoadResource(res);
 
-            emitter.log('ResMan',
+            emitter.log('res.event',
             {
                 msg: 'Requesting',
                 path: this.BuildUrl(path),
                 _path: path,
-                type: 'res.requesting'
+                type: 'requesting'
             });
 
             httpRequest.open('GET', this.BuildUrl(path));
+            httpRequest.responseType = 'arraybuffer';
             res.LoadStarted();
             obj._objectLoaded = false;
 
@@ -2277,7 +2583,7 @@ var ccpwgl_int = (function()
             }
             catch (e)
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2ResMan', '_GetObject'],
@@ -2285,7 +2591,7 @@ var ccpwgl_int = (function()
                     path: this.BuildUrl(path),
                     _path: path,
                     type: 'http.request',
-                    value: e.toString()
+                    err: e
                 })
             }
         };
@@ -2446,11 +2752,10 @@ var ccpwgl_int = (function()
     }
 
     /**
-     * Bind
-     * TODO: Idenfify if @param size should be passed to the `Apply` prototype as it is currently redundant
+     * Binds the parameter to a constant buffer
      * @param {Array} constantBuffer
      * @param {number} offset
-     * @param {number} size
+     * @param {number} [size=] - unused
      * @returns {boolean}
      * @prototype
      */
@@ -2466,7 +2771,7 @@ var ccpwgl_int = (function()
     };
 
     /**
-     * Unbind
+     * Unbinds the parameter from it's constant buffer
      * @prototype
      */
     Tw2FloatParameter.prototype.Unbind = function()
@@ -2488,10 +2793,9 @@ var ccpwgl_int = (function()
 
     /**
      * Applies the current value to the supplied constant buffer at the supplied offset
-     * TODO: @param size is currently redundant
      * @param {Array} constantBuffer
      * @param {number} offset
-     * @param {number} size
+     * @param {number} [size=] - unused
      * @prototype
      */
     Tw2FloatParameter.prototype.Apply = function(constantBuffer, offset, size)
@@ -2522,7 +2826,7 @@ var ccpwgl_int = (function()
         this.value = value;
         if (this.constantBuffer != null)
         {
-            this.constantBuffer.set(this.value, this.offset);
+            this.constantBuffer[this.offset] = this.value;
         }
     };
 
@@ -3039,7 +3343,7 @@ var ccpwgl_int = (function()
     /**
      * Tw2MatrixParameter
      * @param {string} [name='']
-     * @param {mat4|Float32Array|Array} [value=mat4.create()]
+     * @param {mat4|Float32Array|Array} [value=mat4.identity(mat4.create())]
      * @property {string} name
      * @property {mat4|Float32Array} value
      * @property {Float32Array} constantBuffer
@@ -3048,29 +3352,14 @@ var ccpwgl_int = (function()
      */
     function Tw2MatrixParameter(name, value)
     {
-        if (typeof(name) != 'undefined')
-        {
-            this.name = name;
-        }
-        else
-        {
-            this.name = '';
-        }
-        if (typeof(value) != 'undefined')
-        {
-            this.value = mat4.create(value);
-        }
-        else
-        {
-            this.value = mat4.identity(mat4.create());
-        }
+        this.name = (name !== undefined) ? name : '';
+        this.value = (value !== undefined) ? mat4.create(value) : mat4.identity(mat4.create());
         this.constantBuffer = null;
         this.offset = 0;
     }
 
     /**
-     * Bind
-     * TODO: Identify if @param size should be passed to the `Apply` prototype as it is currently redundant
+     * Binds the parameter's value to a constant buffer
      * @param {Float32Array} constantBuffer
      * @param {number} offset
      * @param {number} size
@@ -3086,6 +3375,15 @@ var ccpwgl_int = (function()
         this.constantBuffer = constantBuffer;
         this.offset = offset;
         this.Apply(this.constantBuffer, this.offset, size);
+    };
+
+    /**
+     * Unbinds the parameter's constant buffer
+     * @prototype
+     */
+    Tw2MatrixParameter.prototype.UnBind = function()
+    {
+        this.constantBuffer = null;
     };
 
     /**
@@ -3119,15 +3417,26 @@ var ccpwgl_int = (function()
 
     /**
      * Applies the current value to the supplied constant buffer at the supplied offset
-     * TODO: @param size is currently redundant
      * @param {Float32Array} constantBuffer
      * @param {number} offset
-     * @param {number} size
+     * @param {number} [size] - unused
      * @prototype
      */
     Tw2MatrixParameter.prototype.Apply = function(constantBuffer, offset, size)
     {
         constantBuffer.set(this.value, offset);
+    };
+
+    /**
+     * Updates the constant buffer to the current value
+     * @prototype
+     */
+    Tw2MatrixParameter.prototype.OnValueChanged = function()
+    {
+        if (this.constantBuffer !== null)
+        {
+            this.constantBuffer.set(this.value, this.offset);
+        }
     };
 
     /**
@@ -3642,6 +3951,13 @@ var ccpwgl_int = (function()
         this.BLEND_BLENDFACTOR = 14;
         this.BLEND_INVBLENDFACTOR = 15;
 
+        // RS_BLENDOP & RS_BLENDOPALPHA ENUMS
+        this.BLENDOP_ADD = 1;
+        this.BLENDOP_SUBTRACT = 2;
+        this.BLENDOP_REVSUBTRACT = 3;
+        // this.BLENDOP_MIN = 4; 
+        // this.BLENDOP_MAX = 5;
+
         this.gl = null;
         this.debugMode = false;
         this.mipLevelSkipCount = 0;
@@ -3696,12 +4012,12 @@ var ccpwgl_int = (function()
             }
             catch (e)
             {
-                err = e.toString();
+                err = e;
             }
 
             if (!this.gl)
             {
-                emitter.log('WebGL',
+                emitter.log('webgl.error',
                 {
                     log: 'error',
                     msg: 'Could not initialise WebGL',
@@ -4171,11 +4487,11 @@ var ccpwgl_int = (function()
             if (this.alphaBlendState.dirty)
             {
                 var blendOp = this.gl.FUNC_ADD;
-                if (this.alphaBlendState.states[this.RS_BLENDOP] == 2)
+                if (this.alphaBlendState.states[this.RS_BLENDOP] == this.BLENDOP_SUBTRACT)
                 {
                     blendOp = this.gl.FUNC_SUBTRACT;
                 }
-                else if (this.alphaBlendState.states[this.RS_BLENDOP] == 3)
+                else if (this.alphaBlendState.states[this.RS_BLENDOP] == this.BLENDOP_REVSUBTRACT)
                 {
                     blendOp = this.gl.FUNC_REVERSE_SUBTRACT;
                 }
@@ -4185,11 +4501,11 @@ var ccpwgl_int = (function()
                 if (this.alphaBlendState.states[this.RS_SEPARATEALPHABLENDENABLE])
                 {
                     var blendOpAlpha = this.gl.FUNC_ADD;
-                    if (this.alphaBlendState.states[this.RS_BLENDOP] == 2)
+                    if (this.alphaBlendState.states[this.RS_BLENDOP] == this.BLENDOP_SUBTRACT)
                     {
                         blendOpAlpha = this.gl.FUNC_SUBTRACT;
                     }
-                    else if (this.alphaBlendState.states[this.RS_BLENDOP] == 3)
+                    else if (this.alphaBlendState.states[this.RS_BLENDOP] == this.BLENDOP_REVSUBTRACT)
                     {
                         blendOpAlpha = this.gl.FUNC_REVERSE_SUBTRACT;
                     }
@@ -5061,7 +5377,7 @@ var ccpwgl_int = (function()
                             break;
 
                         default:
-                            emitter.log('ResMan',
+                            emitter.log('res.error',
                             {
                                 log: 'error',
                                 src: ['Tw2GeometryRes', 'ReadVertexBuffer'],
@@ -5360,7 +5676,7 @@ var ccpwgl_int = (function()
             var bone = model.FindBoneByName(name);
             if (bone == null)
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2GeometryRes', 'BindMeshToModel'],
@@ -5486,7 +5802,7 @@ var ccpwgl_int = (function()
             var passInput = effect.GetPassInput(pass);
             if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2GeometryRes', 'RenderLines'],
@@ -5582,7 +5898,7 @@ var ccpwgl_int = (function()
             var passInput = effect.GetPassInput(pass);
             if (!mesh.declaration.SetDeclaration(passInput, mesh.declaration.stride))
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2GeometryRes', 'RenderLines'],
@@ -6000,14 +6316,15 @@ var ccpwgl_int = (function()
             }
             else
             {
-                var source = prefix + String.fromCharCode.apply(null, shaderCode);
+
+                var source = prefix + (typeof shaderCode == 'string' ? shaderCode : String.fromCharCode.apply(null, shaderCode));
                 source = source.substr(0, source.length - 1);
                 device.gl.shaderSource(shader, source);
                 device.gl.compileShader(shader);
             }
             if (!device.gl.getShaderParameter(shader, device.gl.COMPILE_STATUS))
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2EffectRes', 'CompileShader'],
@@ -6042,7 +6359,7 @@ var ccpwgl_int = (function()
 
             if (!device.gl.getProgramParameter(program.program, device.gl.LINK_STATUS))
             {
-                emitter.log('ResMan',
+                emitter.log('res.error',
                 {
                     log: 'error',
                     src: ['Tw2EffectRes', 'CreateProgram'],
@@ -6051,6 +6368,7 @@ var ccpwgl_int = (function()
                     type: 'shader.linkstatus',
                     data: device.gl.getProgramInfoLog(program.program)
                 });
+                return null;
             }
 
             device.gl.useProgram(program.program);
@@ -6101,9 +6419,9 @@ var ccpwgl_int = (function()
         }
 
         var version = reader.ReadUInt32();
-        if (version < 2 || version > 4)
+        if (version < 2 || version > 5)
         {
-            emitter.log('ResMan',
+            emitter.log('res.error',
             {
                 log: 'error',
                 src: ['Tw2EffectRes', 'CreateProgram'],
@@ -6117,31 +6435,73 @@ var ccpwgl_int = (function()
             return;
         }
 
-        var headerSize = reader.ReadUInt32();
-        if (headerSize == 0)
+        var headerSize, stringTableSize;
+        var stringTableOffset = 0;
+
+        if (version < 5)
         {
-            emitter.log('ResMan',
+            headerSize = reader.ReadUInt32();
+            if (headerSize == 0)
             {
-                log: 'error',
-                src: ['Tw2EffectRes', 'CreateProgram'],
-                msg: 'File contains no compiled effects',
-                path: this.path,
-                type: 'shader.effectheadersize',
-                value: 0
-            });
+                emitter.log('res.error',
+                {
+                    log: 'error',
+                    src: ['Tw2EffectRes', 'CreateProgram'],
+                    msg: 'File contains no compiled effects',
+                    path: this.path,
+                    type: 'shader.effectheadersize',
+                    value: 0
+                });
 
-            this.PrepareFinished(false);
-            return;
+                this.PrepareFinished(false);
+                return;
+            }
+            /* var permutation = */
+            reader.ReadUInt32();
+            var offset = reader.ReadUInt32();
+            reader.cursor = 2 * 4 + headerSize * 3 * 4;
+            stringTableSize = reader.ReadUInt32();
+            stringTable = String.fromCharCode.apply(null, reader.data.subarray(reader.cursor, reader.cursor + stringTableSize));
+
+            reader.cursor = offset;
         }
+        else
+        {
+            stringTableSize = reader.ReadUInt32();
+            stringTableOffset = reader.cursor;
+            stringTable = String.fromCharCode.apply(null, reader.data.subarray(reader.cursor, reader.cursor + stringTableSize));
+            reader.cursor += stringTableSize;
+            var permutationCount = reader.ReadUInt8();
+            for (var perm = 0; perm < permutationCount; ++perm)
+            {
+                reader.ReadUInt32();
+                reader.ReadUInt8();
+                reader.ReadUInt32();
+                var cnt = reader.ReadUInt8();
+                for (var j = 0; j < cnt; ++j)
+                {
+                    reader.ReadUInt32();
+                }
+            }
+            headerSize = reader.ReadUInt32();
+            if (headerSize == 0)
+            {
+                emitter.log('res.error',
+                {
+                    log: 'error',
+                    src: ['Tw2EffectRes', 'CreateProgram'],
+                    msg: 'File contains no compiled effects',
+                    path: this.path,
+                    type: 'shader.effectheadersize',
+                    value: 0
+                });
 
-        /* var permutation = */
-        reader.ReadUInt32();
-        var offset = reader.ReadUInt32();
-        reader.cursor = 2 * 4 + headerSize * 3 * 4;
-        var stringTableSize = reader.ReadUInt32();
-        stringTable = String.fromCharCode.apply(null, reader.data.subarray(reader.cursor, reader.cursor + stringTableSize));
-
-        reader.cursor = offset;
+                this.PrepareFinished(false);
+                return;
+            }
+            reader.ReadUInt32();
+            reader.cursor = reader.ReadUInt32();
+        }
 
         var passCount = reader.ReadUInt8();
         for (var passIx = 0; passIx < passCount; ++passIx)
@@ -6173,13 +6533,27 @@ var ccpwgl_int = (function()
                 }
                 stage.inputDefinition.RebuildHash();
 
-                var shaderSize = reader.ReadUInt32();
-                var shaderCode = reader.data.subarray(reader.cursor, reader.cursor + shaderSize);
-                reader.cursor += shaderSize;
+                var shaderSize, shaderCode, shadowShaderSize, shadowShaderCode;
 
-                var shadowShaderSize = reader.ReadUInt32();
-                var shadowShaderCode = reader.data.subarray(reader.cursor, reader.cursor + shadowShaderSize);
-                reader.cursor += shadowShaderSize;
+                if (version < 5)
+                {
+                    shaderSize = reader.ReadUInt32();
+                    shaderCode = reader.data.subarray(reader.cursor, reader.cursor + shaderSize);
+                    reader.cursor += shaderSize;
+
+                    shadowShaderSize = reader.ReadUInt32();
+                    shadowShaderCode = reader.data.subarray(reader.cursor, reader.cursor + shadowShaderSize);
+                    reader.cursor += shadowShaderSize;
+                }
+                else
+                {
+                    shaderSize = reader.ReadUInt32();
+                    var so = reader.ReadUInt32();
+                    shaderCode = stringTable.substr(so, shaderSize);
+                    shadowShaderSize = reader.ReadUInt32();
+                    so = reader.ReadUInt32();
+                    shadowShaderCode = stringTable.substr(so, shadowShaderSize);
+                }
 
                 stage.shader = CompileShader(stageType, "", shaderCode, this.path);
                 if (stage.shader == null)
@@ -6247,11 +6621,24 @@ var ccpwgl_int = (function()
 
                 var constantValueSize = reader.ReadUInt32() / 4;
                 stage.constantValues = new Float32Array(constantValueSize);
-                for (var i = 0; i < constantValueSize; ++i)
+                if (version < 5)
                 {
-                    stage.constantValues[i] = reader.ReadFloat32();
+                    for (var i = 0; i < constantValueSize; ++i)
+                    {
+                        stage.constantValues[i] = reader.ReadFloat32();
+                    }
                 }
-
+                else
+                {
+                    var co = reader.ReadUInt32();
+                    var bo = reader.cursor;
+                    reader.cursor = stringTableOffset + co;
+                    for (var i = 0; i < constantValueSize; ++i)
+                    {
+                        stage.constantValues[i] = reader.ReadFloat32();
+                    }
+                    reader.cursor = bo;
+                }
                 stage.constantSize = Math.max(stage.constantSize, constantValueSize);
 
                 var textureCount = reader.ReadUInt8();
@@ -7080,13 +7467,15 @@ var ccpwgl_int = (function()
      * @property {Array.<Tw2MeshArea>} additiveAreas
      * @property {Array.<Tw2MeshArea>} pickableAreas
      * @property {Array.<Tw2MeshArea>} decalAreas
-     * @property {Array.<Tw2MeshArea>} depthAreas
-     * @property {boolean} display - enables/disables all render batch accumulations
-     * @property {boolean} displayOpaque - enables/disables opaque area batch accumulations
-     * @property {boolean} displayTransparent - enables/disables transparent area batch accumulations
-     * @property {boolean} displayAdditive - enables/disables additive area batch accumulations
-     * @property {boolean} displayPickable - enables/disables pickable area batch accumulations
-     * @property {boolean} displayDecal - enables/disables decal area batch accumulations
+     * @property {Array.<Tw2MeshArea>} depthAreas       - Not supported
+     * @property {boolean} display                      - Enables/ disables all mesh batch accumulations
+     * @parameter {{}} visible                          - Batch accumulation options for the mesh's elements
+     * @property {boolean} visible.opaqueAreas          - Enables/ disables opaque area batch accumulation
+     * @property {boolean} visible.transparentAreas     - Enables/ disables transparent area batch accumulation
+     * @property {boolean} visible.additiveAreas        - Enables/ disables additive area batch accumulation
+     * @property {boolean} visible.pickableAreas        - Enables/ disables pickable area batch accumulation
+     * @property {boolean} visible.decalAreas           - Enables/ disables decal area batch accumulation
+     * @property {boolean} visible.depthAreas           - Not supported
      * @constructor
      */
     function Tw2Mesh()
@@ -7105,11 +7494,13 @@ var ccpwgl_int = (function()
         this.depthAreas = [];
 
         this.display = true;
-        this.displayOpaque = true;
-        this.displayTransparent = true;
-        this.displayAdditive = true;
-        this.displayPickable = true;
-        this.displayDecal = true;
+        this.visible = {};
+        this.visible.opaqueAreas = true;
+        this.visible.transparentAreas = true;
+        this.visible.additiveAreas = true;
+        this.visible.pickableAreas = true;
+        this.visible.decalAreas = true;
+        this.visible.depthAreas = true;
     }
 
     /**
@@ -7136,29 +7527,24 @@ var ccpwgl_int = (function()
             out = [];
         }
 
-        var self = this;
-
         if (out.indexOf(this.geometryResource) === -1)
         {
             out.push(this.geometryResource);
         }
 
-        function getAreaResources(areaName, out)
+        for (var type in this.visible)
         {
-            for (var i = 0; i < self[areaName].length; i++)
+            if (this.visible.hasOwnProperty(type) && this[type].length)
             {
-                self[areaName][i].effect.GetResources(out);
+                for (var i = 0; i < this[type].length; i++)
+                {
+                    this[type][i].effect.GetResources(out);
+                }
             }
         }
 
-        getAreaResources('additiveAreas', out);
-        getAreaResources('decalAreas', out);
-        getAreaResources('depthAreas', out);
-        getAreaResources('opaqueAreas', out);
-        getAreaResources('pickableAreas', out);
-        getAreaResources('transparentAreas', out);
         return out;
-    }
+    };
 
     /**
      * Gets render batches from a mesh area array and commits them to an accumulator
@@ -7207,23 +7593,23 @@ var ccpwgl_int = (function()
         if (this.display)
         {
 
-            if (this.displayOpaque && mode == device.RM_OPAQUE)
+            if (mode == device.RM_OPAQUE && this.visible.opaqueAreas)
             {
                 this._GetAreaBatches(this.opaqueAreas, mode, accumulator, perObjectData);
             }
-            else if (this.displayDecal && mode == device.RM_DECAL)
+            else if (mode == device.RM_DECAL && this.visible.decalAreas)
             {
                 this._GetAreaBatches(this.decalAreas, mode, accumulator, perObjectData);
             }
-            else if (this.displayTransparent && mode == device.RM_TRANSPARENT)
+            else if (mode == device.RM_TRANSPARENT && this.visible.transparentAreas)
             {
                 this._GetAreaBatches(this.transparentAreas, mode, accumulator, perObjectData);
             }
-            else if (this.displayAdditive && mode == device.RM_ADDITIVE)
+            else if (mode == device.RM_ADDITIVE && this.visible.additiveAreas)
             {
                 this._GetAreaBatches(this.additiveAreas, mode, accumulator, perObjectData);
             }
-            else if (this.displayPickable && mode == device.RM_PICKABLE)
+            else if (mode == device.RM_PICKABLE && this.visible.pickableAreas)
             {
                 this._GetAreaBatches(this.pickableAreas, mode, accumulator, perObjectData);
             }
@@ -9288,6 +9674,19 @@ var ccpwgl_int = (function()
         this._currKey = 1;
     }
 
+    Tw2ColorCurve.Extrapolation = {
+        NONE: 0,
+        CONSTANT: 1,
+        GRADIENT: 2,
+        CYCLE: 3
+    };
+
+    Tw2ColorCurve.Interpolation = {
+        NONE: 0,
+        CONSTANT: 1,
+        LINEAR: 2
+    };
+
     /**
      * Returns curve length
      * @returns {number}
@@ -9331,7 +9730,7 @@ var ccpwgl_int = (function()
         var lastKey = this.keys[this.keys.length - 1];
         if (time >= lastKey.time)
         {
-            if (this.extrapolation == 0)
+            if (this.extrapolation == Tw2ColorCurve.Extrapolation.NONE)
             {
                 value[0] = this.value[0];
                 value[1] = this.value[1];
@@ -9339,7 +9738,7 @@ var ccpwgl_int = (function()
                 value[3] = this.value[3];
                 return value;
             }
-            else if (this.extrapolation == 1)
+            else if (this.extrapolation == Tw2ColorCurve.Extrapolation.CONSTANT)
             {
                 value[0] = lastKey.value[0];
                 value[1] = lastKey.value[1];
@@ -9347,7 +9746,7 @@ var ccpwgl_int = (function()
                 value[3] = lastKey.value[3];
                 return value;
             }
-            else if (this.extrapolation == 2)
+            else if (this.extrapolation == Tw2ColorCurve.Extrapolation.GRADIENT)
             {
                 d = time - lastKey.time;
                 value[0] = lastKey.value[0] + d * lastKey.right[0];
@@ -9363,7 +9762,7 @@ var ccpwgl_int = (function()
         }
         else if (time < 0 || time < firstKey.time)
         {
-            if (this.extrapolation == 0)
+            if (this.extrapolation == Tw2ColorCurve.Extrapolation.NONE)
             {
                 value[0] = this.value[0];
                 value[1] = this.value[1];
@@ -9371,7 +9770,7 @@ var ccpwgl_int = (function()
                 value[3] = this.value[3];
                 return value;
             }
-            else if (this.extrapolation == 2)
+            else if (this.extrapolation == Tw2ColorCurve.Extrapolation.GRADIENT)
             {
                 d = time * this.length - lastKey.time;
                 value[0] = firstKey.value[0] + d * firstKey.left[0];
@@ -9403,7 +9802,7 @@ var ccpwgl_int = (function()
         }
 
         var nt = (time - ck_1.time) / (ck.time - ck_1.time);
-        if (ck_1.interpolation == 1)
+        if (ck_1.interpolation == Tw2ColorCurve.Interpolation.CONSTANT)
         {
             value[0] = ck_1.value[0];
             value[1] = ck_1.value[1];
@@ -9472,6 +9871,11 @@ var ccpwgl_int = (function()
         this.interpolation = 1;
         this.keys = [];
     }
+
+    Tw2ColorCurve2.Interpolation = {
+        CONSTANT: 0,
+        LINEAR: 1
+    };
 
     /**
      * Initializes the curve
@@ -9648,7 +10052,7 @@ var ccpwgl_int = (function()
         }
         switch (interp)
         {
-            case 1:
+            case Tw2ColorCurve2.Interpolation.LINEAR:
                 if (lastKey && nextKey)
                 {
                     startValue = lastKey.value;
@@ -9884,6 +10288,11 @@ var ccpwgl_int = (function()
         this._currentKey = 0;
     }
 
+    Tw2EventCurve.Extrapolation = {
+        NONE: 0,
+        CYCLE: 3
+    };
+
     /**
      * Compares two curve keys' time properties
      * @param {Tw2EventKey} a
@@ -9945,7 +10354,7 @@ var ccpwgl_int = (function()
         {
             this._currentKey = 0;
         }
-        if (this.extrapolation == 3)
+        if (this.extrapolation == Tw2EventCurve.Extrapolation.CYCLE)
         {
             var now = this._time % this._length;
             if (now < before)
@@ -10477,6 +10886,22 @@ var ccpwgl_int = (function()
         this._currKey = 1;
     }
 
+    Tw2RotationCurve.Extrapolation = {
+        NONE: 0,
+        CONSTANT: 1,
+        GRADIENT: 2,
+        CYCLE: 3
+    };
+
+    Tw2RotationCurve.Interpolation = {
+        NONE: 0,
+        CONSTANT: 1,
+        LINEAR: 2,
+        HERMITE: 3,
+        SLERP: 5,
+        SQUAD: 6
+    };
+
     /**
      * Gets curve length
      * @returns {number}
@@ -10630,12 +11055,12 @@ var ccpwgl_int = (function()
         var lastKey = this.keys[this.keys.length - 1];
         if (time >= lastKey.time)
         {
-            if (this.extrapolation == 0)
+            if (this.extrapolation == Tw2RotationCurve.Extrapolation.NONE)
             {
                 quat4.set(this.value, value);
                 return value;
             }
-            else if (this.extrapolation == 1)
+            else if (this.extrapolation == Tw2RotationCurve.Extrapolation.CONSTANT)
             {
                 quat4.set(lastKey.value, value);
                 return value;
@@ -10647,7 +11072,7 @@ var ccpwgl_int = (function()
         }
         else if (time < 0 || time < firstKey.time)
         {
-            if (this.extrapolation == 0)
+            if (this.extrapolation == Tw2RotationCurve.Extrapolation.NONE)
             {
                 quat4.set(this.value, value);
                 return value;
@@ -10672,18 +11097,18 @@ var ccpwgl_int = (function()
         }
 
         var nt = (time - ck_1.time) / (ck.time - ck_1.time);
-        if (ck_1.interpolation == 1)
+        if (ck_1.interpolation == Tw2RotationCurve.Interpolation.CONSTANT)
         {
             quat4.set(ck_1.value, value);
         }
-        else if (ck_1.interpolation == 2)
+        else if (ck_1.interpolation == Tw2RotationCurve.Interpolation.LINEAR)
         {
             value[0] = ck_1.value[0] * (1 - nt) + ck.value[0] * nt;
             value[1] = ck_1.value[1] * (1 - nt) + ck.value[1] * nt;
             value[2] = ck_1.value[2] * (1 - nt) + ck.value[2] * nt;
             value[3] = ck_1.value[3] * (1 - nt) + ck.value[3] * nt;
         }
-        else if (ck_1.interpolation == 3)
+        else if (ck_1.interpolation == Tw2RotationCurve.Interpolation.HERMITE)
         {
             var collect = quat4.create();
             collect[3] = 1;
@@ -10705,7 +11130,7 @@ var ccpwgl_int = (function()
             }
             return quat4.multiply(collect, ck_1.value, value);
         }
-        else if (ck_1.interpolation == 5)
+        else if (ck_1.interpolation == Tw2RotationCurve.Interpolation.SLERP)
         {
             return quat4.slerp(ck_1.value, ck.value, nt, value);
         }
@@ -10760,6 +11185,21 @@ var ccpwgl_int = (function()
         this._currKey = 1;
     }
 
+    Tw2ScalarCurve.Extrapolation = {
+        NONE: 0,
+        CONSTANT: 1,
+        GRADIENT: 2,
+        CYCLE: 3
+    };
+
+    Tw2ScalarCurve.Interpolation = {
+        NONE: 0,
+        CONSTANT: 1,
+        LINEAR: 2,
+        HERMITE: 3,
+        CATMULROM: 4
+    };
+
     /**
      * Gets curve length
      * @returns {number}
@@ -10801,15 +11241,15 @@ var ccpwgl_int = (function()
         var lastKey = this.keys[this.keys.length - 1];
         if (time >= lastKey.time)
         {
-            if (this.extrapolation == 0)
+            if (this.extrapolation == Tw2ScalarCurve.Extrapolation.NONE)
             {
                 return this.value;
             }
-            else if (this.extrapolation == 1)
+            else if (this.extrapolation == Tw2ScalarCurve.Extrapolation.CONSTANT)
             {
                 return lastKey.value;
             }
-            else if (this.extrapolation == 2)
+            else if (this.extrapolation == Tw2ScalarCurve.Extrapolation.GRADIENT)
             {
                 d = time - lastKey.time;
                 return lastKey.value + d * lastKey.right;
@@ -10821,11 +11261,11 @@ var ccpwgl_int = (function()
         }
         else if (time < 0 || time < firstKey.time)
         {
-            if (this.extrapolation == 0)
+            if (this.extrapolation == Tw2ScalarCurve.Extrapolation.NONE)
             {
                 return this.value;
             }
-            else if (this.extrapolation == 2)
+            else if (this.extrapolation == Tw2ScalarCurve.Extrapolation.GRADIENT)
             {
                 d = time * this.length - lastKey.time;
                 return firstKey.value + d * firstKey.left;
@@ -10849,15 +11289,15 @@ var ccpwgl_int = (function()
         }
 
         var nt = (time - ck_1.time) / (ck.time - ck_1.time);
-        if (ck_1.interpolation == 1)
+        if (ck_1.interpolation == Tw2ScalarCurve.Interpolation.CONSTANT)
         {
             return ck_1.value;
         }
-        else if (ck_1.interpolation == 2)
+        else if (ck_1.interpolation == Tw2ScalarCurve.Interpolation.LINEAR)
         {
             return ck_1.value * (1 - nt) + ck.value * nt;
         }
-        else if (ck_1.interpolation == 3)
+        else if (ck_1.interpolation == Tw2ScalarCurve.Interpolation.HERMITE)
         {
             var k3 = 2 * nt * nt * nt - 3 * nt * nt + 1;
             var k2 = -2 * nt * nt * nt + 3 * nt * nt;
@@ -10927,6 +11367,12 @@ var ccpwgl_int = (function()
         this.interpolation = 1;
         this.keys = [];
     }
+
+    Tw2ScalarCurve2.Interpolation = {
+        CONSTANT: 0,
+        LINEAR: 1,
+        HERMITE: 2
+    };
 
     /**
      * Gets curve length
@@ -11084,7 +11530,7 @@ var ccpwgl_int = (function()
         }
         switch (interp)
         {
-            case 1:
+            case Tw2ScalarCurve2.Interpolation.LINEAR:
                 if (lastKey && nextKey)
                 {
                     startValue = lastKey.value;
@@ -11103,7 +11549,7 @@ var ccpwgl_int = (function()
                 }
                 return startValue + (endValue - startValue) * (time / deltaTime);
 
-            case 2:
+            case Tw2ScalarCurve2.Interpolation.HERMITE:
                 var inTangent = this.startTangent;
                 var outTangent = this.endTangent;
                 if (lastKey && nextKey)
@@ -11557,6 +12003,12 @@ var ccpwgl_int = (function()
         this.keys = [];
     }
 
+    Tw2Vector2Curve.Interpolation = {
+        CONSTANT: 0,
+        LINEAR: 1,
+        HERMITE: 2
+    };
+
     /**
      * Initializes the Curve
      * @prototype
@@ -11724,7 +12176,7 @@ var ccpwgl_int = (function()
         }
         switch (interp)
         {
-            case 1:
+            case Tw2Vector2Curve.Interpolation.LINEAR:
                 if (lastKey && nextKey)
                 {
                     startValue = lastKey.value;
@@ -11744,7 +12196,7 @@ var ccpwgl_int = (function()
                 value[0] = startValue[0] + (endValue[0] - startValue[0]) * (time / deltaTime);
                 value[1] = startValue[1] + (endValue[1] - startValue[1]) * (time / deltaTime);
                 return value;
-            case 2:
+            case Tw2Vector2Curve.Interpolation.HERMITE:
                 var inTangent = this.startTangent;
                 var outTangent = this.endTangent;
                 if (lastKey && nextKey)
@@ -11834,6 +12286,12 @@ var ccpwgl_int = (function()
         this.interpolation = 1;
         this.keys = [];
     }
+
+    Tw2Vector3Curve.Interpolation = {
+        CONSTANT: 0,
+        LINEAR: 1,
+        HERMITE: 2
+    };
 
     /**
      * Initializes the Curve
@@ -12007,7 +12465,7 @@ var ccpwgl_int = (function()
         }
         switch (interp)
         {
-            case 1:
+            case Tw2Vector3Curve.Interpolation.LINEAR:
                 if (lastKey && nextKey)
                 {
                     startValue = lastKey.value;
@@ -12028,7 +12486,7 @@ var ccpwgl_int = (function()
                 value[1] = startValue[1] + (endValue[1] - startValue[1]) * (time / deltaTime);
                 value[2] = startValue[2] + (endValue[2] - startValue[2]) * (time / deltaTime);
                 return value;
-            case 2:
+            case Tw2Vector3Curve.Interpolation.HERMITE:
                 var inTangent = this.startTangent;
                 var outTangent = this.endTangent;
                 if (lastKey && nextKey)
@@ -12108,6 +12566,20 @@ var ccpwgl_int = (function()
         this._currKey = 1;
     }
 
+    Tw2VectorCurve.Extrapolation = {
+        NONE: 0,
+        CONSTANT: 1,
+        GRADIENT: 2,
+        CYCLE: 3
+    };
+
+    Tw2VectorCurve.Interpolation = {
+        NONE: 0,
+        CONSTANT: 1,
+        LINEAR: 2,
+        HERMITE: 3
+    };
+
     /**
      * Updates a value at a specific time
      * @param {number} time
@@ -12151,21 +12623,21 @@ var ccpwgl_int = (function()
         var lastKey = this.keys[this.keys.length - 1];
         if (time >= lastKey.time)
         {
-            if (this.extrapolation == 0)
+            if (this.extrapolation == Tw2VectorCurve.Extrapolation.NONE)
             {
                 value[0] = this.value[0];
                 value[1] = this.value[1];
                 value[2] = this.value[2];
                 return value;
             }
-            else if (this.extrapolation == 1)
+            else if (this.extrapolation == Tw2VectorCurve.Extrapolation.CONSTANT)
             {
                 value[0] = lastKey.value[0];
                 value[1] = lastKey.value[1];
                 value[2] = lastKey.value[2];
                 return value;
             }
-            else if (this.extrapolation == 2)
+            else if (this.extrapolation == Tw2VectorCurve.Extrapolation.GRADIENT)
             {
                 d = time - lastKey.time;
                 value[0] = lastKey.value[0] + d * lastKey.right[0];
@@ -12180,14 +12652,14 @@ var ccpwgl_int = (function()
         }
         else if (time < 0 || time < firstKey.time)
         {
-            if (this.extrapolation == 0)
+            if (this.extrapolation == Tw2VectorCurve.Extrapolation.NONE)
             {
                 value[0] = this.value[0];
                 value[1] = this.value[1];
                 value[2] = this.value[2];
                 return value;
             }
-            else if (this.extrapolation == 2)
+            else if (this.extrapolation == Tw2VectorCurve.Extrapolation.GRADIENT)
             {
                 d = time * this.length - lastKey.time;
                 value[0] = firstKey.value[0] + d * firstKey.left[0];
@@ -12217,19 +12689,19 @@ var ccpwgl_int = (function()
         }
 
         var nt = (time - ck_1.time) / (ck.time - ck_1.time);
-        if (ck_1.interpolation == 1)
+        if (ck_1.interpolation == Tw2VectorCurve.Interpolation.CONSTANT)
         {
             value[0] = ck_1.value[0];
             value[1] = ck_1.value[1];
             value[2] = ck_1.value[2];
         }
-        else if (ck_1.interpolation == 2)
+        else if (ck_1.interpolation == Tw2VectorCurve.Interpolation.LINEAR)
         {
             value[0] = ck_1.value[0] * (1 - nt) + ck.value[0] * nt;
             value[1] = ck_1.value[1] * (1 - nt) + ck.value[1] * nt;
             value[2] = ck_1.value[2] * (1 - nt) + ck.value[2] * nt;
         }
-        else if (ck_1.interpolation == 3)
+        else if (ck_1.interpolation == Tw2VectorCurve.Interpolation.HERMITE)
         {
             var k3 = 2 * nt * nt * nt - 3 * nt * nt + 1;
             var k2 = -2 * nt * nt * nt + 3 * nt * nt;
@@ -12514,7 +12986,7 @@ var ccpwgl_int = (function()
 
     /**
      * Tw2MayaAnimationEngine
-     * TODO: Constructor is missing the prototype `_EvaluteBezier`
+     * TODO: Complete the prototype `_EvaluteBezier`
      * @property {Array} curves
      * @property {Array} hermiteSegments
      * @property {Array} bezierSegments
@@ -12759,6 +13231,20 @@ var ccpwgl_int = (function()
     };
 
     /**
+     * A static helper function to evaluate the infinity portion of an animation curve.
+     * The infinity portion is the parts of the animation curve outside the range of keys.
+     * @param curve - The animation curve to evaluate
+     * @param segments
+     * @param startSegment
+     * @param {time} time
+     * @param {boolean} bool - false: evaluate the post-infinity portion, true: evaluate the pre-infinity portion
+     */
+    Tw2MayaAnimationEngine.prototype._EvaluateInfinities = function(curve, segments, startSegment, time, bool)
+    {
+        throw new Error('_EvaluateInfinities not implimented');
+    };
+
+    /**
      * _EvaluateHermite
      * @param segment
      * @param time
@@ -12774,14 +13260,13 @@ var ccpwgl_int = (function()
 
     /**
      * _EvaluateBezier
-     * TODO: This function possibly has multiple errors
      * @param segment
      * @param time
-     * @param nextKeyTime
+     * @param nextSegmentTime
      * @returns {*}
      * @private
      */
-    Tw2MayaAnimationEngine.prototype._EvaluateBezier = function(segment, time, nextKeyTime)
+    Tw2MayaAnimationEngine.prototype._EvaluateBezier = function(segment, time, nextSegmentTime)
     {
         var t, s;
 
@@ -12793,10 +13278,11 @@ var ccpwgl_int = (function()
         }
         else
         {
-            var poly3 = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][3];
-            var poly2 = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][2];
-            var poly1 = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][1];
-            var poly0 = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][0] - s;
+            var poly = quat4.create();
+            poly[3] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][3];
+            poly[2] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][2];
+            poly[1] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][1];
+            poly[0] = segment[Tw2MayaAnimationEngine.BezierSegment.COEFF][0] - s;
             var roots = [];
             if (polyZeroes(poly, 3, 0.0, 1, 1.0, 1, roots) == 1)
             {
@@ -13510,6 +13996,13 @@ var ccpwgl_int = (function()
         this.keys = [];
     }
 
+
+    Tw2QuaternionCurve.Interpolation = {
+        CONSTANT: 0,
+        SPHERICAL_LINEAR: 4
+    };
+
+
     /**
      * Initializes the Curve
      * @prototype
@@ -13681,7 +14174,7 @@ var ccpwgl_int = (function()
         }
         switch (interp)
         {
-            case 4:
+            case Tw2QuaternionCurve.Interpolation.SPHERICAL_LINEAR:
                 if (lastKey && nextKey)
                 {
                     startValue = lastKey.value;
@@ -15440,9 +15933,10 @@ var ccpwgl_int = (function()
      * @property {Array.<Tw2ParticleEmitter>} particleEmitters
      * @property {Array.<Tw2CurveSet>} curveSets
      * @property {Array} children
-     * @property {Boolean} display
-     * @property {Boolean} displayMesh
-     * @property {Boolean} displayChildren
+     * @property {Boolean} display                                      - Enables/ disables all batch accumulations
+     * @property {{}} visible                                           - Batch accumulation options for the transforms's elements
+     * @property {Boolean} visible.mesh                                 - Enables/ disables mesh batch accumulation
+     * @property {Boolean} visible.children                             - Enables/ disables child batch accumulation
      * @property {vec3} scaling
      * @property {vec3} translation
      * @property {quat4} rotation
@@ -15459,7 +15953,6 @@ var ccpwgl_int = (function()
         this.name = '';
         this.mesh = null;
 
-        this.modifier = this.NONE;
         this.NONE = 0;
         this.BILLBOARD = 1;
         this.TRANSLATE_WITH_CAMERA = 2;
@@ -15469,6 +15962,7 @@ var ccpwgl_int = (function()
         this.EVE_BOOSTER = 101;
         this.EVE_SIMPLE_HALO = 102;
         this.EVE_CAMERA_ROTATION = 103;
+        this.modifier = this.NONE;
 
         this.sortValueMultiplier = 1.0;
         this.distanceBasedScaleArg1 = 0.2;
@@ -15481,8 +15975,9 @@ var ccpwgl_int = (function()
         this.children = [];
 
         this.display = true;
-        this.displayMesh = true;
-        this.displayChildren = true;
+        this.visible = {};
+        this.visible.mesh = true;
+        this.visible.children = true;
 
         this.scaling = vec3.create([1, 1, 1]);
         this.translation = vec3.create([0, 0, 0]);
@@ -15528,7 +16023,7 @@ var ccpwgl_int = (function()
         if (out === undefined)
         {
             out = [];
-        };
+        }
 
         if (this.mesh !== null)
         {
@@ -15544,7 +16039,7 @@ var ccpwgl_int = (function()
         }
 
         return out;
-    }
+    };
 
     /**
      * Gets render batches for accumulation
@@ -15559,7 +16054,7 @@ var ccpwgl_int = (function()
             return;
         }
 
-        if (this.displayMesh && this.mesh != null)
+        if (this.visible.mesh && this.mesh != null)
         {
             mat4.transpose(this.worldTransform, this._perObjectData.perObjectFFEData.Get('World'));
             mat4.inverse(this.worldTransform, this._perObjectData.perObjectFFEData.Get('WorldInverseTranspose'));
@@ -15571,14 +16066,14 @@ var ccpwgl_int = (function()
             this.mesh.GetBatches(mode, accumulator, this._perObjectData);
         }
 
-        if (this.displayChildren)
+        if (this.visible.children)
         {
             for (var i = 0; i < this.children.length; ++i)
             {
                 this.children[i].GetBatches(mode, accumulator, perObjectData);
             }
         }
-    }
+    };
 
     /**
      * Per frame update
@@ -15621,7 +16116,7 @@ var ccpwgl_int = (function()
 
     /**
      * Per frame update
-     * @param {Mat4} parentTransform
+     * @param {mat4} parentTransform
      */
     EveTransform.prototype.UpdateViewDependentData = function(parentTransform)
     {
@@ -15669,6 +16164,7 @@ var ccpwgl_int = (function()
                     this.worldTransform[10] = invView[10] * finalScale[2];
                 }
                 break;
+
             case this.EVE_CAMERA_ROTATION:
                 {
                     var newTranslation = mat4.multiplyVec3(parentTransform, this.translation, vec3.create());
@@ -15688,6 +16184,7 @@ var ccpwgl_int = (function()
                     this.worldTransform[14] = z;
                 }
                 break;
+
             case this.EVE_CAMERA_ROTATION_ALIGNED:
             case this.EVE_SIMPLE_HALO:
                 {
@@ -15762,6 +16259,7 @@ var ccpwgl_int = (function()
                     }
                 }
                 break;
+
             case this.LOOK_AT_CAMERA:
                 {
                     mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
@@ -15789,9 +16287,11 @@ var ccpwgl_int = (function()
                     this.worldTransform[10] = invView[10] * finalScale[2];
                 }
                 break;
+
             default:
                 mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
         }
+
         for (var i = 0; i < this.children.length; ++i)
         {
             this.children[i].UpdateViewDependentData(this.worldTransform);
@@ -16567,16 +17067,19 @@ var ccpwgl_int = (function()
      * @parameter {vec3} shapeEllipsoidCenter
      * @parameter {mat4} transform
      * @parameter {Tw2AnimationController} animation
-     * @parameter {boolean} display - Toggles rendering of the whole space object
-     * @parameter {boolean} displayMesh - Toggles mesh rendering
-     * @parameter {boolean} displayChildren - toggles rendering of children
-     * @parameter {boolean} displaySprites - Toggles sprite set rendering
-     * @parameter {boolean} displayDecals - Toggles decal rendering
-     * @parameter {boolean} displaySpotlights - Toggles spotlight set rendering
-     * @parameter {boolean} displayPlanes - toggles plane set rendering
-     * @parameter {boolean} displayLines - toggles line set rendering
-     * @parameter {boolean} displayOverlays - toggles overlay effect rendering
-     * @parameter {Number} displayKillCounterValue - number of kills to show on kill counter decals
+     * @parameter {boolean} display                             - Enables/ disables all batch accumulations
+     * @parameter {{}} visible                                  - Batch accumulation options for the space object's elements
+     * @parameter {boolean} visible.mesh                        - Enables/ disables mesh batch accumulation
+     * @parameter {boolean} visible.children                    - Enables/ disables child batch accumulation
+     * @parameter {boolean} visible.effectChildren              - Enables/ disables effect child batch accumulation
+     * @parameter {boolean} visible.spriteSets                  - Enables/ disables sprite set batch accumulation
+     * @parameter {boolean} visible.decals                      - Enables/ disables decal batch accumulation
+     * @parameter {boolean} visible.spotlightSets               - Enables/ disables spotlight set batch accumulation
+     * @parameter {boolean} visible.planeSets                   - Enables/ disables plane set batch accumulation
+     * @parameter {boolean} visible.lineSets                    - Enables/ disables lines set batch accumulation
+     * @parameter {boolean} visible.overlayEffects              - Enables/ disables overlay effect batch accumulation
+     * @parameter {boolean} visible.killmarks                   - Enables/ disables killmark batch accumulation
+     * @parameter {number} killCount                            - number of kills to show on kill counter decals
      * @parameter {vec3} _tempVec
      * @parameter {Tw2PerObjectData} _perObjectData
      * @constructor
@@ -16608,16 +17111,21 @@ var ccpwgl_int = (function()
         this.animation = new Tw2AnimationController();
 
         this.display = true;
-        this.displayMesh = true;
-        this.displayChildren = true;
-        this.displayPlanes = true;
-        this.displaySpotlights = true;
-        this.displayDecals = true;
-        this.displaySprites = true;
-        this.displayOverlays = true;
-        this.displayLines = true;
+        this.visible = {};
+        this.visible.mesh = true;
+        this.visible.children = true;
+        this.visible.effectChildren = true;
+        this.visible.planeSets = true;
+        this.visible.spotlightSets = true;
+        this.visible.decals = true;
+        this.visible.spriteSets = true;
+        this.visible.overlayEffects = true;
+        this.visible.lineSets = true;
+        this.visible.killmarks = true;
+        this._customMasks = [];
 
-        this.displayKillCounterValue = 0;
+        this.killCount = 0;
+
 
         this._tempVec = vec3.create();
 
@@ -16629,6 +17137,10 @@ var ccpwgl_int = (function()
         this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
         this._perObjectData.perObjectVSData.Declare('EllipsoidRadii', 4);
         this._perObjectData.perObjectVSData.Declare('EllipsoidCenter', 4);
+        this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix0', 16);
+        this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix1', 16);
+        this._perObjectData.perObjectVSData.Declare('CustomMaskData0', 4);
+        this._perObjectData.perObjectVSData.Declare('CustomMaskData1', 4);
         this._perObjectData.perObjectVSData.Declare('JointMat', 696);
         this._perObjectData.perObjectVSData.Create();
 
@@ -16637,13 +17149,19 @@ var ccpwgl_int = (function()
         this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
         this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
         this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
-        this._perObjectData.perObjectPSData.Declare('customMaskMatrix', 16);
+        this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID0', 4);
+        this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID1', 4);
+        this._perObjectData.perObjectPSData.Declare('CustomMaskTarget0', 4);
+        this._perObjectData.perObjectPSData.Declare('CustomMaskTarget1', 4);
         this._perObjectData.perObjectPSData.Create();
 
         this._perObjectData.perObjectVSData.Get('Shipdata')[1] = 1;
         this._perObjectData.perObjectPSData.Get('Shipdata')[1] = 1;
         this._perObjectData.perObjectVSData.Get('Shipdata')[3] = -10;
         this._perObjectData.perObjectPSData.Get('Shipdata')[3] = 1;
+
+        mat4.identity(this._perObjectData.perObjectVSData.Get('CustomMaskMatrix0'));
+        mat4.identity(this._perObjectData.perObjectVSData.Get('CustomMaskMatrix1'));
     }
 
     /**
@@ -16712,7 +17230,7 @@ var ccpwgl_int = (function()
         }
 
         return out;
-    }
+    };
 
 
     /**
@@ -16721,7 +17239,7 @@ var ccpwgl_int = (function()
     EveSpaceObject.prototype.ResetLod = function()
     {
         this.lod = 3;
-    }
+    };
 
     /**
      * Updates the lod
@@ -16746,7 +17264,27 @@ var ccpwgl_int = (function()
         {
             this.lod = 0;
         }
-    }
+    };
+
+    EveSpaceObject.prototype.AddCustomMask = function(position, scaling, rotation, isMirrored, sourceMaterial, targetMaterials)
+    {
+        var transform = mat4.create();
+
+        mat4.scale(mat4.transpose(quat4.toMat4(rotation, transform)), scaling);
+        transform[12] = position[0];
+        transform[13] = position[1];
+        transform[14] = position[2];
+        mat4.inverse(transform, transform);
+        mat4.transpose(transform, transform);
+
+        this._customMasks.push(
+        {
+            transform: transform,
+            maskData: quat4.create([1, isMirrored ? 1 : 0, 0, 0]),
+            materialID: quat4.create([sourceMaterial, 0, 0, 0]),
+            targets: targetMaterials
+        });
+    };
 
     /**
      * A Per frame function that updates view dependent data
@@ -16779,6 +17317,15 @@ var ccpwgl_int = (function()
             vec3.scale(radii, 0.5);
         }
 
+
+        for (i = 0; i < this._customMasks.length; ++i)
+        {
+            this._perObjectData.perObjectVSData.Set(i ? 'CustomMaskMatrix1' : 'CustomMaskMatrix0', this._customMasks[i].transform);
+            this._perObjectData.perObjectVSData.Set(i ? 'CustomMaskData1' : 'CustomMaskData0', this._customMasks[i].maskData);
+            this._perObjectData.perObjectPSData.Set(i ? 'CustomMaskMaterialID1' : 'CustomMaskMaterialID0', this._customMasks[i].materialID);
+            this._perObjectData.perObjectPSData.Set(i ? 'CustomMaskTarget1' : 'CustomMaskTarget0', this._customMasks[i].targets);
+        }
+
         if (this.animation.animations.length)
         {
             this._perObjectData.perObjectVSData.Set('JointMat', this.animation.GetBoneMatrices(0));
@@ -16788,7 +17335,7 @@ var ccpwgl_int = (function()
         {
             this.lineSets[s].UpdateViewDependentData(this.transform);
         }
-    }
+    };
 
     /**
      * Gets render batches
@@ -16799,7 +17346,7 @@ var ccpwgl_int = (function()
     {
         if (this.display)
         {
-            if (this.displayMesh && this.mesh != null && this.lod > 0)
+            if (this.visible.mesh && this.mesh != null && this.lod > 0)
             {
                 this.mesh.GetBatches(mode, accumulator, this._perObjectData);
             }
@@ -16808,7 +17355,7 @@ var ccpwgl_int = (function()
             {
                 var i;
 
-                if (this.displaySprites)
+                if (this.visible.spriteSets)
                 {
                     for (i = 0; i < this.spriteSets.length; ++i)
                     {
@@ -16816,7 +17363,7 @@ var ccpwgl_int = (function()
                     }
                 }
 
-                if (this.displaySpotlights)
+                if (this.visible.spotlightSets)
                 {
                     for (i = 0; i < this.spotlightSets.length; ++i)
                     {
@@ -16824,7 +17371,7 @@ var ccpwgl_int = (function()
                     }
                 }
 
-                if (this.displayPlanes)
+                if (this.visible.planeSets)
                 {
                     for (i = 0; i < this.planeSets.length; ++i)
                     {
@@ -16832,15 +17379,16 @@ var ccpwgl_int = (function()
                     }
                 }
 
-                if (this.displayDecals)
+                if (this.visible.decals)
                 {
                     for (i = 0; i < this.decals.length; ++i)
                     {
-                        this.decals[i].GetBatches(mode, accumulator, this._perObjectData, this.displayKillCounterValue);
+                        var killCount = (this.visible.killmarks) ? this.killCount : 0;
+                        this.decals[i].GetBatches(mode, accumulator, this._perObjectData, killCount);
                     }
                 }
 
-                if (this.displayLines)
+                if (this.visible.lineSets)
                 {
                     for (var i = 0; i < this.lineSets.length; ++i)
                     {
@@ -16849,36 +17397,43 @@ var ccpwgl_int = (function()
                 }
             }
 
-            if (this.displayChildren)
+            if (this.visible.children)
             {
                 for (i = 0; i < this.children.length; ++i)
                 {
                     this.children[i].GetBatches(mode, accumulator, this._perObjectData);
                 }
+            }
+
+            if (this.visible.effectChildren)
+            {
                 for (i = 0; i < this.effectChildren.length; ++i)
                 {
                     this.effectChildren[i].GetBatches(mode, accumulator, this._perObjectData);
                 }
             }
 
-            if (this.displayOverlays && this.mesh && this.mesh.geometryResource && this.mesh.geometryResource.IsGood())
+            if (this.visible.overlayEffects && this.mesh && this.mesh.geometryResource && this.mesh.geometryResource.IsGood())
             {
                 for (i = 0; i < this.overlayEffects.length; ++i)
                 {
-                    var effects = this.overlayEffects[i].GetEffects(mode);
-                    if (effects)
+                    if (this.overlayEffects[i].display)
                     {
-                        for (var j = 0; j < effects.length; ++j)
+                        var effects = this.overlayEffects[i].GetEffects(mode);
+                        if (effects)
                         {
-                            var batch = new Tw2GeometryBatch();
-                            batch.renderMode = mode;
-                            batch.perObjectData = this._perObjectData;
-                            batch.geometryRes = this.mesh.geometryResource;
-                            batch.meshIx = this.mesh.meshIndex;
-                            batch.start = 0;
-                            batch.count = this.mesh.geometryResource.meshes[this.mesh.meshIndex].areas.length;
-                            batch.effect = effects[j];
-                            accumulator.Commit(batch);
+                            for (var j = 0; j < effects.length; ++j)
+                            {
+                                var batch = new Tw2GeometryBatch();
+                                batch.renderMode = mode;
+                                batch.perObjectData = this._perObjectData;
+                                batch.geometryRes = this.mesh.geometryResource;
+                                batch.meshIx = this.mesh.meshIndex;
+                                batch.start = 0;
+                                batch.count = this.mesh.geometryResource.meshes[this.mesh.meshIndex].areas.length;
+                                batch.effect = effects[j];
+                                accumulator.Commit(batch);
+                            }
                         }
                     }
                 }
@@ -16905,7 +17460,7 @@ var ccpwgl_int = (function()
             }
             for (i = 0; i < this.effectChildren.length; ++i)
             {
-                this.effectChildren[i].Update(this.transform);
+                this.effectChildren[i].Update(this.transform, dt);
             }
             for (i = 0; i < this.curveSets.length; ++i)
             {
@@ -16996,8 +17551,8 @@ var ccpwgl_int = (function()
      * @property {Array.<EveBoosterSet>} boosters
      * @property {Array.<EveTurretSet>} turretSets
      * @property {Array} _turretSetsLocatorInfo
-     * @property {boolean} displayTurrets - Toggles turret rendering
-     * @property {boolean} displayBoosters - Toggles booster rendering
+     * @property {boolean} visible.turretSets      - Enables/ disables turret set batch accumulation
+     * @property {boolean} visible.boosters        - Enables/ disables booster batch accumulation
      * @inherits EveSpaceObject
      * @constructor
      */
@@ -17009,8 +17564,8 @@ var ccpwgl_int = (function()
         this.turretSets = [];
         this._turretSetsLocatorInfo = [];
 
-        this.displayTurrets = true;
-        this.displayBoosters = true;
+        this.visible.turretSets = true;
+        this.visible.boosters = true;
     }
 
     /**
@@ -17047,7 +17602,7 @@ var ccpwgl_int = (function()
         if (out === undefined)
         {
             out = [];
-        };
+        }
 
         this._super.GetResources.call(this, out, excludeChildren);
 
@@ -17069,7 +17624,7 @@ var ccpwgl_int = (function()
         }
 
         return out;
-    }
+    };
 
     /**
      * Gets render batches
@@ -17085,7 +17640,7 @@ var ccpwgl_int = (function()
             this._perObjectData.perObjectVSData.Get('Shipdata')[0] = this.boosterGain;
             this._perObjectData.perObjectPSData.Get('Shipdata')[0] = this.boosterGain;
 
-            if (this.displayTurrets)
+            if (this.visible.turretSets)
             {
                 if (this.lod > 1)
                 {
@@ -17096,17 +17651,17 @@ var ccpwgl_int = (function()
                 }
                 else
                 {
-                    for (var i = 0; i < this.turretSets.length; ++i)
+                    for (var t = 0; t < this.turretSets.length; ++t)
                     {
-                        if (this.turretSets[i].firingEffect)
+                        if (this.turretSets[t].firingEffect)
                         {
-                            this.turretSets[i].firingEffect.GetBatches(mode, accumulator, this._perObjectData);
+                            this.turretSets[t].firingEffect.GetBatches(mode, accumulator, this._perObjectData);
                         }
                     }
                 }
             }
 
-            if (this.boosters && this.displayBoosters)
+            if (this.boosters && this.visible.boosters)
             {
                 this.boosters.GetBatches(mode, accumulator, this._perObjectData);
             }
@@ -17143,7 +17698,8 @@ var ccpwgl_int = (function()
                 }
             }
         }
-        for (var i = 0; i < this.turretSets.length; ++i)
+
+        for (i = 0; i < this.turretSets.length; ++i)
         {
             this.turretSets[i].Update(dt, this.transform);
         }
@@ -17159,7 +17715,7 @@ var ccpwgl_int = (function()
         {
             this.turretSets[i].UpdateViewDependentData();
         }
-    }
+    };
 
     /**
      * Rebuilds the ship's booster set
@@ -17572,6 +18128,66 @@ var ccpwgl_int = (function()
         {
             this.envMap3Res = resMan.GetResource(this.envMap3ResPath);
         }
+    };
+
+    /**
+     * Gets scene's res objects
+     * @param {Array} [out=[]] - Optional receiving array
+     * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+     */
+    EveSpaceScene.prototype.GetResources = function(out)
+    {
+        if (out === undefined)
+        {
+            out = [];
+        }
+
+        if (this.backgroundEffect)
+        {
+            this.backgroundEffect.GetResources(out);
+        }
+
+        for (var i = 0; i < this.lensflares.length; i++)
+        {
+            this.lensflares[i].GetResources(out);
+        }
+
+        function getEnvMapResource(out, envMap)
+        {
+            if (envMap !== null && out.indexOf(envMap) === -1) out.push(envMap);
+        }
+
+        getEnvMapResource(out, this.envMapRes);
+        getEnvMapResource(out, this.envMap1Res);
+        getEnvMapResource(out, this.envMap2Res);
+        getEnvMapResource(out, this.envMap3Res);
+
+        return out;
+    };
+
+    /**
+     * Gets scene's children's res objects
+     * @param {Array} [out=[]] - Optional receiving array
+     * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+     */
+    EveSpaceScene.prototype.GetChildResources = function(out)
+    {
+        if (out === undefined)
+        {
+            out = [];
+        }
+
+        for (var p = 0; p < this.planets.length; p++)
+        {
+            this.planets[p].GetResources(out);
+        }
+
+        for (var i = 0; i < this.objects.length; i++)
+        {
+            this.objects[i].GetResources(out);
+        }
+
+        return out;
     };
 
     /**
@@ -18164,6 +18780,41 @@ var ccpwgl_int = (function()
     }
 
     /**
+     * Gets lensflares's res objects
+     * @param {Array} [out=[]] - Optional receiving array
+     * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+     */
+    EveLensflare.prototype.GetResources = function(out)
+    {
+        if (out === undefined)
+        {
+            out = [];
+        }
+
+        if (this.mesh !== null)
+        {
+            this.mesh.GetResources(out);
+        }
+
+        for (var f = 0; f < this.flares.length; f++)
+        {
+            this.flares[f].GetResources(out);
+        }
+
+        for (var o = 0; o < this.occluders.length; o++)
+        {
+            this.occluders[o].GetResources(out);
+        }
+
+        for (var b = 0; b < this.backgroundOccluders.length; b++)
+        {
+            this.backgroundOccluders[b].GetResources(out);
+        }
+
+        return out;
+    };
+
+    /**
      * Internal helper function
      * @param out
      * @param v
@@ -18727,11 +19378,11 @@ var ccpwgl_int = (function()
     };
 
     /**
-     * EveEffectRoot
+     * EveEffectRoot root objects for FX, can be put into scene's objects array
      * @property {string} name
      * @property {boolean} display
-     * @property {EveTransform|EveStretch|EveTransform} highDetail
-     * @property {boolean} isPlaying
+     * @property {[{}]} curveSets
+     * @property {[{}]} effectChildren
      * @property {vec3} scaling
      * @property {quat4} rotation
      * @property {vec3} translation
@@ -18747,27 +19398,46 @@ var ccpwgl_int = (function()
     {
         this.name = '';
         this.display = true;
-        this.highDetail = null;
-        this.isPlaying = false;
-        this.duration = 0;
+
+        this.curveSets = [];
         this.boundingSphereCenter = vec3.create();
         this.boundingSphereRadius = 0;
 
         this.scaling = vec3.create([1, 1, 1]);
         this.rotation = quat4.create([0, 0, 0, 1]);
         this.translation = vec3.create();
+
+        this.duration = 0;
+
+        this.effectChildren = [];
+
         this.localTransform = mat4.identity(mat4.create());
         this.rotationTransform = mat4.create();
 
         this._perObjectData = new Tw2PerObjectData();
         this._perObjectData.perObjectVSData = new Tw2RawData();
         this._perObjectData.perObjectVSData.Declare('WorldMat', 16);
+        this._perObjectData.perObjectVSData.Declare('WorldMatLast', 16);
         this._perObjectData.perObjectVSData.Declare('Shipdata', 4);
+        this._perObjectData.perObjectVSData.Declare('Clipdata1', 4);
+        this._perObjectData.perObjectVSData.Declare('EllipsoidRadii', 4);
+        this._perObjectData.perObjectVSData.Declare('EllipsoidCenter', 4);
+        this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix0', 16);
+        this._perObjectData.perObjectVSData.Declare('CustomMaskMatrix1', 16);
+        this._perObjectData.perObjectVSData.Declare('CustomMaskData0', 4);
+        this._perObjectData.perObjectVSData.Declare('CustomMaskData1', 4);
         this._perObjectData.perObjectVSData.Declare('JointMat', 696);
         this._perObjectData.perObjectVSData.Create();
 
         this._perObjectData.perObjectPSData = new Tw2RawData();
         this._perObjectData.perObjectPSData.Declare('Shipdata', 4);
+        this._perObjectData.perObjectPSData.Declare('Clipdata1', 4);
+        this._perObjectData.perObjectPSData.Declare('Clipdata2', 4);
+        this._perObjectData.perObjectPSData.Declare('ShLighting', 4 * 7);
+        this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID0', 4);
+        this._perObjectData.perObjectPSData.Declare('CustomMaskMaterialID1', 4);
+        this._perObjectData.perObjectPSData.Declare('CustomMaskTarget0', 4);
+        this._perObjectData.perObjectPSData.Declare('CustomMaskTarget1', 4);
         this._perObjectData.perObjectPSData.Create();
     }
 
@@ -18781,15 +19451,14 @@ var ccpwgl_int = (function()
         if (out === undefined)
         {
             out = [];
-        };
-
-        if (this.highDetail !== null)
-        {
-            this.highDetail.GetResources(out);
         }
 
+        for (var i = 0; i < this.effectChildren.length; ++i)
+        {
+            this.effectChildren[i].GetResources(out);
+        }
         return out;
-    }
+    };
 
     /**
      * Internal per frame update
@@ -18797,17 +19466,21 @@ var ccpwgl_int = (function()
      */
     EveEffectRoot.prototype.Update = function(dt)
     {
-        if (this.highDetail)
-        {
-            this.highDetail.Update(dt);
-        }
-
         mat4.identity(this.localTransform);
         mat4.translate(this.localTransform, this.translation);
         mat4.transpose(quat4.toMat4(quat4.normalize(this.rotation), this.rotationTransform));
         mat4.multiply(this.localTransform, this.rotationTransform, this.localTransform);
         mat4.scale(this.localTransform, this.scaling);
-    }
+
+        for (var i = 0; i < this.curveSets.length; ++i)
+        {
+            this.curveSets[i].Update(dt);
+        }
+        for (i = 0; i < this.effectChildren.length; ++i)
+        {
+            this.effectChildren[i].Update(this.localTransform, dt);
+        }
+    };
 
     /**
      * Gets render batches
@@ -18816,38 +19489,37 @@ var ccpwgl_int = (function()
      */
     EveEffectRoot.prototype.GetBatches = function(mode, accumulator)
     {
-        if (!this.display || !this.isPlaying || !this.highDetail)
+        if (!this.display)
         {
             return;
         }
-
-        this.highDetail.UpdateViewDependentData(this.localTransform);
-        mat4.transpose(this.localTransform, this._perObjectData.perObjectVSData.Get('WorldMat'));
-        this.highDetail.GetBatches(mode, accumulator, this._perObjectData);
-    }
+        for (var i = 0; i < this.effectChildren.length; ++i)
+        {
+            this.effectChildren[i].GetBatches(mode, accumulator, this._perObjectData);
+        }
+    };
 
     /**
      * Starts playing the effectRoot's curveSets if they exist
      */
     EveEffectRoot.prototype.Start = function()
     {
-        if (this.highDetail)
+        for (var i = 0; i < this.curveSets.length; ++i)
         {
-            this.isPlaying = true;
-            for (var i = 0; i < this.highDetail.curveSets.length; ++i)
-            {
-                this.highDetail.curveSets[i].Play();
-            }
+            this.curveSets[i].Play();
         }
-    }
+    };
 
     /**
      * Stops the effectRoot's curveSets from playing
      */
     EveEffectRoot.prototype.Stop = function()
     {
-        this.isPlaying = false;
-    }
+        for (var i = 0; i < this.curveSets.length; ++i)
+        {
+            this.curveSets[i].Stop();
+        }
+    };
 
     /**
      * EveStretch
@@ -19381,22 +20053,6 @@ var ccpwgl_int = (function()
             return defaultValue;
         }
 
-        function GetFactionMeshAreaParameters(areaName, paramName, faction)
-        {
-            var areas = _get(faction, 'areas',
-            {});
-            if (areaName in areas)
-            {
-                var area = _get(areas, areaName,
-                {});
-                if (paramName in _get(area, 'parameters',
-                    {}))
-                {
-                    return _get(area.parameters[paramName], 'value', [0, 0, 0, 0]);
-                }
-            }
-        }
-
         /**
          * @return {string}
          */
@@ -19457,33 +20113,75 @@ var ccpwgl_int = (function()
             return shader.substr(0, index + 1) + prefix + shader.substr(index + 1);
         }
 
-        function GetOverridenParameter(name, area, commands)
+        function FindPrefix(prefixes, name)
         {
+            for (var m = 0; m < prefixes.length; ++m)
+            {
+                if (name.substr(0, prefixes[m].length) == prefixes[m])
+                {
+                    return m;
+                }
+            }
+            return null;
+        }
+
+        function GetOverridenParameter(name, area, commands, race)
+        {
+            var prefixes, materialIndex, materialData, shortName;
             if ('mesh' in commands)
             {
-                var prefixes = data.generic.materialPrefixes;
-                var materialIndex = null;
-                for (var m = 0; m < prefixes.length; ++m)
-                {
-                    if (name.substr(0, prefixes[m].length) == prefixes[m])
-                    {
-                        materialIndex = m;
-                        break;
-                    }
-                }
+                prefixes = data.generic.materialPrefixes;
+                materialIndex = FindPrefix(prefixes, name);
                 if (materialIndex !== null && materialIndex < commands.mesh.length && (_get(area, 'blockedMaterials', 0) & (1 << materialIndex)) == 0)
                 {
-                    var materialData = _get(data.material, commands.mesh[materialIndex], null);
+                    materialData = _get(data.material, commands.mesh[materialIndex], null);
                     if (materialData)
                     {
-                        var shortName = name.substr(prefixes[m].length);
+                        shortName = name.substr(prefixes[materialIndex].length);
                         return _get(materialData.parameters, shortName, undefined);
                     }
                 }
             }
+            prefixes = data.generic.patternMaterialPrefixes;
+            materialIndex = FindPrefix(prefixes, name);
+            if ('pattern' in commands)
+            {
+                if (materialIndex !== null && 1 + materialIndex < commands.pattern.length)
+                {
+                    materialData = _get(data.material, commands.pattern[1 + materialIndex], null);
+                    if (materialData)
+                    {
+                        shortName = name.substr(prefixes[materialIndex].length);
+                        return _get(materialData.parameters, shortName, undefined);
+                    }
+                }
+            }
+
+            if (materialIndex !== null)
+            {
+                materialData = _get(data.material, race.defaultPatternLayer1MaterialName, null);
+                if (materialData)
+                {
+                    shortName = name.substr(prefixes[materialIndex].length);
+                    return _get(materialData.parameters, shortName, undefined);
+                }
+            }
         }
 
-        function FillMeshAreas(areas, areasName, hull, faction, race, commands, shaderOverride)
+        function GetAddressMode(projectionType)
+        {
+            switch (projectionType)
+            {
+                case 2:
+                    return 4;
+                case 1:
+                    return 3;
+                default:
+                    return 1;
+            }
+        }
+
+        function FillMeshAreas(areas, areasName, hull, faction, race, pattern, commands, shaderOverride)
         {
             var hullAreas = _get(hull, areasName, []);
             for (var i = 0; i < hullAreas.length; ++i)
@@ -19496,7 +20194,7 @@ var ccpwgl_int = (function()
                 for (var j = 0; j < names.length; ++j)
                 {
                     var name = names[j];
-                    var param = GetOverridenParameter(name, area, commands);
+                    var param = GetOverridenParameter(name, area, commands, race);
                     param = param || _get(_get(_get(data.generic.hullAreas, area.name,
                     {}), 'parameters',
                     {}), name);
@@ -19517,9 +20215,40 @@ var ccpwgl_int = (function()
                 var hullTextures = _get(area, 'textures', []);
                 for (j in hullTextures)
                 {
-                    var path = hullTextures[j];
-                    path = ModifyTextureResPath(path, j, area, faction, commands);
-                    effect.parameters[j] = new Tw2TextureParameter(j, path);
+                    if (hullTextures.hasOwnProperty(j))
+                    {
+                        var path = hullTextures[j];
+                        path = ModifyTextureResPath(path, j, area, faction, commands);
+                        effect.parameters[j] = new Tw2TextureParameter(j, path);
+                    }
+                }
+
+                for (j = 0; j < pattern.layers.length; ++j)
+                {
+                    if (pattern.layers[j] && !(pattern.layers[j].textureName in effect.parameters))
+                    {
+                        var patternTex = new Tw2TextureParameter(pattern.layers[j].textureName);
+                        patternTex.resourcePath = pattern.layers[j].textureResFilePath;
+                        patternTex.useAllOverrides = true;
+                        patternTex.addressUMode = GetAddressMode(_get(pattern.layers[j], 'projectionTypeU', 0));
+                        patternTex.addressVMode = GetAddressMode(_get(pattern.layers[j], 'projectionTypeV', 0));
+                        patternTex.Initialize();
+                        effect.parameters[pattern.layers[j].textureName] = patternTex;
+                    }
+                }
+
+                var defaultTextures = _get(_get(data['generic']['areaShaders'], area.shader,
+                {}), 'defaultTextures',
+                {});
+                for (var texName in defaultTextures)
+                {
+                    if (defaultTextures.hasOwnProperty(texName))
+                    {
+                        if (!(texName in effect.parameters))
+                        {
+                            effect.parameters[texName] = new Tw2TextureParameter(texName, defaultTextures[texName]);
+                        }
+                    }
                 }
 
                 effect.Initialize();
@@ -19534,7 +20263,7 @@ var ccpwgl_int = (function()
 
         }
 
-        function SetupMesh(ship, hull, faction, race, commands)
+        function SetupMesh(ship, hull, faction, race, commands, pattern)
         {
             var mesh = new Tw2Mesh();
             mesh.geometryResPath = hull['geometryResFilePath'];
@@ -19542,11 +20271,11 @@ var ccpwgl_int = (function()
             ship.boundingSphereCenter[1] = hull.boundingSphere[1];
             ship.boundingSphereCenter[2] = hull.boundingSphere[2];
             ship.boundingSphereRadius = hull.boundingSphere[3];
-            FillMeshAreas(_get(mesh, 'opaqueAreas', []), 'opaqueAreas', hull, faction, race, commands);
-            FillMeshAreas(_get(mesh, 'transparentAreas', []), 'transparentAreas', hull, faction, race, commands);
-            FillMeshAreas(_get(mesh, 'additiveAreas', []), 'additiveAreas', hull, faction, race, commands);
-            FillMeshAreas(_get(mesh, 'decalAreas', []), 'decalAreas', hull, faction, race, commands);
-            FillMeshAreas(_get(mesh, 'depthAreas', []), 'depthAreas', hull, faction, race, commands);
+            FillMeshAreas(_get(mesh, 'opaqueAreas', []), 'opaqueAreas', hull, faction, race, pattern, commands);
+            FillMeshAreas(_get(mesh, 'transparentAreas', []), 'transparentAreas', hull, faction, race, pattern, commands);
+            FillMeshAreas(_get(mesh, 'additiveAreas', []), 'additiveAreas', hull, faction, race, pattern, commands);
+            FillMeshAreas(_get(mesh, 'decalAreas', []), 'decalAreas', hull, faction, race, pattern, commands);
+            FillMeshAreas(_get(mesh, 'depthAreas', []), 'depthAreas', hull, faction, race, pattern, commands);
             mesh.Initialize();
             ship.mesh = mesh;
             if ('shapeEllipsoidCenter' in hull)
@@ -19556,6 +20285,103 @@ var ccpwgl_int = (function()
             if ('shapeEllipsoidRadius' in hull)
             {
                 ship.shapeEllipsoidRadius = hull.shapeEllipsoidRadius;
+            }
+        }
+
+        function SetupPattern(hull, race, commands)
+        {
+            var pattern = {
+                patterns: [],
+                layers: []
+            };
+            if ('pattern' in commands)
+            {
+                var p = {};
+                for (var k = 0; k < data.pattern.length; ++k)
+                {
+                    if (data.pattern[k].name == commands.pattern[0])
+                    {
+                        p = data.pattern[k];
+                        break;
+                    }
+                }
+                var layer = _get(p, 'layer1', null);
+                if (layer)
+                {
+                    pattern.layers.push(layer)
+                }
+                layer = _get(p, 'layer2', null);
+                if (layer)
+                {
+                    pattern.layers.push(layer)
+                }
+                var projections = _get(p, 'projections', []);
+                for (var i = 0; i < projections.length; ++i)
+                {
+                    if (projections[i].name == hull.name)
+                    {
+                        p = projections[i];
+                        layer = _get(p, 'transformLayer1', null);
+                        if (layer)
+                        {
+                            pattern.patterns.push(layer)
+                        }
+                        layer = _get(p, 'transformLayer2', null);
+                        if (layer)
+                        {
+                            pattern.patterns.push(layer)
+                        }
+                    }
+                }
+            }
+            else if (_get(hull, 'defaultPattern'))
+            {
+                p = _get(hull, 'defaultPattern',
+                {});
+                layer = _get(p, 'transformLayer1', null);
+                if (layer)
+                {
+                    pattern.patterns.push(layer)
+                }
+                layer = _get(p, 'transformLayer2', null);
+                if (layer)
+                {
+                    pattern.patterns.push(layer)
+                }
+                p = _get(race, 'defaultPattern',
+                {});
+                layer = _get(p, 'layer1', null);
+                if (layer)
+                {
+                    pattern.layers.push(layer)
+                }
+                layer = _get(p, 'layer2', null);
+                if (layer)
+                {
+                    pattern.layers.push(layer)
+                }
+            }
+            return pattern;
+        }
+
+        function SetupCustomMasks(ship, pattern)
+        {
+            for (var i = 0; i < pattern.patterns.length; ++i)
+            {
+                if (pattern.patterns[i] && pattern.layers[i])
+                {
+                    var p = pattern.patterns[i];
+                    var l = pattern.layers[i];
+                    ship.AddCustomMask(
+                        _get(p, 'position', vec3.create([0, 0, 0])),
+                        _get(p, 'scaling', vec3.create([1, 1, 1])),
+                        _get(p, 'rotation', quat4.create([0, 0, 0, 1])),
+                        _get(p, 'isMirrored', false),
+                        _get(l, 'materialSource', 0),
+                        quat4.create([_get(l, 'isTargetMtl1', true) ? 1 : 0, _get(l, 'isTargetMtl2', true) ? 1 : 0,
+                            _get(l, 'isTargetMtl3', true) ? 1 : 0, _get(l, 'isTargetMtl4', true) ? 1 : 0
+                        ]));
+                }
             }
         }
 
@@ -19592,13 +20418,19 @@ var ccpwgl_int = (function()
                 {});
                 for (var j in hullParameters)
                 {
-                    effect.parameters[j] = new Tw2Vector4Parameter(j, hullParameters[j]);
+                    if (hullParameters.hasOwnProperty(j))
+                    {
+                        effect.parameters[j] = new Tw2Vector4Parameter(j, hullParameters[j]);
+                    }
                 }
                 var hullTextures = _get(hullDecal, 'textures',
                 {});
                 for (j in hullTextures)
                 {
-                    effect.parameters[j] = new Tw2TextureParameter(j, hullTextures[j]);
+                    if (hullTextures.hasOwnProperty(j))
+                    {
+                        effect.parameters[j] = new Tw2TextureParameter(j, hullTextures[j]);
+                    }
                 }
                 if (factionDecal)
                 {
@@ -19606,18 +20438,36 @@ var ccpwgl_int = (function()
                     {});
                     for (j in factionParameters)
                     {
-                        effect.parameters[j] = new Tw2Vector4Parameter(j, factionParameters[j]);
+                        if (factionParameters.hasOwnProperty(j))
+                        {
+                            effect.parameters[j] = new Tw2Vector4Parameter(j, factionParameters[j]);
+                        }
                     }
                     var factionTextures = _get(factionDecal, 'textures',
                     {});
                     for (j in factionTextures)
                     {
-                        if (!(j in effect.parameters))
+                        if (factionTextures.hasOwnProperty(j) && !(j in effect.parameters))
                         {
                             effect.parameters[j] = new Tw2TextureParameter(j, factionTextures[j]);
                         }
                     }
                 }
+
+                var defaultTextures = _get(_get(data['generic']['decalShaders'], hullDecal.shader,
+                {}), 'defaultTextures',
+                {});
+                for (var texName in defaultTextures)
+                {
+                    if (defaultTextures.hasOwnProperty(texName))
+                    {
+                        if (!(texName in effect.parameters))
+                        {
+                            effect.parameters[texName] = new Tw2TextureParameter(texName, defaultTextures[texName]);
+                        }
+                    }
+                }
+
                 effect.Initialize();
 
                 var decal = new EveSpaceObjectDecal();
@@ -19648,7 +20498,7 @@ var ccpwgl_int = (function()
                 mesh.geometryResPath = him.geometryResPath;
                 mesh.Initialize();
 
-                FillMeshAreas(_get(mesh, 'opaqueAreas', []), 'opaqueAreas', hull, faction, race, commands, him.shader);
+                FillMeshAreas(_get(mesh, 'opaqueAreas', []), 'opaqueAreas', hull, faction, race, pattern, commands, him.shader);
 
                 var child = new EveChildMesh();
                 child.mesh = mesh;
@@ -20035,7 +20885,9 @@ var ccpwgl_int = (function()
             var faction = data['faction'][parts[1]];
             var race = data['race'][parts[2]];
             var ship = new(_get(hull, 'buildClass', 0) == 2 ? EveSpaceObject : EveShip)();
-            SetupMesh(ship, hull, faction, race, commands);
+            var pattern = SetupPattern(hull, race, commands);
+            SetupMesh(ship, hull, faction, race, commands, pattern);
+            SetupCustomMasks(ship, pattern);
             SetupDecals(ship, hull, faction);
             SetupSpriteSets(ship, hull, faction);
             SetupSpotlightSets(ship, hull, faction);
@@ -20179,21 +21031,24 @@ var ccpwgl_int = (function()
                 var params = turretSet.turretEffect.parameters;
                 for (var i in params)
                 {
-                    if (params[i].constructor.prototype != Tw2Vector4Parameter.prototype)
+                    if (params.hasOwnProperty(i))
                     {
-                        continue;
+                        if (params[i].constructor.prototype != Tw2Vector4Parameter.prototype)
+                        {
+                            continue;
+                        }
+                        var parentValue = null;
+                        var turretValue = null;
+                        if (parentArea)
+                        {
+                            parentValue = GetTurretMaterialParameter(i, parentFaction, parentArea);
+                        }
+                        if (turretArea)
+                        {
+                            turretValue = GetTurretMaterialParameter(i, parentFaction, parentArea);
+                        }
+                        quat4.set(CombineTurretMaterial(i, parentValue, turretValue, turretSet.turretEffect.name), params[i].value);
                     }
-                    var parentValue = null;
-                    var turretValue = null;
-                    if (parentArea)
-                    {
-                        parentValue = GetTurretMaterialParameter(i, parentFaction, parentArea);
-                    }
-                    if (turretArea)
-                    {
-                        turretValue = GetTurretMaterialParameter(i, parentFaction, parentArea);
-                    }
-                    quat4.set(CombineTurretMaterial(i, parentValue, turretValue, turretSet.turretEffect.name), params[i].value);
                 }
                 turretSet.turretEffect.BindParameters();
             }
@@ -20229,7 +21084,10 @@ var ccpwgl_int = (function()
                 var names = {};
                 for (var i in data[name])
                 {
-                    names[i] = data[name][i].description || '';
+                    if (data[name].hasOwnProperty(i))
+                    {
+                        names[i] = data[name][i].description || '';
+                    }
                 }
                 return names;
             }
@@ -21125,7 +21983,6 @@ var ccpwgl_int = (function()
 
     /**
      * Constructor for Overlay Effects
-     * @property {boolean} display
      * @property {boolean} update
      * @property {Tw2CurveSet} curveSet
      * @property {string} name
@@ -21133,12 +21990,18 @@ var ccpwgl_int = (function()
      * @property {Array.<Tw2Effect>} decalEffects
      * @property {Array.<Tw2Effect>} transparentEffects
      * @property {Array.<Tw2Effect>} additiveEffects
-     * @property {Array.<Tw2Effect>} distortionEffects - Currently doesn't work in ccpwgl
+     * @property {Array.<Tw2Effect>} distortionEffects - Currently not supported
+     * @property {boolean} display                     - Enables/ disables all batch accumulations
+     * @property {{}} visible                          - Batch accumulation options for the overlay effect
+     * @property {boolean} visible.opaqueEffects       - Enables/ disables opaque effect batch accumulation
+     * @property {boolean} visible.decalEffects        - Enables/ disables decal effect batch accumulation
+     * @property {boolean} visible.transparentEffects  - Enables/ disables transparent effect batch accumulation
+     * @property {boolean} visible.additiveEffects     - Enables/ disables additive effect batch accumulation
+     * @property {boolean} visible.distortionEffects   - Currently not supported
      * @constructor
      */
     function EveMeshOverlayEffect()
     {
-        this.display = true;
         this.update = true;
         this.curveSet = null;
         this.name = '';
@@ -21147,6 +22010,14 @@ var ccpwgl_int = (function()
         this.transparentEffects = [];
         this.additiveEffects = [];
         this.distortionEffects = [];
+
+        this.display = true;
+        this.visible = {};
+        this.visible.opaqueEffects = true;
+        this.visible.decalEffects = true;
+        this.visible.transparentEffects = true;
+        this.visible.additiveEffects = true;
+        this.visible.distortionEffects = false;
     }
 
     /**
@@ -21170,18 +22041,21 @@ var ccpwgl_int = (function()
     {
         if (this.display)
         {
-            switch (mode)
+            if (mode == device.RM_OPAQUE && this.visible.opaqueEffects)
             {
-                case device.RM_OPAQUE:
-                    return this.opaqueEffects;
-                case device.RM_DECAL:
-                    return this.decalEffects;
-                case device.RM_TRANSPARENT:
-                    return this.transparentEffects;
-                case device.RM_ADDITIVE:
-                    return this.additiveEffects;
-                default:
-                    return null;
+                return this.opaqueEffects;
+            }
+            else if (mode == device.RM_TRANSPARENT && this.visible.transparentEffects)
+            {
+                return this.transparentEffects;
+            }
+            else if (mode == device.RM_ADDITIVE && this.visible.additiveEffects)
+            {
+                return this.additiveEffects;
+            }
+            else if (mode == device.RM_DECAL && this.visible.decalEffects)
+            {
+                return this.decalEffects;
             }
         }
     };
@@ -21198,24 +22072,19 @@ var ccpwgl_int = (function()
             out = [];
         }
 
-        var self = this;
-
-        function getEffectResources(effectName, out)
+        for (var type in this.visible)
         {
-            for (var i = 0; i < self[effectName].length; i++)
+            if (this.visible.hasOwnProperty(type) && this[type].length)
             {
-                self[effectName].GetResources(out);
+                for (var i = 0; i < this[type].length; i++)
+                {
+                    this[type][i].GetResources(out);
+                }
             }
         }
 
-        getEffectResources('opaqueEffects', out);
-        getEffectResources('decalEffects', out);
-        getEffectResources('transparentEffects', out);
-        getEffectResources('additiveEffects', out);
-        getEffectResources('distortionEffects', out);
-
         return out;
-    }
+    };
 
     /**
      * Mesh attachment to space object
@@ -21233,7 +22102,7 @@ var ccpwgl_int = (function()
      * @property {mat4} worldTransformLast
      * @property {Tw2Mesh} mesh
      * @property {boolean} isEffectChild
-     * @property {Tw2PerObjectData} _perObjectData
+     * @property {Tw2PerObjectData|EveBasicPerObjectData} _perObjectData
      * @constructor
      */
     function EveChildMesh()
@@ -21273,7 +22142,7 @@ var ccpwgl_int = (function()
             mat4.scale(this.localTransform, this.scaling);
         }
         mat4.set(this.worldTransform, this.worldTransformLast);
-        mat4.multiply(this.localTransform, parentTransform, this.worldTransform)
+        mat4.multiply(parentTransform, this.localTransform, this.worldTransform)
     };
 
 
@@ -21316,13 +22185,14 @@ var ccpwgl_int = (function()
         {
             if (!this._perObjectData)
             {
-                this._perObjectData = new Tw2PerObjectData();
-                this._perObjectData.perObjectVSData = new Tw2RawData();
-                this._perObjectData.perObjectVSData.Declare('world', 16);
-                this._perObjectData.perObjectVSData.Declare('worldInverseTranspose', 16);
+                this._perObjectData = new EveBasicPerObjectData();
+                this._perObjectData.perObjectFFEData = new Tw2RawData();
+                this._perObjectData.perObjectFFEData.Declare('world', 16);
+                this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);
+                this._perObjectData.perObjectFFEData.Create();
             }
-            mat4.transpose(this.worldTransform, this._perObjectData.perObjectVSData.Get('world'));
-            mat4.inverse(this.worldTransform, this._perObjectData.perObjectVSData.Get('worldInverseTranspose'));
+            mat4.transpose(this.worldTransform, this._perObjectData.perObjectFFEData.Get('world'));
+            mat4.inverse(this.worldTransform, this._perObjectData.perObjectFFEData.Get('worldInverseTranspose'));
         }
 
         this.mesh.GetBatches(mode, accumulator, this._perObjectData);
@@ -21349,7 +22219,7 @@ var ccpwgl_int = (function()
         }
 
         return out;
-    }
+    };
 
     /**
      * "Complex" explosion object. Not implemented.
@@ -21376,6 +22246,356 @@ var ccpwgl_int = (function()
      */
     EveChildExplosion.prototype.GetBatches = function(mode, accumulator, perObjectData) {};
 
+    /**
+     * Mesh attachment to space object and oriented towards the camera
+     * @property {string} name
+     * @property {boolean} display
+     * @property {Number} lowestLodVisible
+     * @property {quat4} rotation
+     * @property {vec3} translation
+     * @property {vec3} scaling
+     * @property {boolean} useSRT
+     * @property {boolean} staticTransform
+     * @property {mat4} localTransform
+     * @property {mat4} worldTransform
+     * @property {mat4} worldTransformLast
+     * @property {Tw2Mesh} mesh
+     * @property {boolean} isEffectChild
+     * @property {EveBasicPerObjectData} _perObjectData
+     * @constructor
+     */
+    function EveChildBillboard()
+    {
+        this.name = '';
+        this.display = true;
+        this.mesh = null;
+
+        this.translation = vec3.create();
+        this.scaling = vec3.create([1, 1, 1]);
+        this.localTransform = mat4.create();
+        this.worldTransform = mat4.create();
+        this.staticTransform = false;
+
+        this.rotation = quat4.create([0, 0, 0, 1]);
+        this.lowestLodVisible = 2;
+        this.useSRT = true;
+        this.localTransform = mat4.create();
+        this.worldTransform = mat4.create();
+        this.worldTransformLast = mat4.create();
+
+        this.isEffectChild = true;
+
+        this._perObjectData = new EveBasicPerObjectData();
+        this._perObjectData.perObjectFFEData = new Tw2RawData();
+        this._perObjectData.perObjectFFEData.Declare('world', 16);
+        this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);
+        this._perObjectData.perObjectFFEData.Create();
+    }
+
+    /**
+     * Updates mesh transform
+     * @param {mat4} parentTransform
+     */
+    EveChildBillboard.prototype.Update = function(parentTransform)
+    {
+        if (this.useSRT)
+        {
+            var temp = this.worldTransformLast;
+            mat4.identity(this.localTransform);
+            mat4.translate(this.localTransform, this.translation);
+            mat4.transpose(quat4.toMat4(quat4.normalize(this.rotation), temp));
+            mat4.multiply(this.localTransform, temp, this.localTransform);
+            mat4.scale(this.localTransform, this.scaling);
+        }
+        mat4.set(this.worldTransform, this.worldTransformLast);
+        mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
+
+        var invView = mat4.create();
+        mat4.lookAt(device.viewInv.subarray(12), this.worldTransform.subarray(12), [0, 1, 0], invView);
+        mat4.transpose(invView);
+
+        var finalScale = vec3.create();
+        vec3.set(this.scaling, finalScale);
+        var parentScaleX = vec3.length(parentTransform);
+        var parentScaleY = vec3.length(parentTransform.subarray(4));
+        var parentScaleZ = vec3.length(parentTransform.subarray(8));
+        finalScale[0] *= parentScaleX;
+        finalScale[1] *= parentScaleY;
+        finalScale[2] *= parentScaleZ;
+
+        this.worldTransform[0] = invView[0] * finalScale[0];
+        this.worldTransform[1] = invView[1] * finalScale[0];
+        this.worldTransform[2] = invView[2] * finalScale[0];
+        this.worldTransform[4] = invView[4] * finalScale[1];
+        this.worldTransform[5] = invView[5] * finalScale[1];
+        this.worldTransform[6] = invView[6] * finalScale[1];
+        this.worldTransform[8] = invView[8] * finalScale[2];
+        this.worldTransform[9] = invView[9] * finalScale[2];
+        this.worldTransform[10] = invView[10] * finalScale[2];
+    };
+
+
+    /**
+     * Gets render batches
+     * @param {RenderMode} mode
+     * @param {Tw2BatchAccumulator} accumulator
+     */
+    EveChildBillboard.prototype.GetBatches = function(mode, accumulator)
+    {
+        if (!this.display || !this.mesh)
+        {
+            return;
+        }
+        mat4.transpose(this.worldTransform, this._perObjectData.perObjectFFEData.Get('world'));
+        mat4.inverse(this.worldTransform, this._perObjectData.perObjectFFEData.Get('worldInverseTranspose'));
+
+        this.mesh.GetBatches(mode, accumulator, this._perObjectData);
+
+    };
+
+
+
+    /**
+     * Gets child mesh res objects
+     * @param {Array} [out=[]] - Optional receiving array
+     * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+     */
+    EveChildBillboard.prototype.GetResources = function(out)
+    {
+        if (out === undefined)
+        {
+            out = [];
+        }
+
+        if (this.mesh !== null)
+        {
+            this.mesh.GetResources(out);
+        }
+
+        return out;
+    };
+
+    /**
+     * Particle system attachment to space object
+     * @property {string} name
+     * @property {boolean} display
+     * @property {Number} lowestLodVisible
+     * @property {quat4} rotation
+     * @property {vec3} translation
+     * @property {vec3} scaling
+     * @property {boolean} useSRT
+     * @property {boolean} staticTransform
+     * @property {mat4} localTransform
+     * @property {mat4} worldTransform
+     * @property {mat4} worldTransformLast
+     * @property {Tw2Mesh} mesh
+     * @property {[{]} particleEmitters
+     * @property {[Tw2ParticleSystem]} particleSystems
+     * @property {boolean} isEffectChild
+     * @property {EveBasicPerObjectData} _perObjectData
+     * @constructor
+     */
+    function EveChildParticleSystem()
+    {
+        this.name = '';
+        this.display = true;
+        this.lowestLodVisible = 2;
+        this.rotation = quat4.create([0, 0, 0, 1]);
+        this.translation = vec3.create();
+        this.scaling = vec3.create([1, 1, 1]);
+        this.useSRT = true;
+        this.staticTransform = false;
+        this.localTransform = mat4.create();
+        this.worldTransform = mat4.create();
+        this.worldTransformLast = mat4.create();
+        this.mesh = null;
+
+        this.particleEmitters = [];
+        this.particleSystems = [];
+
+        this.isEffectChild = true;
+
+        this._perObjectData = new EveBasicPerObjectData();
+        this._perObjectData.perObjectFFEData = new Tw2RawData();
+        this._perObjectData.perObjectFFEData.Declare('world', 16);
+        this._perObjectData.perObjectFFEData.Declare('worldInverseTranspose', 16);
+        this._perObjectData.perObjectFFEData.Create();
+    }
+
+    /**
+     * Updates object transform and ticks particle systems and emitters
+     * @param {mat4} parentTransform
+     * @param {Number} dt
+     */
+    EveChildParticleSystem.prototype.Update = function(parentTransform, dt)
+    {
+        if (this.useSRT)
+        {
+            var temp = this.worldTransformLast;
+            mat4.identity(this.localTransform);
+            mat4.translate(this.localTransform, this.translation);
+            mat4.transpose(quat4.toMat4(quat4.normalize(this.rotation), temp));
+            mat4.multiply(this.localTransform, temp, this.localTransform);
+            mat4.scale(this.localTransform, this.scaling);
+        }
+        mat4.set(this.worldTransform, this.worldTransformLast);
+        mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
+
+        for (var i = 0; i < this.particleEmitters.length; ++i)
+        {
+            this.particleEmitters[i].Update(dt);
+        }
+        for (i = 0; i < this.particleSystems.length; ++i)
+        {
+            this.particleSystems[i].Update(dt);
+        }
+    };
+
+
+    /**
+     * Gets render batches
+     * @param {RenderMode} mode
+     * @param {Tw2BatchAccumulator} accumulator
+     */
+    EveChildParticleSystem.prototype.GetBatches = function(mode, accumulator)
+    {
+        if (!this.display || !this.mesh)
+        {
+            return;
+        }
+        mat4.transpose(this.worldTransform, this._perObjectData.perObjectFFEData.Get('world'));
+        mat4.inverse(this.worldTransform, this._perObjectData.perObjectFFEData.Get('worldInverseTranspose'));
+
+        this.mesh.GetBatches(mode, accumulator, this._perObjectData);
+
+    };
+
+
+
+    /**
+     * Gets child mesh res objects
+     * @param {Array} [out=[]] - Optional receiving array
+     * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+     */
+    EveChildParticleSystem.prototype.GetResources = function(out)
+    {
+        if (out === undefined)
+        {
+            out = [];
+        }
+
+        if (this.mesh !== null)
+        {
+            this.mesh.GetResources(out);
+        }
+
+        return out;
+    };
+
+    /**
+     * Container for other child effects
+     * @property {string} name
+     * @property {boolean} display
+     * @parameter {Array.<{}>} objects
+     * @parameter {Array.<{}>} curveSets
+     * @property {quat4} rotation
+     * @property {vec3} translation
+     * @property {vec3} scaling
+     * @property {boolean} useSRT
+     * @property {boolean} staticTransform
+     * @property {mat4} localTransform
+     * @property {mat4} worldTransform
+     * @property {mat4} worldTransformLast
+     * @property {boolean} isEffectChild
+     * @constructor
+     */
+    function EveChildContainer()
+    {
+        this.name = '';
+        this.display = true;
+        this.objects = [];
+        this.curveSets = [];
+
+        this.rotation = quat4.create([0, 0, 0, 1]);
+        this.translation = vec3.create();
+        this.scaling = vec3.create([1, 1, 1]);
+        this.useSRT = true;
+        this.staticTransform = false;
+        this.localTransform = mat4.create();
+        this.worldTransform = mat4.create();
+        this.worldTransformLast = mat4.create();
+
+        this.isEffectChild = true;
+    }
+
+    /**
+     * Updates container transform, curve sets and all children
+     * @param {mat4} parentTransform
+     * @param {Number} dt
+     */
+    EveChildContainer.prototype.Update = function(parentTransform, dt)
+    {
+        if (this.useSRT)
+        {
+            var temp = this.worldTransformLast;
+            mat4.identity(this.localTransform);
+            mat4.translate(this.localTransform, this.translation);
+            mat4.transpose(quat4.toMat4(quat4.normalize(this.rotation), temp));
+            mat4.multiply(this.localTransform, temp, this.localTransform);
+            mat4.scale(this.localTransform, this.scaling);
+        }
+        mat4.set(this.worldTransform, this.worldTransformLast);
+        mat4.multiply(parentTransform, this.localTransform, this.worldTransform);
+
+        for (var i = 0; i < this.curveSets.length; ++i)
+        {
+            this.curveSets[i].Update(dt);
+        }
+        for (i = 0; i < this.objects.length; ++i)
+        {
+            this.objects[i].Update(this.worldTransform, dt);
+        }
+    };
+
+
+    /**
+     * Gets render batches from children
+     * @param {RenderMode} mode
+     * @param {Tw2BatchAccumulator} accumulator
+     * @param {Tw2PerObjectData} perObjectData
+     */
+    EveChildContainer.prototype.GetBatches = function(mode, accumulator, perObjectData)
+    {
+        if (!this.display)
+        {
+            return;
+        }
+        for (var i = 0; i < this.objects.length; ++i)
+        {
+            this.objects[i].GetBatches(mode, accumulator, perObjectData);
+        }
+    };
+
+
+
+    /**
+     * Gets child mesh res objects
+     * @param {Array} [out=[]] - Optional receiving array
+     * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+     */
+    EveChildContainer.prototype.GetResources = function(out)
+    {
+        if (out === undefined)
+        {
+            out = [];
+        }
+
+        for (var i = 0; i < this.objects.length; ++i)
+        {
+            this.objects[i].GetResources(out);
+        }
+        return out;
+    };
     /**
      * EveMissile
      * @property {String} name
@@ -21427,7 +22647,7 @@ var ccpwgl_int = (function()
     {
         for (var i = 0; i < this.warheads.length; ++i)
         {
-            this.warheads[i].UpdateViewDependentData(this.transform);
+            this.warheads[i].UpdateViewDependentData();
         }
     };
 
@@ -22618,7 +23838,7 @@ var ccpwgl_int = (function()
 
                 if (input == null)
                 {
-                    emitter.log('ResMan',
+                    emitter.log('res.error',
                     {
                         log: 'error',
                         src: ['Tw2StaticEmitter', 'Update'],
@@ -22636,7 +23856,7 @@ var ccpwgl_int = (function()
 
                 if (input.elements < d.elements)
                 {
-                    emitter.log('ResMan',
+                    emitter.log('res.error',
                     {
                         log: 'error',
                         src: ['Tw2StaticEmitter', 'Update'],

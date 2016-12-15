@@ -149,6 +149,66 @@ EveSpaceScene.prototype.Initialize = function()
 };
 
 /**
+ * Gets scene's res objects
+ * @param {Array} [out=[]] - Optional receiving array
+ * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ */
+EveSpaceScene.prototype.GetResources = function(out)
+{
+    if (out === undefined)
+    {
+        out = [];
+    }
+    
+    if (this.backgroundEffect) 
+    {
+        this.backgroundEffect.GetResources(out);
+    }
+    
+    for (var i = 0; i < this.lensflares.length; i++)
+    {
+        this.lensflares[i].GetResources(out);
+    }
+    
+    function getEnvMapResource(out, envMap)
+    {
+        if (envMap !== null && out.indexOf(envMap) === -1) out.push(envMap);
+    }
+
+    getEnvMapResource(out, this.envMapRes);
+    getEnvMapResource(out, this.envMap1Res);
+    getEnvMapResource(out, this.envMap2Res);
+    getEnvMapResource(out, this.envMap3Res);
+
+    return out;
+};
+
+/**
+ * Gets scene's children's res objects
+ * @param {Array} [out=[]] - Optional receiving array
+ * @returns {Array.<Tw2EffectRes|Tw2TextureRes|Tw2GeometryRes>} [out]
+ */
+EveSpaceScene.prototype.GetChildResources = function(out)
+{
+    if (out === undefined)
+    {
+        out = [];
+    }
+    
+    for (var p = 0; p < this.planets.length; p++)
+    {
+        this.planets[p].GetResources(out);
+    }
+
+    for (var i = 0; i < this.objects.length; i++)
+    {
+        this.objects[i].GetResources(out);
+    }
+
+    return out;
+};
+
+/**
  * Sets the environment reflection map
  * @param {String} path
  */
