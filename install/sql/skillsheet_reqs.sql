@@ -992,3 +992,5 @@ INSERT INTO `skillsheet_reqs` VALUES ('42126', 'requiredSkill2', '3345', '0', '3
 INSERT INTO `skillsheet_reqs` VALUES ('42126', 'requiredSkill2Level', '1', '0', '30', 'Vanquisher', '500020', 'Serpentis', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('42126', 'requiredSkill3', '20533', '0', '30', 'Vanquisher', '500020', 'Serpentis', 'Capital Ships', null);
 INSERT INTO `skillsheet_reqs` VALUES ('42126', 'requiredSkill3Level', '5', '0', '30', 'Vanquisher', '500020', 'Serpentis', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('42244', 'requiredSkill1', '29637', '0', '941', 'Porpoise', '500014', 'ORE', 'Industrial Command Ships', '');
+INSERT INTO `skillsheet_reqs` VALUES ('42244', 'requiredSkill1Level', '1', '0', '941', 'Porpoise', '500014', 'ORE', null, null);

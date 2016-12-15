@@ -314,3 +314,4 @@ INSERT INTO `skillsheet_ships` VALUES ('37607', '1538', 'Ninazu', '1', '500004',
 INSERT INTO `skillsheet_ships` VALUES ('42124', '485', 'Vehement', '4', '500020', '1', '21282', 'gdn1_t1:serpentis:gallente');
 INSERT INTO `skillsheet_ships` VALUES ('42125', '659', 'Vendetta', '4', '500020', '1', '21354', 'gca1_t1:serpentis:gallente');
 INSERT INTO `skillsheet_ships` VALUES ('42126', '30', 'Vanquisher', '4', '500020', '1', '21283', 'gt1_t1:serpentis:gallente');
+INSERT INTO `skillsheet_ships` VALUES ('42244', '941', 'Porpoise', '4', '500014', '1', '21362', 'oreb1_t1:orebase:development');
