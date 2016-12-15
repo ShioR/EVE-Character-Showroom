@@ -226,6 +226,20 @@ $skillsource[273][32339]['skillCost'] = '100000000';
 $skillsource[273][32339]['groupID'] = '273';
 $skillsource[273][32339]['groupName'] = 'Drones';
 
+$skillsource[273][43702]['typeName'] = 'Ice Harvesting Drone Operation';
+$skillsource[273][43702]['rank'] = '2';
+$skillsource[273][43702]['typeID'] = '43702';
+$skillsource[273][43702]['skillCost'] = '80000';
+$skillsource[273][43702]['groupID'] = '273';
+$skillsource[273][43702]['groupName'] = 'Drones';
+
+$skillsource[273][43703]['typeName'] = 'Ice Harvesting Drone Specialization';
+$skillsource[273][43703]['rank'] = '5';
+$skillsource[273][43703]['typeID'] = '43703';
+$skillsource[273][43703]['skillCost'] = '18000000';
+$skillsource[273][43703]['groupID'] = '273';
+$skillsource[273][43703]['groupName'] = 'Drones';
+
 $skillsource[273][24241]['typeName'] = 'Light Drone Operation';
 $skillsource[273][24241]['rank'] = '1';
 $skillsource[273][24241]['typeID'] = '24241';
@@ -253,6 +267,13 @@ $skillsource[273][3438]['typeID'] = '3438';
 $skillsource[273][3438]['skillCost'] = '40000';
 $skillsource[273][3438]['groupID'] = '273';
 $skillsource[273][3438]['groupName'] = 'Drones';
+
+$skillsource[273][22541]['typeName'] = 'Mining Drone Specialization';
+$skillsource[273][22541]['rank'] = '5';
+$skillsource[273][22541]['typeID'] = '22541';
+$skillsource[273][22541]['skillCost'] = '9000000';
+$skillsource[273][22541]['groupID'] = '273';
+$skillsource[273][22541]['groupName'] = 'Drones';
 
 $skillsource[273][12485]['typeName'] = 'Minmatar Drone Specialization';
 $skillsource[273][12485]['rank'] = '5';
@@ -500,6 +521,112 @@ $skillsource[1216][3318]['typeID'] = '3318';
 $skillsource[1216][3318]['skillCost'] = '80000';
 $skillsource[1216][3318]['groupID'] = '1216';
 $skillsource[1216][3318]['groupName'] = 'Engineering';
+
+////////////////////////////////////////////////////////////////////////// FLEET SUPPORT
+$skillsource[258][20494]['typeName'] = 'Armored Command';
+$skillsource[258][20494]['rank'] = '2';
+$skillsource[258][20494]['typeID'] = '20494';
+$skillsource[258][20494]['skillCost'] = '100000';
+$skillsource[258][20494]['groupID'] = '258';
+$skillsource[258][20494]['groupName'] = 'Fleet Support';
+
+$skillsource[258][11569]['typeName'] = 'Armored Command Specialist';
+$skillsource[258][11569]['rank'] = '5';
+$skillsource[258][11569]['typeID'] = '11569';
+$skillsource[258][11569]['skillCost'] = '400000';
+$skillsource[258][11569]['groupID'] = '258';
+$skillsource[258][11569]['groupName'] = 'Fleet Support';
+
+$skillsource[258][3354]['typeName'] = 'Command Burst Specialist';
+$skillsource[258][3354]['rank'] = '6';
+$skillsource[258][3354]['typeID'] = '3354';
+$skillsource[258][3354]['skillCost'] = '2500000';
+$skillsource[258][3354]['groupID'] = '258';
+$skillsource[258][3354]['groupName'] = 'Fleet Support';
+
+$skillsource[258][24764]['typeName'] = 'Fleet Command';
+$skillsource[258][24764]['rank'] = '12';
+$skillsource[258][24764]['typeID'] = '24764';
+$skillsource[258][24764]['skillCost'] = '20000000';
+$skillsource[258][24764]['groupID'] = '258';
+$skillsource[258][24764]['groupName'] = 'Fleet Support';
+
+$skillsource[258][20495]['typeName'] = 'Information Command';
+$skillsource[258][20495]['rank'] = '2';
+$skillsource[258][20495]['typeID'] = '20495';
+$skillsource[258][20495]['skillCost'] = '100000';
+$skillsource[258][20495]['groupID'] = '258';
+$skillsource[258][20495]['groupName'] = 'Fleet Support';
+
+$skillsource[258][3352]['typeName'] = 'Information Command Specialist';
+$skillsource[258][3352]['rank'] = '5';
+$skillsource[258][3352]['typeID'] = '3352';
+$skillsource[258][3352]['skillCost'] = '400000';
+$skillsource[258][3352]['groupID'] = '258';
+$skillsource[258][3352]['groupName'] = 'Fleet Support';
+
+$skillsource[258][3348]['typeName'] = 'Leadership';
+$skillsource[258][3348]['rank'] = '1';
+$skillsource[258][3348]['typeID'] = '3348';
+$skillsource[258][3348]['skillCost'] = '20000';
+$skillsource[258][3348]['groupID'] = '258';
+$skillsource[258][3348]['groupName'] = 'Fleet Support';
+
+$skillsource[258][22552]['typeName'] = 'Mining Director';
+$skillsource[258][22552]['rank'] = '5';
+$skillsource[258][22552]['typeID'] = '22552';
+$skillsource[258][22552]['skillCost'] = '400000';
+$skillsource[258][22552]['groupID'] = '258';
+$skillsource[258][22552]['groupName'] = 'Fleet Support';
+
+$skillsource[258][22536]['typeName'] = 'Mining Foreman';
+$skillsource[258][22536]['rank'] = '2';
+$skillsource[258][22536]['typeID'] = '22536';
+$skillsource[258][22536]['skillCost'] = '75000';
+$skillsource[258][22536]['groupID'] = '258';
+$skillsource[258][22536]['groupName'] = 'Fleet Support';
+
+$skillsource[258][3350]['typeName'] = 'Shield Command';
+$skillsource[258][3350]['rank'] = '2';
+$skillsource[258][3350]['typeID'] = '3350';
+$skillsource[258][3350]['skillCost'] = '100000';
+$skillsource[258][3350]['groupID'] = '258';
+$skillsource[258][3350]['groupName'] = 'Fleet Support';
+
+$skillsource[258][3351]['typeName'] = 'Shield Command Specialist';
+$skillsource[258][3351]['rank'] = '5';
+$skillsource[258][3351]['typeID'] = '3351';
+$skillsource[258][3351]['skillCost'] = '400000';
+$skillsource[258][3351]['groupID'] = '258';
+$skillsource[258][3351]['groupName'] = 'Fleet Support';
+
+$skillsource[258][3349]['typeName'] = 'Skirmish Command';
+$skillsource[258][3349]['rank'] = '2';
+$skillsource[258][3349]['typeID'] = '3349';
+$skillsource[258][3349]['skillCost'] = '75000';
+$skillsource[258][3349]['groupID'] = '258';
+$skillsource[258][3349]['groupName'] = 'Fleet Support';
+
+$skillsource[258][11572]['typeName'] = 'Skirmish Command Specialist';
+$skillsource[258][11572]['rank'] = '5';
+$skillsource[258][11572]['typeID'] = '11572';
+$skillsource[258][11572]['skillCost'] = '400000';
+$skillsource[258][11572]['groupID'] = '258';
+$skillsource[258][11572]['groupName'] = 'Fleet Support';
+
+$skillsource[258][43728]['typeName'] = 'Spatial Phenomena Generation';
+$skillsource[258][43728]['rank'] = '10';
+$skillsource[258][43728]['typeID'] = '43728';
+$skillsource[258][43728]['skillCost'] = '200000000';
+$skillsource[258][43728]['groupID'] = '258';
+$skillsource[258][43728]['groupName'] = 'Fleet Support';
+
+$skillsource[258][11574]['typeName'] = 'Wing Command';
+$skillsource[258][11574]['rank'] = '8';
+$skillsource[258][11574]['typeID'] = '11574';
+$skillsource[258][11574]['skillCost'] = '2000000';
+$skillsource[258][11574]['groupID'] = '258';
+$skillsource[258][11574]['groupName'] = 'Fleet Support';
 
 ////////////////////////////////////////////////////////////////////////// GUNNERY
 $skillsource[255][41404]['typeName'] = 'Capital Artillery Specialization';
@@ -823,105 +950,6 @@ $skillsource[255][3317]['typeID'] = '3317';
 $skillsource[255][3317]['skillCost'] = '100000';
 $skillsource[255][3317]['groupID'] = '255';
 $skillsource[255][3317]['groupName'] = 'Gunnery';
-
-////////////////////////////////////////////////////////////////////////// LEADERSHIP
-$skillsource[258][20494]['typeName'] = 'Armored Warfare';
-$skillsource[258][20494]['rank'] = '2';
-$skillsource[258][20494]['typeID'] = '20494';
-$skillsource[258][20494]['skillCost'] = '100000';
-$skillsource[258][20494]['groupID'] = '258';
-$skillsource[258][20494]['groupName'] = 'Leadership';
-
-$skillsource[258][11569]['typeName'] = 'Armored Warfare Specialist';
-$skillsource[258][11569]['rank'] = '5';
-$skillsource[258][11569]['typeID'] = '11569';
-$skillsource[258][11569]['skillCost'] = '400000';
-$skillsource[258][11569]['groupID'] = '258';
-$skillsource[258][11569]['groupName'] = 'Leadership';
-
-$skillsource[258][24764]['typeName'] = 'Fleet Command';
-$skillsource[258][24764]['rank'] = '12';
-$skillsource[258][24764]['typeID'] = '24764';
-$skillsource[258][24764]['skillCost'] = '20000000';
-$skillsource[258][24764]['groupID'] = '258';
-$skillsource[258][24764]['groupName'] = 'Leadership';
-
-$skillsource[258][20495]['typeName'] = 'Information Warfare';
-$skillsource[258][20495]['rank'] = '2';
-$skillsource[258][20495]['typeID'] = '20495';
-$skillsource[258][20495]['skillCost'] = '100000';
-$skillsource[258][20495]['groupID'] = '258';
-$skillsource[258][20495]['groupName'] = 'Leadership';
-
-$skillsource[258][3352]['typeName'] = 'Information Warfare Specialist';
-$skillsource[258][3352]['rank'] = '5';
-$skillsource[258][3352]['typeID'] = '3352';
-$skillsource[258][3352]['skillCost'] = '400000';
-$skillsource[258][3352]['groupID'] = '258';
-$skillsource[258][3352]['groupName'] = 'Leadership';
-
-$skillsource[258][3348]['typeName'] = 'Leadership';
-$skillsource[258][3348]['rank'] = '1';
-$skillsource[258][3348]['typeID'] = '3348';
-$skillsource[258][3348]['skillCost'] = '20000';
-$skillsource[258][3348]['groupID'] = '258';
-$skillsource[258][3348]['groupName'] = 'Leadership';
-
-$skillsource[258][22552]['typeName'] = 'Mining Director';
-$skillsource[258][22552]['rank'] = '5';
-$skillsource[258][22552]['typeID'] = '22552';
-$skillsource[258][22552]['skillCost'] = '400000';
-$skillsource[258][22552]['groupID'] = '258';
-$skillsource[258][22552]['groupName'] = 'Leadership';
-
-$skillsource[258][22536]['typeName'] = 'Mining Foreman';
-$skillsource[258][22536]['rank'] = '2';
-$skillsource[258][22536]['typeID'] = '22536';
-$skillsource[258][22536]['skillCost'] = '75000';
-$skillsource[258][22536]['groupID'] = '258';
-$skillsource[258][22536]['groupName'] = 'Leadership';
-
-$skillsource[258][3350]['typeName'] = 'Siege Warfare';
-$skillsource[258][3350]['rank'] = '2';
-$skillsource[258][3350]['typeID'] = '3350';
-$skillsource[258][3350]['skillCost'] = '100000';
-$skillsource[258][3350]['groupID'] = '258';
-$skillsource[258][3350]['groupName'] = 'Leadership';
-
-$skillsource[258][3351]['typeName'] = 'Siege Warfare Specialist';
-$skillsource[258][3351]['rank'] = '5';
-$skillsource[258][3351]['typeID'] = '3351';
-$skillsource[258][3351]['skillCost'] = '400000';
-$skillsource[258][3351]['groupID'] = '258';
-$skillsource[258][3351]['groupName'] = 'Leadership';
-
-$skillsource[258][3349]['typeName'] = 'Skirmish Warfare';
-$skillsource[258][3349]['rank'] = '2';
-$skillsource[258][3349]['typeID'] = '3349';
-$skillsource[258][3349]['skillCost'] = '75000';
-$skillsource[258][3349]['groupID'] = '258';
-$skillsource[258][3349]['groupName'] = 'Leadership';
-
-$skillsource[258][11572]['typeName'] = 'Skirmish Warfare Specialist';
-$skillsource[258][11572]['rank'] = '5';
-$skillsource[258][11572]['typeID'] = '11572';
-$skillsource[258][11572]['skillCost'] = '400000';
-$skillsource[258][11572]['groupID'] = '258';
-$skillsource[258][11572]['groupName'] = 'Leadership';
-
-$skillsource[258][3354]['typeName'] = 'Warfare Link Specialist';
-$skillsource[258][3354]['rank'] = '6';
-$skillsource[258][3354]['typeID'] = '3354';
-$skillsource[258][3354]['skillCost'] = '2500000';
-$skillsource[258][3354]['groupID'] = '258';
-$skillsource[258][3354]['groupName'] = 'Leadership';
-
-$skillsource[258][11574]['typeName'] = 'Wing Command';
-$skillsource[258][11574]['rank'] = '8';
-$skillsource[258][11574]['typeID'] = '11574';
-$skillsource[258][11574]['skillCost'] = '2000000';
-$skillsource[258][11574]['groupID'] = '258';
-$skillsource[258][11574]['groupName'] = 'Leadership';
 
 ////////////////////////////////////////////////////////////////////////// MISSILES
 $skillsource[256][3322]['typeName'] = 'Auto-Targeting Missiles';
@@ -1996,6 +2024,13 @@ $skillsource[1209][12367]['typeID'] = '12367';
 $skillsource[1209][12367]['skillCost'] = '120000';
 $skillsource[1209][12367]['groupID'] = '1209';
 $skillsource[1209][12367]['groupName'] = 'Shields';
+
+$skillsource[1209][44067]['typeName'] = 'Invulnerability Core Operation';
+$skillsource[1209][44067]['rank'] = '8';
+$skillsource[1209][44067]['typeID'] = '44067';
+$skillsource[1209][44067]['skillCost'] = '250000000';
+$skillsource[1209][44067]['groupID'] = '1209';
+$skillsource[1209][44067]['groupName'] = 'Shields';
 
 $skillsource[1209][12366]['typeName'] = 'Kinetic Shield Compensation';
 $skillsource[1209][12366]['rank'] = '2';
