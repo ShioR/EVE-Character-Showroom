@@ -994,3 +994,15 @@ INSERT INTO `skillsheet_reqs` VALUES ('42126', 'requiredSkill3', '20533', '0', '
 INSERT INTO `skillsheet_reqs` VALUES ('42126', 'requiredSkill3Level', '5', '0', '30', 'Vanquisher', '500020', 'Serpentis', null, null);
 INSERT INTO `skillsheet_reqs` VALUES ('42244', 'requiredSkill1', '29637', '0', '941', 'Porpoise', '500014', 'ORE', 'Industrial Command Ships', '');
 INSERT INTO `skillsheet_reqs` VALUES ('42244', 'requiredSkill1Level', '1', '0', '941', 'Porpoise', '500014', 'ORE', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('42245', 'requiredSkill1', '3335', '0', '832', 'Rabisu', '500012', 'Blood Raiders', 'Amarr Cruiser', null);
+INSERT INTO `skillsheet_reqs` VALUES ('42245', 'requiredSkill1Level', '5', '0', '832', 'Rabisu', '500012', 'Blood Raiders', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('42245', 'requiredSkill2', '3333', '0', '832', 'Rabisu', '500012', 'Blood Raiders', 'Minmatar Cruiser', null);
+INSERT INTO `skillsheet_reqs` VALUES ('42245', 'requiredSkill2Level', '5', '0', '832', 'Rabisu', '500012', 'Blood Raiders', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('42245', 'requiredSkill3', '12096', '0', '832', 'Rabisu', '500012', 'Blood Raiders', 'Logistics Cruisers', null);
+INSERT INTO `skillsheet_reqs` VALUES ('42245', 'requiredSkill3Level', '1', '0', '832', 'Rabisu', '500012', 'Blood Raiders', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('42246', 'requiredSkill1', '3331', '0', '830', 'Caedes', '500012', 'Blood Raiders', 'Amarr Frigate', null);
+INSERT INTO `skillsheet_reqs` VALUES ('42246', 'requiredSkill1Level', '5', '0', '830', 'Caedes', '500012', 'Blood Raiders', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('42246', 'requiredSkill2', '3329', '0', '830', 'Caedes', '500012', 'Blood Raiders', 'Minmatar Frigate', null);
+INSERT INTO `skillsheet_reqs` VALUES ('42246', 'requiredSkill2Level', '5', '0', '830', 'Caedes', '500012', 'Blood Raiders', null, null);
+INSERT INTO `skillsheet_reqs` VALUES ('42246', 'requiredSkill3', '12093', '0', '830', 'Caedes', '500012', 'Blood Raiders', 'Covert Ops', null);
+INSERT INTO `skillsheet_reqs` VALUES ('42246', 'requiredSkill3Level', '1', '0', '830', 'Caedes', '500012', 'Blood Raiders', null, null);
