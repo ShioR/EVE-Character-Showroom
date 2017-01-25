@@ -18,6 +18,6 @@ CREATE TABLE `skillsheet_apis` (
   `data` text NOT NULL,
   `training` text NOT NULL,
   `queue` text NOT NULL,
-  `cachedUntil` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `cachedUntil` datetime NOT NULL DEFAULT '2017-01-01 00:00:00',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
