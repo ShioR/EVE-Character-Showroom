@@ -2,18 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-  <meta name="description" content="Eve Online Skill sheet" />
+  <meta name="description" content="EVE Online character skill sheets and ships" />
   <meta name="robots" content="index,follow" />
   <meta name="resource-type" content="document" />
   <meta http-equiv="expires" content="1" />
-  <meta name="author" content="Eve Online" />
-  <meta name="copyright" content="Copyright (c) 2016 The Xenodus Initiative." />
+  <meta name="author" content="EVE Character Showroom" />
+  <meta name="copyright" content="Copyright (c) 2017 The Xenodus Initiative." />
   <meta name="revisit-after" content="1 days" />
   <meta name="distribution" content="Global" />
-  <meta name="generator" content="Eve Online" />
+  <meta name="generator" content="EVE Character Showroom" />
   <meta name="rating" content="General" />
   <meta name="KEYWORDS" content="eveonline, skills" />
-  <title>Skills Showroom</title>
+  <meta name="theme-color" content="#2c2c38">
+  <meta name="msapplication-navbutton-color" content="#2c2c38">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#2c2c38">
+  <title>Skills Showroom / ERROR</title>
   <link rel="shortcut icon" href="/imgs/favicon.png">
   <link rel="apple-touch-icon" href="/imgs/favicon.png" sizes="114x114">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
