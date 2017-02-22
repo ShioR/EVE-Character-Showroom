@@ -11,10 +11,10 @@
         </tr>
         <tr>
             <td>
-                <div id="LogoContainer" style="border:#666 1px solid;">
+                <div id="LogoContainer" style="border:rgba(102, 102, 102, 0.56) 1px solid;">
                     <div id="corpLogo">
                         <a href="https://gate.eveonline.com/Corporation/<!--[$corporationName|replace:" ":"%20"]-->" rel="iframe-875-610" class="pirobox">
-	                    <img style="border:#666 1px solid; background-color: #1B1B1B;"	src="<!--[getcorplogo corporationID=$corporationID size=256]-->"
+	                    <img style="border:rgba(102, 102, 102, 0.56) 1px solid; background-color: #1B1B1B;"	src="<!--[getcorplogo corporationID=$corporationID size=256]-->"
 	            			 width="64" 
 	            			 height="64" 
 	            			 title="<!--[$corporationName]-->" 
@@ -24,7 +24,7 @@
             <!--[if $allianceName neq '']-->
                     <div id="allianceLogo">
                         <a href="https://gate.eveonline.com/Alliance/<!--[$allianceName|replace:" ":"%20"]-->" rel="iframe-875-610" class="pirobox">
-	                    <img style="border:#666 1px solid; background-color: #1B1B1B;"	src="<!--[getalliancelogo allianceID=$allianceID size=128]-->"
+	                    <img style="border:rgba(102, 102, 102, 0.56) 1px solid; background-color: #1B1B1B;"	src="<!--[getalliancelogo allianceID=$allianceID size=128]-->"
 	            			 width="64" 
 	            			 height="64" 
 	            			 title="<!--[$allianceName]-->" 
@@ -34,10 +34,10 @@
             <!--[else]-->
             <!--[/if]-->
                     <div id="raceimg" style="pointer-events:none; cursor:default;"><a href="#">
-                        <img style="border:#666 1px solid; background-color: #1B1B1B" src="/imgs/charraces/<!--[$race|lower]-->.png" width="64" height="64" title="<!--[$race]-->" alt="<!--[$race]-->" hspace="6" /></a>
+                        <img style="border:rgba(102, 102, 102, 0.56) 1px solid; background-color: #1B1B1B" src="/imgs/charraces/<!--[$race|lower]-->.png" width="64" height="64" title="<!--[$race]-->" alt="<!--[$race]-->" hspace="6" /></a>
 	                </div>
 	                <div id="bloodimg" style="pointer-events:none; cursor:default;"><a href="#">
-                        <img style="border:#666 1px solid; background-color: #1B1B1B" src="/imgs/charraces/blood_<!--[$bloodLine|lower]-->.png" width="64" height="64" title="<!--[$bloodLine]-->" alt="<!--[$bloodLine]-->" /></a>
+                        <img style="border:rgba(102, 102, 102, 0.56) 1px solid; background-color: #1B1B1B" src="/imgs/charraces/blood_<!--[$bloodLine|lower]-->.png" width="64" height="64" title="<!--[$bloodLine]-->" alt="<!--[$bloodLine]-->" /></a>
 	                </div> 
 	            </div>
             </td>
@@ -112,7 +112,7 @@
                                         window.setInterval(
                                             function () {
                                         spProgress = spProgress + <!--[$spRate]-->;
-                                        document.getElementById("spProgression").innerHTML = spProgress.toLocaleString(undefined, {minimumFractionDigits:0, maximumFractionDigits:0}) + " of " + "<!--[$trainingEndSP|number_format]--> SP <span style='color:#666;'>/</span>";
+                                        document.getElementById("spProgression").innerHTML = spProgress.toLocaleString(undefined, {minimumFractionDigits:0, maximumFractionDigits:0}) + " of " + "<!--[$trainingEndSP|number_format]--> SP <span style='color:rgba(102, 102, 102, 0.56);'>/</span>";
                                             }, 1000);</script>
                                 <script type="text/javascript">
                                     var progressToGo = <!--[$progressToGo]-->;
@@ -121,7 +121,7 @@
                                         progressToGo = progressToGo - <!--[$spRate]-->;
                                         document.getElementById("progressToGo").innerHTML = " " + progressToGo.toLocaleString(undefined, {minimumFractionDigits:0, maximumFractionDigits:0}) + " SP Remaining";
                                             }, 1000);</script>
-                                <span id="spProgression"><!--[$spProgress|number_format]--> of <!--[$trainingEndSP|number_format]--> SP <span style="color:#666;">/</span></span><span id="progressToGo"> <!--[$progressToGo|number_format]--> SP Remaining</span>
+                                <span id="spProgression"><!--[$spProgress|number_format]--> of <!--[$trainingEndSP|number_format]--> SP <span style="color:rgba(102, 102, 102, 0.56);">/</span></span><span id="progressToGo"> <!--[$progressToGo|number_format]--> SP Remaining</span>
                                </td>
                                 <td colspan="1" style="text-align:center;" class="dataTableCellLeftRight"><!--[$progressPercent|round:1]-->%</td>
                   </tr>
