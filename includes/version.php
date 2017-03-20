@@ -27,6 +27,6 @@
 /* materials are copyright (C) CCP hf http://ccpgames.com */
 /**********************************************************/
 
-define('_SKILLSHEET_VERSION', 'v6.430');
+define('_SKILLSHEET_VERSION', 'v6.431');
 define('_DATA_VERSION', 'Ascension');
 ?>
